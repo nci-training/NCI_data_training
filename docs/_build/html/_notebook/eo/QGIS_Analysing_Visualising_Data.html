@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Analysing and visualising data from multiple sources in QGIS &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Analysing and visualising data from multiple sources in QGIS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/eo/QGIS_Analysing_Visualising_Data.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Analysing-and-visualising-data-from-multiple-sources-in-QGIS">
+<h1>Analysing and visualising data from multiple sources in QGIS<a class="headerlink" href="#Analysing-and-visualising-data-from-multiple-sources-in-QGIS" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="In-this-notebook:">
+<h2>In this notebook:<a class="headerlink" href="#In-this-notebook:" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>How to use <strong>QGIS</strong> (<a class="reference external" href="http://qgis.org">http://qgis.org</a>) as a tool for interacting with data using web data services and on the VDI filesystem.</li>
+<li>Obtaining data from a Web Coverage Service (WCS)</li>
+<li>Obtaining data from a web-based vector data service</li>
+<li>Obtaining data from the NCI file system using the NetCDF Operators (NCO)</li>
+<li>Using QGIS to fuse data and create a shareable, interactive 3D map rendered using webGL in a browser</li>
+</ul>
+<p>We are going to make an interactive version of the map below, starting with data from three different sources merged using QGIS. We will also see some key differences between data access methods.</p>
+<p><img alt="End result" src="../../_images/0-3d.map.png" /></p>
+<p>The following material uses Geoscience Australia’s Elevation Data Collection which is available under the Create Commons License 4.0 through NCI’s THREDDS Data Server. For more information on the collection and licensing, please click <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f9082_1236_9859_8989">here</a>. Also used is ANU Water and Landscape Dynamics tree cover product, available under the Create Commons License 4.0 through NCI’s THREDDS Data Server. For more
+information on the collection and licensing, please click <a class="reference external" href="http://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f1104_2906_7276_3004">here</a>.</p>
+<div class="section" id="The-program-for-this-session-is:">
+<h3>The program for this session is:<a class="headerlink" href="#The-program-for-this-session-is:" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="Introduction">
+<h2>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>QGIS - what and why?</li>
+<li>Define a research question</li>
+<li>Choose useful datasets</li>
+<li>Choose data manipulation strategies</li>
+</ol>
+</div>
+<div class="section" id="Setup-and-data-wrangling">
+<h2>Setup and data wrangling<a class="headerlink" href="#Setup-and-data-wrangling" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Create some working spaces</li>
+<li>Get topography data using Web Coverage Services</li>
+<li>Acquire tree cover data from the file system</li>
+<li>Find and obtain cadastral data</li>
+</ol>
+</div>
+<div class="section" id="Making-your-map">
+<h2>Making your map<a class="headerlink" href="#Making-your-map" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Start QGIS on the VDI</li>
+<li>Import elevation and tree cover layers into QGIS</li>
+<li>Style the tree cover layer</li>
+<li>Import vector data from GeoJSON</li>
+<li>Install two useful QGIS plugins: Qgis2threejs and Zonal statistics</li>
+<li>Using zonal statistics for basic analysis</li>
+<li>Using a 3D visualisation to complete the picture</li>
+<li>Interpreting our results</li>
+<li>Share our new map</li>
+</ol>
+</div>
+</div>
+<div class="section" id="Introduction-and-setup">
+<h1>Introduction and setup<a class="headerlink" href="#Introduction-and-setup" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a.-What-is-QGIS?">
+<h2>a. What is QGIS?<a class="headerlink" href="#a.-What-is-QGIS?" title="Permalink to this headline">¶</a></h2>
+<p>QGIS (Quantum GIS) is an application for geospatial data analysis and visualisation, focussed on 2D (raster and vector) datasets, and wrapped in a straightforward graphical user interface. It can also be used as a Python library, but for this session we use the graphical interface.</p>
+</div>
+<div class="section" id="b.-I-have-[insert-many-other-tools]-on-the-VDI---why-use-QGIS?">
+<h2>b. I have [insert many other tools] on the VDI - why use QGIS?<a class="headerlink" href="#b.-I-have-[insert-many-other-tools]-on-the-VDI---why-use-QGIS?" title="Permalink to this headline">¶</a></h2>
+<p>QGIS can be used on the VDI as a rapid-prototyping tool. If you’ve got all the infrastructure you need available in your project space and don’t need it, that’s great!</p>
+<p>We hope to demonstrate some ways which QGIS can help you quickly develop shareable, multi-source analyses quickly and simply.</p>
+</div>
+<div class="section" id="c.-What-is-the-general-approach-of-this-exercise?">
+<h2>c. What is the general approach of this exercise?<a class="headerlink" href="#c.-What-is-the-general-approach-of-this-exercise?" title="Permalink to this headline">¶</a></h2>
+<p>Imagine you’ve just run a model or synthesised some new analytical data and want to quickly compare your results with other data sources, inspect the results, and share with colleagues - essentially create a visualisation you can demonstrate.</p>
+<div class="section" id="2.-Define-a-question">
+<h3>2. Define a question<a class="headerlink" href="#2.-Define-a-question" title="Permalink to this headline">¶</a></h3>
+<p>For this session the question we want to address is:</p>
+<div class="section" id="How-are-the-‘hilliness’-of-suburban-areas-and-‘tree-cover’-in-Canberra-related?-…and-do-hillier-sections-have-more-or-less-tree-cover-than-flatter-sections?">
+<h4><em>How are the ‘hilliness’ of suburban areas and ‘tree cover’ in Canberra related? …and do hillier sections have more or less tree cover than flatter sections?</em><a class="headerlink" href="#How-are-the-‘hilliness’-of-suburban-areas-and-‘tree-cover’-in-Canberra-related?-…and-do-hillier-sections-have-more-or-less-tree-cover-than-flatter-sections?" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="3.-Choose-useful-datasets">
+<h3>3. Choose useful datasets<a class="headerlink" href="#3.-Choose-useful-datasets" title="Permalink to this headline">¶</a></h3>
+<p>To answer our question we need some data on topography, tree cover and section boundaries in the ACT.</p>
+<p>From NCI’s collections we can use: * <strong>A Shuttle Radar Topography Mission raster DEM at 1 arc-second resolution</strong> * <strong>Some tree cover indices from the ANU Water and Landscape Dynamics collection: /g/data2/ub8/</strong></p>
+<p>NCI doesn’t hold cadastral data, so we’ll get those from the local land administrator: * <strong>ACT cadastral data outlining sections (held outside NCI)</strong></p>
+<p><em>Note - here, sections are collections of 50 or so individual house blocks. Our elevation and tree cover data are too coarse for individual house blocks - and the vector data file for blocks is massive!</em></p>
+<p>These data will come in three different formats: 1. GeoTIFF (constructed from a NetCDF file using WCS) 2. NetCDF4 3. Vector data as GeoJSON, which we will save as Geopackage <strong>or</strong> ESRI shapefile for use in QGIS</p>
+</div>
+<div class="section" id="4.-Choose-data-manipulation-strategies">
+<h3>4. Choose data manipulation strategies<a class="headerlink" href="#4.-Choose-data-manipulation-strategies" title="Permalink to this headline">¶</a></h3>
+<p>The use case for this exercise is to quickly merge prototype data (eg model output, analysis results) with relevant geospatial data for initial analysis and sharing. We will use three different approaches to obtain data for this map:</p>
+<ol class="arabic simple">
+<li>We will obtain elevation data from the SRTM national mosaic using <strong>WCS</strong>. The assumption here is that we can find data via the NCI service catalogues more easily than on the file system.</li>
+<li>We will obtain tree cover data from a NetCDF file held on the NCI file system. We assume that this is your own data, that may not be published anywhere yet.</li>
+<li>For the cadastral data, we will request vector data not held at NCI using a web service.</li>
+</ol>
+<p>The WCS request uses only a web browser. For filesystem data we use the NetCDF operators (<strong>NCO</strong>, <a class="reference external" href="http://nco.sourceforge.net/">http://nco.sourceforge.net/</a>) to subset and manipulate our data. And for external web service requests we will use <strong>QGIS</strong> native capabilities to ingest data.</p>
+<div class="admonition note">
+<div class="admonition-title fa fa-exclamation-circle"><h2></div><p>Further reading about the data we are using</p>
+</h2><h3><p>Elevation</p>
+</h3><p><p>We use an SRTM elevation mosaic, held in Geoscience Australia’s elevation reference collection:</p>
+</p><ul><li><p>THREDDS: <a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog/rr1/Elevation/NetCDF/catalog.html">http://dapds00.nci.org.au/thredds/catalog/rr1/Elevation/NetCDF/catalog.html</a></p>
+</li><li><p>Geonetwork: <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f9082_1236_9859_8989">https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f9082_1236_9859_8989</a></p>
+</li><li><p>Filesystem: /g/data1/rr1/Elevation/NetCDF/</p>
+</li></ul><p><p>Licensed under Creative Commons (CCBY4): <a class="reference external" href="http://dapds00.nci.org.au/thredds/fileServer/licenses/rr1_licence.pdf">http://dapds00.nci.org.au/thredds/fileServer/licenses/rr1_licence.pdf</a></p>
+</p><h3><p>Tree cover</p>
+</h3><p><p>These data come from the ANU Water and Landscape Dynamics collection:</p>
+</p><ul><li><p>THREDDS: <a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog/ub8/au/catalog.html">http://dapds00.nci.org.au/thredds/catalog/ub8/au/catalog.html</a></p>
+</li><li><p>Geonetwork: <a class="reference external" href="http://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f1104_2906_7276_3004">http://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f1104_2906_7276_3004</a></p>
+</li><li><p>Filesystem: /g/data1/ub8/au/treecover/</p>
+</li></ul><p><p>Licensed under Creative Commons (CCBY4): <a class="reference external" href="http://dapds00.nci.org.au/thredds/fileServer/licenses/ub8_licence.txt">http://dapds00.nci.org.au/thredds/fileServer/licenses/ub8_licence.txt</a></p>
+</p><h3><p>Cadastral data from ACTMAPi</p>
+</h3><p><p>Data used to define cadastral sections in the ACT are obtained from the ACT Government’s ACTMAPi system (<a class="reference external" href="http://www.actmapi.act.gov.au">http://www.actmapi.act.gov.au</a>). Data are released under a creative commons license (CCBY4): <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></p>
+<p><p>The section data landing page is here: <a class="reference external" href="http://actmapi.actgov.opendata.arcgis.com/datasets/eedcda7873934e789093b093521b0299_3">http://actmapi.actgov.opendata.arcgis.com/datasets/eedcda7873934e789093b093521b0299_3</a> …where you can obtain the data via API links or direct download (for example, as a shapefile).</p>
+</p><p><p>A GeoJSON version of the data can be downloaded at this link: <a class="reference external" href="http://actmapi.actgov.opendata.arcgis.com/datasets/eedcda7873934e789093b093521b0299_3">http://actmapi.actgov.opendata.arcgis.com/datasets/eedcda7873934e789093b093521b0299_3</a></p>
+</p></div>
+</div>
+</div>
+</div>
+<div class="section" id="Setup-and-data-wrangling">
+<h1>Setup and data wrangling<a class="headerlink" href="#Setup-and-data-wrangling" title="Permalink to this headline">¶</a></h1>
+<p>We need two directories to work with here - one to hold data and your QGIS project, one to hold the resulting visualisation. Open a terminal window and:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir ./qgis_vis_data
+</pre></div>
+</div>
+<p>…to hold some data subsets we will create, then:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir ./qgis_vis_map
+</pre></div>
+</div>
+<p>…to hold our finished map. We will use these throughout the session.</p>
+<p>For topography we need a terrain model in a raster format, e.g.&nbsp;GeoTIFF, which covers only the Canberra region.</p>
+<p>Clicking the link below will result in your browser asking to download a file named <strong>WCSxxxxxxxxx.tif</strong>, where <strong>xxxxxxxxx</strong> is a series of numbers:</p>
+<p><a class="reference external" href="http://dapds00.nci.org.au/thredds/wcs/rr1/Elevation/1secSRTM_DEMs_v1.0/DEM/Mosaic/dem1sv1_0.rrd?service=WCS&amp;version=1.0.0&amp;request=GetCoverage&amp;Coverage=elevation&amp;bbox=">http://dapds00.nci.org.au/thredds/wcs/rr1/Elevation/1secSRTM_DEMs_v1.0/DEM/Mosaic/dem1sv1_0.rrd?service=WCS&amp;version=1.0.0&amp;request=GetCoverage&amp;Coverage=elevation&amp;bbox=</a></p>
+<p>** <a class="reference external" href="http://dapds00.nci.org.au/thredds/wcs/rr1/Elevation/NetCDF/1secSRTM_DEMs_v1.0/DEM/Elevation_1secSRTM_DEMs_v1.0_DEM_Mosaic_dem1sv1_0.nc?service=WCS&amp;version=1.0.0&amp;request=GetCoverage&amp;Coverage=elevation&amp;bbox=148.7,-35.8,149.5,-35.1&amp;format=GeoTIFF_Float">http://dapds00.nci.org.au/thredds/wcs/rr1/Elevation/NetCDF/1secSRTM_DEMs_v1.0/DEM/Elevation_1secSRTM_DEMs_v1.0_DEM_Mosaic_dem1sv1_0.nc?service=WCS&amp;version=1.0.0&amp;request=GetCoverage&amp;Coverage=elevation&amp;bbox=148.7,-35.8,149.5,-35.1&amp;format=GeoTIFF_Float</a> **</p>
+<p>Save the WCSxxxxxxxxx.tif file, then move it from your <code class="docutils literal notranslate"><span class="pre">Downloads</span></code> directory it to your <code class="docutils literal notranslate"><span class="pre">qgis_vis_data</span></code> directory and rename it to something memorable, for example <code class="docutils literal notranslate"><span class="pre">act_dem.tif</span></code></p>
+<p>What happened here? We used the THREDDS <strong>web coverage service (WCS)</strong> to clip a small chunk from the NetCDF elevation mosaic and give us data as a GeoTIFF.</p>
+<p>A quick summary of how the request is constructed is below:</p>
+<ul class="simple">
+<li>the path to the data: <a class="reference external" href="http://dapds00.nci.org.au/thredds/wcs/rr1/Elevation/NetCDF/1secSRTM_DEMs_v1.0/DEM/">http://dapds00.nci.org.au/thredds/wcs/rr1/Elevation/NetCDF/1secSRTM_DEMs_v1.0/DEM/</a></li>
+<li>the dataset: Elevation_1secSRTM_DEMs_v1.0_DEM_Mosaic_dem1sv1_0.nc</li>
+<li>the service: service=WCS</li>
+<li>the service version: version=1.0.0</li>
+<li>the thing we want to do (get a coverage): request=GetCoverage</li>
+<li>the coverage (or layer) we want to get: Coverage=elevation</li>
+<li>the boundary of the layer we want: bbox=148.7,-35.8,149.5,-35.1</li>
+<li>the format we want to get our coverage as: format=GeoTIFF_Float</li>
+</ul>
+<p>*Note the use of GeoTIFF_Float - required for THREDDS to return a GeoTIFF with pixels holding data ranges. Other OWS providers (eg Geoserver) might not require the _Float suffix*</p>
+<p>Here we pretend that you have some shiny new data on the NCI filesystem that isn’t published yet, and may need some wrangling to make it workable with other datasets, but you want to show it off and compare it with other datasets.</p>
+<p>The treecover netCDF file we are interested in here covers all of Australia - but we don’t want to try and load the whole country for this task. Let’s stick to our region of interest, and use the NetCDF Operators (<strong>NCO</strong> - <a class="reference external" href="http://nco.sourceforge.net/">http://nco.sourceforge.net/</a>) to grab the part we need.</p>
+<p>In a <strong>new</strong> terminal move to your <code class="docutils literal notranslate"><span class="pre">qgis_vis_data</span></code> directory and load NCO:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~/qgis_vis_data
+$ module load nco/4.5.3
+</pre></div>
+</div>
+<p>Use the NCO utility <code class="docutils literal notranslate"><span class="pre">ncks</span></code> to clip a region from the ANU WALD TreeCover dataset for 2015 from <code class="docutils literal notranslate"><span class="pre">/g/data1/ub8/</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncks -v TreeCover -d latitude,-35.8,-35.1 -d longitude,148.7,149.5  /g/data1/ub8/au/treecover/ANUWALD.TreeCover.25m.2015.nc ./treecover_2015_-35.8-35.1_148.7_149.5_original.nc
+</pre></div>
+</div>
+<p>QGIS will panic if you attempt to load this particular netCDF subset, because it misinterprets the order of latitude and longitude and tries to place the image near 149 north, -35 east. If you’re interested, try loading the file and see!</p>
+<p>A quick call to another NCO utility fixes that - here we use <code class="docutils literal notranslate"><span class="pre">ncpdq</span></code> to swap the coordinate axis order in the TreeCover variable for our subset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncpdq -v TreeCover -a latitude,longitude treecover_2015_-35.8-35.1_148.7_149.5_original.nc treecover_2015_-35.8-35.1_148.7_149.5_latlonswap.nc
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">ncdump</span> <span class="pre">-h</span></code> on both the original and modified files to see what changed. Loading this subset into QGIS will be much quicker, and also place the data in it’s correct location.</p>
+<div class="admonition note">
+<div class="admonition-title fa fa-exclamation-circle"><h3></div><p>Note</p>
+</h3><p><p>Rearranging dimensions to load netCDF data into QGIS is not always necessary. For example, try adding this gravity map as a raster layer (instructions below) - it meets NetCDF-CF, and loads without any modification: /g/data/rr2/National_Coverages/onshore_Bouguer_offshore_Freeair_gravity_geodetic_June_2009/ onshore_Bouguer_offshore_Freeair_gravity_geodetic_June_2009.nc</p>
+</p><p><p>Here, we demonstrate a method of quickly viewing parts of your output data - even if they are not yet fully QC’ed and need a little massaging to get going.</p>
+</p></div>
+<p>ACT publish a lot of spatial data on their ACTMAPi interface. To shortcut, this link will download cadastral section data as a GeoJSON file:</p>
+<p><a class="reference external" href="http://actmapi.actgov.opendata.arcgis.com/datasets/eedcda7873934e789093b093521b0299_3.geojson">http://actmapi.actgov.opendata.arcgis.com/datasets/eedcda7873934e789093b093521b0299_3.geojson</a></p>
+<p>Move the resulting ‘ACT_Sections.geojson’ file to your <code class="docutils literal notranslate"><span class="pre">qgis_vis_data</span></code> directory.</p>
+<div class="admonition note">
+<div class="admonition-title fa fa-exclamation-circle"><p></div><p>The ACT section data description is here:</p>
+</p><p><p><a class="reference external" href="http://actmapi.actgov.opendata.arcgis.com/datasets/eedcda7873934e789093b093521b0299_3">http://actmapi.actgov.opendata.arcgis.com/datasets/eedcda7873934e789093b093521b0299_3</a></p>
+</p><p><p>You can download a shapefile and import it to QGIS, or select a service from the ‘API’ menu box. The GeoJSON link used here is copied from the API list. If you’re steaming ahead, explore some other services available here.</p>
+</p></div>
+</div>
+<div class="section" id="Making-your-map-in-QGIS">
+<h1>Making your map in QGIS<a class="headerlink" href="#Making-your-map-in-QGIS" title="Permalink to this headline">¶</a></h1>
+<p>Like most VDI applications, we use the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> system to acquire QGIS. In a terminal window type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">proj</span><span class="o">/</span><span class="mf">4.8</span><span class="o">.</span><span class="mi">0</span> <span class="n">qgis</span><span class="o">/</span><span class="mf">2.14</span><span class="o">.</span><span class="mi">8</span><span class="o">-</span><span class="n">py2</span><span class="o">.</span><span class="mi">7</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>proj.4</strong> is required for coordinate transformations used when building our 3D visualisation</li>
+<li><strong>QGIS</strong> is our main tool for this worksheet</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qgis</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+<p>This will start QGIS. You can safely ignore warnings in this terminal window - minimise it.</p>
+<p>Just briefly we’ll introduce some terms referred to often:</p>
+<p><img alt="Some QGIS terms" src="../../_images/1-qgis.window.png" /></p>
+<p>Follow the screenshot directions here to import your raster DEM into QGIS:</p>
+<p><strong>If you are asked to select a coordinate reference system, use WGS84 / EPSG:4326</strong></p>
+<p><img alt="Import WCS image to QGIS" src="../../_images/2-load.raster.png" /></p>
+<p><img alt="Show WCS layer in QGIS" src="../../_images/3-view.raster.png" /></p>
+<div class="section" id="Repeat-this-step-with-your-modified-tree-cover-NetCDF-file---load-it-into-QGIS-as-a-raster-layer">
+<h2>Repeat this step with your modified tree cover NetCDF file - load it into QGIS as a raster layer<a class="headerlink" href="#Repeat-this-step-with-your-modified-tree-cover-NetCDF-file---load-it-into-QGIS-as-a-raster-layer" title="Permalink to this headline">¶</a></h2>
+<p><strong>If you are asked to select a coordinate reference system, use WGS84 / EPSG:4326</strong></p>
+<p>After this step, your tree cover and elevation layers should cover exactly the same region - assuming you’ve used the same geographic subset boundaries for both datasets.</p>
+<div class="section" id="3.-Style-the-tree-cover-layer">
+<h3>3. Style the tree cover layer<a class="headerlink" href="#3.-Style-the-tree-cover-layer" title="Permalink to this headline">¶</a></h3>
+<p>So far we have a bunch of grey things - let’s make them colourful!</p>
+<p>We don’t need to worry about the elevation data, but we do need a useful colour scheme for vegetation data and our cadastral data. Double click your vegetation layer <strong>in the layers panel</strong> to bring up it’s properties dialogue. From there:</p>
+<ol class="arabic simple">
+<li>Click ‘style’ in the left panel (dark background)</li>
+<li>In the ‘render type’ dropdown, choose ‘Singleband pseudocolor’</li>
+<li>Leave interpolation as ‘linear’, and pick a colour palette. Because the data are continuous, a single hue continuous colour palette makes sense. Because it’s vegetation, green also makes sense. Choose what makes sense to you.</li>
+<li>Choose ‘equal interval’ in the ‘Mode’ dropdown <em>(try others, see what happens)</em></li>
+<li>Click ‘classify’ to show the palette in the big window, and apply with with ‘apply’.</li>
+<li>Click ‘close’ to return to your map.</li>
+</ol>
+<p><img alt="Style vegetation layer" src="../../_images/4-style.trees.png" /></p>
+<p>Your map window should look something like this:</p>
+<p><img alt="Treecover style result" src="../../_images/4a-style.trees.result.png" /></p>
+<div class="alert alert-success"><h3><p>Extension:</p>
+</h3><p><p>Steaming ahead? Add a graticule to your QGIS map layer…</p>
+</p><p><p>How could you automagically save WCS data with sane, memorable names?</p>
+</p><h3><p>Hints:</p>
+</h3><p>Getting lost? right click any layer in the layers panel, and choose zoom to layer to reset your view to that layer in the map window.</p>
+</div><div class="admonition note">
+<div class="admonition-title fa fa-exclamation-circle"><h3></div><p>Q &amp; A</p>
+</h3><p><p>Why not just use the QGIS OWS browser to grab these data?</p>
+</p><p><ol><li><p>The QGIS WCS browser and THREDDS don’t play well - QGIS attenuates the full THREDDS WCS URL, so it is far more convenient to form a request independently of QGIS.</p>
+</li><li><p>OWS layers can’t be used for processing - ie band math, and the visualisation tools we’re about to use.</p>
+</li><li><p>QGIS’s OWS engine would attempt to load the full dataset - which is far more than we need.</p>
+</li></ol><p><p>If you’re keen, do some exploring - we don’t know <em>everything</em> about QGIS - surprise us! More about QGIS OWS capabilities can be found here: <a class="reference external" href="http://docs.qgis.org/2.14/en/docs/user_manual/working_with_ogc/index.html">http://docs.qgis.org/2.14/en/docs/user_manual/working_with_ogc/index.html</a></p>
+</p><p><p>Why not get these data from the filesystem?</p>
+</p><p><p>Great question! The main reason is that we’re demonstrating QGIS as a way to fuse data from manifold sources. Over today and tomorrow you’ll see a log examples of how to collect data from the filesystem in manageable chunks - which you could then analyse/visualise using the methods shown here. Demonstrating web coverage services on the VDI shows how you can pull data from many external sources to help interpret your work.</p>
+</p></div>
+<div class="admonition note">
+<div class="admonition-title fa fa-exclamation-circle"><p></div><p>For more on working with raster data, see: <a class="reference external" href="http://docs.qgis.org/2.14/en/docs/user_manual/working_with_raster/index.html">http://docs.qgis.org/2.14/en/docs/user_manual/working_with_raster/index.html</a></p>
+<p></div>
+</div>
+<div class="section" id="4.-Import-vector-data-from-GeoJSON">
+<h3>4. Import vector data from GeoJSON<a class="headerlink" href="#4.-Import-vector-data-from-GeoJSON" title="Permalink to this headline">¶</a></h3>
+<p>Follow the screenshot directions here to import the GeoJSON file you saved earlier into QGIS:</p>
+<p><strong>If you are asked to select a coordinate reference system, use WGS84 / EPSG:4326</strong></p>
+<p><img alt="Open GeoJSON layer" src="../../_images/5b-load.vector.result.png" /></p>
+<p>…and here is the result:</p>
+<p><img alt="Open GeoJSON layer" src="../../_images/5b-load.vector.result.png" /></p>
+<div class="alert alert-success"><h3><p>Extension:</p>
+</h3><p><p>Could we open web-based vector files another way in QGIS? What are two alternate methods using the QGIS interface?</p>
+</p></div><div class="admonition note">
+<div class="admonition-title fa fa-exclamation-circle"><p></div><p>For more on working with vector data in QGIS, see: <a class="reference external" href="http://docs.qgis.org/2.14/en/docs/user_manual/working_with_vector/index.html">http://docs.qgis.org/2.14/en/docs/user_manual/working_with_vector/index.html</a></p>
+</p></div>
+</div>
+<div class="section" id="5.-Install-two-useful-QGIS-plugins">
+<h3>5. Install two useful QGIS plugins<a class="headerlink" href="#5.-Install-two-useful-QGIS-plugins" title="Permalink to this headline">¶</a></h3>
+<p>To procees we need to install two QGIS plugins - <strong>Qgis2threejs</strong> and <strong>Zonal statistics</strong> :</p>
+<ol class="arabic simple">
+<li>Head to the <strong>plugins</strong> menu and choose <strong>manage and install plugins</strong></li>
+<li>In the resulting dialogue box, search for <strong>Qgis2threejs</strong></li>
+<li>Select the <strong>Qgis2threejs</strong> plugin and click <strong>install</strong>.</li>
+</ol>
+<p>The <strong>Zonal Statistics</strong> plugin is installed by default but needs activating. Search for <strong>Zonal statistics</strong> in the plugin manager, and check the box next to the plugin name. Then click <strong>close</strong> and you’re done.</p>
+</div>
+<div class="section" id="6.-Using-zonal-statistics-for-basic-analysis">
+<h3>6. Using zonal statistics for basic analysis<a class="headerlink" href="#6.-Using-zonal-statistics-for-basic-analysis" title="Permalink to this headline">¶</a></h3>
+<p>We are aiming to show:</p>
+<ul class="simple">
+<li>Standard deviaton of elevation of blocks as a proxy for hilliness; and</li>
+<li>The mean treecover of each section.</li>
+</ul>
+<p>The <strong>Zonal statistics</strong> plugin collects data from raster layers using polygons in a vector layer, and computes basic statistics for the chunk of the raster layer inside each polygon.</p>
+</div>
+</div>
+<div class="section" id="a.-Section-hilliness">
+<h2>a. Section hilliness<a class="headerlink" href="#a.-Section-hilliness" title="Permalink to this headline">¶</a></h2>
+<p>As a proxy for section hilliness, we’ll use the standard deviation of elevation in each section polygon.</p>
+<p>Head to <strong>raster -&gt; zonal stats</strong> to open the plugin.</p>
+<p>In the zonal statistics plugin dialogue, choose the DEM as the raster layer, and use band 1. Then choose your ACT blocks vector layer. In the statistics to calculate, pick an appropriate set - but include <em>standard deviation</em> - this is our roughness proxy. Add a meaningful prefix to the statistics (e.g. ‘dem_’), so you can find them when you need to use them.</p>
+<p><img alt="HIllines using zonal statistics" src="../../_images/7-zonal.stats.png" /></p>
+<p>QGIS will spend some time calculating stats for each block, and add the output to the vector layer (act_sections) as another attribute column.</p>
+</div>
+<div class="section" id="b.-Tree-cover-per-section">
+<h2>b. Tree cover per section<a class="headerlink" href="#b.-Tree-cover-per-section" title="Permalink to this headline">¶</a></h2>
+<p>For tree cover, each grid cell/pixel shows an estimate of tree cover as a percentage of the pixel. As a quick measure we could take the mean of all the pixel values inside a section to get an idea of it’s tree coverage.</p>
+<p>Open the zonal statistics plugin again, but choose the tree cover as the raster layer and use band 1. Then choose your ACT sections vector layer. In the statistics to calculate, the values we need are preselected - we’ll use the mean value for each section. Again, use a meaningful prefix (for example, ‘tree_’) for the attribute you are adding to the act_sections dataset.</p>
+</div>
+<div class="section" id="c.-Use-mean-tree-cover-per-section-to-style-our-vector-layer">
+<h2>c. Use mean tree cover per section to style our vector layer<a class="headerlink" href="#c.-Use-mean-tree-cover-per-section-to-style-our-vector-layer" title="Permalink to this headline">¶</a></h2>
+<p>We avoided styling our vector layer earlier, but now it’s time - since we want to visualise the tree cover in each section.</p>
+<p>Double click your act_sections layer to open it’s properties dialogue, and head to the style tab. Here, we want to apply a good looking colour scale based on mean tree cover (the data we just generated). Set up as follows, so that your style dialogue looks like the screenshot below:</p>
+<ul class="simple">
+<li>Choose ‘graduated’ from the menu at top left</li>
+<li>In ‘column’ choose ‘tree_mean’ (assuming you used tree_ as a prefix in the last step)</li>
+<li>Choose a colour ramp</li>
+<li>Click ‘classify’</li>
+<li>Click ‘Apply’ to preview or ‘OK’ to commit your changes</li>
+</ul>
+<p><em>Feel free to tinker with other settings - you can always remove and reload the layer to start over</em></p>
+<p><img alt="Styling vector sections" src="../../_images/9-tree.view.png" /></p>
+<p>After you’ve clicked OK, right click your <code class="docutils literal notranslate"><span class="pre">act_sections</span></code> layer and select <strong>zoom to layer</strong> to take a closer look at the results.</p>
+<p><img alt="Styling vector sections" src="../../_images/9-tree.view.png" /></p>
+<div class="admonition note">
+<div class="admonition-title fa fa-exclamation-circle"><h3></div><p>We already have a result!</p>
+</h3><p><p>So far we can visualise the tree cover of sections in the ACT - but how can we relate that quickly and easily to section hillines? And how could we interactively explore the relationship?</p>
+</p></div>
+<div class="alert alert-success"><p><p>Question: Is a graphical GIS the only way to collect zonal statistics using a vector layer to segment raster data?</p>
+</p></div><div class="section" id="7.-Using-a-simple-3D-visualisation-to-complete-the-picture">
+<h3>7. Using a simple 3D visualisation to complete the picture<a class="headerlink" href="#7.-Using-a-simple-3D-visualisation-to-complete-the-picture" title="Permalink to this headline">¶</a></h3>
+<p>So far we’ve imported three different datasets into QGIS and created some new attributes on our vector dataset. We’ve styled our vector dataset to tell us something about treecover in each section. Here, we show how to visualise ‘hilliness’ alongside those data and make an interactive, explorable visualisation.</p>
+<p>In the scheme we’re about to set up: - If hillier blocks are more vegetated, dark green blocks will visualise as taller columns; and - If hillier blocks are less vegetated, light green blocks will visualise as taller columns Lets test it out!</p>
+<p>Here we use the second plugin - <strong>Qgis2threejs</strong>. This renders the current screen to a WebGL map in a .html page using three.js - with some neat data visualisation features. You can open the result as an interactive map in a web browser.</p>
+<p><strong>Note: Follow all of the data import steps shown above before heading into this section.</strong></p>
+</div>
+</div>
+<div class="section" id="a.-Setting-up---coordinate-transformation-in-QGIS">
+<h2>a. Setting up - coordinate transformation in QGIS<a class="headerlink" href="#a.-Setting-up---coordinate-transformation-in-QGIS" title="Permalink to this headline">¶</a></h2>
+<p>So far we’ve worked in a WGS84 (EPSG:4326) coordinate system - but in order to render our map in three.js, we need to project our data into something which has units of metres, not degrees. Let’s choose GDA94/MGA55 (EPSG:28355):</p>
+<ol class="arabic simple">
+<li>Locate the panel at the lower right of the QGIS window which says ‘EPSG:4326’</li>
+<li>Click it to open a CRS selection dialog</li>
+<li>Select ‘Enable ’on the fly’ CRS transformation (OTF)’ at the top left</li>
+<li>Enter ‘MGA 55’ in the ‘filter’ box, then highlight GDA94 /MGA 55 in the ‘coordinate systems of the world…’ box. It should show up in the ‘selected CRS’ panel.</li>
+<li>Click OK.</li>
+</ol>
+<p><img alt="Set OTF CRS" src="../../_images/10-crs.otf.png" /></p>
+<p>You’ll see that everything has warped a touch, and your CRS panel (lower right) reflects your choice. Proj.4 handles all the rest for you!</p>
+<div class="admonition note">
+<div class="admonition-title fa fa-exclamation-circle"><p></div><p>QGIS sits on top of the Proj.4 library - meaning that any of the transformation capabilities offered by Proj.4 are available. Read more here: <a class="reference external" href="http://docs.qgis.org/2.14/en/docs/user_manual/working_with_projections/working_with_projections.html">http://docs.qgis.org/2.14/en/docs/user_manual/working_with_projections/working_with_projections.html</a></p>
+</p><h3><p>Note</p>
+</h3><p><p>QGIS uses both layer coordinate reference systems and a ‘project wide’ coordinate reference system. To use on-the-fly reprojection for the whole map you’re constructing, ensure that each layer is loaded in it’s appropriate CRS. For an example, you’d specify a layer CRS of EPSG:3577 for an AGDC LandSAT tile, and use OTF reprojection to use it with another layer referenced in EPSG:4326</p>
+</p></div>
+</div>
+<div class="section" id="b.-Set-a-clipping-frame">
+<h2>b. Set a clipping frame<a class="headerlink" href="#b.-Set-a-clipping-frame" title="Permalink to this headline">¶</a></h2>
+<p>Qgis2threejs attempts to render the whole map window. We want to limit or map to the extents of our DEM - so we can either zoom the map window in so that our region of interest occupies the whole window, or set a clipping polygon in a new vector layer. Here, we zoom in so that our region of interest fills the map window.</p>
+<p>The easiest way to achieve this is zooming to the extents of the ACT sections layer you’ve made. Right click the layer name, and select <strong>zoom to layer</strong>. You may need to use the <strong>hand</strong> (from the upper row of icons in your QGIS window) to move your map around so that your map window is completely filled, and the <strong>magnifying glass</strong> or <strong>mouse scroll wheel</strong> to adjust the zoom level. You should end with something like the second screenshot in section 10 (above).</p>
+<div class="admonition note">
+<div class="admonition-title fa fa-exclamation-circle"><p></div><p>The next steps render the entire map window in a WebGL-based 3D viewer - it’s OK to leave some empty space around your region of interest, but it works better to completely fill your map window with relevant data.</p>
+</p></div>
+</div>
+<div class="section" id="c.-Setting-up-in-Qgis2threejs">
+<h2>c. Setting up in Qgis2threejs<a class="headerlink" href="#c.-Setting-up-in-Qgis2threejs" title="Permalink to this headline">¶</a></h2>
+<p>Head to <strong>web -&gt; Qgis2threejs</strong> to open the plugin dialogue. Click ‘world’ in the left pane, here we define basic parameters about the map we’re creating. It’s usually prettier to apply some vertical exaggeration in Australia, try between 1.5 and 5. Using 5 gives Canberra a pretty alpine feel.</p>
+<p><img alt="QGIS2threejs setup" src="../../_images/13-qgis2threejs.polygon.png" /></p>
+<p>Next click ‘DEM’. Here you select the SRTM data you grabbed via WCS as the dem to build terrain. You can set an image to be draped on the DEM - map window view, a specific layer, an image or a plain colour. This example uses the DEM layer to colour the terrain map. Also turn shading on to get pretty hillshading.</p>
+<p><img alt="QGIS2threejs setup" src="../../_images/13-qgis2threejs.polygon.png" /></p>
+<p>Finally check the radio button next to our ACT sections layer in the left panel. Here we set up some visualisation parameters for our vector layer (which contains the section-level treecover statistics we generated). Set the Z coordinate to’Absolute value’, and enter 580 m. We’re going to compare the heights of extruded polygons, so we should start them all in the same place!</p>
+<p>Keep the colour as ‘feature style’, set ‘Transparency’ to 20-30 and finally, choose a data source to detemine extruded polygon heights. We finally relate the hilliness of sections to tree cover here - choose <strong>dem_stdev</strong>, and a multiplier (10 works well in this example).</p>
+<p><img alt="QGIS2threejs setup" src="../../_images/13-qgis2threejs.polygon.png" /></p>
+</div>
+<div class="section" id="d.-show-the-map!">
+<h2>d. show the map!<a class="headerlink" href="#d.-show-the-map!" title="Permalink to this headline">¶</a></h2>
+<p>We finally use our <code class="docutils literal notranslate"><span class="pre">qgis_vis_map</span></code> directory - browse to it at the ‘output html file path’ box and use a memorable name to save your output html file. Then click <strong>run</strong>. All being well firefox will open and display an interactive map like the one below! See section 13 for links to prebuilt versions hosted at github.io.</p>
+<p><strong>If the map doesn’t pop up right away</strong> navigate to the place you just stored the .html file, and open it in a browser.</p>
+<p><strong>If firefox complains about being unresponsive, tell it to wait. If if asks about an unresponsive script, tell it to continue</strong></p>
+<p><strong>If there are a lot of users on the VDI, exploring your map might be a little slow</strong></p>
+<p><img alt="End result" src="../../_images/0-3d.map.png" /></p>
+<div class="section" id="8.-So-what-do-our-results-mean?-Interpreting-our-picture">
+<h3>8. So what do our results mean? Interpreting our picture<a class="headerlink" href="#8.-So-what-do-our-results-mean?-Interpreting-our-picture" title="Permalink to this headline">¶</a></h3>
+<p>If hilly blocks have generally more tree cover than flatter blocks, short columns should be lighter shades of blue (in this colour scheme).</p>
+<p>…but that’s not necesarily what we see! Why not?</p>
+<div class="alert alert-success"><h3><p>Extension activities</p>
+</h3><ol><li><p>Which suburbs have the most trees? which is the hilliest? * <strong>hint</strong> - use another QGIS plugin, and another web mapping data source - and see the example in section 9*</p>
+</li><li><p>Why do some hilly sections have very little treecover?</p>
+</li><li><p>Create a totally new interactive 3D model using the stack we’ve just been working with, and give us a URL to see your work!</p>
+</li><li><p>Use some other data collections at NCI to display data on your DEM</p>
+</li><li><p>Visualise the same result a different way - do we <em>really</em> need qgis2threejs?</p>
+</li></ol></div></div>
+<div class="section" id="9.-Sharing-your-map">
+<h3>9. Sharing your map<a class="headerlink" href="#9.-Sharing-your-map" title="Permalink to this headline">¶</a></h3>
+<p>The map you just created using QGIS2threejs is a fully stand-alone webGL application that can be dropped into any web server to share with collaborators.</p>
+<p>You can’t serve data directly from the VDI - but you can copy the whole <code class="docutils literal notranslate"><span class="pre">qgis_vis_map</span></code> folder to some web host (e.g.&nbsp;github.io) and share with the world. Here’s an example:</p>
+<p><a class="reference external" href="https://adamsteer.github.io/nci_samples/qgis2threejs/treecover.html">https://adamsteer.github.io/nci_samples/qgis2threejs/treecover.html</a></p>
+<p>Here’s another example with an OpenStreetMap layer rendered on the DEM:</p>
+<p><a class="reference external" href="https://adamsteer.github.io/nci_samples/qgis2threejs/treecover-osm.html">https://adamsteer.github.io/nci_samples/qgis2threejs/treecover-osm.html</a></p>
+<p>What are some other ways to share QGIS projects?</p>
+<div class="alert alert-success"><h3><p>Possible solutions to questions</p>
+</h3><h4><p>Sane WCS coverage request names</p>
+</h4><p><p>One option is to use curl on the command line:</p>
+</p><p><p>curl -o SRTM_dem_139_36.tiff ‘<a class="reference external" href="http://dapds00.nci.org.au/thredds/wcs/rr1/Elevation/NetCDF/1secSRTM_DEMs_v1.0/DEM/Elevation_1secSRTM_DEMs_v1.0_DEM_Mosaic_dem1sv1_0.nc?service=WCS&amp;version=1.0.0&amp;request=GetCoverage&amp;Coverage=elevation&amp;bbox=148.7,-35.8,149.5,-35.1&amp;format=GeoTIFF_Float">http://dapds00.nci.org.au/thredds/wcs/rr1/Elevation/NetCDF/1secSRTM_DEMs_v1.0/DEM/Elevation_1secSRTM_DEMs_v1.0_DEM_Mosaic_dem1sv1_0.nc?service=WCS&amp;version=1.0.0&amp;request=GetCoverage&amp;Coverage=elevation&amp;bbox=148.7,-35.8,149.5,-35.1&amp;format=GeoTIFF_Float</a>’</p>
+</p><p><p>…are there others? What was yours?</p>
+</p><h4><p>Zonal statistics right in a notebook</p>
+</h4><p><p>You could also try rasterstats: <a class="reference external" href="https://github.com/perrygeo/python-rasterstats">https://github.com/perrygeo/python-rasterstats</a> - any other suggestions?</p>
+</p><h4><p>Other ways to share your QGIS projects, and other 3D visualisers</p>
+</h4><p><p>For simple projects with CCBY4 data, the QGIS cloud is one way of sharing your results. Another is a Jupyter notebook hosted on github as a gist, a notebook, or as a github.io page. What was your approach?</p>
+</p></div><div class="admonition warning">
+<div class="admonition-title fa fa-exclamation-circle"><h3></div><p>Further reading</p>
+</h3><p><p>Here is a great tutorial on netCDF and QGIS: <a class="reference external" href="http://www.ggiuliani.ch/download/netcdf_qgis_GG.pdf">http://www.ggiuliani.ch/download/netcdf_qgis_GG.pdf</a> - covering a lot more than we did here, and useful for working with data directly on the VDI filesystem.</p>
+</p><p><p>Also, inspect the result of your work - what is Three.js doing? What can you apply from this example to other work? The Qgis2threejs plugin can only add so much - how could you render additional datasets in the same map?</p>
+</div>
+</div>
+<div class="section" id="Summary">
+<h3>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h3>
+<p>Here we: - Used a graphical GIS available on the VDI - Used OGC web services available at NCI - Demonstrated pulling data from external web services - Demonstrated shaping data in the filesystem for merging with web service data - Used these data to perform a basic analysis - Learned one method of visualising and sharing results</p>
+</div>
+</div>
+</div>
+<div class="section" id="Thanks!-Discussion-and-suggestions-welcome.">
+<h1>Thanks! Discussion and suggestions welcome.<a class="headerlink" href="#Thanks!-Discussion-and-suggestions-welcome." title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

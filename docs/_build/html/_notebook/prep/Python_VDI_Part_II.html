@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python on the VDI: Customising (Part II) &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Python on the VDI: Customising (Part II)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/prep/Python_VDI_Part_II.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Python-on-the-VDI:-Customising-(Part-II)">
+<h1>Python on the VDI: Customising (Part II)<a class="headerlink" href="#Python-on-the-VDI:-Customising-(Part-II)" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="In-this-notebook:">
+<h2>In this notebook:<a class="headerlink" href="#In-this-notebook:" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Install local user-specific packages</li>
+<li>Python virtual environments</li>
+</ol>
+<p>For more detailed information and options, please see the <strong>Python</strong> section of the <a class="reference external" href="https://opus.nci.org.au/display/Help/VDI+User+Guide">VDI User Guide</a>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="Installing-your-own-Python-packages">
+<h2>Installing your own Python packages<a class="headerlink" href="#Installing-your-own-Python-packages" title="Permalink to this headline">¶</a></h2>
+<p>To install additional Python packages locally, the easiest way is using <strong>pip</strong>.</p>
+<p>First, make sure you have loaded Python. Then load the appropriate pip module (i.e., Python-3.5) . In this example, we are using Python 3.5.2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python3
+$ module load pip/8.1.2-py3.5
+</pre></div>
+</div>
+<p>Next, use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> followed by the Python package: In this simple example we are downloading a program for units called <a class="reference external" href="https://pint.readthedocs.io/">Pint</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install pint --user
+</pre></div>
+</div>
+<div class="admonition warning">
+NOTE: The flag ‘–user’ is required so that the package is installed locally. If not included, permission errors will be returned.</div>
+<p><strong>Let’s test that Pint was installed correctly.</strong></p>
+<ol class="arabic simple">
+<li>Start <code class="docutils literal notranslate"><span class="pre">iPython</span></code> from the command line:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipython
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Enter the following:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pint</span> <span class="k">import</span> <span class="n">UnitRegistry</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ureg</span> <span class="o">=</span> <span class="n">UnitRegistry</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">distance</span> <span class="o">=</span> <span class="mf">24.0</span> <span class="o">*</span> <span class="n">ureg</span><span class="o">.</span><span class="n">meter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="mf">8.0</span> <span class="o">*</span> <span class="n">ureg</span><span class="o">.</span><span class="n">second</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For a complete list of <code class="docutils literal notranslate"><span class="pre">pip</span></code> options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip help
+</pre></div>
+</div>
+<p>Pip <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">show</span></code> can be quite useful.</p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">list</span></code></div></blockquote>
+<p>Will show you a list of all the installed packages.</p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">show</span> <span class="pre">&lt;package&gt;</span></code></div></blockquote>
+<p>Will show information about a particular installed package.</p>
+<p><img alt="python12_vdi_numpy" src="../../_images/python12_vdi_numpy.png" /></p>
+</div>
+<div class="section" id="Python-Virtual-Environments">
+<h2>Python Virtual Environments<a class="headerlink" href="#Python-Virtual-Environments" title="Permalink to this headline">¶</a></h2>
+<p><strong>What is it</strong>?</p>
+<p>Python’s <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> is a tool that helps manage multiple Python projects by creating isolated environments for them.</p>
+<p><strong>Why use it</strong>?</p>
+<ul class="simple">
+<li>Keeps your home space clean and manageable.</li>
+<li>Isolate system dependencies.</li>
+<li>Different environments can be defined for different projects or analysis workflows.<ul>
+<li>e.g., Project 1 requires NumPy v1.10 but Project 2 has a dependency that needs NumPy v1.9)</li>
+<li>This is particularly helpful when some libraries conflict with each other for some workflows but not others.</li>
+</ul>
+</li>
+<li>If something breaks or goes wrong within an environment, you can just delete the virtual environment directory and start again.</li>
+</ul>
+<p><strong>Creating a virtual environment</strong></p>
+<p>First, load python module</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python3
+</pre></div>
+</div>
+<p>Then, make a home for your virtual environments and create the virtual environment</p>
+<p>Create the environment using the <code class="docutils literal notranslate"><span class="pre">venv</span></code> command followed by a name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m venv /path/to/new/virtual/environment
+</pre></div>
+</div>
+<div class="admonition note">
+NOTE: When using python2.7, you need to load a seperate virtual environment module “virtualenv/15.0.2-py2.7(py2.7)”, then run “virtualenv ”. While the virtual enviornment module “pyvenv” is included in python3 packages, but it has been deprecated as of Python 3.6 in favor of using python3 -m venv to help prevent any potential confusion as to which Python interpreter a virtual environment will be based on.</div>
+<p>For example, if we called the environment “my_python_env” this step creates a folder named <code class="docutils literal notranslate"><span class="pre">my_python_env</span></code>. When first creating a new environment, it inherits the python module loaded into your path (e.g., python3/3.5.2 in this example) and installs a local version of ‘pip’.</p>
+<p><strong>Working within the virtual environment (activating/deactivating)</strong></p>
+<p>To activate the virtual environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source &lt;virtual_environment&gt;/bin/activate
+</pre></div>
+</div>
+<p><img alt="python7" src="../../_images/python7.png" /></p>
+<div class="admonition note">
+NOTE: When activated, the virtual environment name will appear in parentheses.</div>
+<div class="admonition warning">
+IMPORTANT: The Python module used to create the virtual environment must be loaded each time before activating the environment.</div>
+<p><strong>Let’s create a customised environment that includes several of the common data/science tools</strong></p>
+<p><strong>Installing new (and simple) packages</strong></p>
+<p>To install additional packages within the virtual environment, we can again use `pip install’.</p>
+<div class="admonition note">
+NOTE: You can type <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> to see what packages are copied into the virtual environment upon creation (should show a very short list of packages). Make sure you have activated the environment otherwise this will show a much longer list of global packages.</div>
+<p><strong>NumPy</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install numpy
+</pre></div>
+</div>
+<div class="admonition warning">
+NOTE: No ‘–user’ flag is necessary within the virtualenv.</div>
+<p><strong>Can also install several pacakges at once:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install scipy matplotlib cython
+
+$ pip install ipython jupyter
+</pre></div>
+</div>
+</div>
+<div class="section" id="Installing-more-complicated-packages">
+<h2>Installing more complicated packages<a class="headerlink" href="#Installing-more-complicated-packages" title="Permalink to this headline">¶</a></h2>
+<p>Installing Python packages that have other library dependencies (e.g., NetCDF, h5py, etc.)</p>
+  <div class="alert alert-warning">
+
+NOTE: When installing Python packages that require additional libraries, the order in which modules and environments are loaded/activated matters. Virtual enviornments should be activated after all required required modules are loaded.</div><p><strong>Example: Installing NetCDF Python</strong></p>
+<p>Starting in a new terminal window, load the Python module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module purge
+$ module load python3
+</pre></div>
+</div>
+<p>Next, load the additional required libraries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load netcdf/4.3.3.1
+
+$ module load hdf5/1.8.14
+
+$ module load szip/2.1
+</pre></div>
+</div>
+<p><img alt="python8" src="../../_images/python8.png" /></p>
+<p>Then activate the virtual environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source &lt;virtual_environment&gt;/bin/activate
+</pre></div>
+</div>
+<p>And finally, again use <strong>``pip install``</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install netcdf4
+</pre></div>
+</div>
+  <div class="alert alert-success">
+
+To test whether the install was successful, try: $ python >> import netCDF4 >> (If you get any errors, the install was unsuccessful.)</div>  <div class="alert alert-warning">
+
+NOTE: These additional modules (netCDF, HDF5, slib) are only needed when installing this package. With future use, you do not need to load these to use the netCDF4-python pacakge.</div></div>
+<div class="section" id="Additional-packages">
+<h2>Additional packages<a class="headerlink" href="#Additional-packages" title="Permalink to this headline">¶</a></h2>
+<p>In preparation for additional NCI Notebooks, let’s install a few more packages that will be needed later on.</p>
+<p><strong>You should already be within your virtual environment. If you are, skip this next step but if not:</strong></p>
+<p>Starting in a new terminal window, load the Python module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python3
+</pre></div>
+</div>
+<p>Activate your virtual environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source &lt;virtual_environment&gt;/bin/activate
+</pre></div>
+</div>
+<p>Next, load the some additional required libraries (required for <code class="docutils literal notranslate"><span class="pre">Shapely</span></code> and <code class="docutils literal notranslate"><span class="pre">Cartopy</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load proj/4.9.3
+$ module load geos/3.5.0
+</pre></div>
+</div>
+<p><strong>Siphon</strong></p>
+<p>Install Siphon:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install siphon
+</pre></div>
+</div>
+<p><strong>Pandas</strong></p>
+<p>Install Pandas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install pandas
+</pre></div>
+</div>
+<p><strong>Shapely</strong></p>
+<p>Install Shapely:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install shapely
+</pre></div>
+</div>
+<p><strong>Cartopy</strong></p>
+<p>In the same window used for Shapely, install the Pillow library:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install pillow
+</pre></div>
+</div>
+<p>Then install Cartopy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install cartopy==0.13.0
+</pre></div>
+</div>
+  <div class="alert alert-warning">
+
+NOTE: When using ``cartopy`` from within your virtual environment, you will need the ``geos/3.5.0`` module loaded.</div></div>
+<div class="section" id="Exiting-a-virtual-environment">
+<h2>Exiting a virtual environment<a class="headerlink" href="#Exiting-a-virtual-environment" title="Permalink to this headline">¶</a></h2>
+<p>To deactivate (leave the virtualenv, not delete it):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ deactivate
+</pre></div>
+</div>
+  <div class="alert alert-success">
+
+TIP: You can combine required modules and the virtual environment activation command into a simple shell script to simplify launching environments.</div></div>
+<div class="section" id="Additional-pip-options-(for-reference)">
+<h2>Additional pip options (for reference)<a class="headerlink" href="#Additional-pip-options-(for-reference)" title="Permalink to this headline">¶</a></h2>
+<p><strong>Upgrade:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install &lt;package&gt; --upgrade
+</pre></div>
+</div>
+<p><strong>Install specific versions:</strong> $ pip install numpy==1.11.0</p>
+<p><strong>Install from a list:</strong></p>
+<p>You can also install packages from a ‘.txt’ file list. This can be particularly helpful for collaborations where exact package versions are important for sharing and developing code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install --requirement &lt;textfile.txt&gt;
+
+OR:
+
+$ pip install -r &lt;textfile.txt&gt;
+</pre></div>
+</div>
+<p>For more information on using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install --help
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,724 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using the GDAL library to read NetCDF data &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Using the GDAL library to read NetCDF data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/python_GDAL_netcdf_cmip5.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Using-the-GDAL-library-to-read-NetCDF-data">
+<h1>Using the GDAL library to read NetCDF data<a class="headerlink" href="#Using-the-GDAL-library-to-read-NetCDF-data" title="Permalink to this headline">¶</a></h1>
+<p>The following material uses Coupled Model Intercomparison Project (CMIP5) collections. The CMIP5 terms of use are found <a class="reference external" href="https://cmip.llnl.gov/cmip5/terms.html">here</a>. For more information on the collection, please <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716">click here</a>.</p>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle">Library Depedency:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python/2.7.11
+
+$ module load python/2.7.11-matplotlib
+
+$ module load ipython/4.2.0-py2.7
+
+$ module load gdal/1.11.1-python
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+Platform Depedency: You will need to run on NCI VDI or NCI JupyterHub instances, where modules are preinstalled and data projects are mounted. When running in NCI JupyterHub, no need to load modules.</div>
+<div class="section" id="Import-python-modules">
+<h2>Import python modules<a class="headerlink" href="#Import-python-modules" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="k">import</span> <span class="n">gdal</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;/g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Open-and-view-file-metadata">
+<h2>Open and view file metadata<a class="headerlink" href="#Open-and-view-file-metadata" title="Permalink to this headline">¶</a></h2>
+<p>Use method <code class="docutils literal notranslate"><span class="pre">Open(&lt;filename&gt;,</span> <span class="pre">&lt;GDALAccess&gt;)</span></code> to return a Dataset object.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GA_ReadOnly</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>View metadata</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:35}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NC_GLOBAL#modeling_realm            ocean
+NETCDF_DIM_EXTRA                    {time}
+NC_GLOBAL#source                    ACCESS1-0 2011. Atmosphere: AGCM v1.0 (N96 grid-point, 1.875 degrees EW x approx 1.25 degree NS, 38 levels); ocean: NOAA/GFDL MOM4p1 (nominal 1.0 degree EW x 1.0 degrees NS, tripolar north of 65N, equatorial refinement to 1/3 degree from 10S to 10 N, cosine dependent NS south of 25S, 50 levels); sea ice: CICE4.1 (nominal 1.0 degree EW x 1.0 degrees NS, tripolar north of 65N, equatorial refinement to 1/3 degree from 10S to 10 N, cosine dependent NS south of 25S); land: MOSES2 (1.875 degree EW x 1.25 degree NS, 4 levels
+NC_GLOBAL#tracking_id               2caae357-ac9d-4bb3-81fc-87a06ed3c824
+NC_GLOBAL#realization               1
+i#long_name                         cell index along first dimension
+NC_GLOBAL#experiment_id             rcp85
+NC_GLOBAL#experiment                RCP8.5
+NC_GLOBAL#table_id                  Table Omon (01 February 2012) 3cc40dbb8d2b9162e4c4c8fd6b2312f2
+pr#associated_files                 baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation gridspecFile: gridspec_ocean_fx_ACCESS1-0_rcp85_r0i0p0.nc areacello: areacello_fx_ACCESS1-0_rcp85_r0i0p0.nc
+NC_GLOBAL#Conventions               CF-1.4
+NC_GLOBAL#version_number            v20121203
+pr#units                            kg m-2 s-1
+pr#_FillValue                       1e+20
+NC_GLOBAL#physics_version           1
+NC_GLOBAL#institute_id              CSIRO-BOM
+time#units                          days since 0001-01-01
+NC_GLOBAL#institution               CSIRO (Commonwealth Scientific and Industrial Research Organisation, Australia), and BOM (Bureau of Meteorology, Australia)
+NC_GLOBAL#parent_experiment_id      historical
+j#long_name                         cell index along second dimension
+NC_GLOBAL#branch_time               732311
+NC_GLOBAL#product                   output
+NC_GLOBAL#creation_date             2012-10-26T00:27:19Z
+pr#standard_name                    rainfall_flux
+NETCDF_DIM_time_VALUES              {732326.5,732356,732385.5,732416,732446.5,732477,732507.5,732538.5,732569,732599.5,732630,732660.5,732691.5,732721,732750.5,732781,732811.5,732842,732872.5,732903.5,732934,732964.5,732995,733025.5,733056.5,733086.5,733116.5,733147,733177.5,733208,733238.5,733269.5,733300,733330.5,733361,733391.5,733422.5,733452,733481.5,733512,733542.5,733573,733603.5,733634.5,733665,733695.5,733726,733756.5,733787.5,733817,733846.5,733877,733907.5,733938,733968.5,733999.5,734030,734060.5,734091,734121.5,734152.5,734182,734211.5,734242,734272.5,734303,734333.5,734364.5,734395,734425.5,734456,734486.5,734517.5,734547.5,734577.5,734608,734638.5,734669,734699.5,734730.5,734761,734791.5,734822,734852.5,734883.5,734913,734942.5,734973,735003.5,735034,735064.5,735095.5,735126,735156.5,735187,735217.5,735248.5,735278,735307.5,735338,735368.5,735399,735429.5,735460.5,735491,735521.5,735552,735582.5,735613.5,735643,735672.5,735703,735733.5,735764,735794.5,735825.5,735856,735886.5,735917,735947.5,735978.5,736008.5,736038.5,736069,736099.5,736130,736160.5,736191.5,736222,736252.5,736283,736313.5,736344.5,736374,736403.5,736434,736464.5,736495,736525.5,736556.5,736587,736617.5,736648,736678.5,736709.5,736739,736768.5,736799,736829.5,736860,736890.5,736921.5,736952,736982.5,737013,737043.5,737074.5,737104,737133.5,737164,737194.5,737225,737255.5,737286.5,737317,737347.5,737378,737408.5,737439.5,737469.5,737499.5,737530,737560.5,737591,737621.5,737652.5,737683,737713.5,737744,737774.5,737805.5,737835,737864.5,737895,737925.5,737956,737986.5,738017.5,738048,738078.5,738109,738139.5,738170.5,738200,738229.5,738260,738290.5,738321,738351.5,738382.5,738413,738443.5,738474,738504.5,738535.5,738565,738594.5,738625,738655.5,738686,738716.5,738747.5,738778,738808.5,738839,738869.5,738900.5,738930.5,738960.5,738991,739021.5,739052,739082.5,739113.5,739144,739174.5,739205,739235.5,739266.5,739296,739325.5,739356,739386.5,739417,739447.5,739478.5,739509,739539.5,739570,739600.5,739631.5,739661,739690.5,739721,739751.5,739782,739812.5,739843.5,739874,739904.5,739935,739965.5,739996.5,740026,740055.5,740086,740116.5,740147,740177.5,740208.5,740239,740269.5,740300,740330.5,740361.5,740391.5,740421.5,740452,740482.5,740513,740543.5,740574.5,740605,740635.5,740666,740696.5,740727.5,740757,740786.5,740817,740847.5,740878,740908.5,740939.5,740970,741000.5,741031,741061.5,741092.5,741122,741151.5,741182,741212.5,741243,741273.5,741304.5,741335,741365.5,741396,741426.5,741457.5,741487,741516.5,741547,741577.5,741608,741638.5,741669.5,741700,741730.5,741761,741791.5,741822.5,741852.5,741882.5,741913,741943.5,741974,742004.5,742035.5,742066,742096.5,742127,742157.5,742188.5,742218,742247.5,742278,742308.5,742339,742369.5,742400.5,742431,742461.5,742492,742522.5,742553.5,742583,742612.5,742643,742673.5,742704,742734.5,742765.5,742796,742826.5,742857,742887.5,742918.5,742948,742977.5,743008,743038.5,743069,743099.5,743130.5,743161,743191.5,743222,743252.5,743283.5,743313.5,743343.5,743374,743404.5,743435,743465.5,743496.5,743527,743557.5,743588,743618.5,743649.5,743679,743708.5,743739,743769.5,743800,743830.5,743861.5,743892,743922.5,743953,743983.5,744014.5,744044,744073.5,744104,744134.5,744165,744195.5,744226.5,744257,744287.5,744318,744348.5,744379.5,744409,744438.5,744469,744499.5,744530,744560.5,744591.5,744622,744652.5,744683,744713.5,744744.5,744774.5,744804.5,744835,744865.5,744896,744926.5,744957.5,744988,745018.5,745049,745079.5,745110.5,745140,745169.5,745200,745230.5,745261,745291.5,745322.5,745353,745383.5,745414,745444.5,745475.5,745505,745534.5,745565,745595.5,745626,745656.5,745687.5,745718,745748.5,745779,745809.5,745840.5,745870,745899.5,745930,745960.5,745991,746021.5,746052.5,746083,746113.5,746144,746174.5,746205.5,746235.5,746265.5,746296,746326.5,746357,746387.5,746418.5,746449,746479.5,746510,746540.5,746571.5,746601,746630.5,746661,746691.5,746722,746752.5,746783.5,746814,746844.5,746875,746905.5,746936.5,746966,746995.5,747026,747056.5,747087,747117.5,747148.5,747179,747209.5,747240,747270.5,747301.5,747331,747360.5,747391,747421.5,747452,747482.5,747513.5,747544,747574.5,747605,747635.5,747666.5,747696.5,747726.5,747757,747787.5,747818,747848.5,747879.5,747910,747940.5,747971,748001.5,748032.5,748062,748091.5,748122,748152.5,748183,748213.5,748244.5,748275,748305.5,748336,748366.5,748397.5,748427,748456.5,748487,748517.5,748548,748578.5,748609.5,748640,748670.5,748701,748731.5,748762.5,748792,748821.5,748852,748882.5,748913,748943.5,748974.5,749005,749035.5,749066,749096.5,749127.5,749157.5,749187.5,749218,749248.5,749279,749309.5,749340.5,749371,749401.5,749432,749462.5,749493.5,749523,749552.5,749583,749613.5,749644,749674.5,749705.5,749736,749766.5,749797,749827.5,749858.5,749888,749917.5,749948,749978.5,750009,750039.5,750070.5,750101,750131.5,750162,750192.5,750223.5,750253,750282.5,750313,750343.5,750374,750404.5,750435.5,750466,750496.5,750527,750557.5,750588.5,750618.5,750648.5,750679,750709.5,750740,750770.5,750801.5,750832,750862.5,750893,750923.5,750954.5,750984,751013.5,751044,751074.5,751105,751135.5,751166.5,751197,751227.5,751258,751288.5,751319.5,751349,751378.5,751409,751439.5,751470,751500.5,751531.5,751562,751592.5,751623,751653.5,751684.5,751714,751743.5,751774,751804.5,751835,751865.5,751896.5,751927,751957.5,751988,752018.5,752049.5,752079.5,752109.5,752140,752170.5,752201,752231.5,752262.5,752293,752323.5,752354,752384.5,752415.5,752445,752474.5,752505,752535.5,752566,752596.5,752627.5,752658,752688.5,752719,752749.5,752780.5,752810,752839.5,752870,752900.5,752931,752961.5,752992.5,753023,753053.5,753084,753114.5,753145.5,753175,753204.5,753235,753265.5,753296,753326.5,753357.5,753388,753418.5,753449,753479.5,753510.5,753540.5,753570.5,753601,753631.5,753662,753692.5,753723.5,753754,753784.5,753815,753845.5,753876.5,753906,753935.5,753966,753996.5,754027,754057.5,754088.5,754119,754149.5,754180,754210.5,754241.5,754271,754300.5,754331,754361.5,754392,754422.5,754453.5,754484,754514.5,754545,754575.5,754606.5,754636,754665.5,754696,754726.5,754757,754787.5,754818.5,754849,754879.5,754910,754940.5,754971.5,755001.5,755031.5,755062,755092.5,755123,755153.5,755184.5,755215,755245.5,755276,755306.5,755337.5,755367,755396.5,755427,755457.5,755488,755518.5,755549.5,755580,755610.5,755641,755671.5,755702.5,755732,755761.5,755792,755822.5,755853,755883.5,755914.5,755945,755975.5,756006,756036.5,756067.5,756097,756126.5,756157,756187.5,756218,756248.5,756279.5,756310,756340.5,756371,756401.5,756432.5,756462.5,756492.5,756523,756553.5,756584,756614.5,756645.5,756676,756706.5,756737,756767.5,756798.5,756828,756857.5,756888,756918.5,756949,756979.5,757010.5,757041,757071.5,757102,757132.5,757163.5,757193,757222.5,757253,757283.5,757314,757344.5,757375.5,757406,757436.5,757467,757497.5,757528.5,757558,757587.5,757618,757648.5,757679,757709.5,757740.5,757771,757801.5,757832,757862.5,757893.5,757923.5,757953.5,757984,758014.5,758045,758075.5,758106.5,758137,758167.5,758198,758228.5,758259.5,758289,758318.5,758349,758379.5,758410,758440.5,758471.5,758502,758532.5,758563,758593.5,758624.5,758654,758683.5,758714,758744.5,758775,758805.5,758836.5,758867,758897.5,758928,758958.5,758989.5,759019,759048.5,759079,759109.5,759140,759170.5,759201.5,759232,759262.5,759293,759323.5,759354.5,759384.5,759414.5,759445,759475.5,759506,759536.5,759567.5,759598,759628.5,759659,759689.5,759720.5,759750,759779.5,759810,759840.5,759871,759901.5,759932.5,759963,759993.5,760024,760054.5,760085.5,760115,760144.5,760175,760205.5,760236,760266.5,760297.5,760328,760358.5,760389,760419.5,760450.5,760480,760509.5,760540,760570.5,760601,760631.5,760662.5,760693,760723.5,760754,760784.5,760815.5,760845.5,760875.5,760906,760936.5,760967,760997.5,761028.5,761059,761089.5,761120,761150.5,761181.5,761211,761240.5,761271,761301.5,761332,761362.5,761393.5,761424,761454.5,761485,761515.5,761546.5,761576,761605.5,761636,761666.5,761697,761727.5,761758.5,761789,761819.5,761850,761880.5,761911.5,761941,761970.5,762001,762031.5,762062,762092.5,762123.5,762154,762184.5,762215,762245.5,762276.5,762306.5,762336.5,762367,762397.5,762428,762458.5,762489.5,762520,762550.5,762581,762611.5,762642.5,762672,762701.5,762732,762762.5,762793,762823.5,762854.5,762885,762915.5,762946,762976.5,763007.5,763037,763066.5,763097,763127.5,763158,763188.5,763219.5,763250,763280.5,763311,763341.5,763372.5,763402,763431.5,763462,763492.5,763523,763553.5,763584.5,763615,763645.5,763676,763706.5,763737.5,763767.5,763797.5,763828,763858.5,763889,763919.5,763950.5,763981,764011.5,764042,764072.5,764103.5,764133,764162.5,764193,764223.5,764254,764284.5,764315.5,764346,764376.5,764407,764437.5,764468.5,764498,764527.5,764558,764588.5,764619,764649.5,764680.5,764711,764741.5,764772,764802.5,764833.5,764863,764892.5,764923,764953.5,764984,765014.5,765045.5,765076,765106.5,765137,765167.5,765198.5,765228.5,765258.5,765289,765319.5,765350,765380.5,765411.5,765442,765472.5,765503,765533.5,765564.5,765594,765623.5,765654,765684.5,765715,765745.5,765776.5,765807,765837.5,765868,765898.5,765929.5,765959,765988.5,766019,766049.5,766080,766110.5,766141.5,766172,766202.5,766233,766263.5,766294.5,766324,766353.5,766384,766414.5,766445,766475.5,766506.5,766537,766567.5,766598,766628.5,766659.5,766689,766718.5,766749,766779.5,766810,766840.5,766871.5,766902,766932.5,766963,766993.5}
+pr#cell_measures                    area: areacello
+pr#coordinates                      lat lon
+pr#missing_value                    1e+20
+j#units                             1
+i#units                             1
+time#standard_name                  time
+NC_GLOBAL#contact                   The ACCESS wiki: http://wiki.csiro.au/confluence/display/ACCESS/Home. Contact Tony.Hirst@csiro.au regarding the ACCESS coupled climate model. Contact Peter.Uhe@csiro.au regarding ACCESS coupled climate model CMIP5 datasets.
+NC_GLOBAL#history                   CMIP5 compliant file produced from raw ACCESS model output using the ACCESS Post-Processor and CMOR2. 2012-10-26T00:27:19Z CMOR rewrote data to comply with CF standards and CMIP5 requirements. Mon Dec  3 14:21:15 2012: updated version number to v20121203.
+NC_GLOBAL#title                     ACCESS1-0 model output prepared for CMIP5 RCP8.5
+time#bounds                         time_bnds
+NC_GLOBAL#forcing                   GHG, Oz, SA, Sl, Vl, BC, OC, (GHG = CO2, N2O, CH4, CFC11, CFC12, CFC113, HCFC22, HFC125, HFC134a)
+pr#cell_methods                     time: mean area: mean where ice_free_sea over sea
+NC_GLOBAL#parent_experiment_rip     r1i1p1
+pr#original_units                   (kg/m^3)*(m/sec)
+pr#comment                          This is not the rainfall flux just over the ice-free portion of the ocean. It also contains the flux of water between the sea-ice and ocean.
+NETCDF_DIM_time_DEF                 {1140,6}
+NC_GLOBAL#parent_experiment         historical
+pr#history                          2012-10-26T00:27:19Z altered by CMOR: Converted units from &#39;(kg/m^3)*(m/sec)&#39; to &#39;kg m-2 s-1&#39;. 2012-10-26T00:27:19Z altered by CMOR: replaced missing value flag (-1e+20) with standard missing value (1e+20).
+NC_GLOBAL#frequency                 mon
+NC_GLOBAL#references                See http://wiki.csiro.au/confluence/display/ACCESS/ACCESS+Publications
+NC_GLOBAL#initialization_method     1
+time#calendar                       proleptic_gregorian
+time#long_name                      time
+NC_GLOBAL#cmor_version              2.8.0
+time#axis                           T
+NC_GLOBAL#model_id                  ACCESS1-0
+NC_GLOBAL#project_id                CMIP5
+pr#long_name                        Rainfall Flux where Ice Free Ocean over Sea
+</pre></div></div>
+</div>
+<p><strong>Get data dimensions</strong> Dataset objects have properties corresponding to numbers of rows, columns and bands in the dataset.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cols</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">RasterXSize</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">RasterYSize</span>
+<span class="n">bands</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">RasterCount</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">cols</span><span class="p">,</span><span class="n">rows</span><span class="p">,</span><span class="n">bands</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(360, 300, 1140)
+&lt;osgeo.gdal.Dataset; proxy of &lt;Swig Object of type &#39;GDALDatasetShadow *&#39; at 0x7f7fe6e47a80&gt; &gt;
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="View-subdatasets">
+<h2>View subdatasets<a class="headerlink" href="#View-subdatasets" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetSubDatasets</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NETCDF:&#34;/g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc&#34;:time_bnds
+NETCDF:&#34;/g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc&#34;:lat
+NETCDF:&#34;/g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc&#34;:lon
+NETCDF:&#34;/g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc&#34;:lat_vertices
+NETCDF:&#34;/g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc&#34;:lon_vertices
+NETCDF:&#34;/g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc&#34;:pr
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Extract/view-data-subdataset">
+<h2>Extract/view data subdataset<a class="headerlink" href="#Extract/view-data-subdataset" title="Permalink to this headline">¶</a></h2>
+<p>If the netcdf file has only one variable with 2 dimensions, then you can directly open the dataset with the filename. If there are more than one variable with 2 dimensions, you need to specify the subdataset name (logically).</p>
+<p>Subdatasets can be opened using the syntax: <strong>“NETCDF:filename:variable”</strong> or alternatively, the GetSubDatasets() function can be used to grab this information.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Option 1</span>
+<span class="n">band_pr</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s1">&#39;NETCDF:&quot;/g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc&quot;:pr&#39;</span><span class="p">)</span>
+
+<span class="c1"># Option 2</span>
+<span class="n">band_pr</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">GetSubDatasets</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">6</span><span class="p">])</span>
+
+<span class="c1"># Option 3</span>
+<span class="n">band_pr</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Band shape (Lat, Lon): </span><span class="si">%r</span><span class="s2"> </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">band_pr</span><span class="o">.</span><span class="n">YSize</span><span class="p">,</span> <span class="n">band_pr</span><span class="o">.</span><span class="n">XSize</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Band shape (Lat, Lon): 300 360
+</pre></div></div>
+</div>
+<div class="section" id="The-GetMetadata()-function-can-be-used-on-the-subdataset">
+<h3>The GetMetadata() function can be used on the subdataset<a class="headerlink" href="#The-GetMetadata()-function-can-be-used-on-the-subdataset" title="Permalink to this headline">¶</a></h3>
+<p><strong>Note:</strong> The variable metadata is not as user-friendly as with other netcdf python tools (e.g., netCDF4, h5py)</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[85]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pr_metadata</span> <span class="o">=</span> <span class="n">band_pr</span><span class="o">.</span><span class="n">GetMetadata</span>
+
+<span class="c1">#print(pr_metadata())</span>
+</pre></div>
+</div>
+</div>
+<p>Read the data into a 2D Numeric array with <code class="docutils literal notranslate"><span class="pre">ReadAsArray</span></code> ReadAsArray(, , , )</p>
+<p>Or you can read an entire image at once by using 0 offsets and pass the number of rows and columns to the <code class="docutils literal notranslate"><span class="pre">ReadAsArray()</span></code> method.</p>
+<p><strong>Memory managment</strong></p>
+<p>Set variables to <code class="docutils literal notranslate"><span class="pre">None</span></code>. This is especially important if you created large arrays with <code class="docutils literal notranslate"><span class="pre">ReadAsArray()</span></code></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">band</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Plotting-data">
+<h2>Plotting data<a class="headerlink" href="#Plotting-data" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[84]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Plot data</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">band_pr</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">cols</span><span class="p">,</span><span class="n">rows</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="mi">1</span><span class="p">,:,:],</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">360</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">])</span>
+
+<span class="c1"># Add figure title and labels</span>
+<span class="c1"># We can make use of the defined variable attributes to do this</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;pr#long_name&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="c1"># Adjust tick mark size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_python_GDAL_netcdf_cmip5_23_0.png" src="../../_images/_notebook_climate_python_GDAL_netcdf_cmip5_23_0.png" />
+</div>
+</div>
+<hr class="docutils" />
+<p>More useful information about GDAL can be found here:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://trac.osgeo.org/gdal">https://trac.osgeo.org/gdal</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=N_dmiQI1s24">A youtube video by Robert Simmon</a></li>
+<li><a class="reference external" href="https://gdal.org/">https://gdal.org/</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

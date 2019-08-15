@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GSKY At-a-glance &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Past Training Events" href="../../_overview/pasttraining.html" />
+    <link rel="prev" title="THREDDS" href="../tds/tds.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GSKY</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#datasets-available-in-gsky">Datasets available in GSKY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-platforms-interact-with-gsky">Software/Platforms interact with GSKY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#programmatically-access-gsky">Programmatically access GSKY</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>GSKY At-a-glance</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/gsky/gsky.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="gsky-at-a-glance">
+<h1>GSKY At-a-glance<a class="headerlink" href="#gsky-at-a-glance" title="Permalink to this headline">¶</a></h1>
+<p>The NCI-developed GSKY service provides a new approach to online analysis and visualisation of environmental data. GSKY provides an ability for users to interact with datasets and the information they contain using standard community protocols.</p>
+<p>GSKY accesses and analyses the big geospatial data on NCI’s cloud and high-performance computing systems, and then delivers it to a user device or website. For example, hundreds of time series and geospatially overlapping data can be seamlessly merged together, allowing researchers to focus on the information rather than dealing with data files. Furthermore, using GSKY’s processing capability, that data can be analysed on the fly using user-provided algorithms to extract new information over both space and time. This is a few things that you can quickly do with GSKY:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Add geospatial data as a single layer.</li>
+<li>Provide access to data subsets (e.g. groups of variables of interest) as data layer.</li>
+<li>Serve multiple layers simultaneously overlaying on top of each other for comparative analysis.</li>
+<li>Provide the same layer for different points of time allowing cross– sectional analysis.</li>
+<li>Allow users to download the raw data corresponding to a user-supplied bounding box.</li>
+</ul>
+</div></blockquote>
+<p>See the comprehensive <a class="reference external" href="https://gsky.readthedocs.io/en/latest/">GKSY user manual here</a>.</p>
+<p>Slides about the basics of GSKY are available <a class="reference external" href="../../_static/slides/Introduction_to_GSKY.pptx">here</a> for download.</p>
+<div class="section" id="datasets-available-in-gsky">
+<h2>Datasets available in GSKY<a class="headerlink" href="#datasets-available-in-gsky" title="Permalink to this headline">¶</a></h2>
+<p>GSKY currently serves data collections such as:</p>
+<p><strong>Digital Earth Australia (DEA) Geoscience Earth Observations</strong>, which include the following products of the Landsat 5, 7 and 8 satellite missions:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Surface reflectance (NBAR/NBART true and false colour)</li>
+<li>Terrain corrected surface reflectance geometric median (geomedian)</li>
+<li>Intertidal Extents Models (ITEM)</li>
+<li>High and Low Tide Composites (HLTC)</li>
+<li>Water Observations from Space (WOfS)</li>
+<li>Sentinel 2 Analysis Ready Data (Beta)</li>
+</ul>
+</div></blockquote>
+<p><strong>GEOGLAM</strong>, the GEO Global Agricultural Monitoring initiative, which include the following products:</p>
+<blockquote>
+<div><ul class="simple">
+<li>MODIS Total Vegetation Cover v3.1 (8-day and Monthly)</li>
+<li>MODIS Total Vegetation Cover Anomaly v3.1 (Monthly)</li>
+<li>MODIS Total Vegetation Cover Decile v3.1 (Monthly)</li>
+<li>MODIS Vegetation Fractional Cover 8-day v3.1 (8-day and Monthly)</li>
+<li>CHIRPS Precipitation v2.0 (Monthly)</li>
+</ul>
+</div></blockquote>
+<p>We are continually adding new datasets to GSKY. If you’re interested in publishing your own datasets to GSKY, please submit an enquiry to our data collections team via <a class="reference external" href="mailto:help&#37;&#52;&#48;nci&#46;org&#46;au">help<span>&#64;</span>nci<span>&#46;</span>org<span>&#46;</span>au</a></p>
+<p>GSKY service end points are:
+<a class="reference external" href="http://gsky.nci.org.au/ows/dea">http://gsky.nci.org.au/ows/dea</a>
+<a class="reference external" href="http://gsky.nci.org.au/ows/geoglam">http://gsky.nci.org.au/ows/geoglam</a></p>
+<video controls src="../../_static/movie/gsky_terria_mov.mp4" frameborder="0" allowfullscreen style="width: 100%; height: 140%;"></video></div>
+<div class="section" id="software-platforms-interact-with-gsky">
+<h2>Software/Platforms interact with GSKY<a class="headerlink" href="#software-platforms-interact-with-gsky" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="GSKY_ArcGIS.html"><span class="doc">How to load GSKY layer into ArcGIS online version</span></a></p>
+<p><a class="reference internal" href="GSKY_QGIS.html"><span class="doc">How to load GSKY layer into QGIS</span></a></p>
+<p><a class="reference internal" href="GoogleEarthWeb.html"><span class="doc">How to load KML into Google Earth web application</span></a></p>
+<p><a class="reference internal" href="TerriaJS.html"><span class="doc">How to load GSKY layer to TerriaJS</span></a></p>
+<p><a class="reference internal" href="nationalmap.html"><span class="doc">How to load GSKY layer to National Map website</span></a></p>
+<p><a class="reference internal" href="geoglam.html"><span class="doc">How to request WPS to GEOGLAM RAPP</span></a></p>
+</div>
+<div class="section" id="programmatically-access-gsky">
+<h2>Programmatically access GSKY<a class="headerlink" href="#programmatically-access-gsky" title="Permalink to this headline">¶</a></h2>
+<p>NCI’s GSKY Data Server supports the Open Geospatial Consortium (OGC) Web Map Service (WMS),
+which is a standard protocol for serving geospatial data as images (e.g., PNG). It also supports the Open Geospatial Consortium (OGC) Web Coverage Service (WCS), which is a standard protocol for serving geospatial data in common formats such as NetCDF and GeoTIFF. Please see this section for some examples on how to use GSKY in Python.</p>
+<p><a class="reference internal" href="Notebook_GSKY_WMS.html"><span class="doc">Request map images through NCI’s GSKY WMS in Python</span></a></p>
+<p><a class="reference internal" href="Notebook_GSKY_WMS_ipyleaflet.html"><span class="doc">Add layers to the ipyleaflet Map by defining widgets</span></a></p>
+<p><a class="reference internal" href="Notebook_GSKY_WCS.html"><span class="doc">Request map images through NCI’s GSKY WCS in Python.</span></a></p>
+<p><a class="reference internal" href="Notebook_GSKY_ClicknShip.html"><span class="doc">WCS click to select the region, then ship the data</span></a></p>
+<p><a class="reference internal" href="WMS.html"><span class="doc">Construct WMS GetCapabilities and GetMap requests</span></a></p>
+<p><a class="reference internal" href="WCS.html"><span class="doc">Construct WCS GetCoverage, GetCapabilities and DescribeCoverage requests</span></a></p>
+<p><a class="reference internal" href="WPS.html"><span class="doc">Construct WPS request</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../_overview/pasttraining.html" class="btn btn-neutral float-right" title="Past Training Events" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../tds/tds.html" class="btn btn-neutral float-left" title="THREDDS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

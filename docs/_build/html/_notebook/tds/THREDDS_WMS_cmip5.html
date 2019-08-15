@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Web Map Service (WMS) &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Web Map Service (WMS)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/tds/THREDDS_WMS_cmip5.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Web-Map-Service-(WMS)">
+<h1>Web Map Service (WMS)<a class="headerlink" href="#Web-Map-Service-(WMS)" title="Permalink to this headline">¶</a></h1>
+<p>Requesting map images through NCI’s THREDDS Data Server</p>
+<div class="section" id="In-this-notebook:">
+<h2>In this notebook:<a class="headerlink" href="#In-this-notebook:" title="Permalink to this headline">¶</a></h2>
+<p>How to use the Open Geospatial Consortium (OGC) Web Map Service (WMS) protocol through NCI’s THREDDS data server - Web Map Service (WMS) - Basic WMS example - Constructing GetMap Requests</p>
+<p>The following material uses Coupled Model Intercomparison Project (CMIP5) collections and Geoscience Australia’s Landsat 8. The CMIP5 terms of use are found <a class="reference external" href="https://cmip.llnl.gov/cmip5/terms.html">here</a>. For more information on the collection, please click <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716">here</a> (CMIP5) and <a class="reference external" href="http://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/3a2cd509-0e82-4381-98c7-522756da533b">here</a>
+(landsat).</p>
+<hr class="docutils" />
+<div class="section" id="NetCDF-Web-Map-Service-(ncWMS)">
+<h3>NetCDF Web Map Service (ncWMS)<a class="headerlink" href="#NetCDF-Web-Map-Service-(ncWMS)" title="Permalink to this headline">¶</a></h3>
+<p>NCI’s THREDDS Data Server supports OGC’s Web Map Service (WMS) for gridded data collections, which is a standard protocol for serving geospatial data as images (e.g., PNG, JPEG).</p>
+<p><strong>Navigate to the dataset THREDDS catalog page and select the WMS link</strong></p>
+<p><a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/atmos/Amon/r1i1p1/latest/tasmax/catalog.html?dataset=rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/atmos/Amon/r1i1p1/latest/tasmax/tasmax_Amon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc">http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/atmos/Amon/r1i1p1/latest/tasmax/catalog.html?dataset=rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/atmos/Amon/r1i1p1/latest/tasmax/tasmax_Amon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc</a></p>
+<p><img alt="image0" src="../../_images/threddsWMS4.png" /></p>
+<p><strong>GetCapabilities</strong></p>
+<p>This will display the WMS ‘GetCapabilities’ request in xml, which describes the WMS parameters (metadata, services, and data) available by the server. These options are used to generate a GetMap request, an operation which requests that the server generate a map.</p>
+<p><img alt="image0" src="../../_images/threddsWMS4.png" /></p>
+<blockquote>
+<div><strong>GetCapabilities example:</strong></div></blockquote>
+<blockquote>
+<div><a class="reference external" href="http://dapds00.nci.org.au/thredds/wms/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/atmos/Amon/r1i1p1/latest/tasmax/tasmax_Amon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities">http://dapds00.nci.org.au/thredds/wms/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/atmos/Amon/r1i1p1/latest/tasmax/tasmax_Amon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities</a></div></blockquote>
+<p><strong>Simple WMS Example</strong></p>
+<p>Several WMS tools accept the GetCapabilities URL and allow users to interactively generate a GetMap request</p>
+<p>This <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> URL can be used to load data as an image overlay in several tools, such as <a class="reference external" href="https://www.google.com/earth/">Google Earth</a> and <a class="reference external" href="http://www.qgis.org/en/site/">QGIS</a>, as well as with interactive spatial data websites like Australia’s <a class="reference external" href="https://nationalmap.gov.au/">NationalMap</a> (example below).</p>
+<p><strong>Note:</strong> This results in a map request built with the default settings. Colourmaps, colour scales, and time (if applicable) may not always be defined appropriately. In such cases, full <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> requests will need to be requested (more on these below).</p>
+<ol class="arabic simple">
+<li>Begin by copying the <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> URL from THREDDS</li>
+</ol>
+<p>Let’s try with a CMIP dataset:</p>
+<p><a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/atmos/Amon/r1i1p1/latest/tasmax/catalog.html?dataset=rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/atmos/Amon/r1i1p1/latest/tasmax/tasmax_Amon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc">http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/atmos/Amon/r1i1p1/latest/tasmax/catalog.html?dataset=rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/atmos/Amon/r1i1p1/latest/tasmax/tasmax_Amon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc</a></p>
+<ol class="arabic simple" start="2">
+<li>Open a web browser and go to: <a class="reference external" href="https://nationalmap.gov.au">https://nationalmap.gov.au</a></li>
+<li>Select <strong>Add Data</strong></li>
+<li>Select “My Data”</li>
+</ol>
+<p><img alt="image0" src="../../_images/threddsWMS4.png" /></p>
+<ol class="arabic simple" start="5">
+<li>“Add Web Data”</li>
+</ol>
+<p><img alt="image1" src="../../_images/threddsWMS5.png" /></p>
+<ol class="arabic simple" start="6">
+<li>Enter your “GetCapabilities URL” and select “Add”</li>
+</ol>
+<p><img alt="image2" src="../../_images/natmap3_cmip5.png" /></p>
+<ol class="arabic simple" start="7">
+<li>Select a layer (i.e., variable) to add to the map</li>
+</ol>
+<p><img alt="image3" src="../../_images/natmap4_cmip5.png" /></p>
+<ol class="arabic simple" start="8">
+<li>Then select “Done” and data should then display on map</li>
+</ol>
+<p><img alt="image4" src="../../_images/natmap5_cmip5.png" /></p>
+<ol class="arabic simple" start="9">
+<li>The default colour range may often be inappropriate. Enter new min/max values to adjust colourscale.</li>
+</ol>
+<p><img alt="image5" src="../../_images/natmap6_cmip5.png" /></p>
+<ol class="arabic simple" start="10">
+<li>When data includes a time dimension, NationalMap will display a toolbar at the bottom of page that allows you to browse through time.</li>
+</ol>
+<p><img alt="image6" src="../../_images/natmap7_cmip5.png" /></p>
+<p><strong>Constructing GetMap Requests</strong></p>
+<p>Tools like those mentioned above can often request data on the fly to generate the maps but if you would like to directly download your own map directly, a full <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> URL needs to be constructed.</p>
+<p><strong>The request takes the following form:</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">http://dapds00.nci.org.au/thredds/wcs/&lt;thredds-path-to-data-file&gt;?</span></code> service=WMS&amp;version=1.3.0&amp;request=GetMap&amp;layers=value&amp;crs=value&amp;styles=value&amp;format=value&amp;bbox=value&amp;width=value&amp;height=value&amp; colorscalerange=value&amp;transparent=value&amp;time=value</div></blockquote>
+<p>where red indicates required fields, blue are optional, and green are where inputs values relevant to the dataset and user request need to be defined.</p>
+<p>GetMap parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="18%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required/Optional</th>
+<th class="head">Input</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>service</td>
+<td>Required</td>
+<td>WMS</td>
+</tr>
+<tr class="row-odd"><td>version</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">1.1.1**</span></code>, <code class="docutils literal notranslate"><span class="pre">1.3.0</span> <span class="pre">(default)</span></code></td>
+</tr>
+<tr class="row-even"><td>request</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">GetMap</span></code></td>
+</tr>
+<tr class="row-odd"><td>Layers</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;variable&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td>crs</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;crs_value&gt;</span></code></td>
+</tr>
+<tr class="row-odd"><td>styles</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;style_name&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td>format</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">image/png</span></code>, <code class="docutils literal notranslate"><span class="pre">image/png;mode=32bit</span></code>, <code class="docutils literal notranslate"><span class="pre">image/gif</span></code>, <code class="docutils literal notranslate"><span class="pre">image/jpeg</span></code></td>
+</tr>
+<tr class="row-odd"><td>bbox</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;ymin,xmin,ymax,xmax&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td>width</td>
+<td>Required</td>
+<td>Image width in pixels</td>
+</tr>
+<tr class="row-odd"><td>height</td>
+<td>Required</td>
+<td>Image height in pixels</td>
+</tr>
+<tr class="row-even"><td>colorscalerange</td>
+<td>Optional</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;min,max&gt;</span></code></td>
+</tr>
+<tr class="row-odd"><td>transparent</td>
+<td>Optional</td>
+<td>True, False</td>
+</tr>
+<tr class="row-even"><td>time</td>
+<td>Optional</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;time_value&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">**</span></code><strong>Syntax differences for v1.1.1 GetMap requests:</strong> - Use <code class="docutils literal notranslate"><span class="pre">srs</span></code> in place of <code class="docutils literal notranslate"><span class="pre">crs</span></code> - The order of <code class="docutils literal notranslate"><span class="pre">bbox</span></code> values is: <code class="docutils literal notranslate"><span class="pre">&lt;xmin,ymin,xmax,ymax&gt;</span></code></p>
+<p><strong>The above parameters can all be found within the ``GetCapabilities`` request.</strong></p>
+<p><img alt="image0" src="../../_images/threddsWMS4.png" /></p>
+<blockquote>
+<div><strong>GetMap request example:</strong></div></blockquote>
+<blockquote>
+<div><a class="reference external" href="http://dapds00.nci.org.au/thredds/wms/rs0/datacube/002/LS8_OLI_NBART/-10_-11/LS8_OLI_NBART_3577_-10_-11_20160109015321000000.nc?service=WMS&amp;version=1.3.0&amp;request=GetMap&amp;Layers=blue&amp;crs=EPSG:4326&amp;styles=boxfill/rainbow&amp;format=image/png&amp;colorscalerange=0,2000&amp;bbox=-10.219164100335659,123.11286155202026,-9.229043719254628,124.05434305622438&amp;width=1000&amp;height=1000&amp;transparent=true&amp;time=2016-01-09T01:53:21.000Z">http://dapds00.nci.org.au/thredds/wms/rs0/datacube/002/LS8_OLI_NBART/-10_-11/LS8_OLI_NBART_3577_-10_-11_20160109015321000000.nc? service=WMS&amp; version=1.3.0&amp; request=GetMap&amp; Layers=blue&amp; crs=EPSG:4326&amp; styles=boxfill/rainbow&amp; format=image/png&amp; colorscalerange=0,2000&amp; bbox=-10.219164100335659,123.11286155202026,-9.229043719254628,124.05434305622438&amp; width=1000&amp; height=1000&amp; transparent=true&amp;
+time=2016-01-09T01:53:21.000Z</a></div></blockquote>
+<p>Once complete, the <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> URL can be tested in a web browser. If the URL is correctly form, the requested map will be displayed.</p>
+<p><img alt="image1" src="../../_images/threddsWMS5.png" /></p>
+<hr class="docutils" />
+<p><strong>For more information on OGC standards specifications (WMS, WCS) and ncWMS:</strong></p>
+<p><a class="reference external" href="http://www.opengeospatial.org/standards/wms">http://www.opengeospatial.org/standards/wms</a></p>
+<p><a class="reference external" href="http://www.opengeospatial.org/standards/wcs">http://www.opengeospatial.org/standards/wcs</a></p>
+<p><a class="reference external" href="https://reading-escience-centre.github.io/ncwms/">https://reading-escience-centre.github.io/ncwms/</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

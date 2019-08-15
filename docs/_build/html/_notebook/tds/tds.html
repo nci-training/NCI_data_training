@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>THREDDS &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="GSKY At-a-glance" href="../gsky/gsky.html" />
+    <link rel="prev" title="Geophysics" href="../geophysics/geophysics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">THREDDS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#direct-download">Direct Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-subsetting">Data subsetting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-viewing">Data viewing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opendap">OPeNDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ogc-wms">OGC WMS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ogc-wcs">OGC WCS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bulk-thredds-download-and-opendap-links">Bulk THREDDS download and OPeNDAP links</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>THREDDS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/tds/tds.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="thredds">
+<h1>THREDDS<a class="headerlink" href="#thredds" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="direct-download">
+<h2>Direct Download<a class="headerlink" href="#direct-download" title="Permalink to this headline">¶</a></h2>
+<p>You will learn how to download files through NCI’s THREDDS data server in this example.
+Click below for the notebook example.</p>
+<p><a class="reference internal" href="THREDDS_Direct_Download.html"><span class="doc">Direct download notebook example</span></a></p>
+</div>
+<div class="section" id="data-subsetting">
+<h2>Data subsetting<a class="headerlink" href="#data-subsetting" title="Permalink to this headline">¶</a></h2>
+<p>The Netcdf Subset Service (NCSS) is one of the data service endpoints available on many
+of NCI’s hosted data collections. NCSS is currently available on NCI’s gridded datasets
+and allows users to request spatial and temporal queries using longitude and latitude values directly.
+In this example, you will use THREDDS web coverage service to request GeoTIFF data.</p>
+<p><a class="reference internal" href="NetcdfSubset_Examples.html"><span class="doc">Data subsetting notebook example</span></a></p>
+</div>
+<div class="section" id="data-viewing">
+<h2>Data viewing<a class="headerlink" href="#data-viewing" title="Permalink to this headline">¶</a></h2>
+<p>You can have a quick view of the data using Godiva on THREDDS.</p>
+<p><a class="reference internal" href="THREDDS_Godiva.html"><span class="doc">Data viewing notebook example</span></a></p>
+</div>
+<div class="section" id="opendap">
+<h2>OPeNDAP<a class="headerlink" href="#opendap" title="Permalink to this headline">¶</a></h2>
+<p>How to use OPeNDAP through NCI’s THREDDS data server</p>
+<p><a class="reference internal" href="THREDDS_OPeNDAP.html"><span class="doc">OPeNDAP notebook example</span></a></p>
+</div>
+<div class="section" id="ogc-wms">
+<h2>OGC WMS<a class="headerlink" href="#ogc-wms" title="Permalink to this headline">¶</a></h2>
+<p>How to use the Open Geospatial Consortium (OGC) Web Map Service (WMS) protocol through NCI’s THREDDS data server</p>
+<p><a class="reference internal" href="THREDDS_WMS.html"><span class="doc">OGC WMS notebook example</span></a></p>
+</div>
+<div class="section" id="ogc-wcs">
+<h2>OGC WCS<a class="headerlink" href="#ogc-wcs" title="Permalink to this headline">¶</a></h2>
+<p>You will learn how to constructing WCS GetCoverage requests, then verify requests with GDAL in Python</p>
+<p><a class="reference internal" href="THREDDS_WCS.html"><span class="doc">OGC WCS notebook example</span></a></p>
+</div>
+<div class="section" id="bulk-thredds-download-and-opendap-links">
+<h2>Bulk THREDDS download and OPeNDAP links<a class="headerlink" href="#bulk-thredds-download-and-opendap-links" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="THREDDS_multifile_download.html"><span class="doc">THREDDS multifiles bulk download</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../gsky/gsky.html" class="btn btn-neutral float-right" title="GSKY At-a-glance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../geophysics/geophysics.html" class="btn btn-neutral float-left" title="Geophysics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

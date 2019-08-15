@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python on the VDI: Getting Started (Part I) &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Python on the VDI: Getting Started (Part I)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/prep/Python_VDI_Part_I.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Python-on-the-VDI:-Getting-Started-(Part-I)">
+<h1>Python on the VDI: Getting Started (Part I)<a class="headerlink" href="#Python-on-the-VDI:-Getting-Started-(Part-I)" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="In-this-notebook:">
+<h2>In this notebook:<a class="headerlink" href="#In-this-notebook:" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Load the required (and optional) Python modules</li>
+<li>Using Python and iPython</li>
+</ol>
+<p><strong>Select and load Python module</strong></p>
+<p>To see the available Python versions from within the VDI, use the “module avail” command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module avail python
+</pre></div>
+</div>
+<p><img alt="image0" src="../../_images/python1.png" /></p>
+<div class="admonition warning">
+NOTE: The modules with <code class="docutils literal notranslate"><span class="pre">&quot;-matplotlib&quot;</span></code> are for the Matplotlib plotting library. These modules need to be loaded after the base Python module.</div>
+<p>Next, use the “module load” command to add the selected version to your path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python3
+</pre></div>
+</div>
+<div class="admonition warning">
+NOTE: It will load the default version of python3 on VDI. It is subject to change in the future.</div>
+<p><strong>Python2 is no longer supported (see</strong><a class="reference external" href="https://www.anaconda.com/end-of-life-eol-for-python-2-7-is-coming-are-you-ready/">details here</a><strong>), so it is strongly recommended to use python3 from now on. It is worth noting that some old examples using python2 are not compatible with python3.</strong></p>
+<p><strong>Additional Python modules</strong></p>
+<p>There are also several prebuilt Python-specific modules available on the VDI:</p>
+<ul class="simple">
+<li>iPython</li>
+<li>NumPy</li>
+<li>SciPy</li>
+<li>Matplotlib (can be found within <code class="docutils literal notranslate"><span class="pre">/apps/Modules/modulefiles</span></code>)</li>
+<li>NetCDF4</li>
+<li>H5py</li>
+<li>Cython</li>
+<li>XArray</li>
+<li>Pandas</li>
+</ul>
+<p>These can be viewed by using “module avail” (in general, most will be found under <code class="docutils literal notranslate"><span class="pre">/apps/Modules/cloud/all</span></code>).</p>
+<p><img alt="python2" src="../../_images/python2.png" /></p>
+<p>To load the popular scientific computing package <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>, for example, you would again use the <code class="docutils literal notranslate"><span class="pre">&quot;module</span> <span class="pre">load&quot;</span></code> command followed by the module name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load numpy/1.10.4-py3.5
+</pre></div>
+</div>
+<p>To remove the uncessary module, you can use <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span></code> command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module unload &lt;module name&gt;
+</pre></div>
+</div>
+<p><img alt="python13" src="../../_images/python13.png" /></p>
+<p><strong>Using Python</strong></p>
+<p>You can run Python several different ways: 1. Python interpreter 2. Python script 3. iPython</p>
+<p><strong>Python interpreter</strong></p>
+<p>To launch the Python interpreter, type the following from the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python
+</pre></div>
+</div>
+<p><img alt="python" src="../../_images/python4.png" /></p>
+<p>Try:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>To exit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Simple Python script</strong></p>
+<p>Using a text editing tool of your choice, create a new file with the extension <code class="docutils literal notranslate"><span class="pre">&quot;.py&quot;</span></code>. - On the VDI, there are several text editors available under the <code class="docutils literal notranslate"><span class="pre">Applications</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">Accessories</span></code> menu. - Or alternatively, you can create the file directly from command line using <code class="docutils literal notranslate"><span class="pre">nano</span></code> or <code class="docutils literal notranslate"><span class="pre">vi</span></code>, etc.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nano helloworld.py
+</pre></div>
+</div>
+<p>Add some simple lines of Python code to the file and close:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is my first Python script.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>From command line, run the script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python helloworld.py
+</pre></div>
+</div>
+<p><img alt="python hello world" src="../../_images/python3.png" /></p>
+<p><strong>iPython</strong></p>
+<p>To launch iPython on the VDI (without having to build locally), the iPython module must first be loaded:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load ipython/4.2.0-py3.5
+</pre></div>
+</div>
+<p>Next, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipython
+</pre></div>
+</div>
+<p><img alt="ipython" src="../../_images/python5.png" /></p>
+<p>To exit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ exit()
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

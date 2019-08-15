@@ -1,0 +1,435 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Web Processing Service (WPS) &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Web Processing Service (WPS)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/gsky/WPS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="web-processing-service-wps">
+<h1>Web Processing Service (WPS)<a class="headerlink" href="#web-processing-service-wps" title="Permalink to this headline">¶</a></h1>
+<p>The OGC Web Processing Service (WPS) Interface Standard provides access to pre-defined processes and provides job control operations that can instantiate, control and monitor processing jobs. To do this, WPS defines the following operations:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>GetCapabilities</strong></li>
+<li><strong>DescribeProcess</strong></li>
+<li><strong>Execute</strong></li>
+</ul>
+</div></blockquote>
+<div class="section" id="get-capabilities">
+<h2>Get Capabilities<a class="headerlink" href="#get-capabilities" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>GetCapabilities</strong> request returns metadata about the GSKY supported operations and processes.</p>
+<p>For example, the <strong>GetCapabilities</strong> request takes the following form:</p>
+<p><a class="reference external" href="http://GSKY_URL/ows">http://GSKY_URL/ows</a>?<span class="red">service</span>=WPS&amp;<span class="red">request</span>=GetCapabilities&amp;<span class="red">version</span>=version</p>
+<p><strong>WPS GetCapabilities example:</strong></p>
+<p><a class="reference external" href="http://130.56.242.16/ows/edge/generic_wps?service=WPS&amp;request=GetCapabilities&amp;version=1.0.0">http://130.56.242.16/ows/edge/generic_wps?service=WPS&amp;request=GetCapabilities&amp;version=1.0.0</a></p>
+<p>The <strong>GetCapabilities</strong> request produces an <code class="docutils literal notranslate"><span class="pre">xml</span></code> showing a list of the WPS processes:</p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wps:Capabilities</span> <span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows/1.1&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">xmlns:wps=</span><span class="s">&quot;http://www.opengis.net/wps/1.0.0&quot;</span> <span class="na">xml:lang=</span><span class="s">&quot;en-US&quot;</span> <span class="na">service=</span><span class="s">&quot;WPS&quot;</span> <span class="na">updateSequence=</span><span class="s">&quot;1&quot;</span> <span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ows:ServiceIdentification&gt;</span>
+<span class="nt">&lt;ows:Title&gt;</span>GSKY WPS<span class="nt">&lt;/ows:Title&gt;</span>
+<span class="nt">&lt;ows:Abstract&gt;</span>
+GSKY - A Scalable, Distributed Geospatial Data Service. https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/dc9fb2db-8d6f-4b76-a734-93ac7fbc9201
+<span class="nt">&lt;/ows:Abstract&gt;</span>
+<span class="nt">&lt;ows:Keywords&gt;</span>
+<span class="nt">&lt;ows:Keyword&gt;</span>WPS<span class="nt">&lt;/ows:Keyword&gt;</span>
+<span class="nt">&lt;ows:Keyword&gt;</span>GIS<span class="nt">&lt;/ows:Keyword&gt;</span>
+<span class="nt">&lt;ows:Keyword&gt;</span>Geoprocessing<span class="nt">&lt;/ows:Keyword&gt;</span>
+<span class="nt">&lt;ows:Keyword&gt;</span>Geospatial Data<span class="nt">&lt;/ows:Keyword&gt;</span>
+<span class="nt">&lt;/ows:Keywords&gt;</span>
+<span class="nt">&lt;ows:ServiceType&gt;</span>WPS<span class="nt">&lt;/ows:ServiceType&gt;</span>
+<span class="nt">&lt;ows:ServiceTypeVersion&gt;</span>1.0.0<span class="nt">&lt;/ows:ServiceTypeVersion&gt;</span>
+<span class="nt">&lt;ows:Fees&gt;</span>None<span class="nt">&lt;/ows:Fees&gt;</span>
+<span class="nt">&lt;ows:AccessConstraints&gt;</span>None<span class="nt">&lt;/ows:AccessConstraints&gt;</span>
+<span class="nt">&lt;/ows:ServiceIdentification&gt;</span>
+<span class="nt">&lt;ows:ServiceProvider&gt;</span>
+<span class="nt">&lt;ows:ProviderName&gt;</span>Australian National Computational Infrastructure.<span class="nt">&lt;/ows:ProviderName&gt;</span>
+<span class="nt">&lt;ows:ProviderSite</span> <span class="na">xlink:href=</span><span class="s">&quot;http://www.nci.org.au&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;ows:ServiceContact&gt;</span>
+<span class="nt">&lt;ows:IndividualName&gt;</span>GSKY Developers<span class="nt">&lt;/ows:IndividualName&gt;</span>
+<span class="nt">&lt;ows:PositionName&gt;</span>Data Service Innovation<span class="nt">&lt;/ows:PositionName&gt;</span>
+<span class="nt">&lt;ows:ContactInfo&gt;</span>
+<span class="nt">&lt;ows:Phone&gt;</span>
+<span class="nt">&lt;ows:Voice&gt;</span>+61 (0)2 6125 3211<span class="nt">&lt;/ows:Voice&gt;</span>
+<span class="nt">&lt;/ows:Phone&gt;</span>
+<span class="nt">&lt;ows:Address&gt;</span>
+<span class="nt">&lt;ows:DeliveryPoint&gt;</span>
+Building 143, Corner of Ward Road and Garran Road, Ward Rd, Acton ACT 2601
+<span class="nt">&lt;/ows:DeliveryPoint&gt;</span>
+<span class="nt">&lt;ows:City&gt;</span>ACTON<span class="nt">&lt;/ows:City&gt;</span>
+<span class="nt">&lt;ows:AdministrativeArea&gt;</span>ACT<span class="nt">&lt;/ows:AdministrativeArea&gt;</span>
+<span class="nt">&lt;ows:PostalCode&gt;</span>2601<span class="nt">&lt;/ows:PostalCode&gt;</span>
+<span class="nt">&lt;ows:Country&gt;</span>Australia<span class="nt">&lt;/ows:Country&gt;</span>
+<span class="nt">&lt;ows:ElectronicMailAddress&gt;</span>help@nci.org.au<span class="nt">&lt;/ows:ElectronicMailAddress&gt;</span>
+<span class="nt">&lt;/ows:Address&gt;</span>
+<span class="nt">&lt;/ows:ContactInfo&gt;</span>
+<span class="nt">&lt;/ows:ServiceContact&gt;</span>
+<span class="nt">&lt;/ows:ServiceProvider&gt;</span>
+<span class="nt">&lt;ows:OperationsMetadata&gt;</span>
+<span class="nt">&lt;ows:Operation</span> <span class="na">name=</span><span class="s">&quot;GetCapabilities&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ows:DCP&gt;</span>
+<span class="nt">&lt;ows:HTTP&gt;</span>
+<span class="nt">&lt;ows:Get</span> <span class="na">xlink:href=</span><span class="s">&quot;http://130.56.242.16/ows/edge/generic_wps&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/ows:HTTP&gt;</span>
+<span class="nt">&lt;/ows:DCP&gt;</span>
+<span class="nt">&lt;/ows:Operation&gt;</span>
+<span class="nt">&lt;ows:Operation</span> <span class="na">name=</span><span class="s">&quot;DescribeProcess&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ows:DCP&gt;</span>
+<span class="nt">&lt;ows:HTTP&gt;</span>
+<span class="nt">&lt;ows:Get</span> <span class="na">xlink:href=</span><span class="s">&quot;http://130.56.242.16/ows/edge/generic_wps&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/ows:HTTP&gt;</span>
+<span class="nt">&lt;/ows:DCP&gt;</span>
+<span class="nt">&lt;/ows:Operation&gt;</span>
+<span class="nt">&lt;ows:Operation</span> <span class="na">name=</span><span class="s">&quot;Execute&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ows:DCP&gt;</span>
+<span class="nt">&lt;ows:HTTP&gt;</span>
+<span class="nt">&lt;ows:Get</span> <span class="na">xlink:href=</span><span class="s">&quot;http://130.56.242.16/ows/edge/generic_wps&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/ows:HTTP&gt;</span>
+<span class="nt">&lt;/ows:DCP&gt;</span>
+<span class="nt">&lt;/ows:Operation&gt;</span>
+<span class="nt">&lt;/ows:OperationsMetadata&gt;</span>
+<span class="nt">&lt;wps:ProcessOfferings&gt;</span>
+<span class="nt">&lt;wps:Process</span> <span class="na">wps:processVersion=</span><span class="s">&quot;1.0.0&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ows:Identifier&gt;</span>geometryDrill<span class="nt">&lt;/ows:Identifier&gt;</span>
+<span class="nt">&lt;ows:Title&gt;</span>Geometry Drill<span class="nt">&lt;/ows:Title&gt;</span>
+<span class="nt">&lt;ows:Abstract/&gt;</span>
+<span class="nt">&lt;ows:Metadata</span> <span class="na">xlink:title=</span><span class="s">&quot;Time Series Extractor&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/wps:Process&gt;</span>
+<span class="nt">&lt;wps:Process</span> <span class="na">wps:processVersion=</span><span class="s">&quot;1.0.0&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ows:Identifier&gt;</span>8-day drill<span class="nt">&lt;/ows:Identifier&gt;</span>
+<span class="nt">&lt;ows:Title&gt;</span>8-day Fractional Cover Drill<span class="nt">&lt;/ows:Title&gt;</span>
+<span class="nt">&lt;ows:Abstract/&gt;</span>
+<span class="nt">&lt;ows:Metadata</span> <span class="na">xlink:title=</span><span class="s">&quot;Time Series Extractor&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/wps:Process&gt;</span>
+<span class="nt">&lt;wps:Process</span> <span class="na">wps:processVersion=</span><span class="s">&quot;1.0.0&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ows:Identifier&gt;</span>LS8 NBAR True drill<span class="nt">&lt;/ows:Identifier&gt;</span>
+<span class="nt">&lt;ows:Title&gt;</span>LS8 NBAR True Drill<span class="nt">&lt;/ows:Title&gt;</span>
+<span class="nt">&lt;ows:Abstract/&gt;</span>
+<span class="nt">&lt;ows:Metadata</span> <span class="na">xlink:title=</span><span class="s">&quot;Time Series Extractor&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/wps:Process&gt;</span>
+<span class="nt">&lt;/wps:ProcessOfferings&gt;</span>
+<span class="nt">&lt;wps:Languages&gt;</span>
+<span class="nt">&lt;wps:Default&gt;</span>
+<span class="nt">&lt;ows:Language&gt;</span>en-US<span class="nt">&lt;/ows:Language&gt;</span>
+<span class="nt">&lt;/wps:Default&gt;</span>
+<span class="nt">&lt;wps:Supported&gt;</span>
+<span class="nt">&lt;ows:Language&gt;</span>en-US<span class="nt">&lt;/ows:Language&gt;</span>
+<span class="nt">&lt;/wps:Supported&gt;</span>
+<span class="nt">&lt;/wps:Languages&gt;</span>
+<span class="nt">&lt;/wps:Capabilities&gt;</span>
+</pre></div>
+</div>
+<img alt="_notebook/gsky/../_static/images/wps_getcaps.png" src="_notebook/gsky/../_static/images/wps_getcaps.png" />
+</div>
+<div class="section" id="describeprocess">
+<h2>DescribeProcess<a class="headerlink" href="#describeprocess" title="Permalink to this headline">¶</a></h2>
+<p>To describe a process, we can run a <strong>DescribeProcess</strong> request which returns a detailed description of the requested WPS processes.</p>
+<p>A <strong>DescribeProcess</strong> request takes the following form (using the 8-day drill process as an example):</p>
+<p><a class="reference external" href="http://GSKY_URL/ows">http://GSKY_URL/ows</a>?<span class="red">service</span>=WPS&amp;<span class="red">request</span>=DescribeProcess&amp;<span class="red">version</span>=version&amp;<span class="red">Identifier</span>=8-day+drill</p>
+<p><strong>WPS DescribeProcess example:</strong></p>
+<p><a class="reference external" href="http://130.56.242.16/ows/edge/generic_wps?service=WPS&amp;request=DescribeProcess&amp;version=1.0.0&amp;Identifier=8-day+drill">http://130.56.242.16/ows/edge/generic_wps?service=WPS&amp;request=DescribeProcess&amp;version=1.0.0&amp;Identifier=8-day+drill</a></p>
+<p>The <strong>DescribeProcess</strong> request produces an <code class="docutils literal notranslate"><span class="pre">xml</span></code> containing metadata about the requested process, with information about the inputs required to execute the 8-day drill process:</p>
+<img alt="_notebook/gsky/../_static/images/wps_describeprocess.png" src="_notebook/gsky/../_static/images/wps_describeprocess.png" />
+</div>
+<div class="section" id="execute">
+<h2>Execute<a class="headerlink" href="#execute" title="Permalink to this headline">¶</a></h2>
+<p>An <strong>Execute</strong> request returns the outputs of the process identified in the request. The <strong>Execute</strong> request can be sent through HTTP GET or HTTP POST with an XML request document.</p>
+<p>Let’s try and construct an <strong>Execute</strong> POST request. From our 8-day drill <strong>DescribeProcess</strong> request, we can see that we will need to define a <code class="docutils literal notranslate"><span class="pre">start_datetime</span></code>, an <code class="docutils literal notranslate"><span class="pre">end_datetime</span></code> and our polygon <code class="docutils literal notranslate"><span class="pre">geometry</span></code>.</p>
+<p>For this example, we will use a <code class="docutils literal notranslate"><span class="pre">start_datetime</span></code> of <strong>2002-02-15T00:00</strong> and an <code class="docutils literal notranslate"><span class="pre">end_datetime</span></code> of <strong>2002-03-15T00:00</strong></p>
+<div class="section" id="geometry-defining-a-region-in-geojson">
+<h3>Geometry - defining a region in GeoJSON<a class="headerlink" href="#geometry-defining-a-region-in-geojson" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://geojson.io">geojson.io</a> allows us to draw polygons and get their gjson representation.</p>
+<p>Let’s first navigate to the <a class="reference external" href="http://geojson.io">geojson.io</a> webpage:</p>
+<img alt="_notebook/gsky/../_static/images/geojson1.png" src="_notebook/gsky/../_static/images/geojson1.png" />
+<p>Now we can zoom into an area of interest:</p>
+<img alt="_notebook/gsky/../_static/images/geojson1b.png" src="_notebook/gsky/../_static/images/geojson1b.png" />
+<img alt="_notebook/gsky/../_static/images/geojson2.png" src="_notebook/gsky/../_static/images/geojson2.png" />
+<p>Next let’s use the <em>Draw Polygon</em> or <em>Draw rectangle</em> tools to draw a bounding box over the area we are interested in (for this example, we are looking in Western Australia):</p>
+<img alt="_notebook/gsky/../_static/images/geojson3.png" src="_notebook/gsky/../_static/images/geojson3.png" />
+<p>Finally, we can copy over the coordinates from the json output:</p>
+<img alt="_notebook/gsky/../_static/images/geojson4.png" src="_notebook/gsky/../_static/images/geojson4.png" />
+<p>which for our example is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">{&quot;type&quot;:&quot;Polygon&quot;,&quot;coordinates&quot;:[[[116.2,-30.4],[123.0,-30.4],[123.0,-26.3],[116.2,-26.3],[116.2,-30.4]]]}</span></code></p>
+<p>Finally, we need to build our <strong>Execute</strong> POST request.</p>
+<p>Below is an example of such a request where we have inserted our <code class="docutils literal notranslate"><span class="pre">start_datetime</span></code>, <code class="docutils literal notranslate"><span class="pre">end_datetime</span></code> and <code class="docutils literal notranslate"><span class="pre">geometry</span></code>:</p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;wps:Execute</span> <span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="na">service=</span><span class="s">&quot;WPS&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/wps/1.0.0&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs&quot;</span> <span class="na">xmlns:wps=</span><span class="s">&quot;http://www.opengis.net/wps/1.0.0&quot;</span> <span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows/1.1&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span> <span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span> <span class="na">xmlns:wcs=</span><span class="s">&quot;http://www.opengis.net/wcs/1.1.1&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/wps/1.0.0 http://schemas.opengis.net/wps/1.0.0/wpsAll.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ows:Identifier&gt;</span>8-day drill<span class="nt">&lt;/ows:Identifier&gt;</span>
+<span class="nt">&lt;wps:DataInputs&gt;</span>
+<span class="nt">&lt;wps:Input&gt;</span>
+        <span class="nt">&lt;ows:Identifier&gt;</span>start_datetime<span class="nt">&lt;/ows:Identifier&gt;</span>
+        <span class="nt">&lt;wps:Data&gt;</span>
+                <span class="nt">&lt;wps:ComplexData&gt;</span>{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;timestamp&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;format&quot;:&quot;date-time&quot;,&quot;date-time&quot;:&quot;2002-02-15T00:00&quot;}}}<span class="nt">&lt;/wps:ComplexData&gt;</span>
+        <span class="nt">&lt;/wps:Data&gt;</span>
+<span class="nt">&lt;/wps:Input&gt;</span>
+<span class="nt">&lt;wps:Input&gt;</span>
+        <span class="nt">&lt;ows:Identifier&gt;</span>end_datetime<span class="nt">&lt;/ows:Identifier&gt;</span>
+        <span class="nt">&lt;wps:Data&gt;</span>
+                <span class="nt">&lt;wps:ComplexData&gt;</span>{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;timestamp&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;format&quot;:&quot;date-time&quot;,&quot;date-time&quot;:&quot;2002-03-15T00:00&quot;}}}<span class="nt">&lt;/wps:ComplexData&gt;</span>
+        <span class="nt">&lt;/wps:Data&gt;</span>
+<span class="nt">&lt;/wps:Input&gt;</span>
+<span class="nt">&lt;wps:Input&gt;</span>
+        <span class="nt">&lt;ows:Identifier&gt;</span>geometry<span class="nt">&lt;/ows:Identifier&gt;</span>
+        <span class="nt">&lt;wps:Data&gt;</span>
+                <span class="nt">&lt;wps:ComplexData&gt;</span>{&quot;type&quot;:&quot;FeatureCollection&quot;,&quot;features&quot;:[{&quot;type&quot;:&quot;Feature&quot;,&quot;geometry&quot;:{&quot;type&quot;:&quot;Polygon&quot;,&quot;coordinates&quot;:[[[116.2,-30.4],[123.0,-30.4],[123.0,-26.3],[116.2,-26.3],[116.2,-30.4]]]}}]}<span class="nt">&lt;/wps:ComplexData&gt;</span>
+        <span class="nt">&lt;/wps:Data&gt;</span>
+<span class="nt">&lt;/wps:Input&gt;</span>
+<span class="nt">&lt;/wps:DataInputs&gt;</span>
+<span class="nt">&lt;wps:ResponseForm&gt;</span>
+<span class="nt">&lt;wps:ResponseDocument</span> <span class="na">storeExecuteResponse=</span><span class="s">&quot;true&quot;</span> <span class="na">status=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/wps:ResponseForm&gt;</span>
+<span class="nt">&lt;/wps:Execute&gt;</span>
+
+
+Now let&#39;s save the request above as an xml (e.g. payload.xml)
+</pre></div>
+</div>
+<p>To run our WPS request, open a terminal with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -X POST -d &#39;@payload.xml&#39; -o result.xml http://130.56.242.16/ows/edge/generic_wps?service=WPS&amp;request=Execute
+</pre></div>
+</div>
+<p>We can also run this command in ipython/Jupyter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s1">&#39;curl&#39;</span><span class="p">,</span> <span class="s1">&#39;-X&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="s1">&#39;@payload.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;result.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;http://130.56.242.16/ows/edge/generic_wps?service=WPS&amp;request=Execute&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

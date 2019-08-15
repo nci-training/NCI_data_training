@@ -1,0 +1,1055 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Access OFAM and Himawari 8 Data &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Access OFAM and Himawari 8 Data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/Python_NetCDF_OFAM_Himawari8.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Access-OFAM-and-Himawari-8-Data">
+<h1>Access OFAM and Himawari 8 Data<a class="headerlink" href="#Access-OFAM-and-Himawari-8-Data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="In-this-notebook:">
+<h2>In this notebook:<a class="headerlink" href="#In-this-notebook:" title="Permalink to this headline">¶</a></h2>
+<p>The following will go through how to:</p>
+<ul class="simple">
+<li>Access netCDF data locally from /g/data</li>
+<li>Extract/view data</li>
+<li>Combine data from different datasets</li>
+</ul>
+<p>The following material uses the CSIRO Ocean Forcasting Australian Model (OFAM) and the Bureau of Meteorology Himawari 8 Data Collections. For more information on the collection and licensing, please <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f9007_2850_9392_7175">click here for OFAM</a> and <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f9007_2850_9392_7175">here for Himawari 8</a>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="Launch-the-Jupyter-Notebook-application">
+<h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Using-pre-built-VDI-modules:">
+<h3>Using pre-built VDI modules:<a class="headerlink" href="#Using-pre-built-VDI-modules:" title="Permalink to this headline">¶</a></h3>
+<p>Load the <code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">ipython</span></code>, and <code class="docutils literal notranslate"><span class="pre">netcdf4-python</span></code> modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      $ module load python/2.7.11
+      $ module load python/2.7.11-matplotlib
+      $ module load ipython/4.2.0-py2.7
+      $ module load netcdf4-python/1.2.4-ncdf-4.3.3.1-py2.7
+
+Launch the Jupyter Notebook application:
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
+</pre></div>
+</div>
+<div class="admonition note">
+NOTE: This will launch the Notebook Dashboard within a new web browser window.</div>
+</div>
+<div class="section" id="Using-virtual-environments:">
+<h3>Using virtual environments:<a class="headerlink" href="#Using-virtual-environments:" title="Permalink to this headline">¶</a></h3>
+<p>To use along with customised python packages in a virtual environment, begin by following the steps in <strong>Python on the VDI: Part II</strong>.</p>
+<p>Once you have a virtual environment setup with your packages (including <code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>), proceed by loading the required modules and activating the virtual environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      $ module load python/2.7.11
+      $ module load proj/4.8.0
+      $ module load geos/3.5.0
+      $ source &lt;path_to_virtual_environment&gt;/bin/activate
+
+Then, as above, launch the Jupyter Notebook application:
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
+</pre></div>
+</div>
+<div class="admonition warning">
+NOTE: If you have already followed Python on the VDI: Part II, you should have created a virtual environemtn and installed all the required packages for this example.</div>
+</div>
+</div>
+<div class="section" id="Import-python-libraries">
+<h2>Import python libraries<a class="headerlink" href="#Import-python-libraries" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">Dataset</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Ocean-Forcasting-Australian-Model-(OFAM-v3.0)-Data">
+<h2>Ocean Forcasting Australian Model (OFAM v3.0) Data<a class="headerlink" href="#Ocean-Forcasting-Australian-Model-(OFAM-v3.0)-Data" title="Permalink to this headline">¶</a></h2>
+<p><strong>Geonetwork URL:</strong> <a class="reference external" href="http://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f9007_2850_9392_7175">http://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f9007_2850_9392_7175</a></p>
+<p><strong>NCI THREDDS Data Server:</strong> <a class="reference external" href="http://dapds00.nci.org.au/thredds/catalogs/gb6/catalog.html">http://dapds00.nci.org.au/thredds/catalogs/gb6/catalog.html</a></p>
+</div>
+<div class="section" id="Open-dataset">
+<h2>Open dataset<a class="headerlink" href="#Open-dataset" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ofam_path</span> <span class="o">=</span> <span class="s1">&#39;/g/data3/gb6/BRAN/BRAN_2015/OFAM/ocean_temp_2016_02.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ofam</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">ofam_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Take-a-look-at-the-file-contents">
+<h2>Take a look at the file contents<a class="headerlink" href="#Take-a-look-at-the-file-contents" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ofam</span><span class="o">.</span><span class="n">dimensions</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="n">ofam</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">ofam</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+
+<span class="nb">vars</span> <span class="o">=</span> <span class="n">ofam</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s1">&#39;Variable: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">item</span>
+    <span class="nb">print</span> <span class="s1">&#39;Dimensions: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ofam</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">dimensions</span>
+    <span class="nb">print</span> <span class="s1">&#39;Shape:    </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ofam</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+xt_ocean 3600
+yt_ocean 1500
+st_ocean 51
+Time 29
+nv 2
+st_edges_ocean 52
+Variable:       xt_ocean
+Dimensions:     (u&#39;xt_ocean&#39;,)
+Shape:          (3600,)
+
+Variable:       yt_ocean
+Dimensions:     (u&#39;yt_ocean&#39;,)
+Shape:          (1500,)
+
+Variable:       st_ocean
+Dimensions:     (u&#39;st_ocean&#39;,)
+Shape:          (51,)
+
+Variable:       Time
+Dimensions:     (u&#39;Time&#39;,)
+Shape:          (29,)
+
+Variable:       nv
+Dimensions:     (u&#39;nv&#39;,)
+Shape:          (2,)
+
+Variable:       st_edges_ocean
+Dimensions:     (u&#39;st_edges_ocean&#39;,)
+Shape:          (52,)
+
+Variable:       average_T1
+Dimensions:     (u&#39;Time&#39;,)
+Shape:          (29,)
+
+Variable:       average_T2
+Dimensions:     (u&#39;Time&#39;,)
+Shape:          (29,)
+
+Variable:       average_DT
+Dimensions:     (u&#39;Time&#39;,)
+Shape:          (29,)
+
+Variable:       Time_bounds
+Dimensions:     (u&#39;Time&#39;, u&#39;nv&#39;)
+Shape:          (29, 2)
+
+Variable:       temp
+Dimensions:     (u&#39;Time&#39;, u&#39;st_ocean&#39;, u&#39;yt_ocean&#39;, u&#39;xt_ocean&#39;)
+Shape:          (29, 51, 1500, 3600)
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Extract-and-plot-global-data-from-single-time-and-depth">
+<h2>Extract and plot global data from single time and depth<a class="headerlink" href="#Extract-and-plot-global-data-from-single-time-and-depth" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">ofam</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;yt_ocean&#39;</span><span class="p">][:]</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">ofam</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;xt_ocean&#39;</span><span class="p">][:]</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">ofam</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">][</span><span class="mi">22</span><span class="p">,</span><span class="mi">0</span><span class="p">,:,:]</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">ofam</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">][:]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x441bb50&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_12_1.png" src="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_12_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Do-the-same-for-a-smaller-subset">
+<h2>Do the same for a smaller subset<a class="headerlink" href="#Do-the-same-for-a-smaller-subset" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># time slice</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">22</span>
+
+<span class="n">T_s</span> <span class="o">=</span> <span class="n">ofam</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">:</span><span class="mi">800</span><span class="p">,</span> <span class="mi">1400</span><span class="p">:</span><span class="mi">2100</span><span class="p">]</span>
+<span class="n">lon_s</span> <span class="o">=</span> <span class="n">lon</span><span class="p">[</span><span class="mi">1400</span><span class="p">:</span><span class="mi">2100</span><span class="p">]</span>
+<span class="n">lat_s</span> <span class="o">=</span> <span class="n">lat</span><span class="p">[</span><span class="mi">200</span><span class="p">:</span><span class="mi">800</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon_s</span><span class="p">,</span> <span class="n">lat_s</span><span class="p">,</span> <span class="n">T_s</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_14_0.png" src="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_14_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Himawari-8">
+<h2>Himawari 8<a class="headerlink" href="#Himawari-8" title="Permalink to this headline">¶</a></h2>
+<p><strong>Geonetwork URL:</strong> <a class="reference external" href="http://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f9385_6463_3730_3415">http://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f9385_6463_3730_3415</a></p>
+<p><strong>NCI THREDDS Data Server:</strong> <a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog/rr5/satellite/obs/himawari8/FLDK/catalog.html">http://dapds00.nci.org.au/thredds/catalog/rr5/satellite/obs/himawari8/FLDK/catalog.html</a></p>
+<p>This example is from 23-Feb-16 at 0400.</p>
+</div>
+<div class="section" id="Open-dataset">
+<h2>Open dataset<a class="headerlink" href="#Open-dataset" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Data paths</span>
+<span class="n">h8b1_path</span> <span class="o">=</span> <span class="s1">&#39;/g/data2/rr5/satellite/obs/himawari8/FLDK/2016/02/23/0400/20160223040000-P1S-ABOM_OBS_B01-PRJ_GEOS141_2000-HIMAWARI8-AHI.nc&#39;</span>
+<span class="n">h8b2_path</span> <span class="o">=</span> <span class="s1">&#39;/g/data2/rr5/satellite/obs/himawari8/FLDK/2016/02/23/0400/20160223040000-P1S-ABOM_OBS_B02-PRJ_GEOS141_2000-HIMAWARI8-AHI.nc&#39;</span>
+<span class="n">h8b3_path</span> <span class="o">=</span> <span class="s1">&#39;/g/data2/rr5/satellite/obs/himawari8/FLDK/2016/02/23/0400/20160223040000-P1S-ABOM_OBS_B03-PRJ_GEOS141_2000-HIMAWARI8-AHI.nc&#39;</span>
+
+<span class="c1"># Open data</span>
+<span class="n">h8b1</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">h8b1_path</span><span class="p">)</span>
+<span class="n">h8b2</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">h8b2_path</span><span class="p">)</span>
+<span class="n">h8b3</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">h8b3_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Take-a-look-at-the-file-contents¶">
+<h2>Take a look at the file contents¶<a class="headerlink" href="#Take-a-look-at-the-file-contents¶" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">h8b1</span><span class="o">.</span><span class="n">dimensions</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="n">h8b1</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>  <span class="n">h8b1</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+
+<span class="nb">vars</span> <span class="o">=</span> <span class="n">h8b1</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s1">&#39;Variable: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">item</span>
+    <span class="nb">print</span> <span class="s1">&#39;Dimensions: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">h8b1</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">dimensions</span>
+    <span class="nb">print</span> <span class="s1">&#39;Shape:    </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">h8b1</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+time 1
+y 5500
+x 5500
+Variable:       time
+Dimensions:     (u&#39;time&#39;,)
+Shape:          (1,)
+
+Variable:       y
+Dimensions:     (u&#39;y&#39;,)
+Shape:          (5500,)
+
+Variable:       x
+Dimensions:     (u&#39;x&#39;,)
+Shape:          (5500,)
+
+Variable:       geostationary
+Dimensions:     ()
+Shape:          ()
+
+Variable:       scan_line_time
+Dimensions:     (u&#39;y&#39;,)
+Shape:          (5500,)
+
+Variable:       channel_0001_scaled_radiance
+Dimensions:     (u&#39;time&#39;, u&#39;y&#39;, u&#39;x&#39;)
+Shape:          (1, 5500, 5500)
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Extract-and-plot-global-data">
+<h2>Extract and plot global data<a class="headerlink" href="#Extract-and-plot-global-data" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b1</span> <span class="o">=</span> <span class="n">h8b1</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;channel_0001_scaled_radiance&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,:,:]</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="n">h8b2</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;channel_0002_scaled_radiance&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,:,:]</span>
+<span class="n">b3</span> <span class="o">=</span> <span class="n">h8b3</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;channel_0003_scaled_radiance&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,:,:]</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">h8b1</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][:]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">h8b1</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][:]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.image.AxesImage at 0x67dbb90&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_22_1.png" src="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_22_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Instead-of-looking-at-single-band,-let’s-make-an-RGB-image">
+<h2>Instead of looking at single band, let’s make an RGB image<a class="headerlink" href="#Instead-of-looking-at-single-band,-let’s-make-an-RGB-image" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vmin</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
+<span class="n">B1</span> <span class="o">=</span> <span class="n">b1</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">)</span> <span class="o">/</span> <span class="n">vmax</span> <span class="o">*</span> <span class="mi">255</span>
+<span class="n">B2</span> <span class="o">=</span> <span class="n">b2</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">)</span> <span class="o">/</span> <span class="n">vmax</span> <span class="o">*</span> <span class="mi">255</span>
+<span class="n">B3</span> <span class="o">=</span> <span class="n">b3</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">)</span> <span class="o">/</span> <span class="n">vmax</span> <span class="o">*</span> <span class="mi">255</span>
+
+<span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">B3</span><span class="p">,</span> <span class="n">B2</span><span class="p">,</span> <span class="n">B1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Plot image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="c1"># Add labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Himawari 8 </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Adjust tick mark size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_25_0.png" src="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_25_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Do-the-same-for-a-smaller-subset-(let’s-choose-roughly-the-same-region-as-the-OFAM-subset)">
+<h2>Do the same for a smaller subset (let’s choose roughly the same region as the OFAM subset)<a class="headerlink" href="#Do-the-same-for-a-smaller-subset-(let’s-choose-roughly-the-same-region-as-the-OFAM-subset)" title="Permalink to this headline">¶</a></h2>
+<p><strong>Note:</strong> In these examples, the subsets are specified directly by the index value but you could also query based on lat/lon values.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vmin</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
+<span class="n">B1</span> <span class="o">=</span> <span class="n">b1</span><span class="p">[</span><span class="mi">3300</span><span class="p">:</span><span class="mi">4500</span><span class="p">,</span><span class="mi">3000</span><span class="p">:</span><span class="mi">5000</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">)</span> <span class="o">/</span> <span class="n">vmax</span> <span class="o">*</span> <span class="mi">255</span>
+<span class="n">B2</span> <span class="o">=</span> <span class="n">b2</span><span class="p">[</span><span class="mi">3300</span><span class="p">:</span><span class="mi">4500</span><span class="p">,</span><span class="mi">3000</span><span class="p">:</span><span class="mi">5000</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">)</span> <span class="o">/</span> <span class="n">vmax</span> <span class="o">*</span> <span class="mi">255</span>
+<span class="n">B3</span> <span class="o">=</span> <span class="n">b3</span><span class="p">[</span><span class="mi">3300</span><span class="p">:</span><span class="mi">4500</span><span class="p">,</span><span class="mi">3000</span><span class="p">:</span><span class="mi">5000</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">)</span> <span class="o">/</span> <span class="n">vmax</span> <span class="o">*</span> <span class="mi">255</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">3000</span><span class="p">:</span><span class="mi">5000</span><span class="p">]</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">3300</span><span class="p">:</span><span class="mi">4500</span><span class="p">]</span>
+<span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">B3</span><span class="p">,</span> <span class="n">B2</span><span class="p">,</span> <span class="n">B1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Plot image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb</span> <span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="c1"># Add labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Himawari 8 </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Adjust tick mark size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_27_0.png" src="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_27_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Now-let’s-try-and-plot-both-datasets-in-the-same-plot…">
+<h2>Now let’s try and plot both datasets in the same plot…<a class="headerlink" href="#Now-let’s-try-and-plot-both-datasets-in-the-same-plot…" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="Cartopy-(based-on-Matplotlib-but-includes-support-for-different-coordinate-reference-systems)">
+<h2>Cartopy (based on Matplotlib but includes support for different coordinate reference systems)<a class="headerlink" href="#Cartopy-(based-on-Matplotlib-but-includes-support-for-different-coordinate-reference-systems)" title="Permalink to this headline">¶</a></h2>
+<p><strong>Note:</strong> On the VDI, the Cartopy package will have to be installed locally. Instructions at the end of this notebook if you do not already have Cartopy installed.</p>
+<div class="section" id="Let’s-first-replot-the-previous-Himawari-subset">
+<h3>Let’s first replot the previous Himawari subset<a class="headerlink" href="#Let’s-first-replot-the-previous-Himawari-subset" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Define the projection information of the image</span>
+<span class="n">img_proj</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">Geostationary</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="n">h8b1</span><span class="p">[</span><span class="s1">&#39;geostationary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">longitude_of_projection_origin</span><span class="p">,</span>
+                                  <span class="n">satellite_height</span><span class="o">=</span><span class="n">h8b1</span><span class="p">[</span><span class="s1">&#39;geostationary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">satellite_height</span><span class="p">)</span>
+<span class="c1"># The extents of the image we are plotting</span>
+<span class="n">img_extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="c1"># Setup the axes projection</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Miller</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">h8b1</span><span class="p">[</span><span class="s1">&#39;geostationary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">longitude_of_projection_origin</span><span class="p">)))</span>
+
+<span class="c1"># Extent of the axes in the plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="mi">150</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># Plot image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">img_proj</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">img_extent</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">)</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.image.AxesImage at 0x106df9d0&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_31_1.png" src="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_31_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Now-let’s-do-the-same-for-the-OFAM-data">
+<h3>Now let’s do the same for the OFAM data<a class="headerlink" href="#Now-let’s-do-the-same-for-the-OFAM-data" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Setup the axes projection</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Miller</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">h8b1</span><span class="p">[</span><span class="s1">&#39;geostationary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">longitude_of_projection_origin</span><span class="p">)))</span>
+
+<span class="c1"># Define the projection information of the image</span>
+<span class="n">img_proj</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+
+<span class="c1"># The extents of the image we are plotting</span>
+<span class="n">img_extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">lon_s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lon_s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">lat_s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">lat_s</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Extent of the axes in the plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="mi">150</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">T_s</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">img_proj</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">img_extent</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_33_0.png" src="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_33_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Now-combine…">
+<h2>Now combine…<a class="headerlink" href="#Now-combine…" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Setup the axes projection</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Miller</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">h8b1</span><span class="p">[</span><span class="s1">&#39;geostationary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">longitude_of_projection_origin</span><span class="p">)))</span>
+
+
+<span class="c1">### OFAM ###</span>
+
+<span class="n">img_proj</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+<span class="n">img_extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">lon_s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lon_s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">lat_s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">lat_s</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="mi">150</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">T_s</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">img_proj</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">img_extent</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">75</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+
+<span class="c1">### HIMAWARI ###</span>
+<span class="n">img_proj</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">Geostationary</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="n">h8b1</span><span class="p">[</span><span class="s1">&#39;geostationary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">longitude_of_projection_origin</span><span class="p">,</span>
+                                  <span class="n">satellite_height</span><span class="o">=</span><span class="n">h8b1</span><span class="p">[</span><span class="s1">&#39;geostationary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">satellite_height</span><span class="p">)</span>
+<span class="n">img_extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="mi">150</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">img_proj</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">img_extent</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.image.AxesImage at 0x4406d90&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_35_1.png" src="../../_images/_notebook_climate_Python_NetCDF_OFAM_Himawari8_35_1.png" />
+</div>
+</div>
+<div class="admonition note">
+<dl class="docutils">
+<dt>EXTRA: (1) Try playing around with different plotting options. For example, plotting contours instead of using “imshow”.</dt>
+<dd><ol class="first last arabic simple" start="2">
+<li>Try merging another dataset of interest with either of the ones above.</li>
+</ol>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="Close-files">
+<h2>Close files<a class="headerlink" href="#Close-files" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="To-install-Cartopy-on-the-VDI-(within-a-virtual-envrionment):">
+<h3>To install Cartopy on the VDI (within a virtual envrionment):<a class="headerlink" href="#To-install-Cartopy-on-the-VDI-(within-a-virtual-envrionment):" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">First load the required modules (these will need to be loaded before activating the virtual environment each time you want to use Cartopy):</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">python/2.7.11</span></code> <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">proj/4.8.0</span></code> <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">geos/3.5.0</span></code></p>
+</li>
+<li><p class="first">Activate your virtual environment</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">&lt;venv&gt;/bin/activate</span></code></p>
+</li>
+<li><p class="first">If you do not already have Cython installed, install:</p>
+<p>$ pip install cython</p>
+</li>
+<li><p class="first">Install Cartopy (v0.13.0, later versions need more recent proj4 library that is not yet available on the VDI)</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cartopy==0.13.0</span></code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

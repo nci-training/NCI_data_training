@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Web Map Service (WMS) &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Web Map Service (WMS)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/gsky/WMS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="web-map-service-wms">
+<h1>Web Map Service (WMS)<a class="headerlink" href="#web-map-service-wms" title="Permalink to this headline">¶</a></h1>
+<p>NCI’s GSKY Data Server supports the Open Geospatial Consortium (OGC) Web Map Service (WMS), which is a standard protocol for serving geospatial data as images (e.g., PNG).</p>
+<div class="section" id="constructing-wms-requests">
+<h2>Constructing WMS Requests<a class="headerlink" href="#constructing-wms-requests" title="Permalink to this headline">¶</a></h2>
+<p>To request a spatial subset of data through GSKY using WMS, a <strong>GetMap</strong> URL defining the subset has to be constructed. This URL can be used within a web browser to communicate to the GSKY Data Server, which will return the requested map image of the subset.</p>
+<p><strong>For example, the GetMap request takes the following form:</strong></p>
+<p><a class="reference external" href="http://gsky.nci.org.au/ows/dea">http://gsky.nci.org.au/ows/dea</a>?<span class="red">service</span>=WMS&amp;<span class="red">version</span>=1.3.0&amp;<span class="red">request</span>=GetMap&amp;<span class="red">layers</span>=<span class="green">value</span>&amp;<span class="red">crs</span>=<span class="green">value</span>
+&amp;<span class="red">styles</span>=<span class="green">value</span> &amp;<span class="red">format</span>=<span class="green">value</span> &amp;<span class="blue">bbox</span>=<span class="green">value</span>&amp;<span class="red">width</span>=<span class="green">value</span> &amp;<span class="red">height</span>=<span class="green">value</span>
+&amp;<span class="blue">colorscalerange</span>=<span class="green">value</span> &amp;<span class="blue">transparent</span>=<span class="green">value</span>&amp;<span class="blue">time</span>=<span class="green">value</span>&amp;<span class="blue">Styles</span>=<span class="green">value</span></p>
+<p>where <span class="red">red</span> indicates required fields, <span class="blue">blue</span> are optional, and <span class="green">green</span> are where input values relevant to the dataset and user request need to be defined.</p>
+<p><strong>GetMap parameters:</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="19%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required/Optional</th>
+<th class="head">Input</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>service</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">WMS</span></code></td>
+</tr>
+<tr class="row-odd"><td>version</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">1.1.1</span> <span class="pre">**</span></code>, <code class="docutils literal notranslate"><span class="pre">1.3.0</span> <span class="pre">(default)</span></code></td>
+</tr>
+<tr class="row-even"><td>request</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">GetMap</span></code></td>
+</tr>
+<tr class="row-odd"><td>layers</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;variable&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td>crs</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;crs_value&gt;</span></code></td>
+</tr>
+<tr class="row-odd"><td>format</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">image/png</span></code>, <code class="docutils literal notranslate"><span class="pre">image/png;mode=32bit</span></code>, <code class="docutils literal notranslate"><span class="pre">image/gif</span></code>, <code class="docutils literal notranslate"><span class="pre">image/jpeg</span></code></td>
+</tr>
+<tr class="row-even"><td>bbox</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;ymin,xmin,ymax,xmax&gt;</span></code></td>
+</tr>
+<tr class="row-odd"><td>width</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">width</span> <span class="pre">in</span> <span class="pre">pixels</span></code></td>
+</tr>
+<tr class="row-even"><td>height</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">height</span> <span class="pre">in</span> <span class="pre">pixels</span></code></td>
+</tr>
+<tr class="row-odd"><td>colorscalerange</td>
+<td>Optional</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;min,max&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td>transparent</td>
+<td>Optional</td>
+<td><code class="docutils literal notranslate"><span class="pre">True,</span> <span class="pre">False</span></code></td>
+</tr>
+<tr class="row-odd"><td>time</td>
+<td>Optional</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;time_value&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td>Styles</td>
+<td>Optional</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;style_name&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">**</span></code> <strong>Syntax differences for v1.1.1 GetMap requests:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Use <code class="docutils literal notranslate"><span class="pre">src</span></code> in place of <code class="docutils literal notranslate"><span class="pre">crs</span></code></li>
+<li>The order of <code class="docutils literal notranslate"><span class="pre">bbox</span></code> values are: <code class="docutils literal notranslate"><span class="pre">&lt;xmin,ymin,xmax,ymax&gt;</span></code></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="wms-getcapabilities-request">
+<h2>WMS GetCapabilities request<a class="headerlink" href="#wms-getcapabilities-request" title="Permalink to this headline">¶</a></h2>
+<p><strong>Where do you find valid input values?</strong></p>
+<p>In order to contruct the <strong>GetMap</strong> URL, a <strong>GetCapabilities</strong> request can be made to the server.
+This requests returns an xml describing the available WMS parameters (metadata, services, and data)
+made available by NCI’s GSKY server.</p>
+<p><strong>GetCapabilities example:</strong></p>
+<blockquote>
+<div><a class="reference external" href="http://gsky.nci.org.au/ows/dea?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities">http://gsky.nci.org.au/ows/dea?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities</a></div></blockquote>
+<img alt="_notebook/gsky/../_static/images/gsky_wms1.png" src="_notebook/gsky/../_static/images/gsky_wms1.png" />
+</div>
+<div class="section" id="wms-getmap-request">
+<h2>WMS GetMap request<a class="headerlink" href="#wms-getmap-request" title="Permalink to this headline">¶</a></h2>
+<p>Using the information returned from a GetCapabilities request, a GetMap URL can be constructed
+and then entered into the address bar of any web browser.</p>
+<p><strong>Example GetMap request:</strong></p>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://gsky.nci.org.au/ows/dea">http://gsky.nci.org.au/ows/dea</a>?</div>
+<div class="line"><span class="red">service</span>=WMS&amp;</div>
+<div class="line"><span class="red">layers</span>=landsat8_nbart_16day&amp;</div>
+<div class="line"><span class="red">crs</span>=EPSG:4326&amp;</div>
+<div class="line"><span class="red">format</span>=image/png&amp;</div>
+<div class="line"><span class="red">request</span>=GetMap&amp;</div>
+<div class="line"><span class="red">height</span>=512&amp;</div>
+<div class="line"><span class="red">width</span> =512&amp;</div>
+<div class="line"><span class="red">version</span>=1.3.0&amp;</div>
+<div class="line"><span class="red">bbox</span>=-37,147,-35,148&amp;</div>
+<div class="line"><span class="red">time</span>=2013-04-20T00:00:00.000Z&amp;</div>
+<div class="line"><span class="red">transparent</span>=FALSE&amp;</div>
+<div class="line"><span class="red">Styles</span>=tc</div>
+</div>
+<p><a class="reference external" href="http://gsky.nci.org.au/ows/dea?service=WMS&amp;layers=landsat8_nbart_16day&amp;crs=EPSG:4326&amp;format=image/png&amp;request=GetMap&amp;height=512&amp;width=512&amp;version=1.3.0&amp;bbox=-37,147,-35,148&amp;time=2013-04-20T00:00:00.000Z&amp;transparent=FALSE&amp;Styles=tc">http://gsky.nci.org.au/ows/dea?service=WMS&amp;layers=landsat8_nbart_16day&amp;crs=EPSG:4326&amp;format=image/png &amp;request=GetMap&amp;height=512&amp;width=512&amp;version=1.3.0&amp;bbox=-37,147,-35,148 &amp;time=2013-04-20T00:00:00.000Z&amp;transparent=FALSE&amp;Styles=tc</a></p>
+<blockquote>
+<div><p><strong>If the URL is correctly formed, the requested map will be displayed.</strong></p>
+<img alt="_notebook/gsky/../_static/images/gsky_wms2a.png" src="_notebook/gsky/../_static/images/gsky_wms2a.png" />
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

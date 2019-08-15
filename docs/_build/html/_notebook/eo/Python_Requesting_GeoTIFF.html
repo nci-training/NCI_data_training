@@ -1,0 +1,773 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Requesting GeoTIFF data through NCI’s THREDDS Data Server &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Requesting GeoTIFF data through NCI’s THREDDS Data Server</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/eo/Python_Requesting_GeoTIFF.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Requesting-GeoTIFF-data-through-NCI’s-THREDDS-Data-Server">
+<h1>Requesting GeoTIFF data through NCI’s THREDDS Data Server<a class="headerlink" href="#Requesting-GeoTIFF-data-through-NCI’s-THREDDS-Data-Server" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="In-this-notebook:">
+<h2>In this notebook:<a class="headerlink" href="#In-this-notebook:" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Manually using THREDDS Web Coverage Service</li>
+<li>Using Python and the OWSLib package</li>
+</ul>
+<p>The following material uses Geoscience Australia’s Landsat 8 Data Collection which is available under the Create Commons License 4.0 through NCI’s THREDDS Data Server. For more information on the collection and licensing, please click <a class="reference external" href="http://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_8228_7170_1486">here</a>.</p>
+<hr class="docutils" />
+<div class="admonition note">
+NOTE: Part I is a review of how to construct WCS requests manually (included for reference). You might want to skip ahead to Part II on how to make similar requests using Python.</div>
+</div>
+<div class="section" id="1.-Manually-using-THREDDS-Web-Coverage-Service-(WCS)">
+<h2>1. Manually using THREDDS Web Coverage Service (WCS)<a class="headerlink" href="#1.-Manually-using-THREDDS-Web-Coverage-Service-(WCS)" title="Permalink to this headline">¶</a></h2>
+<p>To extract data through the Web Coverage Service, a <code class="docutils literal notranslate"><span class="pre">GetCoverage</span></code> URL request needs to be constructed.</p>
+<p><strong>The request takes the following form:</strong></p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">http://dapds00.nci.org.au/thredds/wcs/&lt;thredds-path-to-data-file&gt;?</span></code>service=WCS&amp;version=1.0.0&amp;request=GetCoverage&amp;coverage=value&amp;format=value&amp;bbox=value&amp;time=value&amp;crs=valuevalue</div></blockquote>
+<p>where red indicates required fields, blue are optional, and green are where inputs values relevant to the dataset and user request need to be defined.</p>
+<p><strong>GetCoverage parameters:</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="25%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Required/Optional</th>
+<th class="head">Input</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>service</td>
+<td>Required</td>
+<td>WCS</td>
+</tr>
+<tr class="row-odd"><td>version</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">1.0.0</span></code></td>
+</tr>
+<tr class="row-even"><td>request</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">GetCoverage</span></code></td>
+</tr>
+<tr class="row-odd"><td>coverage</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;variable&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td>format</td>
+<td>Required</td>
+<td><code class="docutils literal notranslate"><span class="pre">GeoTIFF</span></code>, <code class="docutils literal notranslate"><span class="pre">GeoTIFF_Float</span></code>, <code class="docutils literal notranslate"><span class="pre">NetCDF3</span></code></td>
+</tr>
+<tr class="row-odd"><td>bbox<code class="docutils literal notranslate"><span class="pre">*</span></code></td>
+<td>Required/Optional</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;xmin,ymin,xmax,ymax&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td>time<code class="docutils literal notranslate"><span class="pre">*</span></code></td>
+<td>Required/Optional</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;time_value&gt;</span></code></td>
+</tr>
+<tr class="row-odd"><td>srs, or crs</td>
+<td>Optional</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;srs_value&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;crs_value&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">*</span></code>For large files and/or files with a time dimension, these might be necessary. If <code class="docutils literal notranslate"><span class="pre">bbox</span></code> is not defined the entire spatial domain will be returned (if server limits allow) and if <code class="docutils literal notranslate"><span class="pre">time</span></code> is not specified, either the first or sometimes last timestep is returned.</p>
+<div class="section" id="Once-providing-the-appropriate-values-for-the-dataset,-a-URL-can-now-be-generated-that-will-return-the-requested-coverage-(in-this-example-the-output-is-returned-in-the-GeoTIFF-format):">
+<h3>Once providing the appropriate values for the dataset, a URL can now be generated that will return the requested coverage (in this example the output is returned in the GeoTIFF format):<a class="headerlink" href="#Once-providing-the-appropriate-values-for-the-dataset,-a-URL-can-now-be-generated-that-will-return-the-requested-coverage-(in-this-example-the-output-is-returned-in-the-GeoTIFF-format):" title="Permalink to this headline">¶</a></h3>
+<p>(When selecting or inputing this URL into a web browser, a file download should commence.)</p>
+<blockquote>
+<div><a class="reference external" href="http://dapds00.nci.org.au/thredds/wcs/rs0/datacube/002/LS8_OLI_NBART/">http://dapds00.nci.org.au/thredds/wcs/rs0/datacube/002/LS8_OLI_NBART/</a>-<a href="#id1"><span class="problematic" id="id2">10_</span></a>-11/<a href="#id3"><span class="problematic" id="id4">LS8_OLI_NBART_3577_</span></a>-<a href="#id5"><span class="problematic" id="id6">10_</span></a>-11_20160109015321000000.nc?service=WCS&amp;version=1.0.0&amp;request=GetCoverage&amp;coverage=swir1&amp;format=GeoTIFF&amp;time=2016-01-09T01:53:21Z</div></blockquote>
+</div>
+<div class="section" id="Where-to-find-the-valid-input-values?">
+<h3>Where to find the valid input values?<a class="headerlink" href="#Where-to-find-the-valid-input-values?" title="Permalink to this headline">¶</a></h3>
+<p>The WCS link on NCI’s THREDDS catalog page will retrieve a WCS <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> request. This provides a list of the valid WCS operations and parameters, which can be helpful in constructing <code class="docutils literal notranslate"><span class="pre">GetCoverage</span></code> requests. If the <code class="docutils literal notranslate"><span class="pre">request=</span></code> option in the URL is changed to <code class="docutils literal notranslate"><span class="pre">DescribeCoverage</span></code>, additional information can be found.</p>
+<p>Start by selecting the desired file from NCI THREDDS Catalog page:</p>
+<p>Then by selecting the <strong>WCS</strong> link:</p>
+<p>This will display the <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> page:</p>
+<p><strong>GetCapabilities example:</strong></p>
+<p><a class="reference external" href="http://dapds00.nci.org.au/thredds/wcs/rs0/datacube/002/LS8_OLI_NBART/">http://dapds00.nci.org.au/thredds/wcs/rs0/datacube/002/LS8_OLI_NBART/</a>-<a href="#id7"><span class="problematic" id="id8">10_</span></a>-11/<a href="#id9"><span class="problematic" id="id10">LS8_OLI_NBART_3577_</span></a>-<a href="#id11"><span class="problematic" id="id12">10_</span></a>-11_20160109015321000000.nc?service=WCS&amp;version=1.0.0&amp;request=GetCapabilities</p>
+<p><strong>DescribeCoverage example:</strong> <a class="reference external" href="http://dapds00.nci.org.au/thredds/wcs/rs0/datacube/002/LS8_OLI_NBART/">http://dapds00.nci.org.au/thredds/wcs/rs0/datacube/002/LS8_OLI_NBART/</a>-<a href="#id13"><span class="problematic" id="id14">10_</span></a>-11/<a href="#id15"><span class="problematic" id="id16">LS8_OLI_NBART_3577_</span></a>-<a href="#id17"><span class="problematic" id="id18">10_</span></a>-11_20160109015321000000.nc?service=WCS&amp;version=1.0.0&amp;request=DescribeCoverage</p>
+</div>
+<div class="section" id="Let’s-verify-the-request-using-GDAL">
+<h3>Let’s verify the request using GDAL<a class="headerlink" href="#Let’s-verify-the-request-using-GDAL" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">gdal</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Open/extract-data">
+<h3>Open/extract data<a class="headerlink" href="#Open/extract-data" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s1">&#39;./data/WCS346460317402991834.tif&#39;</span><span class="p">)</span>
+<span class="n">band</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Plot">
+<h3>Plot<a class="headerlink" href="#Plot" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_earth&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.image.AxesImage at 0x111bb7110&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_eo_Python_Requesting_GeoTIFF_12_1.png" src="../../_images/_notebook_eo_Python_Requesting_GeoTIFF_12_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="2.-Using-Python-and-the-OWSLib">
+<h2>2. Using Python and the OWSLib<a class="headerlink" href="#2.-Using-Python-and-the-OWSLib" title="Permalink to this headline">¶</a></h2>
+<p>OWSLib is a useful Python package when working with Open Geospatial Consortium (OGC) web service standards, such as Web Coverage Service (WCS) and Web Map Service (WMS). For more information: <a class="reference external" href="https://github.com/geopython/OWSLib">https://github.com/geopython/OWSLib</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">owslib.wcs</span> <span class="k">import</span> <span class="n">WebCoverageService</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Start-with-the-base-WCS-URL-from-THREDDS">
+<h3>Start with the base WCS URL from THREDDS<a class="headerlink" href="#Start-with-the-base-WCS-URL-from-THREDDS" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">http://dapds00.nci.org.au/thredds/wcs/&lt;thredds-path-to-data-file.nc&gt;</span></code></div></blockquote>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wcs_url</span> <span class="o">=</span> <span class="s1">&#39;http://dapds00.nci.org.au/thredds/wcs/rs0/datacube/002/LS8_OLI_NBART/-10_-11/LS8_OLI_NBART_3577_-10_-11_20160109015321000000.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Use-OWSLib-to-retrieve-server-metadata">
+<h3>Use OWSLib to retrieve server metadata<a class="headerlink" href="#Use-OWSLib-to-retrieve-server-metadata" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wcs</span> <span class="o">=</span> <span class="n">WebCoverageService</span><span class="p">(</span><span class="n">wcs_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">layers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">wcs</span><span class="o">.</span><span class="n">contents</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available layers: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="n">l</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Available layers:
+
+band_6
+band_7
+band_4
+band_5
+band_2
+band_3
+band_1
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Select-desired-layer">
+<h3>Select desired layer<a class="headerlink" href="#Select-desired-layer" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b2</span> <span class="o">=</span> <span class="n">wcs</span><span class="p">[</span><span class="s1">&#39;coastal_aerosol&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="The-layer-will-also-have-associated-metadata.-Several-of-these-fields-will-be-used-directly-in-the-GetCoverage-request-in-the-next-few-steps.">
+<h3>The layer will also have associated metadata. Several of these fields will be used directly in the GetCoverage request in the next few steps.<a class="headerlink" href="#The-layer-will-also-have-associated-metadata.-Several-of-these-fields-will-be-used-directly-in-the-GetCoverage-request-in-the-next-few-steps." title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">b2</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b2</span><span class="o">.</span><span class="n">supportedFormats</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b2</span><span class="o">.</span><span class="n">supportedCRS</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b2</span><span class="o">.</span><span class="n">boundingBoxWGS84</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Nadir BRDF Adjusted Reflectance 0.45-0.51 microns (Blue)
+[&#39;GeoTIFF&#39;, &#39;GeoTIFF_Float&#39;, &#39;NetCDF3&#39;]
+[urn:ogc:def:crs:EPSG::9822, urn:ogc:def:crs:::-1]
+(122.44965707180641, -19.330552895498727, 123.46537802472493, -18.367507163631146)
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="The-available-time-positions-for-the-file:">
+<h3>The available time positions for the file:<a class="headerlink" href="#The-available-time-positions-for-the-file:" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">b2</span><span class="o">.</span><span class="n">timepositions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;2013-03-26T01:44:16.825Z&#39;, &#39;2013-03-26T01:44:40.664Z&#39;, &#39;2013-04-15T01:51:20.207Z&#39;, &#39;2013-04-15T01:51:44.145Z&#39;, &#39;2013-04-24T01:45:06.111Z&#39;, &#39;2013-04-24T01:45:30.055Z&#39;, &#39;2013-05-01T01:51:09.559Z&#39;, &#39;2013-05-26T01:45:23.116Z&#39;, &#39;2013-05-26T01:45:47.049Z&#39;, &#39;2013-06-11T01:45:20.457Z&#39;, &#39;2013-06-11T01:45:44.393Z&#39;, &#39;2013-06-18T01:51:27.541Z&#39;, &#39;2013-06-18T01:51:51.472Z&#39;, &#39;2013-06-27T01:45:16.815Z&#39;, &#39;2013-06-27T01:45:40.752Z&#39;, &#39;2013-07-04T01:51:05.656Z&#39;, &#39;2013-07-04T01:51:29.589Z&#39;, &#39;2013-07-04T01:51:53.527Z&#39;, &#39;2013-07-11T01:57:17.054Z&#39;, &#39;2013-07-11T01:57:40.987Z&#39;, &#39;2013-07-13T01:45:19.185Z&#39;, &#39;2013-07-13T01:45:43.113Z&#39;, &#39;2013-07-20T01:51:04.427Z&#39;, &#39;2013-07-20T01:51:28.362Z&#39;, &#39;2013-07-20T01:51:52.297Z&#39;, &#39;2013-07-27T01:57:16.693Z&#39;, &#39;2013-07-27T01:57:40.629Z&#39;, &#39;2013-07-29T01:45:19.509Z&#39;, &#39;2013-07-29T01:45:43.446Z&#39;, &#39;2013-08-05T01:51:07.525Z&#39;, &#39;2013-08-05T01:51:31.463Z&#39;, &#39;2013-08-05T01:51:55.406Z&#39;, &#39;2013-08-12T01:57:18.201Z&#39;, &#39;2013-08-12T01:57:42.144Z&#39;, &#39;2013-08-14T01:45:20.233Z&#39;, &#39;2013-08-14T01:45:44.171Z&#39;, &#39;2013-08-21T01:51:08.910Z&#39;, &#39;2013-08-21T01:51:32.848Z&#39;, &#39;2013-08-21T01:51:56.786Z&#39;, &#39;2013-08-28T01:57:20.648Z&#39;, &#39;2013-08-30T01:45:22.875Z&#39;, &#39;2013-08-30T01:45:46.811Z&#39;, &#39;2013-09-13T01:57:17.279Z&#39;, &#39;2013-09-15T01:45:18.710Z&#39;, &#39;2013-09-15T01:45:42.646Z&#39;, &#39;2013-09-22T01:51:01.875Z&#39;, &#39;2013-09-22T01:51:25.809Z&#39;, &#39;2013-09-22T01:51:49.742Z&#39;, &#39;2013-10-01T01:45:12.731Z&#39;, &#39;2013-10-01T01:45:36.670Z&#39;, &#39;2013-10-08T01:51:00.115Z&#39;, &#39;2013-10-08T01:51:24.047Z&#39;, &#39;2013-10-08T01:51:47.980Z&#39;, &#39;2013-10-15T01:57:09.508Z&#39;, &#39;2013-10-15T01:57:33.440Z&#39;, &#39;2013-10-17T01:45:10.957Z&#39;, &#39;2013-10-17T01:45:34.894Z&#39;, &#39;2013-10-24T01:50:53.341Z&#39;, &#39;2013-10-24T01:51:17.273Z&#39;, &#39;2013-10-24T01:51:41.206Z&#39;, &#39;2013-10-31T01:57:01.276Z&#39;, &#39;2013-10-31T01:57:25.209Z&#39;, &#39;2013-11-02T01:45:04.210Z&#39;, &#39;2013-11-02T01:45:28.141Z&#39;, &#39;2013-11-09T01:50:51.426Z&#39;, &#39;2013-11-09T01:51:15.358Z&#39;, &#39;2013-11-09T01:51:39.296Z&#39;, &#39;2013-11-16T01:56:59.138Z&#39;, &#39;2013-11-18T01:45:06.532Z&#39;, &#39;2013-11-18T01:45:23.721Z&#39;, &#39;2013-11-25T01:51:13.529Z&#39;, &#39;2013-11-25T01:51:30.714Z&#39;, &#39;2013-12-02T01:56:55.122Z&#39;, &#39;2013-12-11T01:50:42.215Z&#39;, &#39;2013-12-11T01:51:06.153Z&#39;, &#39;2013-12-11T01:51:30.096Z&#39;, &#39;2013-12-18T01:56:47.111Z&#39;, &#39;2013-12-18T01:57:11.049Z&#39;, &#39;2013-12-20T01:44:47.684Z&#39;, &#39;2013-12-20T01:45:11.622Z&#39;, &#39;2013-12-27T01:51:03.531Z&#39;, &#39;2013-12-27T01:51:20.926Z&#39;]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Constructing-and-executing-the-WCS-GetCoverage-request">
+<h3>Constructing and executing the WCS GetCoverage request<a class="headerlink" href="#Constructing-and-executing-the-WCS-GetCoverage-request" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">output</span> <span class="o">=</span> <span class="n">wcs</span><span class="o">.</span><span class="n">getCoverage</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;coastal_aerosol&#39;</span><span class="p">,</span>
+                         <span class="n">bbox</span><span class="o">=</span><span class="p">(</span><span class="n">b2</span><span class="o">.</span><span class="n">boundingBoxWGS84</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">b2</span><span class="o">.</span><span class="n">boundingBoxWGS84</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">b2</span><span class="o">.</span><span class="n">boundingBoxWGS84</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">b2</span><span class="o">.</span><span class="n">boundingBoxWGS84</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
+                         <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;GeoTIFF&#39;</span><span class="p">,</span>
+                         <span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2016-01-09T01:53:21Z&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Write-received-output-to-a-file">
+<h3>Write received output to a file<a class="headerlink" href="#Write-received-output-to-a-file" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;./data/owslib_wcs_file.tif&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Verify-again-with-GDAL">
+<h3>Verify again with GDAL<a class="headerlink" href="#Verify-again-with-GDAL" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s1">&#39;./data/owslib_wcs_file.tif&#39;</span><span class="p">)</span>
+<span class="n">band</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_earth&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.image.AxesImage at 0x12827f550&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_eo_Python_Requesting_GeoTIFF_31_1.png" src="../../_images/_notebook_eo_Python_Requesting_GeoTIFF_31_1.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

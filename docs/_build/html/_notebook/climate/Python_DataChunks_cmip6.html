@@ -1,0 +1,894 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data Chunking with Dask &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Data Chunking with Dask</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/Python_DataChunks_cmip6.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<div class="section" id="Data-Chunking-with-Dask">
+<h1>Data Chunking with Dask<a class="headerlink" href="#Data-Chunking-with-Dask" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Launch-the-Jupyter-Notebook-application">
+<h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Using-the-public-hh5-conda-environment-managed-by-CLEX">
+<h3>Using the public hh5 conda environment managed by CLEX<a class="headerlink" href="#Using-the-public-hh5-conda-environment-managed-by-CLEX" title="Permalink to this headline">¶</a></h3>
+<p>Many python modules are available under the hh5 conda environment that is maintained by CLEX, as well as additional modules such as that of CleF used in the previous examples. This environment is publically available and developed to service the CLEX users allowing use cases for the wider communinty.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module use /g/data3/hh5/public/modules
+$ module load conda/analysis3-unstable
+</pre></div>
+</div>
+<p>Launch the Jupyter Notebook application:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
+</pre></div>
+</div>
+<div class="admonition note">
+NOTE: This will launch the Notebook Dashboard within a new web browser window.</div>
+</div>
+<div class="section" id="Load-the-required-modules">
+<h3>Load the required modules<a class="headerlink" href="#Load-the-required-modules" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">netCDF4</span> <span class="k">as</span> <span class="nn">nc</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Opening-Multiple-Files-at-Once">
+<h3>Opening Multiple Files at Once<a class="headerlink" href="#Opening-Multiple-Files-at-Once" title="Permalink to this headline">¶</a></h3>
+<p>xarray’s <code class="docutils literal notranslate"><span class="pre">open_mfdataset</span></code> allows multiple files to be opened simultaneously.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>ls /g/data/oi10/replicas/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-CM4/ssp585/r1i1p1f1/day/pr/gr1/v20180701
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/g/data/oi10/replicas/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-CM4/ssp585/r1i1p1f1/day/pr/gr1/v20180701/*&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+pr_day_GFDL-CM4_ssp585_r1i1p1f1_gr1_20150101-20341231.nc
+pr_day_GFDL-CM4_ssp585_r1i1p1f1_gr1_20350101-20541231.nc
+pr_day_GFDL-CM4_ssp585_r1i1p1f1_gr1_20550101-20741231.nc
+pr_day_GFDL-CM4_ssp585_r1i1p1f1_gr1_20750101-20941231.nc
+pr_day_GFDL-CM4_ssp585_r1i1p1f1_gr1_20950101-21001231.nc
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Exercise">
+<h2>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h2>
+<p>In a similar way to open_dataset, use open_mfdataset to open the multiple files in <code class="docutils literal notranslate"><span class="pre">path</span></code> and have a look at the Dataset. Do you see anything different from the previous notebook?</p>
+<p>Answer</p>
+<div class="collapse" id="ans1"><pre><code>
+f_ssp585 = xr.open_mfdataset(path)
+f_ssp585
+</code></pre></div><div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Chunks">
+<h2>Chunks<a class="headerlink" href="#Chunks" title="Permalink to this headline">¶</a></h2>
+<p>Notice that it says: <code class="docutils literal notranslate"><span class="pre">pr(time,</span> <span class="pre">lat,</span> <span class="pre">lon)</span> <span class="pre">float32</span> <span class="pre">dask.array&lt;shape=(31390,</span> <span class="pre">180,</span> <span class="pre">288),</span> <span class="pre">chunksize=(7300,</span> <span class="pre">180,</span> <span class="pre">288)</span></code> There is now an additional component to the shape, and that is <code class="docutils literal notranslate"><span class="pre">chunksize</span></code>.</p>
+<p>The chunking of the array comes from the integration of Dask with xarray. Dask (see: <a class="reference external" href="https://docs.dask.org/en/latest/">https://docs.dask.org/en/latest/</a>) is a library for parallel computing. Dask divides the data array into small pieces called “chunks”, with each chunk designed to be small enough to fit into memory.</p>
+<p>The file itself may be already chunked. Filesystem chunking is available in netCDF-4 and HDF5 datasets. CMIP6 data should all be netCDF-4 and include some form of chunking on the file.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>ncdump -hst <span class="s1">&#39;/g/data/oi10/replicas/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-CM4/ssp585/r1i1p1f1/day/pr/gr1/v20180701/pr_day_GFDL-CM4_ssp585_r1i1p1f1_gr1_20150101-20341231.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+netcdf pr_day_GFDL-CM4_ssp585_r1i1p1f1_gr1_20150101-20341231 {
+dimensions:
+        lat = 180 ;
+        bnds = 2 ;
+        lon = 288 ;
+        time = UNLIMITED ; // (7300 currently)
+variables:
+        double lat(lat) ;
+                lat:long_name = &#34;latitude&#34; ;
+                lat:units = &#34;degrees_north&#34; ;
+                lat:axis = &#34;Y&#34; ;
+                lat:bounds = &#34;lat_bnds&#34; ;
+                lat:standard_name = &#34;latitude&#34; ;
+                lat:cell_methods = &#34;time: point&#34; ;
+                lat:_Storage = &#34;chunked&#34; ;
+                lat:_ChunkSizes = 180 ;
+                lat:_DeflateLevel = 2 ;
+                lat:_Shuffle = &#34;true&#34; ;
+                lat:_Endianness = &#34;little&#34; ;
+        double lat_bnds(lat, bnds) ;
+                lat_bnds:long_name = &#34;latitude bounds&#34; ;
+                lat_bnds:units = &#34;degrees_north&#34; ;
+                lat_bnds:axis = &#34;Y&#34; ;
+                lat_bnds:_Storage = &#34;chunked&#34; ;
+                lat_bnds:_ChunkSizes = 180, 2 ;
+                lat_bnds:_DeflateLevel = 2 ;
+                lat_bnds:_Shuffle = &#34;true&#34; ;
+                lat_bnds:_Endianness = &#34;little&#34; ;
+        double lon(lon) ;
+                lon:long_name = &#34;longitude&#34; ;
+                lon:units = &#34;degrees_east&#34; ;
+                lon:axis = &#34;X&#34; ;
+                lon:bounds = &#34;lon_bnds&#34; ;
+                lon:standard_name = &#34;longitude&#34; ;
+                lon:cell_methods = &#34;time: point&#34; ;
+                lon:_Storage = &#34;chunked&#34; ;
+                lon:_ChunkSizes = 288 ;
+                lon:_DeflateLevel = 2 ;
+                lon:_Shuffle = &#34;true&#34; ;
+                lon:_Endianness = &#34;little&#34; ;
+        double lon_bnds(lon, bnds) ;
+                lon_bnds:long_name = &#34;longitude bounds&#34; ;
+                lon_bnds:units = &#34;degrees_east&#34; ;
+                lon_bnds:axis = &#34;X&#34; ;
+                lon_bnds:_Storage = &#34;chunked&#34; ;
+                lon_bnds:_ChunkSizes = 288, 2 ;
+                lon_bnds:_DeflateLevel = 2 ;
+                lon_bnds:_Shuffle = &#34;true&#34; ;
+                lon_bnds:_Endianness = &#34;little&#34; ;
+        float pr(time, lat, lon) ;
+                pr:long_name = &#34;Precipitation&#34; ;
+                pr:units = &#34;kg m-2 s-1&#34; ;
+                pr:missing_value = 1.e+20f ;
+                pr:_FillValue = 1.e+20f ;
+                pr:cell_methods = &#34;area: time: mean&#34; ;
+                pr:cell_measures = &#34;area: areacella&#34; ;
+                pr:standard_name = &#34;precipitation_flux&#34; ;
+                pr:interp_method = &#34;conserve_order1&#34; ;
+                pr:original_name = &#34;pr&#34; ;
+                pr:_Storage = &#34;chunked&#34; ;
+                pr:_ChunkSizes = 1, 180, 288 ;
+                pr:_DeflateLevel = 2 ;
+                pr:_Shuffle = &#34;true&#34; ;
+                pr:_Endianness = &#34;little&#34; ;
+        double time(time) ;
+                time:long_name = &#34;time&#34; ;
+                time:units = &#34;days since 1850-01-01 00:00:00&#34; ;
+                time:axis = &#34;T&#34; ;
+                time:calendar_type = &#34;noleap&#34; ;
+                time:calendar = &#34;noleap&#34; ;
+                time:bounds = &#34;time_bnds&#34; ;
+                time:standard_name = &#34;time&#34; ;
+                time:description = &#34;Temporal mean&#34; ;
+                time:_Storage = &#34;chunked&#34; ;
+                time:_ChunkSizes = 1 ;
+                time:_DeflateLevel = 2 ;
+                time:_Shuffle = &#34;true&#34; ;
+                time:_Endianness = &#34;little&#34; ;
+        double time_bnds(time, bnds) ;
+                time_bnds:long_name = &#34;time axis boundaries&#34; ;
+                time_bnds:units = &#34;days since 1850-01-01 00:00:00&#34; ;
+                time_bnds:_Storage = &#34;chunked&#34; ;
+                time_bnds:_ChunkSizes = 1, 2 ;
+                time_bnds:_DeflateLevel = 2 ;
+                time_bnds:_Shuffle = &#34;true&#34; ;
+                time_bnds:_Endianness = &#34;little&#34; ;
+
+// global attributes:
+                :external_variables = &#34;areacella&#34; ;
+                :history = &#34;File was processed by fremetar (GFDL analog of CMOR). TripleID: [exper_id_8FFywjr5HC,realiz_id_Lda2LtjE2s,run_id_Dj7oSa1Fj7]&#34; ;
+                :table_id = &#34;day&#34; ;
+                :activity_id = &#34;ScenarioMIP&#34; ;
+                :branch_method = &#34;standard&#34; ;
+                :branch_time_in_child = 0. ;
+                :comment = &#34;&lt;null ref&gt;&#34; ;
+                :contact = &#34;gfdl.climate.model.info@noaa.gov&#34; ;
+                :Conventions = &#34;CF-1.7 CMIP-6.0 UGRID-1.0&#34; ;
+                :creation_date = &#34;2019-03-18T15:13:56Z&#34; ;
+                :data_specs_version = &#34;01.00.27&#34; ;
+                :experiment = &#34;update of RCP8.5 based on SSP5&#34; ;
+                :experiment_id = &#34;ssp585&#34; ;
+                :forcing_index = 1 ;
+                :frequency = &#34;day&#34; ;
+                :further_info_url = &#34;https://furtherinfo.es-doc.org/CMIP6.NOAA-GFDL.GFDL-CM4.ssp585.none.r1i1p1f1&#34; ;
+                :grid = &#34;atmos data regridded from Cubed-sphere (c96) to 180,288; interpolation method: conserve_order1&#34; ;
+                :grid_label = &#34;gr1&#34; ;
+                :initialization_index = 1 ;
+                :institution = &#34;National Oceanic and Atmospheric Administration, Geophysical Fluid Dynamics Laboratory, Princeton, NJ 08540, USA&#34; ;
+                :institution_id = &#34;NOAA-GFDL&#34; ;
+                :license = &#34;CMIP6 model data produced by NOAA-GFDL is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file). The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.&#34; ;
+                :mip_era = &#34;CMIP6&#34; ;
+                :nominal_resolution = &#34;100 km&#34; ;
+                :parent_activity_id = &#34;CMIP&#34; ;
+                :parent_experiment_id = &#34;historical&#34; ;
+                :parent_mip_era = &#34;CMIP6&#34; ;
+                :parent_source_id = &#34;GFDL-CM4&#34; ;
+                :parent_variant_label = &#34;r1i1p1f1&#34; ;
+                :physics_index = 1 ;
+                :product = &#34;model-output&#34; ;
+                :realization_index = 1 ;
+                :realm = &#34;atmos&#34; ;
+                :source = &#34;GFDL-CM4 (2018): \n&#34;,
+                        &#34;aerosol: interactive\n&#34;,
+                        &#34;atmos: GFDL-AM4.0.1 (Cubed-sphere (c96) - 1 degree nominal horizontal resolution; 360 x 180 longitude/latitude; 33 levels; top level 1 hPa)\n&#34;,
+                        &#34;atmosChem: fast chemistry, aerosol only\n&#34;,
+                        &#34;land: GFDL-LM4.0.1 (1 degree nominal horizontal resolution; 360 x 180 longitude/latitude; 20 levels; bot level 10m); land:Veg:unnamed (dynamic vegetation, dynamic land use); land:Hydro:unnamed (soil water and ice, multi-layer snow, rivers and lakes)\n&#34;,
+                        &#34;landIce: GFDL-LM4.0.1\n&#34;,
+                        &#34;ocean: GFDL-OM4p25 (GFDL-MOM6, tripolar - nominal 0.25 deg; 1440 x 1080 longitude/latitude; 75 levels; top grid cell 0-2 m)\n&#34;,
+                        &#34;ocnBgchem: GFDL-BLINGv2\n&#34;,
+                        &#34;seaIce: GFDL-SIM4p25 (GFDL-SIS2.0, tripolar - nominal 0.25 deg; 1440 x 1080 longitude/latitude; 5 layers; 5 thickness categories)\n&#34;,
+                        &#34;(GFDL ID: 2019_0186)&#34; ;
+                :source_id = &#34;GFDL-CM4&#34; ;
+                :source_type = &#34;AOGCM&#34; ;
+                :sub_experiment = &#34;none&#34; ;
+                :sub_experiment_id = &#34;none&#34; ;
+                :title = &#34;NOAA GFDL GFDL-CM4 model output prepared for CMIP6 update of RCP8.5 based on SSP5&#34; ;
+                :tracking_id = &#34;hdl:21.14100/ad8c930c-124f-4b82-98b2-98cc4236ba25&#34; ;
+                :variable_id = &#34;pr&#34; ;
+                :variant_info = &#34;N/A&#34; ;
+                :references = &#34;see further_info_url attribute&#34; ;
+                :variant_label = &#34;r1i1p1f1&#34; ;
+                :branch_time_in_parent = 60225. ;
+                :parent_time_units = &#34;days since 1850-1-1&#34; ;
+                :_NCProperties = &#34;version=2,netcdf=4.6.2,hdf5=1.10.4&#34; ;
+                :_SuperblockVersion = 2 ;
+                :_IsNetcdf4 = 1 ;
+                :_Format = &#34;netCDF-4 classic model&#34; ;
+}
+</pre></div></div>
+</div>
+<div class="section" id="In-this-case-the-file-is-chunked-such-that-pr:_ChunkSizes-=-1,-180,-288-;">
+<h3>In this case the file is chunked such that <code class="docutils literal notranslate"><span class="pre">pr:_ChunkSizes</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">180,</span> <span class="pre">288</span> <span class="pre">;</span></code><a class="headerlink" href="#In-this-case-the-file-is-chunked-such-that-pr:_ChunkSizes-=-1,-180,-288-;" title="Permalink to this headline">¶</a></h3>
+<p>Here we see that the data is chunked in time, where one chunk is one time-step and all points in lat-lon.</p>
+<p><img alt="image0" src="../../_images/Chunks.png" /> image source: <a class="reference external" href="https://www.unidata.ucar.edu/blogs/developer/en/entry/chunking_data_why_it_matters">https://www.unidata.ucar.edu/blogs/developer/en/entry/chunking_data_why_it_matters</a></p>
+<p>Consider 2 types of data access 1. Accessing a 2D lat-lon slice in time (RHS figure) 2. Accessing a time series at a single lat-lon point (LHS figure)</p>
+<p>With the chunking above, the first type of data access only needs to access a single chunk, while the second type needs to access ALL the chunks of the data array regardless. This dataset will be fastest for 2D lat-lon single time-step data access.</p>
+<p>In general, even without chunking - when the data is accessed contiguously (by index order) - time is the slowest variable to access, then y, with x being the fastest. With the chunking method of this CMIP6 dataset, time still remains the slowest variable. For more uniform variable access speeds more evenly spaced chunks would be needed, spacing the chunks in time, lat, and lon.</p>
+</div>
+</div>
+<div class="section" id="Exercise">
+<h2>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h2>
+<p>Time how long it takes to load the precipitation data at <code class="docutils literal notranslate"><span class="pre">time='2015-01-01'</span></code> and then time how long it takes to load the data at <code class="docutils literal notranslate"><span class="pre">lat=0</span></code> and <code class="docutils literal notranslate"><span class="pre">lon=180</span></code> (remember to use <code class="docutils literal notranslate"><span class="pre">method='nearest'</span></code> for the latter case). How much difference is there in the different access methods?</p>
+<p>Answer</p>
+<div class="collapse" id="ans4"><pre><code>
+%%time
+f_ssp585.pr.sel(time='2015-01-01').load()
+
+-----------------------------------------------
+
+%%time
+f_ssp585.pr.sel(lat=0,lon=180,method='nearest').load()
+</code></pre></div><div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Approximately-the-same-amount-of-data-took-100x-longer-to-load.">
+<h2>Approximately the same amount of data took 100x longer to load.<a class="headerlink" href="#Approximately-the-same-amount-of-data-took-100x-longer-to-load." title="Permalink to this headline">¶</a></h2>
+<p>The spatial dataset contains 51840 data-points and took order 100ms to load. The time-series dataset has 31390 data-points and took order 10,000 ms to load.</p>
+<p>Chunking and the ways in which the data is read is important in considering both how you access the data and if you wish to parallelise your code.</p>
+</div>
+<div class="section" id="NetCDF-file-Chunks-versus-Dask-Chunks">
+<h2>NetCDF file Chunks versus Dask Chunks<a class="headerlink" href="#NetCDF-file-Chunks-versus-Dask-Chunks" title="Permalink to this headline">¶</a></h2>
+<p>Keep in mind, dask chunking is different to chunking of the stored data. As we saw, the stored data is chunked with chunks of size (1,180,288). The Dask array was chunked with size (7300, 180, 288). You can change the chunking in the dask array. In the below example we are specifying that there be 730 chunks in time.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f_ssp585</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="mi">730</span><span class="p">})</span>
+
+<span class="n">f_ssp585</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;xarray.Dataset&gt;
+Dimensions:    (bnds: 2, lat: 180, lon: 288, time: 31390)
+Coordinates:
+  * lat        (lat) float64 -89.5 -88.5 -87.5 -86.5 ... 86.5 87.5 88.5 89.5
+  * lon        (lon) float64 0.625 1.875 3.125 4.375 ... 355.6 356.9 358.1 359.4
+  * time       (time) object 2015-01-01 12:00:00 ... 2100-12-31 12:00:00
+Dimensions without coordinates: bnds
+Data variables:
+    lat_bnds   (time, lat, bnds) float64 dask.array&lt;shape=(31390, 180, 2), chunksize=(7300, 180, 2)&gt;
+    lon_bnds   (time, lon, bnds) float64 dask.array&lt;shape=(31390, 288, 2), chunksize=(7300, 288, 2)&gt;
+    pr         (time, lat, lon) float32 dask.array&lt;shape=(31390, 180, 288), chunksize=(730, 180, 288)&gt;
+    time_bnds  (time, bnds) object dask.array&lt;shape=(31390, 2), chunksize=(730, 2)&gt;
+Attributes:
+    external_variables:     areacella
+    history:                File was processed by fremetar (GFDL analog of CM...
+    table_id:               day
+    activity_id:            ScenarioMIP
+    branch_method:          standard
+    branch_time_in_child:   0.0
+    comment:                &lt;null ref&gt;
+    contact:                gfdl.climate.model.info@noaa.gov
+    Conventions:            CF-1.7 CMIP-6.0 UGRID-1.0
+    creation_date:          2019-03-18T15:13:56Z
+    data_specs_version:     01.00.27
+    experiment:             update of RCP8.5 based on SSP5
+    experiment_id:          ssp585
+    forcing_index:          1
+    frequency:              day
+    further_info_url:       https://furtherinfo.es-doc.org/CMIP6.NOAA-GFDL.GF...
+    grid:                   atmos data regridded from Cubed-sphere (c96) to 1...
+    grid_label:             gr1
+    initialization_index:   1
+    institution:            National Oceanic and Atmospheric Administration, ...
+    institution_id:         NOAA-GFDL
+    license:                CMIP6 model data produced by NOAA-GFDL is license...
+    mip_era:                CMIP6
+    nominal_resolution:     100 km
+    parent_activity_id:     CMIP
+    parent_experiment_id:   historical
+    parent_mip_era:         CMIP6
+    parent_source_id:       GFDL-CM4
+    parent_variant_label:   r1i1p1f1
+    physics_index:          1
+    product:                model-output
+    realization_index:      1
+    realm:                  atmos
+    source:                 GFDL-CM4 (2018): \naerosol: interactive\natmos: G...
+    source_id:              GFDL-CM4
+    source_type:            AOGCM
+    sub_experiment:         none
+    sub_experiment_id:      none
+    title:                  NOAA GFDL GFDL-CM4 model output prepared for CMIP...
+    tracking_id:            hdl:21.14100/ad8c930c-124f-4b82-98b2-98cc4236ba25
+    variable_id:            pr
+    variant_info:           N/A
+    references:             see further_info_url attribute
+    variant_label:          r1i1p1f1
+    branch_time_in_parent:  60225.0
+    parent_time_units:      days since 1850-1-1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="How-big-do-you-make-your-chunks?">
+<h2>How big do you make your chunks?<a class="headerlink" href="#How-big-do-you-make-your-chunks?" title="Permalink to this headline">¶</a></h2>
+<p>The rule of thumb for dask chunks is that you should “create arrays with a minimum chunksize of at least one million elements”: <a class="reference external" href="http://xarray.pydata.org/en/stable/dask.html#chunking-and-performance">http://xarray.pydata.org/en/stable/dask.html#chunking-and-performance</a></p>
+<p>netCDF4 chunks are often a lot smaller than dask array chunks. The minimum chunksize exists because if you have too many chunks, then queuing of operations when parallising will be slow, and if they are too big computation and memory can be wasted. The default chunks from dask gave us chunks of size: (7300, 180, 288) or nearly 400 million elements so we could try reducing those chunks if needed. The larger the array, the larger the cost of queueing and the larger chunks may be needed.</p>
+<div class="section" id="IMPORTANT:-Whatever-dask-array-chunks-you-use,-make-sure-they-align-with-the-netCDF4-file-chunks!!">
+<h3>IMPORTANT: Whatever dask array chunks you use, make sure they align with the netCDF4 file chunks!!<a class="headerlink" href="#IMPORTANT:-Whatever-dask-array-chunks-you-use,-make-sure-they-align-with-the-netCDF4-file-chunks!!" title="Permalink to this headline">¶</a></h3>
+<p>So far our chunks have been in time, and the netCDF4 file is also chunked in time. If we tried to use dask chunks to optimise the time-series loading of data, it will not help!</p>
+</div>
+<div class="section" id="Exercise">
+<h3>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h3>
+<p>Try it, load the data with chunks size <code class="docutils literal notranslate"><span class="pre">(31390,180,1)</span></code> (i.e.&nbsp;chunked in lon) and name that file <code class="docutils literal notranslate"><span class="pre">f_bad_chunk</span></code>. Try re-loading the time series of pr at <code class="docutils literal notranslate"><span class="pre">lat=0</span></code> and <code class="docutils literal notranslate"><span class="pre">lon=180</span></code> and time how long it takes.</p>
+<p>Answer</p>
+<div class="collapse" id="ans1"><pre><code>
+f_bad_chunk = xr.open_mfdataset(path,chunks={'time':31390,'lat':180,'lon':1})
+----------------------------------------
+%%time
+f_bad_chunk.pr.sel(lat=0,lon=180,method='nearest').load()
+</code></pre></div><div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p>What if we add some extra cores to the computation?</p>
+<p>You can easily parallelise xarray code using the dask.distributed.Client and dask array calculations will be run in parallel.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
+<span class="n">c</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Exercise">
+<h3>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h3>
+<p>Try running your previous code for <code class="docutils literal notranslate"><span class="pre">f_bad_chunk</span></code> again loading the time series of pr at <code class="docutils literal notranslate"><span class="pre">lat=0</span></code> and <code class="docutils literal notranslate"><span class="pre">lon=180</span></code> and time how long it takes now that there are 4 workers in the dask cluster.</p>
+<p>Do the same with the original chunking method of <code class="docutils literal notranslate"><span class="pre">f_ssp585</span></code> and see if there is a difference.</p>
+<p>Answer</p>
+<div class="collapse" id="ans2"><pre><code>
+%%time
+f_bad_chunk.pr.sel(lat=0,lon=180,method='nearest').load()
+
+----------------------------------------
+
+%%time
+f_ssp585.pr.sel(lat=0,lon=180,method='nearest').load()
+</code></pre></div><div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Poor-chunking-with-dask-can-make-your-performance-worse!">
+<h2>Poor chunking with dask can make your performance worse!<a class="headerlink" href="#Poor-chunking-with-dask-can-make-your-performance-worse!" title="Permalink to this headline">¶</a></h2>
+<p>Both the size of the chunks and the alignment of the chunks with the filesystem chunks are imporant to keep in mind when creating dask chunks.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,1112 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Processing MT netCDF files using OPeNDAP &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Processing MT netCDF files using OPeNDAP</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/geophysics/MT_with_OPENDAPb.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="image0" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<div class="section" id="Processing-MT-netCDF-files-using-OPeNDAP">
+<h1>Processing MT netCDF files using OPeNDAP<a class="headerlink" href="#Processing-MT-netCDF-files-using-OPeNDAP" title="Permalink to this headline">¶</a></h1>
+<p><strong>In this example, we will utilise OPeNDAP services to access and process raw MT time-series that are stored as netCDF files on NCI’s THREDDS data server.</strong></p>
+<p><strong>Clear notebook memory</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">reset</span> -f
+
+<span class="c1">#%whos</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">### Uncomment the following line to remove unwanted existing files:</span>
+
+<span class="c1">#rm *.mseed bx by ex ey fft.* c01.* time birrp.cfg c01_netcdf.edi survey.cfg C01.edi</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Import python modules</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="k">import</span> <span class="n">Process</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">num2date</span><span class="p">,</span> <span class="n">date2num</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">call</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<p><strong>Open up our netCDF file using the THREDDS OPeNDAP link</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">working_dir</span> <span class="o">=</span> <span class="s1">&#39;/g/data/my80/sandbox/ascii_to_netcdf_test/&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span>
+<span class="n">TS_path</span> <span class="o">=</span> <span class="s1">&#39;http://dapds00.nci.org.au/thredds/dodsC/uc0/my80_dev/netCDF_test.nc&#39;</span>
+<span class="n">TS</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">TS_path</span><span class="p">)</span>
+
+<span class="c1">### Uncomment line below if you want to use the local path:</span>
+
+<span class="c1">#TS_path = &#39;/g/data/my80/sandbox/ascii_to_netcdf_test/netCDF_test.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Query what data is in our netCDF file</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">TS</span><span class="o">.</span><span class="n">dimensions</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="n">TS</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">TS</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+
+<span class="nb">vars</span> <span class="o">=</span> <span class="n">TS</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s1">&#39;Variable: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">item</span>
+    <span class="nb">print</span> <span class="s1">&#39;Dimensions: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">TS</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">dimensions</span>
+    <span class="nb">print</span> <span class="s1">&#39;Shape:    </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">TS</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+bx 82800000
+by 82800000
+ex 82800000
+ey 82800000
+latitude 1
+longitude 1
+time 82800000
+Variable:       latitude
+Dimensions:     (u&#39;latitude&#39;,)
+Shape:          (1,)
+
+Variable:       ex
+Dimensions:     (u&#39;ex&#39;,)
+Shape:          (82800000,)
+
+Variable:       longitude
+Dimensions:     (u&#39;longitude&#39;,)
+Shape:          (1,)
+
+Variable:       ey
+Dimensions:     (u&#39;ey&#39;,)
+Shape:          (82800000,)
+
+Variable:       bx
+Dimensions:     (u&#39;bx&#39;,)
+Shape:          (82800000,)
+
+Variable:       by
+Dimensions:     (u&#39;by&#39;,)
+Shape:          (82800000,)
+
+Variable:       time
+Dimensions:     (u&#39;time&#39;,)
+Shape:          (82800000,)
+
+</pre></div></div>
+</div>
+<p><strong>Extract some time-series data</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">### For this example, let&#39;s extract 20M data points for electric and magnetic time-series</span>
+
+<span class="n">start_point</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">end_point</span> <span class="o">=</span> <span class="mi">20000000</span>
+
+<span class="n">ex</span> <span class="o">=</span> <span class="n">TS</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;ex&#39;</span><span class="p">][</span><span class="n">start_point</span><span class="p">:</span><span class="n">end_point</span><span class="p">]</span>
+<span class="n">ey</span> <span class="o">=</span> <span class="n">TS</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;ey&#39;</span><span class="p">][</span><span class="n">start_point</span><span class="p">:</span><span class="n">end_point</span><span class="p">]</span>
+<span class="n">bx</span> <span class="o">=</span> <span class="n">TS</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">][</span><span class="n">start_point</span><span class="p">:</span><span class="n">end_point</span><span class="p">]</span>
+<span class="n">by</span> <span class="o">=</span> <span class="n">TS</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;by&#39;</span><span class="p">][</span><span class="n">start_point</span><span class="p">:</span><span class="n">end_point</span><span class="p">]</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">TS</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="n">start_point</span><span class="p">:</span><span class="n">end_point</span><span class="p">]</span>
+
+<span class="n">lat</span> <span class="o">=</span> <span class="n">TS</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">TS</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Plot some of the TS data</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1000</span>
+
+
+<span class="n">f</span><span class="p">,</span> <span class="p">((</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">),</span> <span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">ax4</span><span class="p">))</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">x</span><span class="p">:</span><span class="n">y</span><span class="p">],</span> <span class="n">ex</span><span class="p">[</span><span class="n">x</span><span class="p">:</span><span class="n">y</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;EX&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">x</span><span class="p">:</span><span class="n">y</span><span class="p">],</span> <span class="n">ey</span><span class="p">[</span><span class="n">x</span><span class="p">:</span><span class="n">y</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;EY&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">x</span><span class="p">:</span><span class="n">y</span><span class="p">],</span> <span class="n">by</span><span class="p">[</span><span class="n">x</span><span class="p">:</span><span class="n">y</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;BY&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">x</span><span class="p">:</span><span class="n">y</span><span class="p">],</span> <span class="n">bx</span><span class="p">[</span><span class="n">x</span><span class="p">:</span><span class="n">y</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;BX&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.text.Text at 0x7f01b5eb9950&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_geophysics_MT_with_OPENDAPb_13_1.png" src="../../_images/_notebook_geophysics_MT_with_OPENDAPb_13_1.png" />
+</div>
+</div>
+<p><strong>Now let’s write TS ascii files that are ready for BIRRP processing</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>
+
+<span class="k">def</span> <span class="nf">writets</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">ts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    write TS as ascii files</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">proc</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> savetxt by process id: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">proc</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ex&#39;</span><span class="p">,</span><span class="s1">&#39;ey&#39;</span><span class="p">,</span><span class="s1">&#39;bx&#39;</span><span class="p">,</span><span class="s1">&#39;by&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+    <span class="n">timeseries</span> <span class="o">=</span> <span class="p">[</span><span class="n">ex</span><span class="p">,</span> <span class="n">ey</span><span class="p">,</span> <span class="n">bx</span><span class="p">,</span> <span class="n">by</span><span class="p">,</span> <span class="n">time</span><span class="p">]</span>
+    <span class="n">procs</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">timeseries</span><span class="p">):</span>
+        <span class="n">proc</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">writets</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">ts</span><span class="p">,))</span>
+        <span class="n">procs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">proc</span><span class="p">)</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">proc</span> <span class="ow">in</span> <span class="n">procs</span><span class="p">:</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+time savetxt by process id: 27282
+ey savetxt by process id: 27279
+ex savetxt by process id: 27278
+by savetxt by process id: 27281
+bx savetxt by process id: 27280
+CPU times: user 12 ms, sys: 38 ms, total: 50 ms
+Wall time: 1min 23s
+</pre></div></div>
+</div>
+<p><strong>A convienent tool for visualising time-series is</strong> <a class="reference external" href="https://pyrocko.org/v0.3/apps_snuffler_manual.html">snuffler</a>. <strong>In order to convert our TS to</strong> <a class="reference external" href="https://ds.iris.edu/ds/nodes/dmc/data/formats/miniseed/">miniSEED</a> <strong>format, we must first add header information to our ascii files:</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">BX</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;bx&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;bx&#39;</span><span class="p">)]</span>
+<span class="n">BY</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;by&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;by&#39;</span><span class="p">)]</span>
+<span class="n">EX</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;ex&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;ex&#39;</span><span class="p">)]</span>
+<span class="n">EY</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;ey&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;ey&#39;</span><span class="p">)]</span>
+<span class="c1">#TIME = [f for f in os.listdir(working_dir) if f.startswith(&#39;time&#39;)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+
+<span></span><span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">+</span><span class="s1">&#39;T&#39;</span> <span class="o">+</span><span class="s1">&#39;%H:%M:%S&#39;</span><span class="o">+</span><span class="s1">&#39;.0000&#39;</span><span class="p">)</span>
+<span class="n">station_BX</span> <span class="o">=</span> <span class="s1">&#39;MagX_CP1L01_Capricorn_BX_QUAL&#39;</span>
+<span class="n">station_BY</span> <span class="o">=</span> <span class="s1">&#39;MagY_CP1L01_Capricorn_BY_QUAL&#39;</span>
+<span class="n">station_EX</span> <span class="o">=</span> <span class="s1">&#39;ElecX_CP1L01_Capricorn_EX_QUAL&#39;</span>
+<span class="n">station_EY</span> <span class="o">=</span> <span class="s1">&#39;ElecY_CP1L01_Capricorn_EY_QUAL&#39;</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="mi">20000000</span>
+<span class="n">sampling_rate_Hz</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">string_bx</span> <span class="o">=</span>  <span class="s1">&#39;TIMESERIES </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1"> samples, </span><span class="si">%s</span><span class="s1"> sps, </span><span class="si">%s</span><span class="s1">, SLIST, INTEGER, Counts </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">station_BX</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">sampling_rate_Hz</span><span class="p">,</span> <span class="n">start_time</span><span class="p">)</span>
+<span class="n">string_by</span> <span class="o">=</span>  <span class="s1">&#39;TIMESERIES </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1"> samples, </span><span class="si">%s</span><span class="s1"> sps, </span><span class="si">%s</span><span class="s1">, SLIST, INTEGER, Counts </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">station_BY</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">sampling_rate_Hz</span><span class="p">,</span> <span class="n">start_time</span><span class="p">)</span>
+<span class="n">string_ex</span> <span class="o">=</span>  <span class="s1">&#39;TIMESERIES </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1"> samples, </span><span class="si">%s</span><span class="s1"> sps, </span><span class="si">%s</span><span class="s1">, SLIST, INTEGER, Counts </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">station_EX</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">sampling_rate_Hz</span><span class="p">,</span> <span class="n">start_time</span><span class="p">)</span>
+<span class="n">string_ey</span> <span class="o">=</span>  <span class="s1">&#39;TIMESERIES </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1"> samples, </span><span class="si">%s</span><span class="s1"> sps, </span><span class="si">%s</span><span class="s1">, SLIST, INTEGER, Counts </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">station_EY</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">sampling_rate_Hz</span><span class="p">,</span> <span class="n">start_time</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">string</span> <span class="o">=</span> <span class="p">[</span><span class="n">string_ex</span><span class="p">,</span> <span class="n">string_ey</span><span class="p">,</span> <span class="n">string_bx</span><span class="p">,</span> <span class="n">string_by</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Add header information to ASCII files for mseed conversion</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">izip</span><span class="p">,</span> <span class="n">count</span>
+
+<span class="k">def</span> <span class="nf">mseedheader</span><span class="p">(</span><span class="n">ascfiles</span><span class="p">,</span><span class="n">string</span><span class="p">):</span>
+        <span class="n">proc</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> added header by process id: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ascfiles</span><span class="p">,</span> <span class="n">proc</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ascfiles</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">original</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">original</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">modified</span><span class="p">:</span>
+                    <span class="n">modified</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">string</span> <span class="o">+</span> <span class="n">data</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">asciifiles</span> <span class="o">=</span> <span class="p">[</span><span class="n">EX</span><span class="p">,</span> <span class="n">EY</span><span class="p">,</span> <span class="n">BX</span><span class="p">,</span> <span class="n">BY</span><span class="p">]</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="p">[</span><span class="n">string_ex</span><span class="p">,</span> <span class="n">string_ey</span><span class="p">,</span> <span class="n">string_bx</span><span class="p">,</span> <span class="n">string_by</span><span class="p">]</span>
+    <span class="n">procs</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">fs</span><span class="p">,</span><span class="n">st</span> <span class="ow">in</span> <span class="n">izip</span><span class="p">(</span><span class="n">count</span><span class="p">(),</span><span class="n">asciifiles</span><span class="p">,</span><span class="n">string</span><span class="p">):</span>
+        <span class="n">proc</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">mseedheader</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span><span class="n">st</span><span class="p">,))</span>
+        <span class="n">procs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">proc</span><span class="p">)</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">proc</span> <span class="ow">in</span> <span class="n">procs</span><span class="p">:</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;ey&#39;] added header by process id: 5124
+[&#39;bx&#39;] added header by process id: 5125
+[&#39;ex&#39;] added header by process id: 5123
+[&#39;by&#39;] added header by process id: 5130
+CPU times: user 7 ms, sys: 42 ms, total: 49 ms
+Wall time: 1.3 s
+</pre></div></div>
+</div>
+<p><strong>We can convert our time series ASCII files to miniseed using the IRIS</strong> <a class="reference external" href="https://seiscode.iris.washington.edu/projects/ascii2mseed">ascii2mseed</a> <strong>code:</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>
+
+<span class="k">def</span> <span class="nf">convert2mseed</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">input_file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">proc</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;create mseed </span><span class="si">{0}</span><span class="s1"> by process id: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="n">proc</span><span class="p">))</span>
+        <span class="n">output_file</span> <span class="o">=</span> <span class="n">input_file</span> <span class="o">+</span> <span class="s2">&quot;.mseed&quot;</span>
+        <span class="n">call</span><span class="p">([</span><span class="s1">&#39;ascii2mseed&#39;</span><span class="p">,</span> <span class="n">input_file</span><span class="p">,</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="n">output_file</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="n">EX</span><span class="p">,</span> <span class="n">EY</span><span class="p">,</span> <span class="n">BX</span><span class="p">,</span> <span class="n">BY</span><span class="p">]</span>
+    <span class="n">procs</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">fs</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
+        <span class="n">proc</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">convert2mseed</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">fs</span><span class="p">,))</span>
+        <span class="n">procs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">proc</span><span class="p">)</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">proc</span> <span class="ow">in</span> <span class="n">procs</span><span class="p">:</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+create mseed ex by process id: 9352
+create mseed ey by process id: 9353
+create mseed bx by process id: 9359
+create mseed by by process id: 9361
+CPU times: user 6 ms, sys: 45 ms, total: 51 ms
+Wall time: 5.52 s
+</pre></div></div>
+</div>
+<p><strong>To convert our time-series files back to useable BIRRP inputs, we need to remove the header information we just created:</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+
+<span class="k">for</span> i in ex ey bx by<span class="p">;</span>
+<span class="k">do</span>
+    sed -i -e 1d <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span> <span class="p">&amp;</span>
+<span class="k">done</span>
+<span class="nb">wait</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Let’s check that BIRRP input file lengths are the same</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+
+<span class="k">for</span> i in bx by ex ey<span class="p">;</span>
+<span class="k">do</span>
+    wc <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span> <span class="p">&amp;</span>
+<span class="k">done</span>
+<span class="nb">wait</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ 20000000  20000000 119015069 bx
+ 20000000  20000000 120000399 by
+ 20000000  20000000 160000000 ey
+ 20000000  20000000 160000000 ex
+</pre></div></div>
+</div>
+<p><strong>To view our miniseed time-series in snuffler, open up a VDI terminal in our working directory and run:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load snuffler
+$ snuffler *.mseed
+</pre></div>
+</div>
+<p><strong>Now we have visualised and are happy with our time-series, let’s extract the birrpstring given in our netCDF file:</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">birrpstring</span> <span class="o">=</span> <span class="n">TS</span><span class="o">.</span><span class="n">birrpstring</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Now we can run BIRRP using our extracted birrpstring:</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="s1">&#39;birrp-5.3.2&#39;</span><span class="p">,</span> <span class="n">stdin</span><span class="o">=</span><span class="n">PIPE</span><span class="p">)</span> <span class="c1">#NOTE: no shell=True here</span>
+<span class="n">p</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">birrpstring</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Converting-BIRRP-outputs-to-an-EDI-file">
+<h2>Converting BIRRP outputs to an EDI file<a class="headerlink" href="#Converting-BIRRP-outputs-to-an-EDI-file" title="Permalink to this headline">¶</a></h2>
+<p><strong>Let’s extract and write the BIRRP config file from our netCDF file:</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">birrp_cfg</span> <span class="o">=</span> <span class="n">TS</span><span class="o">.</span><span class="n">birrp_cfg</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># write the birrp.cfg file</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;birrp.cfg&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">text_file</span><span class="p">:</span>
+    <span class="n">text_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="k">birrp_cfg</span>)
+</pre></div>
+</div>
+</div>
+<p><strong>Now we can extract and write our survey config file:</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">survey_cfg</span> <span class="o">=</span> <span class="n">TS</span><span class="o">.</span><span class="n">survey_cfg</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># write the survey.cfg file</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;survey.cfg&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">text_file</span><span class="p">:</span>
+    <span class="n">text_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="k">survey_cfg</span>)
+</pre></div>
+</div>
+</div>
+<p><strong>Let’s try and write an EDI file using MTpy:</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">## change this to the directory where MTpy is installed</span>
+<span class="n">mtpy_directory</span> <span class="o">=</span> <span class="s1">&#39;/short/z00/nre900/MT/mtpy/&#39;</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">mtpy_directory</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">mtpy.processing.birrp</span> <span class="k">import</span> <span class="n">convert2edi</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># convert BIRRP outputs to EDI files</span>
+
+<span class="n">stationname</span> <span class="o">=</span> <span class="s1">&#39;c01&#39;</span>
+<span class="n">survey_configfile</span> <span class="o">=</span> <span class="s1">&#39;survey.cfg&#39;</span>
+<span class="n">in_dir</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span>
+<span class="n">birrp_configfile</span> <span class="o">=</span> <span class="s1">&#39;birrp.cfg&#39;</span>
+<span class="n">convert2edi</span><span class="p">(</span><span class="n">stationname</span><span class="p">,</span> <span class="n">in_dir</span><span class="p">,</span> <span class="n">survey_configfile</span><span class="p">,</span> <span class="n">birrp_configfile</span><span class="p">,</span> <span class="n">out_dir</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&#39;/g/data3/my80/States_and_Territories/test/TS/example_TS_ascii_to_netcdf/C01.edi&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Plotting-EDI-using-MTpy">
+<h2>Plotting EDI using MTpy<a class="headerlink" href="#Plotting-EDI-using-MTpy" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">## import MTpy modules</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">mtpy_directory</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">mtpy.core.mt</span> <span class="k">as</span> <span class="nn">mt</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Let’s use the EDI provided from our netCDF file:</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">edi_fn</span> <span class="o">=</span> <span class="n">TS</span><span class="o">.</span><span class="n">EDI</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;c01_netcdf.edi&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">text_file</span><span class="p">:</span>
+    <span class="n">text_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="k">edi_fn</span>)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">edi</span> <span class="o">=</span> <span class="s1">&#39;/g/data/my80/sandbox/ascii_to_netcdf_test/c01_netcdf.edi&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mt_obj</span> <span class="o">=</span> <span class="n">mt</span><span class="o">.</span><span class="n">MT</span><span class="p">(</span><span class="n">edi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ ...nulled all attributes of current MTedi.Edi instance.
+reading in Edi file: /g/data3/my80/States_and_Territories/test/TS/example_TS_ascii_to_netcdf/c01_netcdf.edi
+z
+Could not read Tipper section: /g/data3/my80/States_and_Territories/test/TS/example_TS_ascii_to_netcdf/c01_netcdf.edi
+Flipping arrays to be ordered from short period to long
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+mtpy/analysis/zinvariants.py:90: FutureWarning: comparison to `None` will result in an elementwise object comparison in the future.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mt_plot</span> <span class="o">=</span> <span class="n">mt_obj</span><span class="o">.</span><span class="n">plot_mt_response</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ ...nulled all attributes of current MTedi.Edi instance.
+reading in Edi file: /g/data3/my80/States_and_Territories/test/TS/example_TS_ascii_to_netcdf/c01_netcdf.edi
+z
+Could not read Tipper section: /g/data3/my80/States_and_Territories/test/TS/example_TS_ascii_to_netcdf/c01_netcdf.edi
+Flipping arrays to be ordered from short period to long
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+mtpy/core/z.py:1304: FutureWarning: comparison to `None` will result in an elementwise object comparison in the future.
+mtpy/core/z.py:1362: FutureWarning: comparison to `None` will result in an elementwise object comparison in the future.
+mtpy/imaging/mtplottools.py:392: FutureWarning: comparison to `None` will result in an elementwise object comparison in the future.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_geophysics_MT_with_OPENDAPb_50_2.png" src="../../_images/_notebook_geophysics_MT_with_OPENDAPb_50_2.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mt_plot</span><span class="o">.</span><span class="n">plot_pt</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>
+<span class="n">mt_plot</span><span class="o">.</span><span class="n">plot_strike</span> <span class="o">=</span> <span class="s1">&#39;ytip&#39;</span>
+<span class="n">mt_plot</span><span class="o">.</span><span class="n">plot_num</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">mt_plot</span><span class="o">.</span><span class="n">redraw_plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_geophysics_MT_with_OPENDAPb_51_0.png" src="../../_images/_notebook_geophysics_MT_with_OPENDAPb_51_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

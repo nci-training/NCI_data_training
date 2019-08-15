@@ -1,0 +1,859 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title> &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/geophysics/MT_data_examples.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<img alt="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" />
+<div class="section" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="accessing-mt-data-from-the-nci-geonetwork">
+<h2>Accessing MT data from the NCI Geonetwork<a class="headerlink" href="#accessing-mt-data-from-the-nci-geonetwork" title="Permalink to this headline">¶</a></h2>
+<p>For this example, we will access some of <strong>The University of Adelaide</strong> MT Data. To search for this, let’s visit the <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/home">NCI GeoNetwork</a></p>
+<img alt="../../_images/NCI_geonetwork_1.png" src="../../_images/NCI_geonetwork_1.png" />
+<p>Let’s begin by searching using the keyword <span class="red">magnetotellurics</span>:</p>
+<img alt="../../_images/NCI_geonetwork_2.png" src="../../_images/NCI_geonetwork_2.png" />
+<p>Now click on <strong>The University of Adelaide Magnetotellurics Data</strong>.</p>
+<img alt="../../_images/NCI_geonetwork_3.png" src="../../_images/NCI_geonetwork_3.png" />
+<p>This will bring you to The University of Adelaide MT data parent record:</p>
+<img alt="../../_images/NCI_geonetwork_4.png" src="../../_images/NCI_geonetwork_4.png" />
+<p>This page has a description of the parent record as well as links to the associated child resources.</p>
+<p>Let’s take a look at the <span class="red">South Australia MT surveys</span>:</p>
+<img alt="../../_images/NCI_geonetwork_5.png" src="../../_images/NCI_geonetwork_5.png" />
+<p>Here we can see a list of MT surveys conducted in South Australia</p>
+<img alt="../../_images/NCI_geonetwork_6.png" src="../../_images/NCI_geonetwork_6.png" />
+<p>Let’s click on a survey of interest:</p>
+<img alt="../../_images/NCI_geonetwork_7.png" src="../../_images/NCI_geonetwork_7.png" />
+<dl class="docutils">
+<dt>Here we can see:</dt>
+<dd><ol class="first last arabic simple">
+<li>an abstract describing the dataset</li>
+<li>http download of the EDI files for this dataset</li>
+<li>links to any papers or reference material associated with this dataset</li>
+</ol>
+</dd>
+</dl>
+<img alt="../../_images/NCI_geonetwork_8.png" src="../../_images/NCI_geonetwork_8.png" />
+</div>
+<div class="section" id="mt-software-available-at-nci">
+<h2>MT software available at NCI<a class="headerlink" href="#mt-software-available-at-nci" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>The following MT software:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://www.whoi.edu/science/AOPE/people/achave/Site/Next1.html">BIRRP</a></li>
+<li><a class="reference external" href="http://marineemlab.ucsd.edu/Projects/Occam/1DCSEM/">OCCAM1DCSEM</a></li>
+<li><a class="reference external" href="http://marineemlab.ucsd.edu/Projects/Occam/1DCSEM/">DIPOLE1D</a></li>
+<li><a class="reference external" href="http://marineemlab.ucsd.edu/Projects/Occam/2DMT/index.html">OCCAM2DMT</a></li>
+<li><a class="reference external" href="http://mare2dem.ucsd.edu/">MARE2DEM</a></li>
+<li><a class="reference external" href="http://www.modem-geophysics.com/">ModEM</a></li>
+</ul>
+</dd>
+</dl>
+<p>are locally installed on NCI’s Raijin Supercomputer and Virtual Desktop Infrastructure (VDI) (currently under the project my80).</p>
+<p><strong>NOTE:</strong> To join the project <strong>my80</strong>, please log into <a class="reference external" href="https://my.nci.org.au/mancini/login?next=/mancini/">mancini</a>, click on the <em>Projects and groups</em> tab, then click on the <em>Find project or group</em> tab. Search for
+<strong>my80</strong> and request to join.</p>
+<p>Additionally, the seismogram browser <a class="reference external" href="https://pyrocko.org/docs/current/apps/snuffler/tutorial.html">Snuffler</a> is available on NCI’s VDI.</p>
+<div class="section" id="birrp-conditions-of-use">
+<h3>BIRRP conditions of use:<a class="headerlink" href="#birrp-conditions-of-use" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>1. The robust bounded influence magnetotelluric analysis program, hereinafter called BIRRP, is provided on a caveat emptor basis. The author of BIRRP is not responsible for or culpable in the event of errors in processing or interpretation resulting from use of this code.
+</p>
+<p>2. No payment will be accepted by any user for data processing with BIRRP.
+</p>
+<p>3. BIRRP will not be distributed to anyone. Interested persons should be referred to <a class="reference external" href="http://www.whoi.edu/science/AOPE/people/achave/Site/Next1.html">this website</a>.
+</p>
+<p>4. The author will be notified of any possible coding errors that are encountered.
+</p>
+<p>5. The author will be informed of any improvements or additions that are made to BIRRP.
+</p>
+<p>6. The use of BIRRP will be acknowledged in any publications and presentations that ensue.
+</p>
+</div></blockquote>
+</div>
+<div class="section" id="modem-conditions-of-use">
+<h3>ModEM conditions of use:<a class="headerlink" href="#modem-conditions-of-use" title="Permalink to this headline">¶</a></h3>
+<p><strong>AUTHORS</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Gary Egbert, Anna Kelbert &amp; Naser Meqbel</div>
+<div class="line">College of Atmospheric and Oceanic Sciences</div>
+<div class="line">104 COAS Admin. Bldg.</div>
+<div class="line">Oregon State University</div>
+<div class="line">Corvallis, OR 97331-5503</div>
+</div>
+<div class="line-block">
+<div class="line">E-mail:  <a class="reference external" href="mailto:egbert&#37;&#52;&#48;coas&#46;oregonstate&#46;edu">egbert<span>&#64;</span>coas<span>&#46;</span>oregonstate<span>&#46;</span>edu</a></div>
+<div class="line">Fax:     (541) 737-2064</div>
+<div class="line">Ph.:     (541) 737-2947</div>
+<div class="line"><a class="reference external" href="http://www.coas.oregonstate.edu">http://www.coas.oregonstate.edu</a></div>
+</div>
+</div></blockquote>
+<p><strong>COPYRIGHT</strong></p>
+<p>Both binary and source codes for the Modular Electromagnetic Inversion Software
+(hereafter ModEM) are copyrighted by The State of Oregon acting by and through
+the State Board of Higher Education on behalf of Oregon State University,
+an educational institution having offices at 312 Kerr Administration Building,
+Corvallis, Oregon 97331-2140 (hereafter, OSU) and ownership of all right, title
+and interest in and to the Software remains with OSU.
+By using or copying the ModEM, User agrees to abide by the terms of this Agreement.</p>
+<p><strong>NONCOMMERCIAL USE</strong></p>
+<p>OSU grants to you (hereafter, User) a royalty-free, nonexclusive right to execute,
+copy, modify and distribute both the binary and source code solely for academic,
+research and other similar noncommercial uses, subject to the following conditions:</p>
+<blockquote>
+<div><p>1.    User acknowledges that the Software is still in the development stage
+and that it is being supplied “as is,” without any support services from OSU.
+NEITHER OSU NOR THE AUTHORS MAKES ANY REPRESENTATIONS OR WARRANTIES, EXPRESS
+OR IMPLIED, INCLUDING, WITHOUT LIMITATION, ANY REPRESENTATIONS OR WARRANTIES
+OF THE MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE, OR THAT
+THE APPLICATION OF THE SOFTWARE, WILL NOT INFRINGE ON ANY PATENTS OR OTHER
+PROPRIETARY RIGHTS OF OTHERS.</p>
+<p>2.    OSU shall not be held liable for direct, indirect, incidental or
+consequential damages arising from any claim by User or any third party with
+respect to uses allowed under this Agreement, or from any use of the Software.</p>
+<p>3.    User agrees to fully indemnify and hold harmless OSU and/or the Authors
+of the original work from and against any and all claims, demands, suits,
+losses, damages, costs and expenses arising out of the User’s use of the Software,
+including, without limitation, arising out of the User’s modification of
+the Software.</p>
+<p>4.    User may modify the Software and distribute that modified work to third
+parties provided that: (a) if posted separately, it clearly acknowledges that
+it contains material copyrighted by OSU (b) no charge is associated with such
+copies, (c) User agrees to notify OSU and the Authors of the distribution and
+provide copies of the modifications if requested, and (d) User clearly notifies
+secondary users that such modified work is not the original Software.</p>
+<p>5.    User agrees that OSU, the Authors of the original work and others may
+enjoy a royalty-free, non-exclusive license to use, copy, modify and redistribute
+these modifications to the Software made by the User and distributed to third
+parties as a derivative work under this agreement.</p>
+<p>6.    This agreement will terminate immediately upon User’s breach of, or
+non-compliance with, any of its terms. User may be held liable for any copyright
+infringement or the infringement of any other proprietary rights in the Software
+that is caused or facilitated by the User’s failure to abide by the terms of
+this agreement.</p>
+<p>7.    This Agreement shall be governed and construed in accordance with the laws
+of the State of Oregon.</p>
+</div></blockquote>
+<p><strong>COMMERCIAL USE</strong></p>
+<p>Any User wishing to make a COMMERCIAL USE of the Software must contact the lead
+author at <a class="reference external" href="mailto:egbert&#37;&#52;&#48;coas&#46;oregonstate&#46;edu">egbert<span>&#64;</span>coas<span>&#46;</span>oregonstate<span>&#46;</span>edu</a> to arrange an appropriate license.
+Commercial use includes (1) use of the software for commercial purposes,
+including consulting or interpretation of geophysical datasets for fee;
+(2) integrating or incorporating all or part of the source code into a product
+for sale or license by, or on behalf of, User to third parties, or
+(3) distribution of the binary or source code to third parties for use with
+a commercial product sold or licensed by, or on behalf of, User.</p>
+</div>
+</div>
+<div class="section" id="mt-software-on-raijin">
+<h2>MT software on Raijin<a class="headerlink" href="#mt-software-on-raijin" title="Permalink to this headline">¶</a></h2>
+<p>In order to use the Raijin MT software, let’s first login to Raijin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh abc123@raijin.nci.org.au
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">abc123</span></code> is your NCI username.</p>
+<p>Now use a text editor (e.g. nano, emacs, vi) to edit your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nano ~/.bashrc
+</pre></div>
+</div>
+<p>Add the following line to the bottom of your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export MODULEPATH=/g/data/my80/apps/modules/modulefiles:$MODULEPATH
+</pre></div>
+</div>
+<p>Save and exit.</p>
+<p>Run the following command in your terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source ~/.bashrc
+</pre></div>
+</div>
+<p>You should now be able to load the following MT modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load birrp
+
+$ module load occam1DCSEM
+
+$ module load dipole1D
+
+$ module load occam2D
+
+$ module load mare2DEM
+
+$ module load modem
+</pre></div>
+</div>
+<p>Once these modules are loaded, to run <strong>BIRRP</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ birrp-5.3.2
+</pre></div>
+</div>
+<p>To test that <strong>BIRRP</strong> is working:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /g/data/my80/sandbox/capricorn_test
+
+$ birrp-5.3.2 &lt; CP1_LP_NR.script
+</pre></div>
+</div>
+<p>To run <strong>OCCAM1DCSEM</strong> and/or <strong>DIPOLE1D</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ occam1DCSEM
+</pre></div>
+</div>
+<p>To test <strong>OCCAM1DCSEM</strong> is working:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /g/data/my80/sandbox/occam_test/occam1DCSEM/Canonical_RealImag_BxEyEz
+
+$ occam1DCSEM startup
+</pre></div>
+</div>
+<p>To run <strong>mare2DEM</strong>, we first need to load in the intel-mpi module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load intel-mpi
+</pre></div>
+</div>
+<p>To run <strong>mare2DEM</strong> in inversion mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mpirun -np &lt;number of processors&gt; mare2DEM &lt;input resistivity file&gt;
+</pre></div>
+</div>
+<p>To run <strong>mare2DEM</strong> in forward mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mpirun -np &lt;number of processors&gt; mare2DEM -F &lt;input resistivity file&gt;
+</pre></div>
+</div>
+<p>To run <strong>mare2DEM</strong> in forward fields mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mpirun -np &lt;number of processors&gt; mare2DEM -FF &lt;input resistivity file&gt;
+</pre></div>
+</div>
+<p>To test <strong>mare2DEM</strong> is working:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /g/data/my80/sandbox/mare2DEM/inversion_MT
+
+$ mpirun -np 8 mare2DEM Demo.0.resistivity
+</pre></div>
+</div>
+<p>To run <strong>OCCAM2D</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ Occam2D
+</pre></div>
+</div>
+<p>To test <strong>OCCAM2D</strong> is working:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /g/data/my80/sandbox/occam_test/Test2
+
+$ Occam2D startup
+</pre></div>
+</div>
+<p>To run <strong>ModEM</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mod2DMT
+
+or
+
+$ mod3DMT
+</pre></div>
+</div>
+<p><strong>Note:</strong> If you need to use the <strong>Mod3DMT_MPI</strong> parallel code, you will have join the group <strong>ModEM-geophys</strong> via the NCI <a class="reference external" href="https://my.nci.org.au/mancini/login?next=/mancini/">Mancini page</a></p>
+<p>Once you have access to this group, you can load in the following module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load ModEM-geophysics/2013.06
+</pre></div>
+</div>
+</div>
+<div class="section" id="mt-software-on-the-nci-virtual-desktop-infrastructure-vdi">
+<h2>MT software on the NCI Virtual Desktop Infrastructure (VDI)<a class="headerlink" href="#mt-software-on-the-nci-virtual-desktop-infrastructure-vdi" title="Permalink to this headline">¶</a></h2>
+<p>We can also access the MT software on the VDI. Once logged in to the VDI via Strudel (see the <a class="reference external" href="https://opus.nci.org.au/display/Help/VDI+User+Guide">VDI user guide</a> for installation instructions),
+open up a terminal and use a text editor (e.g. nano, emacs, vi) to edit your bashrc:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nano ~/.bashrc
+</pre></div>
+</div>
+<p>Add the following line to the bottom of your bashrc:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export MODULEPATH=/g/data3/my80/apps/modules/modulefiles:$MODULEPATH
+</pre></div>
+</div>
+<p>Save and exit.</p>
+<p>Run the following command in the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source ~/.bashrc
+</pre></div>
+</div>
+<p>Now you should be able to load in the following modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load birrp
+
+$ module load occam1DCSEM
+
+$ module load dipole1D
+
+$ module load occam2D
+
+$ module load mare2DEM
+
+$ module load modem
+
+$ module load snuffler
+</pre></div>
+</div>
+<p><strong>BIRRP</strong>, <strong>OCCAM</strong>, <strong>mare2DEM</strong> and <strong>ModEM</strong> can be used as per the instructions for Raijin.</p>
+<p>To run snuffler:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ snuffler
+</pre></div>
+</div>
+<div class="section" id="time-series-qc-using-snuffler-a-miniseed-time-series-visualisation-tool">
+<h3>Time-series QC using snuffler, a miniSEED time-series visualisation tool<a class="headerlink" href="#time-series-qc-using-snuffler-a-miniseed-time-series-visualisation-tool" title="Permalink to this headline">¶</a></h3>
+<p><span class="blue">The Snuffler is an interactive and extensible seismogram browser (but can also be used to view MT time-series) that is suited for small and very big datasets and archives.</span></p>
+<p>For more information about Snuffler, please visit the <a class="reference external" href="https://pyrocko.org/v0.3/apps_snuffler.html">Snuffler manual</a></p>
+<p>For this example, we need to first log into NCI’s VDI. Once on the VDI, open up a terminal.</p>
+<p>Let’s load in the module snuffler:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load snuffler
+</pre></div>
+</div>
+<p>For this example, let’s view some miniSEED data located here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /g/data/my80/sandbox/snuffler_test/
+</pre></div>
+</div>
+<p>To view this example time series:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ snuffler *.mseed
+</pre></div>
+</div>
+<p>and the following window should open:</p>
+<img alt="_notebook/geophysics/../_static/images/Snuffler1.png" src="_notebook/geophysics/../_static/images/Snuffler1.png" />
+<p>Initially there are no waveforms. To zoom in and view the waveforms, hold the mouse over the coloured boxes and pull towards you. Once you zoom in close enough, the time-series will appear. To zoom out, hold the mouse over the trace data and push the mouse away from you.</p>
+<img alt="_notebook/geophysics/../_static/images/Snuffler2.png" src="_notebook/geophysics/../_static/images/Snuffler2.png" />
+<p>Navigation commands:</p>
+<p><strong>&lt; space &gt;</strong> - move forward one page in time</p>
+<p><strong>b</strong> - move backward one page in time</p>
+<p><strong>f</strong> - full screen is displayed</p>
+<p><strong>&lt; minus &gt;</strong> - remove one trace from the snuffler screen</p>
+<p><strong>&lt; plus &gt;</strong> - add a trace to the snuffler screen</p>
+<p><strong>:</strong> - toggle the snuffler command line</p>
+<p><strong>?</strong> - displays help information</p>
+<p>For a more detailed look at how to use snuffler, please visit this <a class="reference external" href="https://pyrocko.org/docs/current/apps/snuffler/tutorial.html">snuffler tutorial</a>.</p>
+</div>
+<div class="section" id="running-the-bounded-influence-remote-reference-processing-birrp-code-on-nci-s-vdi-and-raijin">
+<h3>Running the Bounded Influence, Remote Reference Processing (BIRRP) code on NCI’s VDI and Raijin<a class="headerlink" href="#running-the-bounded-influence-remote-reference-processing-birrp-code-on-nci-s-vdi-and-raijin" title="Permalink to this headline">¶</a></h3>
+<p>Once we are happy with the quality of our time-series, the next step is to run our time-series data processing. For this example, we will run the Bounded Influence, Remote Reference Processing (BIRRP) code of A.D. Chave and D.J. Thomsom.</p>
+<p>For those unfamiliar, the BIRRP program computes magnetotelluric and geomagnetic depth sounding response functions using a bounded influence, remote reference method, along with an implementation of the jackknife to get error estimates on the result. It incorporates a method for controlling leverage points (i.e., magnetic field values which are statistically anomalous), includes the implementation of two stage processing which enables removal of outliers in both the local electric and magnetic field variables, and allows multiple remote reference sites to be used.</p>
+<p>For more information about BIRRP and links to the relevant literature, please visit <a class="reference external" href="http://www.whoi.edu/science/AOPE/people/achave/Site/Next1.html">here</a></p>
+<div class="section" id="using-birrp-on-the-vdi">
+<h4>Using BIRRP on the VDI<a class="headerlink" href="#using-birrp-on-the-vdi" title="Permalink to this headline">¶</a></h4>
+<p>A test dataset has been created with 16 MT sites and associated E/B time-series ready for BIRRP processing. Note that this test is mainly focusing on computational performance and not on the results of the BIRRP processing.</p>
+<p>BIRRP script files for sites B1-B16 can be found here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /g/data/my80/sandbox/capricorn_test/loop_test/
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ less B1/CP1.script
+</pre></div>
+</div>
+<p>Let’s create a file with a simple loop to run BIRRP processing serially (one station after another) on each of our 16 MT sites. Run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ less serial_VDI.sh
+</pre></div>
+</div>
+<p>to view the following script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+for f in /g/data/my80/sandbox/capricorn_test/loop_test/B*;
+  do
+    [ -d $f ] &amp;&amp; cd &quot;$f&quot; &amp;&amp; echo Entering into $f and running BIRRP &amp;&amp; birrp-5.3.2 &lt; CP1.script &amp;&amp; cd ..
+  done;
+</pre></div>
+</div>
+<p>To run this script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">serial_VDI</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">The</span> <span class="n">job</span> <span class="n">execution</span> <span class="n">time</span> <span class="k">for</span> <span class="n">this</span> <span class="n">script</span> <span class="ow">is</span> <span class="n">approximately</span> <span class="mi">30</span> <span class="n">minutes</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Now let’s slightly edit our script to run the 16 BIRRP executions in parallel using the 8 cores available on the VDI. Run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ less parallel_VDI.sh
+</pre></div>
+</div>
+<p>to view the following script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+for f in /g/data/my80/sandbox/capricorn_test/loop_test/B*;
+  do
+     [ -d $f ] &amp;&amp; cd &quot;$f&quot; &amp;&amp; echo Entering into $f and running BIRRP &amp;&amp; birrp-5.3.2 &lt; CP1.script &amp;&amp; cd .. &amp;
+
+  done
+  wait
+</pre></div>
+</div>
+<p>To run this script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source parallel_VDI.sh
+</pre></div>
+</div>
+<p>The job execution time for this script is approximately 4 minutes.</p>
+</div>
+<div class="section" id="using-birrp-on-raijin">
+<h4>Using BIRRP on Raijin<a class="headerlink" href="#using-birrp-on-raijin" title="Permalink to this headline">¶</a></h4>
+<p>Let’s test our BIRRP processing script on Raijin using 16 cpus and 500MB of memory.</p>
+<p>Login to raijin and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /g/data/my80/sandbox/capricorn_test/loop_test/
+
+$ less parallel_VDI.sh
+</pre></div>
+</div>
+<p>to view the following script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+#PBS -P z00
+#PBS -q normal
+#PBS -l walltime=00:05:00
+#PBS -l mem=500MB
+#PBS -l jobfs=1GB
+#PBS -l ncpus=16
+#PBS -l software=birrp-5.3.2
+#PBS -l wd
+
+module purge
+module load birrp/5.3.2
+
+for f in /g/data/my80/sandbox/capricorn_test/loop_test/B*;
+  do
+     [ -d $f ] &amp;&amp; cd &quot;$f&quot; &amp;&amp; echo Entering into $f and running BIRRP &amp;&amp; birrp-5.3.2 &lt; CP1.script &amp;&amp; cd .. &amp;
+
+  done
+  wait
+</pre></div>
+</div>
+<p>To run this script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source parallel_raijin.sh
+</pre></div>
+</div>
+<p>The job execution time for this script is approximately 1 minute.</p>
+<p>Here we can see that by running our BIRRP loop on Raijin using multiple CPUs, we can significantly decrease our processing time. In theory we could run thousands of different BIRRP processes at once on Raijin. This same concept could be applied to running 2D inversions with OCCAM2D and Mod2DMT where one could run thousands of inversions in parallel by requesting the appropriate number of CPUs.</p>
+</div>
+</div>
+<div class="section" id="installing-and-using-mtpy-on-the-vdi">
+<h3>Installing and using MTpy on the VDI<a class="headerlink" href="#installing-and-using-mtpy-on-the-vdi" title="Permalink to this headline">¶</a></h3>
+<p><span class="blue">MTpy: A Python Toolbox for Magnetotelluric (MT) Data Processing, Analysis, Modelling and Visualization</span></p>
+<p>Written in Python, the code is open source, containing sub-packages and modules for various tasks within the standard MT data processing and handling scheme. For more information on MTpy, please read:</p>
+<p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0098300414001794">Krieger and Peacock 2014</a>. MTpy: A Python toolbox for magnetotellurics. Computers &amp; Geosciences, 72, 167-175.</p>
+<p>We will now go through the installation of two versions of MTpy on the VDI:</p>
+<p><strong>V1:</strong> <a class="reference external" href="https://github.com/geophysics/mtpy">https://github.com/geophysics/mtpy</a></p>
+<p>This is the original version of MTpy. The advantage of this version is it has few dependencies making it easy to install and use. This version will take up approximately 115MB of disk space.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~/
+
+$ git clone https://github.com/geophysics/mtpy.git
+
+$ cd mtpy
+
+$ python setup.py install
+</pre></div>
+</div>
+<p>To test that mtpy has been installed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python/2.7.11
+
+$ module load ipython/4.2.0-py2.7
+
+$ ipython
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">mtpy</span> <span class="kn">import</span> <span class="n">utils</span>
+</pre></div>
+</div>
+<p>If this line of python code works then you have successfully installed MTpy on the VDI!</p>
+<p>Now let’s try an example of converting BIRRP outputs to edi files. For this, we will work with an example BIRRP output found here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">g</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">my80</span><span class="o">/</span><span class="n">sandbox</span><span class="o">/</span><span class="n">capricorn_test</span><span class="o">/</span><span class="n">loop_test</span><span class="o">/</span><span class="mi">2</span><span class="n">M</span><span class="o">/</span><span class="n">M1</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Note that the BIRRP config file is <strong>CP1.script</strong> and the survey_configfile is <strong>survey.cfg</strong>.</p>
+<p>Let’s head back to our ipython terminal</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="kn">from</span> <span class="nn">mtpy.processing.birrp</span> <span class="kn">import</span> <span class="n">convert2edi</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">stationname</span> <span class="o">=</span> <span class="s1">&#39;c01&#39;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">survey_configfile</span> <span class="o">=</span> <span class="s1">&#39;/g/data/my80/sandbox/capricorn_test/loop_test/2M/M1/survey.cfg&#39;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">in_dir</span> <span class="o">=</span> <span class="s1">&#39;/g/data/my80/sandbox/capricorn_test/loop_test/2M/M1/&#39;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="n">birrp_configfile</span> <span class="o">=</span> <span class="s1">&#39;/g/data/my80/sandbox/capricorn_test/loop_test/2M/M1/CP1.script&#39;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="n">convert2edi</span><span class="p">(</span><span class="n">stationname</span><span class="p">,</span> <span class="n">in_dir</span><span class="p">,</span> <span class="n">survey_configfile</span><span class="p">,</span> <span class="n">birrp_configfile</span><span class="p">,</span> <span class="n">out_dir</span> <span class="o">=</span> <span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This should create the following edi file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">g</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">my80</span><span class="o">/</span><span class="n">sandbox</span><span class="o">/</span><span class="n">capricorn_test</span><span class="o">/</span><span class="n">loop_test</span><span class="o">/</span><span class="mi">2</span><span class="n">M</span><span class="o">/</span><span class="n">M1</span><span class="o">/</span><span class="n">C01</span><span class="o">.</span><span class="n">edi</span>
+</pre></div>
+</div>
+<p><strong>V2:</strong> <a class="reference external" href="https://github.com/MTgeophysics/mtpy">https://github.com/MTgeophysics/mtpy</a></p>
+<p>This is the most up to date version of MTpy and will take up approximately 370MB of disk space. Additionally, a virtual environment needs to be created in order to install some of the dependencies, which will take up approximately 190 MB of disk space. This version of MTpy requires the following dependencies:</p>
+<blockquote>
+<div><ul class="simple">
+<li>matplotlib&gt;=2.02</li>
+<li>numpy</li>
+<li>PyYAML&gt;=3.11</li>
+<li>(geo)pandas</li>
+<li>scipy</li>
+<li>pillow</li>
+<li>pyqt</li>
+<li>qtpy</li>
+<li>obspy</li>
+<li>netcdf4</li>
+<li>numpydoc&gt;=0.7.0</li>
+</ul>
+</div></blockquote>
+<p>To install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~/
+
+$ git clone https://github.com/MTgeophysics/mtpy.git
+</pre></div>
+</div>
+<p>Now we need to load in the required modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python/2.7.11
+
+$ module load python/2.7.11-matplotlib
+
+$ module load numpy/1.11.1-py2.7
+
+$ module load scipy/0.17.1-py2.7
+
+$ module load ipython/4.2.0-py2.7
+
+$ module load pandas/0.18.1-py2.7
+
+$ module load netcdf4-python/1.2.4-ncdf-4.3.3.1-py2.7
+
+$ module load gdal/2.0.0
+
+$ module load virtualenv/15.0.2-py2.7
+
+and create a virtual environment::
+
+  $ virtualenv mtpy_venv
+
+  $ source mtpy_venv/bin/activate
+</pre></div>
+</div>
+<p>Once the virtual environment has been activated, the following modules need to be installed via pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install pyyaml
+
+$ pip install Pillow
+
+$ pip install qtpy
+
+$ pip install obspy
+
+$ pip install numpydoc==0.7.0
+</pre></div>
+</div>
+<p>Now we can install mtpy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd mtpy
+
+$ python setup.py develop
+</pre></div>
+</div>
+<p>To verify the install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip list | grep mtpy
+</pre></div>
+</div>
+<p>To test, open up an ipython terminal:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">mtpy.processing.birrp</span> <span class="kn">as</span> <span class="nn">birrp</span>
+</pre></div>
+</div>
+<p>If this works then MTpy has been successfully installed.</p>
+</div>
+<div class="section" id="modem-3d-inversions">
+<h3>ModEM 3D inversions<a class="headerlink" href="#modem-3d-inversions" title="Permalink to this headline">¶</a></h3>
+<p><span class="blue">Modular EM (ModEM) is a flexible electromagnetic modelling and inversion program written in Fortran 95.</span></p>
+<p>It is currently available to use with 2D and 3D MT problems. For more information about ModEM, please read:</p>
+<p>Kelbert, A., Meqbel, N., Egbert, G.D. and Tandon, K., 2014. ModEM: A modular system for inversion of electromagnetic geophysical data. Computers &amp; Geosciences, 66, pp.40-53. - <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0098300414000211">Kelbert et al. link</a></p>
+<p>Egbert, G.D. and Kelbert, A., 2012. Computational recipes for electromagnetic inverse problems. Geophysical Journal International, 189(1), pp.251-267. - <a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-246X.2011.05347.x">Egbert and Kelbert link</a></p>
+<p>Let’s test the serial and parallel <strong>Mod3DMT</strong> codes on the VDI and Raijin for the <em>ObliqueOne Inversion</em> dataset given in the <em>examples</em> folder of the ModEM software.</p>
+<p><strong>Test 1: Serial Mod3dMT on the VDI</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /g/data/my80/sandbox/modem_test/ObliqueOne/INV/
+
+$ module load modem
+
+$ mod3DMT -I NLCG  50_2x2_for_ObliqueOne.model Z_10_5_16p_100st_ObliqueOne_Noise50.data Inv_para.dat FWD_para.dat x02_y02_z02.cov
+
+or
+
+$ source my_script
+</pre></div>
+</div>
+<p>The job execution time for this script was 1180m29s (almost 20 hours).</p>
+<p><strong>Test 2: Parallel Mod3dMT_MPI on Raijin</strong></p>
+<p>In order to use the Mod3DMT_MPI code, you will have join the group ModEM-geophys via NCI’s <a class="reference external" href="https://my.nci.org.au/mancini/login?next=/mancini/">mancini</a>page. Once you have been granted access to this group:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /g/data/my80/sandbox/modem_test/ObliqueOne/INV3/
+</pre></div>
+</div>
+<p>To run Mod3dMT_MPI, we need to create a shell script. For this example, let’s use the normal cue, 32 cups, 4GB memory and a walltime of 10 minutes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+#PBS -P &lt;project code&gt;
+#PBS -q normal
+#PBS -l walltime=0:10:00,mem=4GB,ncpus=32,jobfs=100MB
+#PBS -l wd
+
+export OMP_NUM_THREADS=2
+
+module load openmpi/1.10.2
+module load intel-mkl/15.0.3.187
+module load ModEM-geophysics/2013.06
+
+mpirun -np 16 --map-by slot:PE=$OMP_NUM_THREADS /apps/ModEM-geophysics/2013.06/bin/Mod3DMT_MPI -I NLCG 50_2x2_for_ObliqueOne.model Z_10_5_16p_100st_ObliqueOne_Noise50.data Inv_para.dat FWD_para.dat x02_y02_z02.cov -v debug -P &#39;./tmpvec&#39; &gt; mod3dmt_oblique_test.out.$PBS_JOBID
+</pre></div>
+</div>
+<p>To run this shell script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qsub &lt; mod3dmt_shell_script &gt;
+</pre></div>
+</div>
+<p>Experiment with some of the following commands to monitor the progress of this job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat -u $USER
+
+$ qstat -sw &lt;jobID&gt;
+
+$ qstat -E &lt;jobID1,...&gt;
+
+$ qstat -f &lt;jobID&gt;
+
+$ qcat -s &lt;jobID&gt;
+
+$ qcat -e &lt;jobID&gt;
+
+$ qcat -o &lt;jobID&gt;
+
+$ qls &lt;jobID&gt;
+
+$ qcp &lt;jobID&gt;/* ./
+
+$ qps &lt;jobID&gt;
+
+$ nqstat_anu &lt;jobID&gt;
+</pre></div>
+</div>
+<p>Once this job is complete, to see the stats:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat -u $USER -x
+
+$ qstat -sw &lt;jobID&gt; -x
+
+$ qstat -fx &lt;jobID&gt;
+</pre></div>
+</div>
+<p>Additionally, 8 hours after the job is complete, the job stats should be available <a class="reference external" href="https://usersupport.nci.org.au/report/job_history">here</a></p>
+<p>The job execution time for this script was 7m51s. For this example, using Mod3DMT_MPI on Raijin produces results almost 170 times faster than using the serial Mod3DMT on the VDI.</p>
+<hr class="docutils" />
+<p><strong>This material uses</strong> <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f4237_9555_3315_5547">The University of Adelaide Magnetotellurics Data Collection</a> <strong>which is available under the</strong> <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons License 4.0</a>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

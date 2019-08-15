@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GSKY interacts with ArcGIS suite &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>GSKY interacts with ArcGIS suite</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/gsky/GSKY_ArcGIS.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="gsky-interacts-with-arcgis-suite">
+<h1>GSKY interacts with ArcGIS suite<a class="headerlink" href="#gsky-interacts-with-arcgis-suite" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial demonstrate how ArcGIS pro, ArcGIS Earth and ArcMap interact with GSKY Web Mapping Services (WMS). In this tutorial, you will learn to add the layer by calling GSKY WMS server.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>ArcGIS</p>
+<p><a class="reference external" href="https://learn.arcgis.com/en/projects/get-started-with-arcgis-online/">https://learn.arcgis.com/en/projects/get-started-with-arcgis-online/</a></p>
+<p>In this tutorial, we are going to demonstrate</p>
+<ul class="simple">
+<li>Create a map showing evacuation routes in Houston</li>
+<li>Use smart mapping and pop-ups to determine areas with low vehicle ownership.</li>
+<li>Configure a web app to share your findings with others.</li>
+</ul>
+</div>
+<div class="section" id="prerequisite">
+<h2>0. Prerequisite<a class="headerlink" href="#prerequisite" title="Permalink to this headline">¶</a></h2>
+<p>In this lesson, you’ll create a map that shows hurricane evacuation routes in Houston, Texas. First, you’ll create a new map and locate Houston, Texas. Then, you’ll add a map layer that shows evacuation routes. Lastly, you’ll change the way your map and layers look to better display the data.</p>
+<p>If you don’t have an ArcGIS account, you can sign up for a free&nbsp;<a class="reference external" href="https://www.arcgis.com/home/createaccount.html">public account</a>&nbsp;or an&nbsp;<a class="reference external" href="https://www.arcgis.com/features/free-trial.html">ArcGIS free trial</a>.</p>
+</div>
+<div class="section" id="sign-in-using-google-account">
+<h2>1. Sign in using google account<a class="headerlink" href="#sign-in-using-google-account" title="Permalink to this headline">¶</a></h2>
+<p>Type this link in your web browser: <a class="reference external" href="https://www.arcgis.com/home/createaccount.html">https://www.arcgis.com/home/createaccount.html</a></p>
+<img alt="../../_images/GSKY_ArcGISweb1.png" src="../../_images/GSKY_ArcGISweb1.png" />
+<p>Click “Using Google” to login. You might need to click twice to login.</p>
+<img alt="../../_images/GSKY_ArcGISweb2.png" src="../../_images/GSKY_ArcGISweb2.png" />
+<p>You might need to click twice to login.</p>
+<img alt="../../_images/GSKY_ArcGISweb3.png" src="../../_images/GSKY_ArcGISweb3.png" />
+</div>
+<div class="section" id="choose-a-basemap">
+<h2>2. Choose a Basemap<a class="headerlink" href="#choose-a-basemap" title="Permalink to this headline">¶</a></h2>
+<p>Click “Map” on the top bar. You will see a map with the dafault location.</p>
+<img alt="../../_images/GSKY_ArcGISweb4.png" src="../../_images/GSKY_ArcGISweb4.png" />
+<p>Choose “Terrain with Labels” as the Basemap from the list.</p>
+<img alt="../../_images/GSKY_ArcGISweb5.png" src="../../_images/GSKY_ArcGISweb5.png" />
+<p>Type the location in the search window on the right-top corner and click enter. Dismiss the “Search result” box.
+We will just use the default view or search “Australia” if the default view is not Australia.</p>
+<img alt="../../_images/GSKY_ArcGISweb6.png" src="../../_images/GSKY_ArcGISweb6.png" />
+</div>
+<div class="section" id="load-gsky-layer-onto-a-map">
+<h2>3. Load GSKY layer onto a map<a class="headerlink" href="#load-gsky-layer-onto-a-map" title="Permalink to this headline">¶</a></h2>
+<p>Click “Add | Add Layer from Web”.</p>
+<img alt="../../_images/GSKY_ArcGISweb7.png" src="../../_images/GSKY_ArcGISweb7.png" />
+<p>You will see a list of options from the drop down box below. Choose “A WMS OGC Web Service”.</p>
+<img alt="../../_images/GSKY_ArcGISweb8.png" src="../../_images/GSKY_ArcGISweb8.png" />
+<p>Type is “<a class="reference external" href="https://gsky.nci.org.au/ows/geoglam">https://gsky.nci.org.au/ows/geoglam</a>” in the URL box. Then click “ADD LAYER”. You can tick the box beneath of URL box “Use as Basemap” if you like.</p>
+<img alt="../../_images/GSKY_ArcGISweb9.png" src="../../_images/GSKY_ArcGISweb9.png" />
+<p>All data layers published through GSKY production server should be now available for you to choose. Click the grey arrow to expend the dataset list. Note if you untick the top layer “GSKY Web Map Service”, all the GSKY layers will be invisible.</p>
+<img alt="../../_images/GSKY_ArcGISweb10.png" src="../../_images/GSKY_ArcGISweb10.png" />
+<p>You can tick/untick the layer as you like.</p>
+<img alt="../../_images/GSKY_ArcGISweb11.png" src="../../_images/GSKY_ArcGISweb11.png" />
+<p>You can change the layer’s appearance for each layer. Put mouse on top of the “…” under each layer, a list of options will pop up as below. For example, you can increase the Transparency by moving the percentage bar. You can use this layer as the Basemap by clicking “Move to Basemap”. You can also remove the layer by choosing “Remove” option.</p>
+<img alt="../../_images/GSKY_ArcGISweb12.png" src="../../_images/GSKY_ArcGISweb12.png" />
+</div>
+<div class="section" id="add-oil-and-gas-pipeline-data">
+<h2>4. Add Oil and Gas pipeline data<a class="headerlink" href="#add-oil-and-gas-pipeline-data" title="Permalink to this headline">¶</a></h2>
+<p>Click “Add | Browse Living Atlas Layers”.</p>
+<img alt="../../_images/GSKY_ArcGISweb13.png" src="../../_images/GSKY_ArcGISweb13.png" />
+<p>Search “Australia” to see what database is available in this Living Atlas. Two layers are found: Oil and Gas Infrastrcutre and DEM SREM 1 Second Hydro Enforced.</p>
+<img alt="../../_images/GSKY_ArcGISweb14.png" src="../../_images/GSKY_ArcGISweb14.png" />
+<p>Choose “Oil_Gas_Infrastructure” and click “Add layer”.</p>
+<img alt="../../_images/GSKY_ArcGISweb15.png" src="../../_images/GSKY_ArcGISweb15.png" />
+<p>Close the layer information (step 1 in red circle) and go back to the map view (step 2 in red circle)</p>
+<img alt="../../_images/GSKY_ArcGISweb16.png" src="../../_images/GSKY_ArcGISweb16.png" />
+<p>Two layers are shown on the map.</p>
+<img alt="../../_images/GSKY_ArcGISweb17.png" src="../../_images/GSKY_ArcGISweb17.png" />
+<p>Drag and move to re-arrange the order of different layers.</p>
+<img alt="../../_images/GSKY_ArcGISweb18.png" src="../../_images/GSKY_ArcGISweb18.png" />
+<p>Click “Details | Contents | Layer name | Transparency” to see through this layer.</p>
+<img alt="../../_images/GSKY_ArcGISweb19.png" src="../../_images/GSKY_ArcGISweb19.png" />
+</div>
+<div class="section" id="view-attribute-table">
+<h2>5. View attribute table<a class="headerlink" href="#view-attribute-table" title="Permalink to this headline">¶</a></h2>
+<p>Click “Details | Content | Layer name (National Onshore Oil Pipelines) | Show Table” (click the table icon).</p>
+<img alt="../../_images/GSKY_ArcGISweb20.png" src="../../_images/GSKY_ArcGISweb20.png" />
+<p>Move the bar up to expand the table view.</p>
+<img alt="../../_images/GSKY_ArcGISweb21.png" src="../../_images/GSKY_ArcGISweb21.png" />
+<p>Select the records that are interested. Click “Show Selected Records”.</p>
+<img alt="../../_images/GSKY_ArcGISweb22.png" src="../../_images/GSKY_ArcGISweb22.png" />
+<p>The four selected records are highlighted on map.</p>
+<img alt="../../_images/GSKY_ArcGISweb23.png" src="../../_images/GSKY_ArcGISweb23.png" />
+</div>
+<div class="section" id="style-the-layer-with-attribute">
+<h2>6. Style the layer with attribute<a class="headerlink" href="#style-the-layer-with-attribute" title="Permalink to this headline">¶</a></h2>
+<p>Click “Details | Contents | Layer name | Change style”.</p>
+<img alt="../../_images/GSKY_ArcGISweb24.png" src="../../_images/GSKY_ArcGISweb24.png" />
+<p>Choose an attribute to show - Operational status. Click “Option”.</p>
+<img alt="../../_images/GSKY_ArcGISweb25.png" src="../../_images/GSKY_ArcGISweb25.png" />
+<p>Click the colour line to change the styles.</p>
+<img alt="../../_images/GSKY_ArcGISweb26.png" src="../../_images/GSKY_ArcGISweb26.png" />
+<p>Select thick black solid line for operational lines.</p>
+<img alt="../../_images/GSKY_ArcGISweb27.png" src="../../_images/GSKY_ArcGISweb27.png" />
+<p>Select thick grey dash line for non-operational lines.</p>
+<img alt="../../_images/GSKY_ArcGISweb28.png" src="../../_images/GSKY_ArcGISweb28.png" />
+<img alt="../../_images/GSKY_ArcGISweb29.png" src="../../_images/GSKY_ArcGISweb29.png" />
+</div>
+<div class="section" id="enable-and-customise-the-pop-up">
+<h2>7. Enable and customise the Pop-up<a class="headerlink" href="#enable-and-customise-the-pop-up" title="Permalink to this headline">¶</a></h2>
+<p>Click “Details | Contents | Layer name (National Onshore Oil Pipelines) | More Options”.</p>
+<img alt="../../_images/GSKY_ArcGISweb30.png" src="../../_images/GSKY_ArcGISweb30.png" />
+<p>Click “Enable Pop-up”.</p>
+<img alt="../../_images/GSKY_ArcGISweb31.png" src="../../_images/GSKY_ArcGISweb31.png" />
+<p>Click on a tract to see the pop-up.</p>
+<img alt="../../_images/GSKY_ArcGISweb32.png" src="../../_images/GSKY_ArcGISweb32.png" />
+<p>Click “Details | Contents | Layer name (National Onshore Oil Pipelines) | More Options | Configure Pop-up”.</p>
+<img alt="../../_images/GSKY_ArcGISweb33.png" src="../../_images/GSKY_ArcGISweb33.png" />
+<p>Choose “A description from one field” to display as pop-up content.</p>
+<img alt="../../_images/GSKY_ArcGISweb34.png" src="../../_images/GSKY_ArcGISweb34.png" />
+<p>Click on a tract to see the pop-up.</p>
+<img alt="../../_images/GSKY_ArcGISweb35.png" src="../../_images/GSKY_ArcGISweb35.png" />
+</div>
+<div class="section" id="save-the-map-and-create-a-web-app-to-share">
+<h2>8. Save the map and create a web app to share<a class="headerlink" href="#save-the-map-and-create-a-web-app-to-share" title="Permalink to this headline">¶</a></h2>
+<p>Click “Save”.</p>
+<img alt="../../_images/GSKY_ArcGISweb36.png" src="../../_images/GSKY_ArcGISweb36.png" />
+<p>Type the map name and tags. Click “Save maps”.</p>
+<img alt="../../_images/GSKY_ArcGISweb37.png" src="../../_images/GSKY_ArcGISweb37.png" />
+<p>Click “Share”.</p>
+<img alt="../../_images/GSKY_ArcGISweb38.png" src="../../_images/GSKY_ArcGISweb38.png" />
+<p>Click “Create a web app”. The link to the map will automatically pop up.</p>
+<img alt="../../_images/GSKY_ArcGISweb39.png" src="../../_images/GSKY_ArcGISweb39.png" />
+<p>Choose a template.</p>
+<img alt="../../_images/GSKY_ArcGISweb40.png" src="../../_images/GSKY_ArcGISweb40.png" />
+<p>Click “Create web app”.</p>
+<img alt="../../_images/GSKY_ArcGISweb41.png" src="../../_images/GSKY_ArcGISweb41.png" />
+<p>Enter title, summary. Click “Done” and wait until map is generated.</p>
+<img alt="../../_images/GSKY_ArcGISweb42.png" src="../../_images/GSKY_ArcGISweb42.png" />
+<p>Click “Save”. Click “Launch”. Copy the URL for sharing.</p>
+<img alt="../../_images/GSKY_ArcGISweb43.png" src="../../_images/GSKY_ArcGISweb43.png" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

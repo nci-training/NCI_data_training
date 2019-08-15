@@ -1,0 +1,6 @@
+# .readthedocs.yml
+
+nbsphinx
+ipykernel
+
+ 

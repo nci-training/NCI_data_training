@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using NetCDF command line tool “ncdump” &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Using NetCDF command line tool “ncdump”</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/ncdump_cmip5.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Using-NetCDF-command-line-tool-“ncdump”">
+<h1>Using NetCDF command line tool “ncdump”<a class="headerlink" href="#Using-NetCDF-command-line-tool-“ncdump”" title="Permalink to this headline">¶</a></h1>
+<p><strong>NetCDF Library Version: 4.6.1</strong></p>
+<p>In this notebook:</p>
+<p>How to use the NetCDF library command line tool “ncdump” to view file contents and metadata information</p>
+<p>The following material uses Coupled Model Intercomparison Project (CMIP5) collections. The CMIP5 terms of use are found <a class="reference external" href="https://cmip.llnl.gov/cmip5/terms.html">here</a>. For more information on the collection, please <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716">click here</a>.</p>
+<hr class="docutils" />
+<p><strong>Load the required NetCDF library module</strong></p>
+<p>As both the VDI and Raijin have several NetCDF libraries available, we recommend specifying the version number when loading modules.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load netcdf/4.6.1
+</pre></div>
+</div>
+<p><strong>Using ncdump</strong></p>
+<p>The NetCDF library’ <code class="docutils literal notranslate"><span class="pre">ncdump</span></code> is command line tool used to view a text representation of a NetCDF file’s contents. More detailed information can be found <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf/netcdf-4/newdocs/ncdump-man-1.html">here</a> from Unidata.</p>
+<p><strong>Getting started</strong></p>
+<p>To being with, enter <code class="docutils literal notranslate"><span class="pre">ncdump</span></code> from the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump
+</pre></div>
+</div>
+<p>This will display a list of all the different information and output types <code class="docutils literal notranslate"><span class="pre">ncdump</span></code> can return:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ncdump</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="o">|-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span> <span class="o">...</span><span class="p">]</span> <span class="p">[[</span><span class="o">-</span><span class="n">b</span><span class="o">|-</span><span class="n">f</span><span class="p">]</span> <span class="p">[</span><span class="n">c</span><span class="o">|</span><span class="n">f</span><span class="p">]]</span> <span class="p">[</span><span class="o">-</span><span class="n">l</span> <span class="nb">len</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">name</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">n</span><span class="p">[,</span><span class="n">n</span><span class="p">]]</span> <span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">x</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span><span class="o">|-</span><span class="n">i</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">g</span> <span class="o">...</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="p">]</span> <span class="n">file</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span>             <span class="n">Coordinate</span> <span class="n">variable</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">header</span> <span class="n">information</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>             <span class="n">Header</span> <span class="n">information</span> <span class="n">only</span><span class="p">,</span> <span class="n">no</span> <span class="n">data</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">v</span> <span class="n">var1</span><span class="p">[,</span><span class="o">...</span><span class="p">]]</span>  <span class="n">Data</span> <span class="k">for</span> <span class="n">variable</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">var1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">...</span> <span class="n">only</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="p">[</span><span class="n">c</span><span class="o">|</span><span class="n">f</span><span class="p">]]</span>       <span class="n">Brief</span> <span class="n">annotations</span> <span class="k">for</span> <span class="n">C</span> <span class="ow">or</span> <span class="n">Fortran</span> <span class="n">indices</span> <span class="ow">in</span> <span class="n">data</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="p">[</span><span class="n">c</span><span class="o">|</span><span class="n">f</span><span class="p">]]</span>       <span class="n">Full</span> <span class="n">annotations</span> <span class="k">for</span> <span class="n">C</span> <span class="ow">or</span> <span class="n">Fortran</span> <span class="n">indices</span> <span class="ow">in</span> <span class="n">data</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">l</span> <span class="nb">len</span><span class="p">]</span>         <span class="n">Line</span> <span class="n">length</span> <span class="n">maximum</span> <span class="ow">in</span> <span class="n">data</span> <span class="n">section</span> <span class="p">(</span><span class="n">default</span> <span class="mi">80</span><span class="p">)</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">name</span><span class="p">]</span>        <span class="n">Name</span> <span class="k">for</span> <span class="n">netCDF</span> <span class="p">(</span><span class="n">default</span> <span class="n">derived</span> <span class="kn">from</span> <span class="nn">file</span> <span class="n">name</span><span class="p">)</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">n</span><span class="p">[,</span><span class="n">n</span><span class="p">]]</span>       <span class="n">Display</span> <span class="n">floating</span><span class="o">-</span><span class="n">point</span> <span class="n">values</span> <span class="k">with</span> <span class="n">less</span> <span class="n">precision</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">]</span>             <span class="n">Output</span> <span class="n">kind</span> <span class="n">of</span> <span class="n">netCDF</span> <span class="n">file</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">s</span><span class="p">]</span>             <span class="n">Output</span> <span class="n">special</span> <span class="p">(</span><span class="n">virtual</span><span class="p">)</span> <span class="n">attributes</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">t</span><span class="p">]</span>             <span class="n">Output</span> <span class="n">time</span> <span class="n">data</span> <span class="k">as</span> <span class="n">date</span><span class="o">-</span><span class="n">time</span> <span class="n">strings</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="p">]</span>             <span class="n">Output</span> <span class="n">time</span> <span class="n">data</span> <span class="k">as</span> <span class="n">date</span><span class="o">-</span><span class="n">time</span> <span class="n">strings</span> <span class="k">with</span> <span class="n">ISO</span><span class="o">-</span><span class="mi">8601</span> <span class="s1">&#39;T&#39;</span> <span class="n">separator</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">g</span> <span class="n">grp1</span><span class="p">[,</span><span class="o">...</span><span class="p">]]</span>  <span class="n">Data</span> <span class="ow">and</span> <span class="n">metadata</span> <span class="k">for</span> <span class="n">group</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">grp1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">...</span> <span class="n">only</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="p">]</span>             <span class="n">With</span> <span class="n">client</span><span class="o">-</span><span class="n">side</span> <span class="n">caching</span> <span class="n">of</span> <span class="n">variables</span> <span class="k">for</span> <span class="n">DAP</span> <span class="n">URLs</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">x</span><span class="p">]</span>             <span class="n">Output</span> <span class="n">XML</span> <span class="p">(</span><span class="n">NcML</span><span class="p">)</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">CDL</span>
+  <span class="n">file</span>             <span class="n">Name</span> <span class="n">of</span> <span class="n">netCDF</span> <span class="n">file</span> <span class="p">(</span><span class="ow">or</span> <span class="n">URL</span> <span class="k">if</span> <span class="n">DAP</span> <span class="n">access</span> <span class="n">enabled</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Determining what type of netCDF file you are viewing</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-k</span></code> option (for ‘kind’)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump -k &lt;file&gt;
+</pre></div>
+</div>
+<p><strong>View basic file header (or metadata) information</strong> The <code class="docutils literal notranslate"><span class="pre">-h</span></code> option (for ‘header’)</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">-h</span></code> option to view the netcdf file header information (file can be called by local path name or remotely using the OPeNDAP URL):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump -h &lt;file&gt;
+</pre></div>
+</div>
+<p><strong>E.g.,</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump -h /g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc
+</pre></div>
+</div>
+<p>This will display the: (1) file dimensions, (2) variables and variable metadata, and (3) global metadata.</p>
+<p><img alt="image0" src="../../_images/ncdump1_cmip5.png" /></p>
+<p>You can further display variables using <code class="docutils literal notranslate"><span class="pre">-v</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump -v time /g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc
+</pre></div>
+</div>
+<p>Note that you can also enter an OPeNDAP data URL (see more on NCI’s THREDDS Data Service for more information on the data URLs)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump -h http://dapds00.nci.org.au/thredds/dodsC/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc
+</pre></div>
+</div>
+<div class="section" id="Extra-exercises">
+<h2>Extra exercises<a class="headerlink" href="#Extra-exercises" title="Permalink to this headline">¶</a></h2>
+<p><strong>View special attributes such as chunking and compression information</strong> Use the combination <code class="docutils literal notranslate"><span class="pre">-hs</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump -hs &lt;file&gt;
+
+
+$ ncdump -hs /g/data/rs0/datacube/002/LS8_OLI_NBAR/9_-10/LS8_OLI_NBAR_3577_9_-10_20190426004442000000_v1557719236.nc
+</pre></div>
+</div>
+<p><strong>Try using the above “ncdump” commands to view the contents of the files below (note you can use the filepath or the OPeNDAP data URL):</strong></p>
+<p>/g/data/rr2/National_Coverages/IR_gravity_anomaly_Australia_V1/IR_gravity_anomaly_Australia_V1.nc</p>
+<p><a class="reference external" href="http://dapds00.nci.org.au/thredds/dodsC/fx3/gbr4_v2/gbr4_simple_2016-10.nc">http://dapds00.nci.org.au/thredds/dodsC/fx3/gbr4_v2/gbr4_simple_2016-10.nc</a></p>
+<p><a class="reference external" href="http://dapds00.nci.org.au/thredds/dodsC/ua6_4/CMIP5/derived/CMIP5/GCM/native/CSIRO-BOM/ACCESS1-0/historical/day/atmos/Amon/r1i1p1/latest/sfcWind/GEV-lmon-clim/sfcWind_Amon_ACCESS1-0_historical_r1i1p1_1986-2005-monMax-GEV-lmon-clim_native.nc">http://dapds00.nci.org.au/thredds/dodsC/ua6_4/CMIP5/derived/CMIP5/GCM/native/CSIRO-BOM/ACCESS1-0/historical/day/atmos/Amon/r1i1p1/latest/sfcWind/GEV-lmon-clim/sfcWind_Amon_ACCESS1-0_historical_r1i1p1_1986-2005-monMax-GEV-lmon-clim_native.nc</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

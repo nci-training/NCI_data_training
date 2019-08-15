@@ -1,0 +1,1115 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Landsat 8 Data Access and Manipulation &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Landsat 8 Data Access and Manipulation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/eo/Python_NetCDF_Landsat8.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Landsat-8-Data-Access-and-Manipulation">
+<h1>Landsat 8 Data Access and Manipulation<a class="headerlink" href="#Landsat-8-Data-Access-and-Manipulation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="In-this-notebook:">
+<h2>In this notebook:<a class="headerlink" href="#In-this-notebook:" title="Permalink to this headline">¶</a></h2>
+<p>Using iPython Notebooks with NetCDF data within the VDI</p>
+<ul class="simple">
+<li>Launch Jupyter Notebook</li>
+<li>Importing Python libraries</li>
+<li>Opening/reading a file</li>
+<li>Browsing information about file contents</li>
+<li>Extracting data</li>
+<li>XArray package</li>
+</ul>
+<p>The following material uses Geoscience Australia’s Landsat 8 Data Collection which is available under the Creative Commons License 4.0. For more information on the collection and licensing, please click <a class="reference external" href="http://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_8228_7170_1486">here</a>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="Launch-the-Jupyter-Notebook-application">
+<h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Using-pre-built-VDI-modules:">
+<h3>Using pre-built VDI modules:<a class="headerlink" href="#Using-pre-built-VDI-modules:" title="Permalink to this headline">¶</a></h3>
+<p>Load the <code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">ipython</span></code>, and <code class="docutils literal notranslate"><span class="pre">netcdf4-python</span></code> modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      $ module load python/2.7.11
+      $ module load python/2.7.11-matplotlib
+      $ module load ipython/4.2.0-py2.7
+      $ module load netcdf4-python/1.2.4-ncdf-4.3.3.1-py2.7
+      $ module load xarray/0.7.2-py2.7
+
+Launch the Jupyter Notebook application:
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
+</pre></div>
+</div>
+<div class="admonition note">
+NOTE: This will launch the Notebook Dashboard within a new web browser window.</div>
+</div>
+<div class="section" id="Using-virtual-environments:">
+<h3>Using virtual environments:<a class="headerlink" href="#Using-virtual-environments:" title="Permalink to this headline">¶</a></h3>
+<p>To use along with customised python packages in a virtual environment, begin by following the steps in <strong>Python on the VDI: Part II</strong>.</p>
+<p>Once you have a virtual environment setup with your packages (including <code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>), proceed by loading the required modules and activating the virtual environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      $ module load python/2.7.11
+      $ source &lt;path_to_virtual_environment&gt;/bin/activate
+
+Then, as above, launch the Jupyter Notebook application:
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
+</pre></div>
+</div>
+<div class="admonition warning">
+NOTE: If you have already followed Python on the VDI: Part II, you should have installed the netcdf4-python package, which is required in the remainder of this notebook.</div>
+</div>
+</div>
+<div class="section" id="Import-python-libraries">
+<h2>Import python libraries<a class="headerlink" href="#Import-python-libraries" title="Permalink to this headline">¶</a></h2>
+<p>There are several Python libraries available to work with netCDF and HDF file formats. This tutorial will use <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code> but others, such as <code class="docutils literal notranslate"><span class="pre">h5py</span></code>, <code class="docutils literal notranslate"><span class="pre">cdms2</span></code>, and <code class="docutils literal notranslate"><span class="pre">gdal</span></code> can also be used. For more information on these other libraries, please see the main tutorial page.</p>
+<p><strong>Note:</strong> Python’s netCDF4 library has to be installed locally by user on Raijin and the VDI</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">Dataset</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/pablo/anaconda/lib/python2.7/site-packages/matplotlib/font_manager.py:273: UserWarning: Matplotlib is building the font cache using fc-list. This may take a moment.
+  warnings.warn(&#39;Matplotlib is building the font cache using fc-list. This may take a moment.&#39;)
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Open/read-file">
+<h2>Open/read file<a class="headerlink" href="#Open/read-file" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="The-Dataset-function-is-used-to-open-a-file-with-Python’s-netCDF4-library.">
+<h3>The <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> function is used to open a file with Python’s netCDF4 library.<a class="headerlink" href="#The-Dataset-function-is-used-to-open-a-file-with-Python’s-netCDF4-library." title="Permalink to this headline">¶</a></h3>
+<p>For local files, this will be the filepath (i.e., /g/data…) while for remote access, this will be the OPeNDAP data URL. Note that this does not yet load/extract any data, just opens the file.</p>
+</div>
+<div class="section" id="1.-Accessing-data-locally-(/g/data)">
+<h3>1. Accessing data locally (/g/data)<a class="headerlink" href="#1.-Accessing-data-locally-(/g/data)" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/g/data2/rs0/datacube/002/LS8_OLI_NBART/-10_-28/LS8_OLI_NBART_3577_-10_-28_2013_v1493805443.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="2.-Accessing-data-remotely-(OPeNDAP)">
+<h3>2. Accessing data remotely (OPeNDAP)<a class="headerlink" href="#2.-Accessing-data-remotely-(OPeNDAP)" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://dapds00.nci.org.au/thredds/dodsC/rs0/datacube/002/LS8_OLI_NBART/-10_-28/LS8_OLI_NBART_3577_-10_-28_2013_v1493805443.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="3.-Either-the-‘path’-or-the-‘url’-can-be-used-now-to-open-the-file">
+<h3>3. Either the ‘path’ or the ‘url’ can be used now to open the file<a class="headerlink" href="#3.-Either-the-‘path’-or-the-‘url’-can-be-used-now-to-open-the-file" title="Permalink to this headline">¶</a></h3>
+<p>Comment/uncomment the access method you would like to use here.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># OR using the URL</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="After-opening-the-file-with-the-OPeNDAP-address,-the-file-can-be-handled-in-the-same-manner-as-a-local-file.">
+<h3>After opening the file with the OPeNDAP address, the file can be handled in the same manner as a local file.<a class="headerlink" href="#After-opening-the-file-with-the-OPeNDAP-address,-the-file-can-be-handled-in-the-same-manner-as-a-local-file." title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="Browse-information-about-the-file">
+<h2>Browse information about the file<a class="headerlink" href="#Browse-information-about-the-file" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="File-dimensions">
+<h2>File dimensions<a class="headerlink" href="#File-dimensions" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">dimensions</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="n">f</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+maxStrlen64 64
+time 61
+x 4000
+y 4000
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="File-variables">
+<h2>File variables<a class="headerlink" href="#File-variables" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">vars</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s1">&#39;Variable: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">item</span>
+    <span class="nb">print</span> <span class="s1">&#39;Dimensions: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">dimensions</span>
+    <span class="nb">print</span> <span class="s1">&#39;Shape:    </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Variable:       y
+Dimensions:     (u&#39;y&#39;,)
+Shape:          (4000,)
+
+Variable:       x
+Dimensions:     (u&#39;x&#39;,)
+Shape:          (4000,)
+
+Variable:       time
+Dimensions:     (u&#39;time&#39;,)
+Shape:          (61,)
+
+Variable:       crs
+Dimensions:     ()
+Shape:          ()
+
+Variable:       extra_metadata
+Dimensions:     (u&#39;time&#39;, u&#39;maxStrlen64&#39;)
+Shape:          (61, 64)
+
+Variable:       band_6
+Dimensions:     (u&#39;time&#39;, u&#39;y&#39;, u&#39;x&#39;)
+Shape:          (61, 4000, 4000)
+
+Variable:       band_7
+Dimensions:     (u&#39;time&#39;, u&#39;y&#39;, u&#39;x&#39;)
+Shape:          (61, 4000, 4000)
+
+Variable:       band_4
+Dimensions:     (u&#39;time&#39;, u&#39;y&#39;, u&#39;x&#39;)
+Shape:          (61, 4000, 4000)
+
+Variable:       band_5
+Dimensions:     (u&#39;time&#39;, u&#39;y&#39;, u&#39;x&#39;)
+Shape:          (61, 4000, 4000)
+
+Variable:       band_2
+Dimensions:     (u&#39;time&#39;, u&#39;y&#39;, u&#39;x&#39;)
+Shape:          (61, 4000, 4000)
+
+Variable:       band_3
+Dimensions:     (u&#39;time&#39;, u&#39;y&#39;, u&#39;x&#39;)
+Shape:          (61, 4000, 4000)
+
+Variable:       band_1
+Dimensions:     (u&#39;time&#39;, u&#39;y&#39;, u&#39;x&#39;)
+Shape:          (61, 4000, 4000)
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Extracting-data-(using-index-values)">
+<h2>Extracting data (using index values)<a class="headerlink" href="#Extracting-data-(using-index-values)" title="Permalink to this headline">¶</a></h2>
+<p>A nice feature of netCDF/HDF file formats is that you can extract subsets without having to read the entire file (or variable). The example below demonstrates the simplest subsetting example by directly specifying the subset indices.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Read variables (but not yet extract)</span>
+<span class="n">band2</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;swir1&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Subset indices</span>
+<span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span><span class="mi">3999</span>
+<span class="n">y1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">3000</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="mi">9</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>
+
+<span class="c1"># Extract</span>
+<span class="n">band2_subset</span> <span class="o">=</span> <span class="n">band2</span><span class="p">[</span><span class="n">t1</span><span class="p">,</span> <span class="n">y1</span><span class="p">:</span><span class="n">y2</span><span class="p">,</span> <span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">]</span>
+<span class="n">y_subset</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">y1</span><span class="p">:</span><span class="n">y2</span><span class="p">]</span>
+<span class="n">x_subset</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 869 ms, sys: 117 ms, total: 986 ms
+Wall time: 1.77 s
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Plot-data">
+<h2>Plot data<a class="headerlink" href="#Plot-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Simple-plot">
+<h3>Simple plot<a class="headerlink" href="#Simple-plot" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Set figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot data subset with equal axes and colorbar</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">x_subset</span><span class="p">,</span> <span class="n">y_subset</span><span class="p">,</span> <span class="n">band2_subset</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="c1"># Add figure title and labels</span>
+<span class="c1"># We can make use of the defined variable attributes to do this</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">band2</span><span class="o">.</span><span class="n">long_name</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">long_name</span><span class="o">+</span><span class="s1">&#39; (&#39;</span><span class="o">+</span><span class="n">x</span><span class="o">.</span><span class="n">units</span><span class="o">+</span><span class="s1">&#39;) &#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">long_name</span><span class="o">+</span><span class="s1">&#39; (&#39;</span><span class="o">+</span><span class="n">y</span><span class="o">.</span><span class="n">units</span><span class="o">+</span><span class="s1">&#39;) &#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># Adjust tick mark size</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_eo_Python_NetCDF_Landsat8_24_0.png" src="../../_images/_notebook_eo_Python_NetCDF_Landsat8_24_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Plot-subset-as-RGB-image">
+<h3>Plot subset as RGB image<a class="headerlink" href="#Plot-subset-as-RGB-image" title="Permalink to this headline">¶</a></h3>
+<p>For more info on common band combinations: <a class="reference external" href="http://landsat.usgs.gov/L8_band_combos.php">http://landsat.usgs.gov/L8_band_combos.php</a></p>
+</div>
+<div class="section" id="Read-in-bands">
+<h3>Read in bands<a class="headerlink" href="#Read-in-bands" title="Permalink to this headline">¶</a></h3>
+<p><strong>Note</strong>: Bands must be clipped (value of 3000 was chosen in this case) and scaled to values between (0, 255) to plot as RGB image.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">band4_subset</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">][</span><span class="n">t1</span><span class="p">,</span> <span class="n">y1</span><span class="p">:</span><span class="n">y2</span><span class="p">,</span> <span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">]</span>
+<span class="n">band6_subset</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">][</span><span class="n">t1</span><span class="p">,</span> <span class="n">y1</span><span class="p">:</span><span class="n">y2</span><span class="p">,</span> <span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">]</span>
+<span class="n">band7_subset</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">][</span><span class="n">t1</span><span class="p">,</span> <span class="n">y1</span><span class="p">:</span><span class="n">y2</span><span class="p">,</span> <span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b4</span> <span class="o">=</span> <span class="n">band4_subset</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span> <span class="o">/</span> <span class="mf">6000.</span> <span class="o">*</span> <span class="mi">255</span>
+<span class="n">b6</span> <span class="o">=</span> <span class="n">band6_subset</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span> <span class="o">/</span> <span class="mf">3000.</span> <span class="o">*</span> <span class="mi">255</span>
+<span class="n">b7</span> <span class="o">=</span> <span class="n">band7_subset</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span> <span class="o">/</span> <span class="mf">3000.</span> <span class="o">*</span> <span class="mi">255</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Combine-the-bands-of-interest-into-numpy-NxNx3-dimensional-array">
+<h3>Combine the bands of interest into numpy NxNx3 dimensional array<a class="headerlink" href="#Combine-the-bands-of-interest-into-numpy-NxNx3-dimensional-array" title="Permalink to this headline">¶</a></h3>
+<p><strong>Note</strong>: The data type must be converted to ‘uint8’ to plot as image</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">b7</span><span class="p">,</span> <span class="n">b6</span><span class="p">,</span> <span class="n">b4</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="s2">&quot;New array shape: </span><span class="si">{0}</span><span class="s2">, dtype: </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rgb</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">rgb</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+New array shape: (3000, 2999, 3), dtype: uint8
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Set figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Plot image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">x_subset</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_subset</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x_subset</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y_subset</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="c1"># Add figure title and labels</span>
+<span class="c1"># We can make use of the defined variable attributes to do this</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Landsat 8 False Colour: Bands (7, 6, 4) </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">long_name</span><span class="o">+</span><span class="s1">&#39; (&#39;</span><span class="o">+</span><span class="n">x</span><span class="o">.</span><span class="n">units</span><span class="o">+</span><span class="s1">&#39;) &#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">long_name</span><span class="o">+</span><span class="s1">&#39; (&#39;</span><span class="o">+</span><span class="n">y</span><span class="o">.</span><span class="n">units</span><span class="o">+</span><span class="s1">&#39;) &#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+
+<span class="c1"># Adjust tick mark size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_eo_Python_NetCDF_Landsat8_32_0.png" src="../../_images/_notebook_eo_Python_NetCDF_Landsat8_32_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Close-file">
+<h3>Close file<a class="headerlink" href="#Close-file" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+EXTRA: Add the “%%time” magic function to the beginning of cells and run through the above examples once for remote data access with the OPeNDAP Data URL and again for direct access on the file system.</div>
+</div>
+</div>
+<div class="section" id="XArray-package">
+<h2>XArray package<a class="headerlink" href="#XArray-package" title="Permalink to this headline">¶</a></h2>
+<p>XArray can be explained as the equivalent of pandas to multidimensional arrays and netCDF files.</p>
+<p><strong>Note: To run XArray you’ll need to load the following module (if you didn’t already above)</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load xarray/0.7.2-py2.7
+</pre></div>
+</div>
+<div class="section" id="Open-a-NetCDF-file-an-list-the-contents-of-the-dataset">
+<h3>Open a NetCDF file an list the contents of the dataset<a class="headerlink" href="#Open-a-NetCDF-file-an-list-the-contents-of-the-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;/g/data2/rs0/datacube/002/LS8_OLI_NBART/-10_-28/LS8_OLI_NBART_3577_-10_-28_2013_v1493805443.nc&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;xarray.Dataset&gt;
+Dimensions:         (time: 61, x: 4000, y: 4000)
+Coordinates:
+  * y               (y) float64 -2.7e+06 -2.7e+06 -2.7e+06 -2.7e+06 -2.7e+06 ...
+  * x               (x) float64 -1e+06 -1e+06 -9.999e+05 -9.999e+05 ...
+  * time            (time) datetime64[ns] 2013-03-26T01:45:52.192524 ...
+Data variables:
+    crs             int32 -2147483647
+    band_6          (time, y, x) float64 nan nan nan nan nan nan nan nan nan ...
+    band_7          (time, y, x) float64 nan nan nan nan nan nan nan nan nan ...
+    band_4          (time, y, x) float64 nan nan nan nan nan nan nan nan nan ...
+    band_5          (time, y, x) float64 nan nan nan nan nan nan nan nan nan ...
+    band_2          (time, y, x) float64 nan nan nan nan nan nan nan nan nan ...
+    band_3          (time, y, x) float64 nan nan nan nan nan nan nan nan nan ...
+    band_1          (time, y, x) float64 nan nan nan nan nan nan nan nan nan ...
+    extra_metadata  (time) |S30000 &#34;acquisition:\n  groundstation: {code: LGN, eods_domain_code: &#39;032&#39;, label: Landsat Ground Network}\nbrowse:\n  full:\n    blue_band: &#39;2&#39;\n    cell_size: 25.0\n    file_type: image/jpg\n    green_band: &#39;5&#39;\n    path: browse.fr.jpg\n    red_band: &#39;7&#39;\n    shape: {x: 8917, y: 8825}\n  medium:\n    blue_band: &#39;2&#39;\n    cell_size: 217.7001953125\n    file_type: image/jpg\n    green_band: &#39;5&#39;\n    path: browse.jpg\n    red_band: &#39;7&#39;\n    shape: {x: 1024, y: 1014}\nchecksum_path: package.sha1\ncreation_dt: &#39;2016-03-10T09:00:59&#39;\nextent:\n  center_dt: &#39;2013-03-26T01:45:52.192524&#39;\n  coord:\n    ll: {lat: -25.549124, lon: 122.025853}\n    lr: {lat: -25.547075, lon: 124.244609}\n    ul: {lat: -23.557032, lon: 122.041123}\n    ur: {lat: -23.555162, lon: 124.225102}\n  from_dt: &#39;2013-03-26T01:45:37&#39;\n  to_dt: &#39;2013-03-26T01:46:07&#39;\nformat: {name: GeoTIFF}\nga_label: LS8_OLITIRS_NBAR_P54_GANBAR01-032_109_077_20130326\nga_level: P54\ngrid_spatial:\n  projection:\n    datum: GDA94\n    ellipsoid: GRS80\n    geo_ref_points:\n      ll: {x: 402137.5, y: 7173887.5}\n      lr: {x: 625037.5, y: 7173887.5}\n      ul: {x: 402137.5, y: 7394487.5}\n      ur: {x: 625037.5, y: 7394487.5}\n    map_projection: UTM\n    orientation: NORTH_UP\n    resampling_option: CUBIC_CONVOLUTION\n    zone: -51\nid: 6553145e-e76a-11e5-bb5e-a0000100fe80\nimage:\n  bands:\n    &#39;1&#39;: {cell_size: 25.0, label: Coastal Aerosol, number: &#39;1&#39;, path: product/LS8_OLITIRS_NBAR_P54_GANBAR01-032_109_077_20130326_B1.tif,\n      type: reflective}\n    &#39;2&#39;: {cell_size: 25.0, label: Visible Blue, number: &#39;2&#39;, path: product/LS8_OLITIRS_NBAR_P54_GANBAR01-032_109_077_20130326_B2.tif,\n      type: reflective}\n    &#39;3&#39;: {cell_size: 25.0, label: Visible Green, number: &#39;3&#39;, path: product/LS8_OLITIRS_NBAR_P54_GANBAR01-032_109_077_20130326_B3.tif,\n      type: reflective}\n    &#39;4&#39;: {cell_size: 25.0, label: Visible Red, number: &#39;4&#39;, path: product/LS8_OLITIRS_NBAR_P54_GANBAR01-032_109_077_20130326_B4.tif,\n      type: reflective}\n    &#39;5&#39;: {cell_size: 25.0, label: Near Infrared, number: &#39;5&#39;, path: product/LS8_OLITIRS_NBAR_P54_GANBAR01-032_109_077_20130326_B5.tif,\n      type: reflective}\n    &#39;6&#39;: {cell_size: 25.0, label: Short-wave Infrared 1, number: &#39;6&#39;, path: product/LS8_OLITIRS_NBAR_P54_GANBAR01-032_109_077_20130326_B6.tif,\n      type: reflective}\n    &#39;7&#39;: {cell_size: 25.0, label: Short-wave Infrared 2, number: &#39;7&#39;, path: product/LS8_OLITIRS_NBAR_P54_GANBAR01-032_109_077_20130326_B7.tif,\n      type: reflective}\n  satellite_ref_point_start: {x: 109, y: 77}\ninstrument: {name: OLI_TIRS}\nlineage:\n  algorithm:\n    doi: http://dx.doi.org/10.1109/JSTARS.2010.2042281\n    name: brdf\n    parameters: {aerosol: 0.069004, band_1_brdf_geo: 0.001968827780008029, band_1_brdf_iso: 0.048489798273785634,\n      band_1_brdf_vol: 0.030443115214773185, band_2_brdf_geo: 0.001968827780008029,\n      band_2_brdf_iso: 0.048489798273785634, band_2_brdf_vol: 0.030443115214773185,\n      band_3_brdf_geo: 0.01180726615816941, band_3_brdf_iso: 0.09384141910879165,\n      band_3_brdf_vol: 0.057549177037334406, band_4_brdf_geo: 0.030676425130469694,\n      band_4_brdf_iso: 0.1863206744279406, band_4_brdf_vol: 0.05368423323966279, band_5_brdf_geo: 0.022468521678040948,\n      band_5_brdf_iso: 0.26455046166198315, band_5_brdf_vol: 0.14842395122440785,\n      band_6_brdf_geo: 0.04904990967482939, band_6_brdf_iso: 0.3721859243275793, band_6_brdf_vol: 0.10728504114813328,\n      band_7_brdf_geo: 0.05182769971898836, band_7_brdf_iso: 0.3278079887595343, band_7_brdf_vol: 0.046692698715375354,\n      elevation: 0.366, ozone: 0.25, solar_distance: 0.99754, water_vapour: 3.3800003051757814}\n    version: &#39;2.0&#39;\n  ancillary:\n    aerosol: {access_dt: &#39;2016-03-10T08:01:29&#39;, file_owner: Roger Edberg, modification_dt: &#39;2012-07-12T01:19:48&#39;,\n      name: aot_mean_Mar_All_Aerosols.cmp, type: aerosol, uri: /g/data/v10/eoancillarydata/aerosol/AATSR/2.0/aot_mean_Mar_All_Aerosols.cmp}\n    band_1_brdf_geo: {access_dt: &#39;2016-03-10T08:01:30&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:52:22&#39;,\n      name: MCD43A1.2013.081.aust.005.b09.500m_0459_0479nm_brdf_par_fgeo.hdf.gz, type: band_1_brdf_geo,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b09.500m_0459_0479nm_brdf_par_fgeo.hdf.gz}\n    band_1_brdf_iso: {access_dt: &#39;2016-03-10T08:01:35&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:52:15&#39;,\n      name: MCD43A1.2013.081.aust.005.b07.500m_0459_0479nm_brdf_par_fiso.hdf.gz, type: band_1_brdf_iso,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b07.500m_0459_0479nm_brdf_par_fiso.hdf.gz}\n    band_1_brdf_vol: {access_dt: &#39;2016-03-10T08:01:39&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:52:19&#39;,\n      name: MCD43A1.2013.081.aust.005.b08.500m_0459_0479nm_brdf_par_fvol.hdf.gz, type: band_1_brdf_vol,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b08.500m_0459_0479nm_brdf_par_fvol.hdf.gz}\n    band_2_brdf_geo: {access_dt: &#39;2016-03-10T08:01:52&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:52:22&#39;,\n      name: MCD43A1.2013.081.aust.005.b09.500m_0459_0479nm_brdf_par_fgeo.hdf.gz, type: band_2_brdf_geo,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b09.500m_0459_0479nm_brdf_par_fgeo.hdf.gz}\n    band_2_brdf_iso: {access_dt: &#39;2016-03-10T08:01:58&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:52:15&#39;,\n      name: MCD43A1.2013.081.aust.005.b07.500m_0459_0479nm_brdf_par_fiso.hdf.gz, type: band_2_brdf_iso,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b07.500m_0459_0479nm_brdf_par_fiso.hdf.gz}\n    band_2_brdf_vol: {access_dt: &#39;2016-03-10T08:02:00&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:52:19&#39;,\n      name: MCD43A1.2013.081.aust.005.b08.500m_0459_0479nm_brdf_par_fvol.hdf.gz, type: band_2_brdf_vol,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b08.500m_0459_0479nm_brdf_par_fvol.hdf.gz}\n    band_3_brdf_geo: {access_dt: &#39;2016-03-10T08:02:05&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:52:43&#39;,\n      name: MCD43A1.2013.081.aust.005.b12.500m_0545_0565nm_brdf_par_fgeo.hdf.gz, type: band_3_brdf_geo,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b12.500m_0545_0565nm_brdf_par_fgeo.hdf.gz}\n    band_3_brdf_iso: {access_dt: &#39;2016-03-10T08:02:14&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:52:26&#39;,\n      name: MCD43A1.2013.081.aust.005.b10.500m_0545_0565nm_brdf_par_fiso.hdf.gz, type: band_3_brdf_iso,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b10.500m_0545_0565nm_brdf_par_fiso.hdf.gz}\n    band_3_brdf_vol: {access_dt: &#39;2016-03-10T08:02:18&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:52:31&#39;,\n      name: MCD43A1.2013.081.aust.005.b11.500m_0545_0565nm_brdf_par_fvol.hdf.gz, type: band_3_brdf_vol,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b11.500m_0545_0565nm_brdf_par_fvol.hdf.gz}\n    band_4_brdf_geo: {access_dt: &#39;2016-03-10T08:02:20&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:51:54&#39;,\n      name: MCD43A1.2013.081.aust.005.b03.500m_0620_0670nm_brdf_par_fgeo.hdf.gz, type: band_4_brdf_geo,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b03.500m_0620_0670nm_brdf_par_fgeo.hdf.gz}\n    band_4_brdf_iso: {access_dt: &#39;2016-03-10T08:02:45&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:51:47&#39;,\n      name: MCD43A1.2013.081.aust.005.b01.500m_0620_0670nm_brdf_par_fiso.hdf.gz, type: band_4_brdf_iso,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b01.500m_0620_0670nm_brdf_par_fiso.hdf.gz}\n    band_4_brdf_vol: {access_dt: &#39;2016-03-10T08:03:17&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:51:50&#39;,\n      name: MCD43A1.2013.081.aust.005.b02.500m_0620_0670nm_brdf_par_fvol.hdf.gz, type: band_4_brdf_vol,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b02.500m_0620_0670nm_brdf_par_fvol.hdf.gz}\n    band_5_brdf_geo: {access_dt: &#39;2016-03-10T08:03:20&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:52:10&#39;,\n      name: MCD43A1.2013.081.aust.005.b06.500m_0841_0876nm_brdf_par_fgeo.hdf.gz, type: band_5_brdf_geo,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b06.500m_0841_0876nm_brdf_par_fgeo.hdf.gz}\n    band_5_brdf_iso: {access_dt: &#39;2016-03-10T08:03:23&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:52:00&#39;,\n      name: MCD43A1.2013.081.aust.005.b04.500m_0841_0876nm_brdf_par_fiso.hdf.gz, type: band_5_brdf_iso,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b04.500m_0841_0876nm_brdf_par_fiso.hdf.gz}\n    band_5_brdf_vol: {access_dt: &#39;2016-03-10T08:03:26&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:52:06&#39;,\n      name: MCD43A1.2013.081.aust.005.b05.500m_0841_0876nm_brdf_par_fvol.hdf.gz, type: band_5_brdf_vol,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b05.500m_0841_0876nm_brdf_par_fvol.hdf.gz}\n    band_6_brdf_geo: {access_dt: &#39;2016-03-10T08:03:28&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:53:15&#39;,\n      name: MCD43A1.2013.081.aust.005.b18.500m_1628_1652nm_brdf_par_fgeo.hdf.gz, type: band_6_brdf_geo,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b18.500m_1628_1652nm_brdf_par_fgeo.hdf.gz}\n    band_6_brdf_iso: {access_dt: &#39;2016-03-10T08:03:31&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:53:06&#39;,\n      name: MCD43A1.2013.081.aust.005.b16.500m_1628_1652nm_brdf_par_fiso.hdf.gz, type: band_6_brdf_iso,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b16.500m_1628_1652nm_brdf_par_fiso.hdf.gz}\n    band_6_brdf_vol: {access_dt: &#39;2016-03-10T08:04:17&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:53:11&#39;,\n      name: MCD43A1.2013.081.aust.005.b17.500m_1628_1652nm_brdf_par_fvol.hdf.gz, type: band_6_brdf_vol,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b17.500m_1628_1652nm_brdf_par_fvol.hdf.gz}\n    band_7_brdf_geo: {access_dt: &#39;2016-03-10T08:04:21&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:53:30&#39;,\n      name: MCD43A1.2013.081.aust.005.b21.500m_2105_2155nm_brdf_par_fgeo.hdf.gz, type: band_7_brdf_geo,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b21.500m_2105_2155nm_brdf_par_fgeo.hdf.gz}\n    band_7_brdf_iso: {access_dt: &#39;2016-03-10T08:04:39&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:53:20&#39;,\n      name: MCD43A1.2013.081.aust.005.b19.500m_2105_2155nm_brdf_par_fiso.hdf.gz, type: band_7_brdf_iso,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b19.500m_2105_2155nm_brdf_par_fiso.hdf.gz}\n    band_7_brdf_vol: {access_dt: &#39;2016-03-10T08:04:42&#39;, file_owner: Matt Paget, modification_dt: &#39;2013-05-29T12:53:25&#39;,\n      name: MCD43A1.2013.081.aust.005.b20.500m_2105_2155nm_brdf_par_fvol.hdf.gz, type: band_7_brdf_vol,\n      uri: /g/data/u39/public/data/modis/lpdaac-mosaics-cmar/v1-hdf4/aust/MCD43A1.005/2013.03.22/MCD43A1.2013.081.aust.005.b20.500m_2105_2155nm_brdf_par_fvol.hdf.gz}\n    elevation: {access_dt: &#39;2016-03-10T08:01:28&#39;, file_owner: Roger Edberg, modification_dt: &#39;2010-02-23T21:59:29&#39;,\n      name: DEM_one_deg.tif, type: elevation, uri: /g/data/v10/eoancillarydata/elevation/world_1deg/DEM_one_deg.tif}\n    ozone: {access_dt: &#39;2016-03-10T08:01:28&#39;, file_owner: Roger Edberg, modification_dt: &#39;2010-02-23T22:00:21&#39;,\n      name: mar.tif, type: ozone, uri: /g/data/v10/eoancillarydata/lookup_tables/ozone/mar.tif}\n    solar_distance: {access_dt: &#39;2016-03-10T08:01:29&#39;, file_owner: Roger Edberg, modification_dt: &#39;2012-05-21T02:04:01&#39;,\n      name: EarthSun_distanceLUT.txt, type: solar_distance, uri: /g/data/v10/eoancillarydata/lookup_tables/earthsun_distance/EarthSun_distanceLUT.txt}\n    water_vapour: {access_dt: &#39;2016-03-10T08:01:29&#39;, file_owner: Landsat Processing,\n      modification_dt: &#39;2016-03-09T14:19:37&#39;, name: pr_wtr.eatm.2013.tif, type: water_vapour,\n      uri: /g/data/v10/eoancillarydata/water_vapour/pr_wtr.eatm.2013.tif}\n  machine:\n    software_versions: {eodatasets: 0.2.2, nbar: 4.0rc1+3.g4e2ec05.dirty}\n  source_datasets: null\nplatform: {code: LANDSAT_8}\nproduct_doi: http://dx.doi.org/10.4225/25/5487CC0D4F40B\nproduct_type: nbar\nsize_bytes: 892687850\n&#34; ...
+Attributes:
+    date_created: 2016-04-12T11:11:39.320375
+    Conventions: CF-1.6, ACDD-1.3
+    history: NetCDF-CF file created by datacube version &#39;1.0.2&#39; at 20160412.
+    geospatial_bounds: POLYGON((122.002096767 -24.6276179568, 121.9234015 -25.517253234, 122.927490078 -25.5840461664, 122.998398809 -24.6939371823, 122.002096767 -24.6276179568))
+    geospatial_bounds_crs: EPSG:4326
+    geospatial_lat_min: -25.5840461664
+    geospatial_lat_max: -24.6276179568
+    geospatial_lat_units: degrees_north
+    geospatial_lon_min: 121.9234015
+    geospatial_lon_max: 122.998398809
+    geospatial_lon_units: degrees_east
+    source: This data is a reprojection and retile of Landsat surface reflectance scene data.
+    product_version: 0.0.0
+    title: Experimental Data files From the Australian Geoscience Data Cube - DO NOT USE
+    license: Creative Commons Attribution 4.0 International (CC-BY 4.0)
+    summary: These files are experimental, short lived, and the format will change.
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="List-the-time-dimension-of-the-dataset">
+<h3>List the time dimension of the dataset<a class="headerlink" href="#List-the-time-dimension-of-the-dataset" title="Permalink to this headline">¶</a></h3>
+<p><strong>Notice that dates are diaplayed as Python date objects as oposed to the netCDF package where they are seconds since 01-01-1970</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds</span><span class="o">.</span><span class="n">time</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;xarray.DataArray &#39;time&#39; (time: 61)&gt;
+array([&#39;2013-03-26T12:45:52.192524000+1100&#39;,
+       &#39;2013-03-26T12:46:16.037281000+1100&#39;,
+       &#39;2013-03-31T12:42:01.626017000+1100&#39;,
+       &#39;2013-04-15T11:52:55.981080000+1000&#39;,
+       &#39;2013-04-15T11:53:19.924483000+1000&#39;,
+       &#39;2013-04-24T11:46:41.885828000+1000&#39;,
+       &#39;2013-04-24T11:47:05.840686000+1000&#39;,
+       &#39;2013-05-01T11:52:53.814662000+1000&#39;,
+       &#39;2013-05-01T11:53:17.770412000+1000&#39;,
+       &#39;2013-05-26T11:46:58.872204000+1000&#39;,
+       &#39;2013-05-26T11:47:22.816856000+1000&#39;,
+       &#39;2013-06-02T11:53:09.710001000+1000&#39;,
+       &#39;2013-06-02T11:53:33.651159000+1000&#39;,
+       &#39;2013-06-11T11:46:56.204865000+1000&#39;,
+       &#39;2013-06-11T11:47:20.146196000+1000&#39;,
+       &#39;2013-06-18T11:53:11.774828000+1000&#39;,
+       &#39;2013-06-18T11:53:27.224462000+1000&#39;,
+       &#39;2013-06-27T11:46:52.564954000+1000&#39;,
+       &#39;2013-06-27T11:47:16.502513000+1000&#39;,
+       &#39;2013-07-04T11:53:05.334759000+1000&#39;,
+       &#39;2013-07-04T11:53:29.277812000+1000&#39;,
+       &#39;2013-07-13T11:46:54.932338000+1000&#39;,
+       &#39;2013-07-13T11:47:18.877736000+1000&#39;,
+       &#39;2013-07-20T11:53:04.117047000+1000&#39;,
+       &#39;2013-07-20T11:53:28.062445000+1000&#39;,
+       &#39;2013-07-29T11:46:55.269134000+1000&#39;,
+       &#39;2013-07-29T11:47:19.217547000+1000&#39;,
+       &#39;2013-08-05T11:53:07.235168000+1000&#39;,
+       &#39;2013-08-05T11:53:31.183497000+1000&#39;,
+       &#39;2013-08-14T11:46:56.003662000+1000&#39;,
+       &#39;2013-08-14T11:47:19.947799000+1000&#39;,
+       &#39;2013-08-21T11:53:08.615727000+1000&#39;,
+       &#39;2013-08-21T11:53:32.564132000+1000&#39;,
+       &#39;2013-08-30T11:46:58.643186000+1000&#39;,
+       &#39;2013-08-30T11:47:22.588888000+1000&#39;,
+       &#39;2013-09-15T11:46:54.469019000+1000&#39;,
+       &#39;2013-09-15T11:47:18.410141000+1000&#39;,
+       &#39;2013-09-22T11:53:01.559073000+1000&#39;,
+       &#39;2013-09-22T11:53:25.503299000+1000&#39;,
+       &#39;2013-10-01T11:46:48.479973000+1000&#39;,
+       &#39;2013-10-01T11:47:12.424275000+1000&#39;,
+       &#39;2013-10-08T12:52:59.793261000+1100&#39;,
+       &#39;2013-10-08T12:53:23.731034000+1100&#39;,
+       &#39;2013-10-17T12:46:46.702351000+1100&#39;,
+       &#39;2013-10-17T12:47:10.640185000+1100&#39;,
+       &#39;2013-10-24T12:52:53.019158000+1100&#39;,
+       &#39;2013-10-24T12:53:16.956991000+1100&#39;,
+       &#39;2013-11-02T12:46:39.957118000+1100&#39;,
+       &#39;2013-11-02T12:47:03.899861000+1100&#39;,
+       &#39;2013-11-09T12:52:51.114977000+1100&#39;,
+       &#39;2013-11-09T12:53:15.058749000+1100&#39;,
+       &#39;2013-11-18T12:46:35.543375000+1100&#39;,
+       &#39;2013-11-18T12:46:59.484188000+1100&#39;,
+       &#39;2013-11-25T12:52:42.535081000+1100&#39;,
+       &#39;2013-11-25T12:53:06.481054000+1100&#39;,
+       &#39;2013-12-04T12:46:33.165334000+1100&#39;,
+       &#39;2013-12-04T12:46:57.109559000+1100&#39;,
+       &#39;2013-12-11T12:52:41.920632000+1100&#39;,
+       &#39;2013-12-11T12:53:05.863842000+1100&#39;,
+       &#39;2013-12-27T12:52:32.755363000+1100&#39;,
+       &#39;2013-12-27T12:52:56.692962000+1100&#39;], dtype=&#39;datetime64[ns]&#39;)
+Coordinates:
+  * time     (time) datetime64[ns] 2013-03-26T01:45:52.192524 ...
+Attributes:
+    long_name: Time, unix time-stamp
+    standard_name: time
+    axis: T
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Selecting-a-variable-and-slicing">
+<h3>Selecting a variable and slicing<a class="headerlink" href="#Selecting-a-variable-and-slicing" title="Permalink to this headline">¶</a></h3>
+<p><strong>Let’s select the same time slice than in the previous example but specifying the specific date (it also )</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds</span><span class="o">.</span><span class="n">swir1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2013-12-27T01:52:32.000000000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(4000, 4000)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Plotting-is-a-method-of-a-data-array">
+<h3>Plotting is a method of a data array<a class="headerlink" href="#Plotting-is-a-method-of-a-data-array" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds</span><span class="o">.</span><span class="n">swir1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2013-12-27T01:52:32.000000000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x145cdf6d0&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_eo_Python_NetCDF_Landsat8_45_1.png" src="../../_images/_notebook_eo_Python_NetCDF_Landsat8_45_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Slicing-using-indexes-in-its-natural-units">
+<h3>Slicing using indexes in its natural units<a class="headerlink" href="#Slicing-using-indexes-in-its-natural-units" title="Permalink to this headline">¶</a></h3>
+<p><strong>Because XArray uses labeled arrays, we can use them to define subsets of the data using real values</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds</span><span class="o">.</span><span class="n">band_2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2013-05-26T11:46:58.872204000+1000&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2720000</span><span class="p">:</span><span class="o">-</span><span class="mi">2740000</span><span class="p">,</span> <span class="o">-</span><span class="mi">960000</span><span class="p">:</span><span class="o">-</span><span class="mi">94000</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x12812a590&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_eo_Python_NetCDF_Landsat8_47_1.png" src="../../_images/_notebook_eo_Python_NetCDF_Landsat8_47_1.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

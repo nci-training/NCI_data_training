@@ -1,0 +1,1009 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Convert MT time-series to netCDF example &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Convert MT time-series to netCDF example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/geophysics/ascii_to_netCDFb.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="image0" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<div class="section" id="Convert-MT-time-series-to-netCDF-example">
+<h1>Convert MT time-series to netCDF example<a class="headerlink" href="#Convert-MT-time-series-to-netCDF-example" title="Permalink to this headline">¶</a></h1>
+<p><strong>In this notebook, we will create netCDF files with rich metadata from our MT time-series.</strong></p>
+<p><strong>Clear notebook memory</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">reset</span> -f
+
+<span class="c1">#%whos</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Import python modules</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">num2date</span><span class="p">,</span> <span class="n">date2num</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">working_dir</span> <span class="o">=</span> <span class="s1">&#39;/g/data/my80/sandbox/ascii_to_netcdf_test/&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Open TS ascii files and create variables to input into netCDF file</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">LEX</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;cp1&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.ex&#39;</span><span class="p">)])</span>
+<span class="n">LEY</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;cp1&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.ey&#39;</span><span class="p">)])</span>
+<span class="n">LBX</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;cp1&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.bx&#39;</span><span class="p">)])</span>
+<span class="n">LBY</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;cp1&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.by&#39;</span><span class="p">)])</span>
+<span class="n">EX1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">EY1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">BX1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">BY1</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="n">LEX</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">array_for_netcdf</span><span class="p">(</span><span class="n">ty</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ty</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;ex&#39;</span><span class="p">):</span>
+                <span class="nb">print</span> <span class="n">a</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+                    <span class="n">EX1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">a</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;ey&#39;</span><span class="p">):</span>
+                <span class="nb">print</span> <span class="n">a</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+                    <span class="n">EY1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">a</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;bx&#39;</span><span class="p">):</span>
+                <span class="nb">print</span> <span class="n">a</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+                    <span class="n">BX1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">a</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;by&#39;</span><span class="p">):</span>
+                <span class="nb">print</span> <span class="n">a</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+                    <span class="n">BY1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="s1">&#39;something went horribly wrong&#39;</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">ty</span> <span class="o">=</span> <span class="p">[</span><span class="n">LEX</span><span class="p">,</span> <span class="n">LEY</span><span class="p">,</span> <span class="n">LBX</span><span class="p">,</span> <span class="n">LBY</span><span class="p">]</span>
+    <span class="n">array_for_netcdf</span><span class="p">(</span><span class="n">ty</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+cp1b01_296.ex
+cp1b01_296.ey
+cp1b01_296.bx
+cp1b01_296.by
+</pre></div></div>
+</div>
+<p><strong>Check that variables are the correct length</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">EX1</span><span class="p">)</span>
+<span class="nb">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">EY1</span><span class="p">)</span>
+<span class="nb">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">BX1</span><span class="p">)</span>
+<span class="nb">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">BY1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+82800000
+82800000
+82800000
+82800000
+</pre></div></div>
+</div>
+<p><strong>Create a time variable</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">t1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">1287756000</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">1287838799</span><span class="p">)</span>
+
+<span class="n">time1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">t2</span><span class="p">,</span><span class="n">num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">EX1</span><span class="p">))</span>
+
+</pre></div>
+</div>
+</div>
+<p><strong>Check start-time and end-time are correct</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2010-10-23 01:00:00
+2010-10-23 23:59:59
+</pre></div></div>
+</div>
+<p><strong>Check TS variables look reasonable</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[140]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time1</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span><span class="n">EX1</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[140]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&lt;matplotlib.lines.Line2D at 0x7fcfa92c8690&gt;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_geophysics_ascii_to_netCDFb_16_1.png" src="../../_images/_notebook_geophysics_ascii_to_netCDFb_16_1.png" />
+</div>
+</div>
+<p><strong>Create netCDF file and add time-series dimensions and variables (including local attributes)</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">dataset_P</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="s1">&#39;netCDF_test.nc&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;NETCDF4&#39;</span><span class="p">)</span>
+
+<span class="n">ex</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;ex&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">EX1</span><span class="p">))</span>
+<span class="n">ey</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;ey&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">EY1</span><span class="p">))</span>
+<span class="n">bx</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;bx&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">BX1</span><span class="p">))</span>
+<span class="n">by</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;by&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">BY1</span><span class="p">))</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">time1</span><span class="p">))</span>
+
+<span class="n">lon1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">134.5</span><span class="p">]</span>
+
+<span class="n">LON</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">lon1</span><span class="p">))</span>
+<span class="n">lons</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,(</span><span class="s1">&#39;longitude&#39;</span><span class="p">,))</span>
+<span class="n">lons</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s1">&#39;degrees_east&#39;</span>
+<span class="n">lons</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s1">&#39;longitude&#39;</span>
+<span class="n">lons</span><span class="o">.</span><span class="n">standard_name</span> <span class="o">=</span> <span class="s1">&#39;longitude&#39;</span>
+<span class="n">lons</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">lon1</span>
+
+<span class="n">lat1</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">27.1</span><span class="p">]</span>
+
+<span class="n">LAT</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">lat1</span><span class="p">))</span>
+<span class="n">lats</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,(</span><span class="s1">&#39;latitude&#39;</span><span class="p">,))</span>
+<span class="n">lats</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s1">&#39;degrees_north&#39;</span>
+<span class="n">lats</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s1">&#39;latitude&#39;</span>
+<span class="n">lats</span><span class="o">.</span><span class="n">standard_name</span> <span class="o">=</span> <span class="s1">&#39;latitude&#39;</span>
+<span class="n">lats</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">lat1</span>
+
+<span class="n">ex</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;ex&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,(</span><span class="s1">&#39;ex&#39;</span><span class="p">,))</span>
+<span class="n">ex</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s1">&#39;microV/m&#39;</span>
+<span class="n">ex</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s1">&#39;electric field in x direction&#39;</span>
+<span class="n">ex</span><span class="o">.</span><span class="n">standard_name</span> <span class="o">=</span> <span class="s1">&#39;electric field&#39;</span>
+<span class="n">ex</span><span class="o">.</span><span class="n">sampling_rate</span> <span class="o">=</span> <span class="s1">&#39;1000 Hz&#39;</span>
+<span class="n">ex</span><span class="o">.</span><span class="n">dipole_length</span> <span class="o">=</span> <span class="s1">&#39;46 m&#39;</span>
+<span class="n">ex</span><span class="o">.</span><span class="n">logger_gain</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="n">ex</span><span class="o">.</span><span class="n">interface_box_gain</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span>
+<span class="n">ex</span><span class="o">.</span><span class="n">instrument_type</span> <span class="o">=</span> <span class="s1">&#39;Ag-AgCl electrodes&#39;</span>
+<span class="n">ex</span><span class="o">.</span><span class="n">logger_type</span> <span class="o">=</span> <span class="s1">&#39;zen&#39;</span>
+<span class="n">ex</span><span class="o">.</span><span class="n">azimuth</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+<span class="n">ex</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">EX1</span>
+
+
+<span class="n">ey</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;ey&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,(</span><span class="s1">&#39;ey&#39;</span><span class="p">,))</span>
+<span class="n">ey</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s1">&#39;microV/m&#39;</span>
+<span class="n">ey</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s1">&#39;electric field in y direction&#39;</span>
+<span class="n">ey</span><span class="o">.</span><span class="n">standard_name</span> <span class="o">=</span> <span class="s1">&#39;electric field&#39;</span>
+<span class="n">ey</span><span class="o">.</span><span class="n">sampling_rate</span> <span class="o">=</span> <span class="s1">&#39;1000 Hz&#39;</span>
+<span class="n">ey</span><span class="o">.</span><span class="n">dipole_length</span> <span class="o">=</span> <span class="s1">&#39;49 m&#39;</span>
+<span class="n">ey</span><span class="o">.</span><span class="n">logger_gain</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="n">ey</span><span class="o">.</span><span class="n">interface_box_gain</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span>
+<span class="n">ey</span><span class="o">.</span><span class="n">instrument_type</span> <span class="o">=</span> <span class="s1">&#39;Ag-AgCl electrodes&#39;</span>
+<span class="n">ey</span><span class="o">.</span><span class="n">logger_type</span> <span class="o">=</span> <span class="s1">&#39;zen&#39;</span>
+<span class="n">ey</span><span class="o">.</span><span class="n">azimuth</span> <span class="o">=</span> <span class="s1">&#39;90&#39;</span>
+<span class="n">ey</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">EY1</span>
+
+<span class="n">bx</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;bx&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,(</span><span class="s1">&#39;bx&#39;</span><span class="p">,))</span>
+<span class="n">bx</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s1">&#39;microV/nT&#39;</span>
+<span class="n">bx</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s1">&#39;Long period magnetic field in x direction&#39;</span>
+<span class="n">bx</span><span class="o">.</span><span class="n">standard_name</span> <span class="o">=</span> <span class="s1">&#39;magnetic field&#39;</span>
+<span class="n">bx</span><span class="o">.</span><span class="n">sampling_rate</span> <span class="o">=</span> <span class="s1">&#39;1000 Hz&#39;</span>
+<span class="n">bx</span><span class="o">.</span><span class="n">magnetic_declination</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+<span class="n">bx</span><span class="o">.</span><span class="n">azimuth</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+<span class="n">bx</span><span class="o">.</span><span class="n">logger_gain</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="n">bx</span><span class="o">.</span><span class="n">interface_box_gain</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span>
+<span class="n">bx</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">BX1</span>
+
+<span class="n">by</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;by&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,(</span><span class="s1">&#39;by&#39;</span><span class="p">,))</span>
+<span class="n">by</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s1">&#39;microV/nT&#39;</span>
+<span class="n">by</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s1">&#39;Long period magnetic field in y direction&#39;</span>
+<span class="n">by</span><span class="o">.</span><span class="n">standard_name</span> <span class="o">=</span> <span class="s1">&#39;magnetic field&#39;</span>
+<span class="n">by</span><span class="o">.</span><span class="n">sampling_rate</span> <span class="o">=</span> <span class="s1">&#39;1000 Hz&#39;</span>
+<span class="n">by</span><span class="o">.</span><span class="n">magnetic_declination</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+<span class="n">by</span><span class="o">.</span><span class="n">azimuth</span> <span class="o">=</span> <span class="s1">&#39;90&#39;</span>
+<span class="n">by</span><span class="o">.</span><span class="n">logger_gain</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="n">by</span><span class="o">.</span><span class="n">interface_box_gain</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span>
+<span class="n">by</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">BY1</span>
+
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">dataset_P</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,(</span><span class="s1">&#39;time&#39;</span><span class="p">,))</span>
+<span class="n">time</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s1">&#39;seconds&#39;</span>
+<span class="n">time</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s1">&#39;time&#39;</span>
+<span class="n">time</span><span class="o">.</span><span class="n">standard_name</span> <span class="o">=</span> <span class="s1">&#39;time&#39;</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sampling_rate</span> <span class="o">=</span> <span class="s1">&#39;1000 Hz&#39;</span>
+<span class="n">time</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">time1</span>
+
+</pre></div>
+</div>
+</div>
+<p><strong>Add global attributes to netCDF file</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Global Attributes</span>
+
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Capricorn Orogen magnetotelluric (MT) surveys 2010&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">summary</span> <span class="o">=</span> <span class="s1">&#39;This survey was conducted across the southern Pilbara and Gascoyne regions from April to early July 2010. The addition of this survey to the existing set improves the understanding of the crustal structure of Western Australia.This survey was conducted across the southern Pilbara and Gascoyne regions from April to early July 2010. The addition of this survey to the existing set improves the understanding of the crustal structure of Western Australia. The Capricorn Orogen deep seismic reflection and MT surveys were funded through the Exploration Incentive Scheme (EIS) and through the Australia Federal Governments National Earth Science Infrastructure Program (AuScope). Acquisition and interpretation was managed by Geoscience Australia (GA) and the Australian National Seismic Imaging Resource (ANSIR) through the National Geoscience Agreement. The main objectives for the Capricorn survey were to image the: 1) overall structure and dip of the suture between the Yilgarn Craton and Gascoyne Province (Errabiddy Shear Zone), and the suture between the Pilbara Craton and the Gascoyne Province 2) depth and shape of the Minnie Creek batholith and other Proterozoic granite intrusions 3) nature of reactivated Fortescue Group growth faults in the southern Pilbara 4) dip of major faults that mark the boundary between the Pilbara Craton and the Ashburton Basin 5) deep crustal structure of the Ashburton Basin 6) deep crustal structure of the Edmund and Collier Basins and nature of major growth faults, such as the Talga Fault &#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;The University of Adelaide&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">date_created</span> <span class="o">=</span> <span class="s1">&#39;20180501T113000&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">Conventions</span> <span class="o">=</span> <span class="s1">&#39;ACDD-1.3&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">metadata_link</span> <span class="o">=</span> <span class="s1">&#39; https://geoenetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/fxxxxx&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">license</span> <span class="o">=</span> <span class="s1">&#39;Creative Commons Attribution 4.0 International (CC BY 4.0)&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">processing_level</span> <span class="o">=</span> <span class="s1">&#39;MT broad band time-series&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">institution</span> <span class="o">=</span> <span class="s1">&#39;The University of Adelaide&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;Caprocprn Orogen deep seismic reflection and magnetotelluric surveys 2010&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">instrument</span> <span class="o">=</span> <span class="s1">&#39;Auscope long-period MT instruments&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">boxnumber</span> <span class="o">=</span> <span class="s1">&#39;26&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">surveydate</span> <span class="o">=</span> <span class="s1">&#39;2010/10/23&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">elevation</span> <span class="o">=</span> <span class="s1">&#39;2113.2&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">hx</span> <span class="o">=</span> <span class="s1">&#39;2274&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">hy</span> <span class="o">=</span> <span class="s1">&#39;2284&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">hz</span> <span class="o">=</span> <span class="s1">&#39;2254&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s1">&#39;Earth&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">station</span> <span class="o">=</span> <span class="s1">&#39;c01&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">station_type</span> <span class="o">=</span> <span class="s1">&#39;mt&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">sampling_interval</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">time_start</span> <span class="o">=</span> <span class="s1">&#39;2010-10-23T01:00:00Z&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">time_end</span> <span class="o">=</span> <span class="s1">&#39;2010-10-23T23:59:59Z&#39;</span>
+<span class="c1">#dataset_P.references = &#39;https://doi.org/10.1071/ASEG2015ab277&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">keywords</span> <span class="o">=</span> <span class="s1">&#39;Magnetotellurics, electrical resistivity, Long Period, WA Capricorn, Broad Band&#39;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">birrpstring</span> <span class="o">=</span> <span class="n">birrpstring</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;0</span>
+<span class="s2">2</span>
+<span class="s2">2</span>
+<span class="s2">2</span>
+<span class="s2">-10</span>
+<span class="s2">65536,10</span>
+<span class="s2">y</span>
+<span class="s2">0,0.999</span>
+<span class="s2">0.4</span>
+<span class="s2">c01</span>
+<span class="s2">0</span>
+<span class="s2">1</span>
+<span class="s2">3</span>
+<span class="s2">0</span>
+<span class="s2">0</span>
+<span class="s2">20000000</span>
+<span class="s2">0</span>
+<span class="si">{0}</span><span class="s2"></span>
+<span class="s2">0</span>
+<span class="s2">0</span>
+<span class="si">{1}</span><span class="s2"></span>
+<span class="s2">0</span>
+<span class="s2">0</span>
+<span class="si">{2}</span><span class="s2"></span>
+<span class="s2">0</span>
+<span class="s2">0</span>
+<span class="si">{3}</span><span class="s2"></span>
+<span class="s2">0</span>
+<span class="s2">0</span>
+<span class="si">{4}</span><span class="s2"></span>
+<span class="s2">0</span>
+<span class="s2">0</span>
+<span class="si">{5}</span><span class="s2"></span>
+<span class="s2">0</span>
+<span class="s2">0,90,0</span>
+<span class="s2">0,90,0</span>
+<span class="s2">0,90,0</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;ex&#39;</span><span class="p">,</span><span class="s1">&#39;ey&#39;</span><span class="p">,</span><span class="s1">&#39;bx&#39;</span><span class="p">,</span><span class="s1">&#39;by&#39;</span><span class="p">,</span><span class="s1">&#39;bx&#39;</span><span class="p">,</span><span class="s1">&#39;by&#39;</span><span class="p">)</span>
+
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">birrp_cfg</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;[DEFAULT]</span>
+<span class="s2">ainuin = 0.999</span>
+<span class="s2">coherence_threshold = 0.4</span>
+<span class="s2">ilev = 0</span>
+<span class="s2">imode = 2</span>
+<span class="s2">jmode = 0</span>
+<span class="s2">max_window_length = 12936</span>
+<span class="s2">n_bisections = 10</span>
+<span class="s2">n_output_channels = 2</span>
+<span class="s2">n_samples = 20000000</span>
+<span class="s2">nar = 3</span>
+<span class="s2">nfil = 0</span>
+<span class="s2">ninp = 2</span>
+<span class="s2">nlev = 0</span>
+<span class="s2">nout = 2</span>
+<span class="s2">npcs = 1</span>
+<span class="s2">nskip = 0</span>
+<span class="s2">phi = 0</span>
+<span class="s2">rr_station = c01</span>
+<span class="s2">sampling_rate = 10.0</span>
+<span class="s2">station = c01</span>
+<span class="s2">tbw = 2</span>
+<span class="s2">theta1 = 0</span>
+<span class="s2">theta2 = 90</span>
+<span class="s2">uin = 0</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">survey_cfg</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;[c01]</span>
+<span class="s2">b_instrument_amplification = 10</span>
+<span class="s2">b_instrument_type = coil</span>
+<span class="s2">b_logger_gain = 1</span>
+<span class="s2">b_logger_type = zen</span>
+<span class="s2">b_xaxis_azimuth = 0</span>
+<span class="s2">b_yaxis_azimuth = 90</span>
+<span class="s2">box = 26</span>
+<span class="s2">date = 2010/10/23</span>
+<span class="s2">e_instrument_amplification = 10</span>
+<span class="s2">e_instrument_type = Ag-AgCl electrodes</span>
+<span class="s2">e_logger_gain = 1</span>
+<span class="s2">e_logger_type = Ag-AgCl electrodes</span>
+<span class="s2">e_xaxis_azimuth = 0</span>
+<span class="s2">e_xaxis_length = 46 m</span>
+<span class="s2">e_yaxis_azimuth = 90</span>
+<span class="s2">e_yaxis_length = 49 m</span>
+<span class="s2">elevation = 2113.2</span>
+<span class="s2">hx = 2274</span>
+<span class="s2">hy = 2284</span>
+<span class="s2">hz = 2254</span>
+<span class="s2">lat = -27.1000003815</span>
+<span class="s2">location = Earth</span>
+<span class="s2">lon = 134.5</span>
+<span class="s2">station = c01</span>
+<span class="s2">station_type = mt</span>
+<span class="s2">sampling_interval = all</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">dataset_P</span><span class="o">.</span><span class="n">EDI</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot; &gt;HEAD</span>
+
+<span class="s2">   DATAID=&quot;CP1B01&quot;</span>
+<span class="s2">   ACQBY=&quot;Adelaide University&quot;</span>
+<span class="s2">   ACQDATE=23/10/2010 01:00</span>
+<span class="s2">   FILEDATE=17/02/11</span>
+<span class="s2">   PROSPECT=&quot;Capricorn&quot;</span>
+<span class="s2">   LOC=&quot;CP1B01&quot;</span>
+<span class="s2">   LAT=-22.48308</span>
+<span class="s2">   LONG=117.74262</span>
+<span class="s2">   ELEV=639</span>
+
+<span class="s2"> &gt;INFO   MAXLINES=1000</span>
+
+<span class="s2"> &gt;=DEFINEMEAS</span>
+
+<span class="s2">   MAXCHAN=6</span>
+<span class="s2">   MAXRUN=999</span>
+<span class="s2">   MAXMEAS=99999</span>
+<span class="s2">   UNITS=M</span>
+<span class="s2">   REFTYPE=CART</span>
+<span class="s2">   REFLAT=-22.48308</span>
+<span class="s2">   REFLONG=117.74262</span>
+<span class="s2">   REFELEV=639</span>
+
+<span class="s2"> &gt;HMEAS ID= 1001.001 CHTYPE=HX X = 0.  Y = 0.  AZM = 0.</span>
+<span class="s2"> &gt;HMEAS ID= 1002.001 CHTYPE=HY X = 0.  Y = 0.  AZM= 90.</span>
+<span class="s2"> &gt;EMEAS ID= 1003.001 CHTYPE=EX X = 0.  Y = 0. X2 = 46.  Y2 = 0.</span>
+<span class="s2"> &gt;EMEAS ID= 1004.001 CHTYPE=EY X = 0.  Y = 0. X2 = 0.  Y2 = 49.</span>
+<span class="s2"> &gt;HMEAS ID= 1005.001 CHTYPE=HX X = 0.  Y = 0.  AZM= 0.</span>
+<span class="s2"> &gt;HMEAS ID= 1006.001 CHTYPE=HY X = 0.  Y = 0.  AZM= 90.</span>
+
+<span class="s2"> &gt;=MTSECT</span>
+<span class="s2">   SECTID=c01</span>
+<span class="s2">   NFREQ=   26</span>
+<span class="s2">   HX = 1001.001</span>
+<span class="s2">   HY = 1002.001</span>
+<span class="s2">   EX = 1003.001</span>
+<span class="s2">   EY = 1004.001</span>
+<span class="s2">   RX = 1005.001</span>
+<span class="s2">   RY = 1006.001</span>
+
+<span class="s2"> &gt;!****FREQUENCIES****!</span>
+<span class="s2"> &gt;FREQ NFREQ= 26  ORDER=INC // 26</span>
+<span class="s2">    0.38147E-01    0.61035E-01    0.76294E-01    0.12207E+00    0.15259E+00</span>
+<span class="s2">    0.24414E+00    0.30518E+00    0.48828E+00    0.61035E+00    0.97656E+00</span>
+<span class="s2">    0.12207E+01    0.19531E+01    0.24414E+01    0.39062E+01    0.48828E+01</span>
+<span class="s2">    0.78125E+01    0.97656E+01    0.15625E+02    0.19531E+02    0.31250E+02</span>
+<span class="s2">    0.39062E+02    0.62500E+02    0.78125E+02    0.12500E+03    0.15625E+03</span>
+<span class="s2">    0.25000E+03</span>
+<span class="s2"> &gt;!****IMPEDANCES****!</span>
+<span class="s2"> &gt;ZXXR // 26</span>
+<span class="s2">   -0.44327E+00   -0.26625E+01    0.46049E+00    0.56364E+00    0.57152E+00</span>
+<span class="s2">    0.59396E+00    0.59081E+00    0.67098E+00    0.62623E+00    0.59566E+00</span>
+<span class="s2">    0.62351E+00    0.79927E+00    0.95460E+00    0.16753E+01    0.23511E+01</span>
+<span class="s2">    0.40092E+01    0.42265E+01    0.59329E+01    0.67558E+01    0.64058E+01</span>
+<span class="s2">    0.11664E+02    0.86670E+01    0.44399E+01   -0.21714E+00   -0.29885E+01</span>
+<span class="s2">   -0.48281E+01</span>
+<span class="s2"> &gt;ZXXI // 26</span>
+<span class="s2">    0.46960E+00    0.39444E+00    0.37653E+00    0.35081E+00    0.37132E+00</span>
+<span class="s2">    0.42697E+00    0.34787E+00    0.27211E+00    0.42564E+00    0.77741E+00</span>
+<span class="s2">    0.10079E+01    0.15128E+01    0.17848E+01    0.26411E+01    0.29097E+01</span>
+<span class="s2">    0.32121E+01    0.32062E+01    0.19400E+01    0.22719E+00   -0.20125E+01</span>
+<span class="s2">    0.13069E+02    0.29387E+01   -0.19915E+01   -0.46283E+01   -0.42915E+01</span>
+<span class="s2">   -0.32431E+01</span>
+<span class="s2"> &gt;ZXX.VAR // 26</span>
+<span class="s2">    0.58392E+00    0.26810E+00    0.19542E-02    0.13228E-01    0.12507E-01</span>
+<span class="s2">    0.89072E-02    0.14495E-02    0.68923E-03    0.61660E-03    0.19105E-02</span>
+<span class="s2">    0.15167E-02    0.25468E-02    0.25983E-02    0.34299E-02    0.33525E-02</span>
+<span class="s2">    0.70537E-03    0.18979E-02    0.12378E-02    0.11475E-02    0.63023E-03</span>
+<span class="s2">    0.65161E-02    0.44747E-02    0.14962E-02    0.16737E-02    0.14638E-02</span>
+<span class="s2">    0.29286E-02</span>
+<span class="s2"> &gt;ZXYR // 26</span>
+<span class="s2">   -0.26648E-01    0.82435E+00    0.26319E+00    0.30035E+00    0.21084E+00</span>
+<span class="s2">    0.34265E-01   -0.10687E+00   -0.22633E+00   -0.35426E+00   -0.61359E+00</span>
+<span class="s2">   -0.70068E+00   -0.55762E+00   -0.22691E+00    0.20408E+01    0.51009E+01</span>
+<span class="s2">    0.15103E+02    0.23824E+02    0.43505E+02    0.56366E+02    0.73560E+02</span>
+<span class="s2">    0.69859E+02    0.78639E+02    0.82982E+02    0.87041E+02    0.82349E+02</span>
+<span class="s2">    0.82687E+02</span>
+<span class="s2"> &gt;ZXYI // 26</span>
+<span class="s2">   -0.95257E-01    0.56529E+00    0.16447E+00    0.12847E+00    0.22258E+00</span>
+<span class="s2">    0.73989E+00    0.98822E+00    0.16986E+01    0.23092E+01    0.39944E+01</span>
+<span class="s2">    0.53358E+01    0.91095E+01    0.11825E+02    0.20797E+02    0.26152E+02</span>
+<span class="s2">    0.38278E+02    0.42795E+02    0.49434E+02    0.48433E+02    0.41547E+02</span>
+<span class="s2">    0.22777E+02    0.19273E+02    0.22562E+02    0.23133E+02    0.24032E+02</span>
+<span class="s2">    0.25246E+02</span>
+<span class="s2"> &gt;ZXY.VAR // 26</span>
+<span class="s2">    0.42988E+00    0.43859E+00    0.20175E-02    0.13173E-01    0.13421E-01</span>
+<span class="s2">    0.75201E-02    0.14977E-02    0.13319E-02    0.96171E-03    0.25464E-02</span>
+<span class="s2">    0.15511E-02    0.38635E-02    0.38170E-02    0.46158E-02    0.60336E-02</span>
+<span class="s2">    0.27778E-02    0.46100E-02    0.16453E-02    0.13369E-02    0.58955E-03</span>
+<span class="s2">    0.53401E-02    0.48939E-02    0.19358E-02    0.23141E-02    0.24598E-02</span>
+<span class="s2">    0.44945E-02</span>
+<span class="s2"> &gt;ZYXR // 26</span>
+<span class="s2">   -0.22142E+01   -0.38310E+01   -0.40580E+01   -0.43981E+01   -0.46885E+01</span>
+<span class="s2">   -0.57701E+01   -0.61378E+01   -0.72024E+01   -0.78769E+01   -0.99293E+01</span>
+<span class="s2">   -0.11117E+02   -0.14394E+02   -0.16577E+02   -0.22670E+02   -0.27186E+02</span>
+<span class="s2">   -0.36239E+02   -0.40302E+02   -0.53441E+02   -0.59981E+02   -0.68305E+02</span>
+<span class="s2">   -0.79638E+02   -0.80522E+02   -0.78122E+02   -0.78447E+02   -0.73020E+02</span>
+<span class="s2">   -0.73578E+02</span>
+<span class="s2"> &gt;ZYXI // 26</span>
+<span class="s2">   -0.19394E+01    0.10589E-01   -0.24206E+01   -0.33747E+01   -0.37145E+01</span>
+<span class="s2">   -0.41992E+01   -0.51341E+01   -0.69401E+01   -0.76256E+01   -0.10168E+02</span>
+<span class="s2">   -0.11777E+02   -0.15617E+02   -0.17774E+02   -0.22825E+02   -0.25494E+02</span>
+<span class="s2">   -0.30058E+02   -0.30961E+02   -0.31538E+02   -0.30021E+02   -0.26204E+02</span>
+<span class="s2">   -0.21322E+02   -0.20073E+02   -0.22038E+02   -0.24485E+02   -0.25369E+02</span>
+<span class="s2">   -0.28741E+02</span>
+<span class="s2"> &gt;ZYX.VAR // 26</span>
+<span class="s2">    0.72531E+00    0.34810E+00    0.10581E-01    0.48191E-01    0.43113E-01</span>
+<span class="s2">    0.23871E-01    0.43235E-02    0.18267E-02    0.17336E-02    0.36324E-02</span>
+<span class="s2">    0.28214E-02    0.33997E-02    0.31387E-02    0.29680E-02    0.22117E-02</span>
+<span class="s2">    0.52945E-03    0.10360E-02    0.53337E-03    0.37994E-03    0.33570E-03</span>
+<span class="s2">    0.24485E-02    0.20074E-02    0.10057E-02    0.17054E-02    0.21290E-02</span>
+<span class="s2">    0.39388E-02</span>
+<span class="s2"> &gt;ZYYR // 26</span>
+<span class="s2">   -0.16580E+01    0.55103E-01   -0.29996E+01   -0.23860E+01   -0.21560E+01</span>
+<span class="s2">   -0.27695E+01   -0.28269E+01   -0.24845E+01   -0.21830E+01   -0.14827E+01</span>
+<span class="s2">   -0.11111E+01    0.35025E+00    0.11699E+01    0.40835E+01    0.60067E+01</span>
+<span class="s2">    0.89569E+01    0.89933E+01    0.79566E+01    0.54601E+01    0.12250E+01</span>
+<span class="s2">    0.74394E+01    0.16723E+01   -0.22411E+01   -0.41903E+01   -0.16425E+01</span>
+<span class="s2">   -0.69623E+00</span>
+<span class="s2"> &gt;ZYYI // 26</span>
+<span class="s2">   -0.90523E+00    0.25965E+00    0.11017E+00    0.41802E+00    0.62882E+00</span>
+<span class="s2">    0.10750E+01    0.12414E+01    0.20023E+01    0.20172E+01    0.27763E+01</span>
+<span class="s2">    0.32608E+01    0.41912E+01    0.47628E+01    0.54067E+01    0.46174E+01</span>
+<span class="s2">    0.21269E+01    0.24797E+00   -0.49399E+01   -0.68641E+01   -0.74936E+01</span>
+<span class="s2">   -0.12499E+02   -0.98253E+01   -0.57024E+01   -0.17552E+00    0.20136E+01</span>
+<span class="s2">    0.34510E+01</span>
+<span class="s2"> &gt;ZYY.VAR // 26</span>
+<span class="s2">    0.71284E+00    0.62434E+00    0.11302E-01    0.40725E-01    0.59773E-01</span>
+<span class="s2">    0.19966E-01    0.47040E-02    0.34225E-02    0.24680E-02    0.44178E-02</span>
+<span class="s2">    0.23959E-02    0.42534E-02    0.35118E-02    0.33370E-02    0.28465E-02</span>
+<span class="s2">    0.16291E-02    0.18247E-02    0.57730E-03    0.32430E-03    0.25724E-03</span>
+<span class="s2">    0.19862E-02    0.21254E-02    0.11422E-02    0.18330E-02    0.25298E-02</span>
+<span class="s2">    0.39368E-02</span>
+
+<span class="s2"> &gt;END</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+</pre></div>
+</div>
+</div>
+<p><strong>Close and save netCDF file</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">dataset_P</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

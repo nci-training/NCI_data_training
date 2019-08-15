@@ -1,0 +1,837 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using the GDAL library to read NetCDF data &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Using the GDAL library to read NetCDF data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/eo/Python_GDAL_NetCDF.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Using-the-GDAL-library-to-read-NetCDF-data">
+<h1>Using the GDAL library to read NetCDF data<a class="headerlink" href="#Using-the-GDAL-library-to-read-NetCDF-data" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook:</p>
+<p>Using iPython Notebooks with NetCDF data within the VDI</p>
+<ul class="simple">
+<li>Launch Jupyter Notebook</li>
+<li>Importing Python libraries</li>
+<li>Opening file and viewing contents</li>
+<li>Extracting data and subsets of data</li>
+<li>Plotting data</li>
+<li>Basic plotting</li>
+<li>RGB composite plotting</li>
+</ul>
+<p>The following material uses Geoscience Australia’s Landsat 8 Data Collection which is available under the Creative Commons License 4.0. For more information on the collection and licensing, please <a class="reference external" href="http://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_8228_7170_1486">click here</a>.</p>
+<hr class="docutils" />
+<div class="section" id="Launch-the-Jupyter-Notebook-application">
+<h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Using-pre-built-VDI-modules:">
+<h3>Using pre-built VDI modules:<a class="headerlink" href="#Using-pre-built-VDI-modules:" title="Permalink to this headline">¶</a></h3>
+<p>Load the <code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">ipython</span></code>, and <code class="docutils literal notranslate"><span class="pre">netcdf4-python</span></code> modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      $ module load python/2.7.11
+      $ module load python/2.7.11-matplotlib
+      $ module load ipython/4.2.0-py2.7
+      $ module load gdal/1.11.1-python
+
+Launch the Jupyter Notebook application:
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
+</pre></div>
+</div>
+<div class="admonition note">
+NOTE: This will launch the Notebook Dashboard within a new web browser window.</div>
+</div>
+<div class="section" id="Using-virtual-environments:">
+<h3>Using virtual environments:<a class="headerlink" href="#Using-virtual-environments:" title="Permalink to this headline">¶</a></h3>
+<p>To use along with customised python packages in a virtual environment, begin by following the steps in <strong>Python on the VDI: Part II</strong>.</p>
+<p>Once you have a virtual environment setup with your packages (including <code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>), proceed by loading the required modules and activating the virtual environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      $ module load python/2.7.11
+      $ source &lt;path_to_virtual_environment&gt;/bin/activate
+
+Then, as above, launch the Jupyter Notebook application:
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
+</pre></div>
+</div>
+<div class="admonition warning">
+NOTE: If you have already followed Python on the VDI: Part II, you should have installed the netcdf4-python package, which is required in the remainder of this notebook.</div>
+</div>
+</div>
+<div class="section" id="Import-python-modules">
+<h2>Import python modules<a class="headerlink" href="#Import-python-modules" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="k">import</span> <span class="n">gdal</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;/g/data2/rs0/datacube/002/LS8_OLI_NBART/-10_-28/LS8_OLI_NBART_3577_-10_-28_2013_v1493805443.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Open-and-view-file-metadata">
+<h2>Open and view file metadata<a class="headerlink" href="#Open-and-view-file-metadata" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="View-metadata">
+<h3>View metadata<a class="headerlink" href="#View-metadata" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="si">{:35}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NC_GLOBAL#license                  : Creative Commons Attribution 4.0 International (CC-BY 4.0)
+NC_GLOBAL#geospatial_lat_min       : -25.58404616639011
+NC_GLOBAL#date_created             : 2016-04-12T11:11:39.320375
+NC_GLOBAL#geospatial_lat_units     : degrees_north
+NC_GLOBAL#source                   : This data is a reprojection and retile of Landsat surface reflectance scene data.
+NC_GLOBAL#history                  : NetCDF-CF file created by datacube version &#39;1.0.2&#39; at 20160412.
+NC_GLOBAL#geospatial_bounds_crs    : EPSG:4326
+NC_GLOBAL#geospatial_lat_max       : -24.62761795684222
+NC_GLOBAL#title                    : Experimental Data files From the Australian Geoscience Data Cube - DO NOT USE
+NC_GLOBAL#geospatial_lon_min       : 121.9234014997891
+NC_GLOBAL#geospatial_lon_max       : 122.9983988091495
+NC_GLOBAL#Conventions              : CF-1.6, ACDD-1.3
+NC_GLOBAL#geospatial_bounds        : POLYGON((122.002096767 -24.6276179568, 121.9234015 -25.517253234, 122.927490078 -25.5840461664, 122.998398809 -24.6939371823, 122.002096767 -24.6276179568))
+NC_GLOBAL#summary                  : These files are experimental, short lived, and the format will change.
+NC_GLOBAL#geospatial_lon_units     : degrees_east
+NC_GLOBAL#product_version          : 0.0.0
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="View-subdatasets">
+<h3>View subdatasets<a class="headerlink" href="#View-subdatasets" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetSubDatasets</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NETCDF:&#34;/Users/kdruken/Downloads/LS8_OLI_TIRS_NBAR_3577_-10_-28_2013.nc&#34;:band_6
+NETCDF:&#34;/Users/kdruken/Downloads/LS8_OLI_TIRS_NBAR_3577_-10_-28_2013.nc&#34;:band_7
+NETCDF:&#34;/Users/kdruken/Downloads/LS8_OLI_TIRS_NBAR_3577_-10_-28_2013.nc&#34;:band_4
+NETCDF:&#34;/Users/kdruken/Downloads/LS8_OLI_TIRS_NBAR_3577_-10_-28_2013.nc&#34;:band_5
+NETCDF:&#34;/Users/kdruken/Downloads/LS8_OLI_TIRS_NBAR_3577_-10_-28_2013.nc&#34;:band_2
+NETCDF:&#34;/Users/kdruken/Downloads/LS8_OLI_TIRS_NBAR_3577_-10_-28_2013.nc&#34;:band_3
+NETCDF:&#34;/Users/kdruken/Downloads/LS8_OLI_TIRS_NBAR_3577_-10_-28_2013.nc&#34;:band_1
+NETCDF:&#34;/Users/kdruken/Downloads/LS8_OLI_TIRS_NBAR_3577_-10_-28_2013.nc&#34;:extra_metadata
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Extract/view-data-subdataset">
+<h2>Extract/view data subdataset<a class="headerlink" href="#Extract/view-data-subdataset" title="Permalink to this headline">¶</a></h2>
+<p>Subdatasets can be opened using the syntax: <strong>NETCDF:filename:variable</strong> or alternatively, the GetSubDatasets() function can be used to grab this information.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Option 1</span>
+<span class="n">band2</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s1">&#39;NETCDF:&quot;/Users/kdruken/Downloads/LS8_OLI_TIRS_NBAR_3577_-10_-28_2013.nc&quot;:band_2&#39;</span><span class="p">)</span>
+
+<span class="c1"># Option 2</span>
+<span class="n">band2</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">GetSubDatasets</span><span class="p">()[</span><span class="mi">4</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="s1">&#39;Band shape (T, Y, X): &#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">band2</span><span class="o">.</span><span class="n">RasterCount</span><span class="p">,</span> <span class="n">band2</span><span class="o">.</span><span class="n">RasterYSize</span><span class="p">,</span> <span class="n">band2</span><span class="o">.</span><span class="n">RasterXSize</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Band shape (T, Y, X):  (61, 4000, 4000)
+</pre></div></div>
+</div>
+<div class="section" id="The-GetMetadata()-function-can-be-used-on-the-subdataset">
+<h3>The GetMetadata() function can be used on the subdataset<a class="headerlink" href="#The-GetMetadata()-function-can-be-used-on-the-subdataset" title="Permalink to this headline">¶</a></h3>
+<p><strong>Note:</strong> The variable metadata is not as user-friendly as with other netcdf python tools (e.g., netCDF4, h5py)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="s1">&#39;long_name: &#39;</span><span class="p">,</span> <span class="n">band2</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;band_2#long_name&#39;</span><span class="p">]</span>
+<span class="nb">print</span> <span class="s1">&#39;xdim: &#39;</span><span class="p">,</span> <span class="n">band2</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;x#long_name&#39;</span><span class="p">]</span>
+<span class="nb">print</span> <span class="s1">&#39;ydim: &#39;</span><span class="p">,</span> <span class="n">band2</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;y#long_name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+long_name:  Nadir BRDF Adjusted Reflectance 0.45-0.51 microns (Blue)
+xdim:  x coordinate of projection
+ydim:  y coordinate of projection
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Use-the-‘GetProjection’-to-check-whether-the-variable’s-CRS-information-is-readable-by-GDAL">
+<h3>Use the ‘GetProjection’ to check whether the variable’s CRS information is readable by GDAL<a class="headerlink" href="#Use-the-‘GetProjection’-to-check-whether-the-variable’s-CRS-information-is-readable-by-GDAL" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">band2</span><span class="o">.</span><span class="n">GetProjection</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&#39;PROJCS[&quot;GDA94 / Australian Albers&quot;,GEOGCS[&quot;GDA94&quot;,DATUM[&quot;Geocentric_Datum_of_Australia_1994&quot;,SPHEROID[&quot;GRS 1980&quot;,6378137,298.257222101,AUTHORITY[&quot;EPSG&quot;,&quot;7019&quot;]],TOWGS84[0,0,0,0,0,0,0],AUTHORITY[&quot;EPSG&quot;,&quot;6283&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.01745329251994328,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4283&quot;]],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],PROJECTION[&quot;Albers_Conic_Equal_Area&quot;],PARAMETER[&quot;standard_parallel_1&quot;,-18],PARAMETER[&quot;standard_parallel_2&quot;,-36],PARAMETER[&quot;latitude_of_center&quot;,0],PARAMETER[&quot;longitude_of_center&quot;,132],PARAMETER[&quot;false_easting&quot;,0],PARAMETER[&quot;false_northing&quot;,0],AUTHORITY[&quot;EPSG&quot;,&quot;3577&quot;],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH]]&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Using-the-‘GetGeoTransform’-we-can-calculate-the-spatial-extents">
+<h3>Using the ‘GetGeoTransform’ we can calculate the spatial extents<a class="headerlink" href="#Using-the-‘GetGeoTransform’-we-can-calculate-the-spatial-extents" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">geoTransform</span> <span class="o">=</span> <span class="n">band2</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">()</span>
+<span class="n">minx</span> <span class="o">=</span> <span class="n">geoTransform</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">maxy</span> <span class="o">=</span> <span class="n">geoTransform</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">maxx</span> <span class="o">=</span> <span class="n">minx</span> <span class="o">+</span> <span class="n">geoTransform</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">band2</span><span class="o">.</span><span class="n">RasterXSize</span>
+<span class="n">miny</span> <span class="o">=</span> <span class="n">maxy</span> <span class="o">+</span> <span class="n">geoTransform</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">*</span><span class="n">band2</span><span class="o">.</span><span class="n">RasterYSize</span>
+<span class="nb">print</span> <span class="s2">&quot;Spatial extent [minx,miny,maxx,maxy]: &quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">minx</span><span class="p">,</span><span class="n">miny</span><span class="p">,</span><span class="n">maxx</span><span class="p">,</span><span class="n">maxy</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Spatial extent [minx,miny,maxx,maxy]:  [-1000000.0, -2800000.0, -900000.0, -2700000.0]
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Plotting-data">
+<h2>Plotting data<a class="headerlink" href="#Plotting-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Basic-plotting-of-data-subset">
+<h3>Basic plotting of data subset<a class="headerlink" href="#Basic-plotting-of-data-subset" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Set figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Subset indices</span>
+<span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span><span class="mi">3999</span>
+<span class="n">y1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">3000</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="mi">9</span>
+
+<span class="c1"># Plot data subset with equal axes and colorbar</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">band2</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()[</span><span class="n">t1</span><span class="p">,</span><span class="n">y1</span><span class="p">:</span><span class="n">y2</span><span class="p">,</span><span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">minx</span><span class="p">,</span><span class="n">maxy</span><span class="p">,</span><span class="n">maxx</span><span class="p">,</span><span class="n">miny</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_earth&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add figure title and labels</span>
+<span class="c1"># We can make use of the defined variable attributes to do this</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">band2</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;band_2#long_name&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">band2</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;x#long_name&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39; (&#39;</span><span class="o">+</span><span class="n">band2</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;x#units&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;) &#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">band2</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;y#long_name&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39; (&#39;</span><span class="o">+</span><span class="n">band2</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;y#units&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;) &#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># Adjust tick mark size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_eo_Python_GDAL_NetCDF_22_0.png" src="../../_images/_notebook_eo_Python_GDAL_NetCDF_22_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Plotting-RGB-images">
+<h3>Plotting RGB images<a class="headerlink" href="#Plotting-RGB-images" title="Permalink to this headline">¶</a></h3>
+<p>For more info on common band combinations: <a class="reference external" href="http://landsat.usgs.gov/L8_band_combos.php">http://landsat.usgs.gov/L8_band_combos.php</a></p>
+</div>
+<div class="section" id="Read-in-bands">
+<h3>Read in bands<a class="headerlink" href="#Read-in-bands" title="Permalink to this headline">¶</a></h3>
+<p><strong>Note</strong>: Bands must be clipped (value of 3000 was chosen in this case) and scaled to values between (0, 255) to plot as RGB image.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">band4</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">GetSubDatasets</span><span class="p">()[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">band6</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">GetSubDatasets</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">band7</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">GetSubDatasets</span><span class="p">()[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b4</span> <span class="o">=</span> <span class="n">band4</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()[</span><span class="n">t1</span><span class="p">,</span><span class="n">y1</span><span class="p">:</span><span class="n">y2</span><span class="p">,</span><span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">]</span>
+<span class="n">b6</span> <span class="o">=</span> <span class="n">band6</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()[</span><span class="n">t1</span><span class="p">,</span><span class="n">y1</span><span class="p">:</span><span class="n">y2</span><span class="p">,</span><span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">]</span>
+<span class="n">b7</span> <span class="o">=</span> <span class="n">band7</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()[</span><span class="n">t1</span><span class="p">,</span><span class="n">y1</span><span class="p">:</span><span class="n">y2</span><span class="p">,</span><span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b4</span> <span class="o">=</span> <span class="n">b4</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span> <span class="o">/</span> <span class="mf">3000.</span> <span class="o">*</span> <span class="mi">255</span>
+<span class="n">b6</span> <span class="o">=</span> <span class="n">b6</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span> <span class="o">/</span> <span class="mf">3000.</span> <span class="o">*</span> <span class="mi">255</span>
+<span class="n">b7</span> <span class="o">=</span> <span class="n">b7</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span> <span class="o">/</span> <span class="mf">3000.</span> <span class="o">*</span> <span class="mi">255</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Combine-the-bands-of-interest-into-numpy-NxNx3-dimensional-array">
+<h3>Combine the bands of interest into numpy NxNx3 dimensional array<a class="headerlink" href="#Combine-the-bands-of-interest-into-numpy-NxNx3-dimensional-array" title="Permalink to this headline">¶</a></h3>
+<p><strong>Note</strong>: The data type must be converted to ‘uint8’ to plot as image</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">b7</span><span class="p">,</span> <span class="n">b6</span><span class="p">,</span> <span class="n">b4</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="s2">&quot;New array shape: </span><span class="si">{0}</span><span class="s2">, dtype: </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rgb</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">rgb</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+New array shape: (3000, 2999, 3), dtype: uint8
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Set figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Plot image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">minx</span><span class="p">,</span><span class="n">maxy</span><span class="p">,</span><span class="n">maxx</span><span class="p">,</span><span class="n">miny</span><span class="p">])</span>
+
+<span class="c1"># Add figure title and labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Landsat 8 False Colour: Bands (7, 6, 4) </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">band2</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;x#long_name&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39; (&#39;</span><span class="o">+</span><span class="n">band2</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;x#units&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;) &#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">band2</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;y#long_name&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39; (&#39;</span><span class="o">+</span><span class="n">band2</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()[</span><span class="s1">&#39;y#units&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;) &#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+
+<span class="c1"># Adjust tick mark size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_eo_Python_GDAL_NetCDF_30_0.png" src="../../_images/_notebook_eo_Python_GDAL_NetCDF_30_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

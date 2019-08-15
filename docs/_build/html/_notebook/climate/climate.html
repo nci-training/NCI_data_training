@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Climate and Environment Science &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Earth Observation" href="../eo/eo.html" />
+    <link rel="prev" title="Installing Jupyter and Python on VDI" href="../prep/python_on_vdi.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Climate and Environment Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#datasets">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notebook-examples">Notebook examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-quick-preview">Data Quick Preview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-visulisation">Data Visulisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-maniputation">Data Maniputation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#high-performance-data-and-computating">High Performance Data and Computating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-services">Data Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#combined-dataset">Combined dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#community-forums-tools-and-packages">Community Forums, Tools and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-associated-training-resources">Other associated training resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Past data training courses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Climate and Environment Science</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/climate.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="climate-and-environment-science">
+<h1>Climate and Environment Science<a class="headerlink" href="#climate-and-environment-science" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="datasets">
+<h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
+<p>Please see a full list of climate, weather and enviornment datasets with project code <a class="reference internal" href="climate_datasets.html"><span class="doc">here</span></a>.</p>
+</div>
+<div class="section" id="notebook-examples">
+<h2>Notebook examples<a class="headerlink" href="#notebook-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-quick-preview">
+<h3>Data Quick Preview<a class="headerlink" href="#data-quick-preview" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="ncdump_cmip5.html"><span class="doc">ncdump</span></a></li>
+<li><a class="reference internal" href="ncview_cmip5.html"><span class="doc">ncview</span></a></li>
+<li><a class="reference internal" href="gdalbasics_cmip5.html"><span class="doc">GDALinfo</span></a></li>
+<li><a class="reference internal" href="python_GDAL_netcdf_cmip5.html"><span class="doc">Python_GDAL_netCDF</span></a></li>
+</ul>
+</div>
+<div class="section" id="data-visulisation">
+<h3>Data Visulisation<a class="headerlink" href="#data-visulisation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="Panoply_cmip5.html"><span class="doc">Panoply CMIP5</span></a></li>
+<li><a class="reference internal" href="Panoply_eReef_ANUwater.html"><span class="doc">Panoply eReef and ANU water</span></a></li>
+<li><a class="reference internal" href="ParaView_cmip5.html"><span class="doc">Paraview</span></a></li>
+</ul>
+</div>
+<div class="section" id="data-maniputation">
+<h3>Data Maniputation<a class="headerlink" href="#data-maniputation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="Python_DataAccessBasics_cmip5.html"><span class="doc">Access and plot data using Xarray</span></a></li>
+<li><a class="reference internal" href="Python_DataStatsVis_cmip6.html"><span class="doc">Load data and do more complicated operations using Xarray</span></a></li>
+<li><a class="reference internal" href="ncss_python_siphon_cmip5.html"><span class="doc">Netcdf Subset Service (NCSS) with Python and Siphon</span></a></li>
+</ul>
+</div>
+<div class="section" id="high-performance-data-and-computating">
+<h3>High Performance Data and Computating<a class="headerlink" href="#high-performance-data-and-computating" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="Python_DataChunks_cmip6.html"><span class="doc">Data chunking using Dask</span></a></li>
+</ul>
+</div>
+<div class="section" id="data-services">
+<h3>Data Services<a class="headerlink" href="#data-services" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="../tds/tds_NetcdfSubset_cmip5.html"><span class="doc">THREDDS dataset subsetting</span></a></li>
+<li><a class="reference internal" href="../tds/tds_direct_download_cmip5.html"><span class="doc">THREDDS file download</span></a></li>
+<li><a class="reference internal" href="../tds/tds_Godiva_cmip5.html"><span class="doc">THREDDS data reviewing tool</span></a></li>
+<li><a class="reference internal" href="../tds/tds_OPeNDAP_cmip5.html"><span class="doc">THREDDS OPeNDAP utility</span></a></li>
+</ul>
+</div>
+<div class="section" id="combined-dataset">
+<h3>Combined dataset<a class="headerlink" href="#combined-dataset" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="Python_NetCDF_OFAM_Himawari8.html"><span class="doc">OFAM and Himawari8</span></a></li>
+<li><a class="reference internal" href="../eo/Satellite_Imaging.html"><span class="doc">Digital Elevation Model (DEM) and Himawari8</span></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="community-forums-tools-and-packages">
+<h2>Community Forums, Tools and Packages<a class="headerlink" href="#community-forums-tools-and-packages" title="Permalink to this headline">¶</a></h2>
+<p>NCI hosts a <a class="reference external" href="https://opus.nci.org.au/display/CMIP/CMIP+Community+Home/">CMIP community wiki page</a> for more information.</p>
+<p>We summerised a <a class="reference external" href="https://nci-rei.atlassian.net/wiki/spaces/TPR/pages/613384225/Community+Tools">list of tools and packages</a> developed for climate and weather community.</p>
+</div>
+<div class="section" id="other-associated-training-resources">
+<h2>Other associated training resources<a class="headerlink" href="#other-associated-training-resources" title="Permalink to this headline">¶</a></h2>
+<p>COSIMA (Consortium for Ocean-Sea Ice Modelling in Australia) developed a framework for analysing output from ocean-sea ice models. There are example notebooks in <a class="reference external" href="https://github.com/COSIMA/cosima-cookbook">github</a>.</p>
+<p>Francois Delage’s <a class="reference external" href="https://github.com/fanchic/pangeo">git page</a> stores his Jupyter notebooks. If you press the launch binder icon, it will take you to a <a class="reference external" href="https://binder.pangeo.io/">pangeo binder</a> where you can run his jupyter notebook interactively. His example concatinates MIROC6 files downloaded from opendap, plot the data with xarray, subset data using slice and geolocation boundery, obtain NINO3.4 index and resample/detrend/filter the data, design ENSO &amp; IPO empirical orthogonal functions.</p>
+<p>Australian Research Council Climate System Science (ARCCSS) runs weekly training sessions presenting computational
+and data related topics. You can find more information on their <a class="reference external" href="http://climate-cms.wikis.unsw.edu.au/Training/">wiki page</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../eo/eo.html" class="btn btn-neutral float-right" title="Earth Observation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../prep/python_on_vdi.html" class="btn btn-neutral float-left" title="Installing Jupyter and Python on VDI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
