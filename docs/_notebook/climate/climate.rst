@@ -74,7 +74,7 @@ Francois Delage's `git page`_ stores his Jupyter notebooks. If you press the lau
 .. _git page: https://github.com/fanchic/pangeo
 .. _pangeo binder: https://binder.pangeo.io/
 
-Australian Research Council Climate System Science (ARCCSS) runs weekly training sessions presenting computational
+The ARC Centre of Excellence for Climate Extremes runs weekly training sessions presenting computational
 and data related topics. You can find more information on their `wiki page`_.
 
 .. _wiki page: http://climate-cms.wikis.unsw.edu.au/Training/

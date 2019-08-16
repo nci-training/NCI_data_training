@@ -18,12 +18,18 @@ NCI THREDDS data service (http://dapds00.nci.org.au), primarily using Open Geosp
 GSKY
 ~~~~~~~~~~
 
-GSKY data service (http://gsky.nci.org.au) using OGC data protocols (WMS, WCS and WPS) for very large datasets (e.g., Satellite imagery). See more details `here <../_notebook/gsky/gsky.rst>`_.
+`GSKY data service`_ using OGC data protocols (WMS, WCS and WPS) for very large datasets (e.g., Satellite imagery). See more details `here <../_notebook/gsky/gsky.rst>`_.
+
+.. _GSKY data service: http://gsky.nci.org.au
 
 ESGF
 ~~~~~~~~~~
 
 Earth Systems Grid Federation (http://esgf.nci.org.au) using DAP protocols.
+
+Our climate research community developed a tool `CleF`_ to help programmatically interacting with ESGF datasets. 
+
+.. _CleF: https://clef.readthedocs.io/en/stable/
 
 Copernicus 
 ~~~~~~~~~~
