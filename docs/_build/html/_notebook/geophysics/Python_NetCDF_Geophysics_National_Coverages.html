@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Launch the Jupyter Notebook application &mdash; NCI data training  documentation</title>
+  <title>Geophysics National Coverages Example &mdash; NCI data training  documentation</title>
   
 
   
@@ -92,8 +92,8 @@
 </ul>
 <p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
@@ -158,7 +158,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Launch the Jupyter Notebook application</li>
+      <li>Geophysics National Coverages Example</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -400,31 +400,25 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="100%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td># Data Access and Manipulation Using iPython
-Notebooks ## Geophysics National Coverages Example</td>
-</tr>
-<tr class="row-even"><td>### In this notebook:</td>
-</tr>
-<tr class="row-odd"><td>Using iPython Notebooks with NetCDF data within the
-VDI 1. Launch Jupyter Notebook 2. Importing Python
-libraries 3. Opening/reading a file 4. Browsing
-information about file contents 5. Extracting and
-visualising data 6. Extracting data based on
-geospatial criteria 7. Plotting data along transects</td>
-</tr>
-<tr class="row-even"><td>The following material uses Geoscience Australia’s
-National Coverages Geophysics Data Collection which
-is available under the Create Commons License 4.0.</td>
-</tr>
-</tbody>
-</table>
+<hr class="docutils" />
+<div class="section" id="Geophysics-National-Coverages-Example">
+<h1>Geophysics National Coverages Example<a class="headerlink" href="#Geophysics-National-Coverages-Example" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="In-this-notebook:">
+<h2>In this notebook:<a class="headerlink" href="#In-this-notebook:" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Launch Jupyter Notebook</li>
+<li>Importing Python libraries</li>
+<li>Opening/reading a file</li>
+<li>Browsing information about file contents</li>
+<li>Extracting and visualising data</li>
+<li>Extracting data based on geospatial criteria</li>
+<li>Plotting data along transects</li>
+</ul>
+<p>The following material uses Geoscience Australia’s National Coverages Geophysics Data Collection which is available under the Create Commons License 4.0.</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="Launch-the-Jupyter-Notebook-application">
-<h1>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h1>
+<h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
 <p><strong>Using pre-built VDI modules:</strong></p>
 <p>Load the <code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">ipython</span></code>, and <code class="docutils literal notranslate"><span class="pre">netcdf4-python</span></code> modules:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python/2.7.11
@@ -454,7 +448,7 @@ $ source &lt;path_to_virtual_environment&gt;/bin/activate
 NOTE: If you have already followed Python on the VDI: Part II, you should have installed the netcdf4-python package, which is required in the remainder of this notebook.</div>
 </div>
 <div class="section" id="Import-python-libraries">
-<h1>Import python libraries<a class="headerlink" href="#Import-python-libraries" title="Permalink to this headline">¶</a></h1>
+<h2>Import python libraries<a class="headerlink" href="#Import-python-libraries" title="Permalink to this headline">¶</a></h2>
 <p>There are several Python libraries available to work with netCDF and HDF file formats. This tutorial will use <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code> but others, such as <code class="docutils literal notranslate"><span class="pre">h5py</span></code>, <code class="docutils literal notranslate"><span class="pre">cdms2</span></code>, and <code class="docutils literal notranslate"><span class="pre">gdal</span></code> can also be used.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -484,7 +478,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="section" id="Open/read-file">
-<h1>Open/read file<a class="headerlink" href="#Open/read-file" title="Permalink to this headline">¶</a></h1>
+<h2>Open/read file<a class="headerlink" href="#Open/read-file" title="Permalink to this headline">¶</a></h2>
 <p><strong>The “Dataset” function is used to open a file with Python’s netCDF4 library.</strong> For local files, this will be the filepath (i.e., /g/data…) while for remote access, this will be the OPeNDAP data URL. Note that this does not yet load/extract any data, just opens the file.</p>
 <p><strong>1. Accessing data locally (/g/data)</strong></p>
 <div class="nbinput nblast docutils container">
@@ -538,7 +532,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 <p><strong>After opening the file with the OPeNDAP address, the file can be handled in the same manner as a local file.</strong></p>
 </div>
 <div class="section" id="Browse-information-about-the-file">
-<h1>Browse information about the file<a class="headerlink" href="#Browse-information-about-the-file" title="Permalink to this headline">¶</a></h1>
+<h2>Browse information about the file<a class="headerlink" href="#Browse-information-about-the-file" title="Permalink to this headline">¶</a></h2>
 <p><strong>File dimensions</strong></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -590,7 +584,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="section" id="Extracting-data-(using-index-values)">
-<h1>Extracting data (using index values)<a class="headerlink" href="#Extracting-data-(using-index-values)" title="Permalink to this headline">¶</a></h1>
+<h2>Extracting data (using index values)<a class="headerlink" href="#Extracting-data-(using-index-values)" title="Permalink to this headline">¶</a></h2>
 <p>A nice feature of netCDF/HDF file formats is that you can extract subsets without having to read the entire file (or variable). The example below demonstrates the simplest subsetting example by directly specifying the subset indices.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -656,7 +650,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="section" id="Geospatial-search-and-subset">
-<h1>Geospatial search and subset<a class="headerlink" href="#Geospatial-search-and-subset" title="Permalink to this headline">¶</a></h1>
+<h2>Geospatial search and subset<a class="headerlink" href="#Geospatial-search-and-subset" title="Permalink to this headline">¶</a></h2>
 <p><strong>Define geospatial criteria and extract subset</strong></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -717,7 +711,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="section" id="Plot-data-along-transect-lines">
-<h1>Plot data along transect lines<a class="headerlink" href="#Plot-data-along-transect-lines" title="Permalink to this headline">¶</a></h1>
+<h2>Plot data along transect lines<a class="headerlink" href="#Plot-data-along-transect-lines" title="Permalink to this headline">¶</a></h2>
 <p><strong>Extract data along lat, lon lines</strong></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -840,6 +834,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 <div class="admonition note">
 EXTRA: Add the “%%time” magic function to the beginning of cells and run through the above examples once for remote data access with the OPeNDAP Data URL and again for direct access on the file system.</div>
+</div>
 </div>
 
 

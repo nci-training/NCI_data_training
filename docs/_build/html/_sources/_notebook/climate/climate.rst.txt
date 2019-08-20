@@ -17,19 +17,16 @@ Data Quick Preview
 * `ncview <ncview_cmip5.ipynb>`_
 * `GDALinfo <gdalbasics_cmip5.ipynb>`_
 * `Python_GDAL_netCDF <python_GDAL_netcdf_cmip5.ipynb>`_
-
-Data Visulisation
-+++++++++++++++++++
-
-* `Panoply CMIP5 <Panoply_cmip5.ipynb>`_ 
-* `Panoply eReef and ANU water <Panoply_eReef_ANUwater.ipynb>`_ 
-* `Paraview <ParaView_cmip5.ipynb>`_ 
          
-Data Maniputation
+Data Manipulation
 ++++++++++++++++++++
 * `Access and plot data using Xarray <Python_DataAccessBasics_cmip5.ipynb>`_ 
 * `Load data and do more complicated operations using Xarray <Python_DataStatsVis_cmip6.ipynb>`_ 
 * `Netcdf Subset Service (NCSS) with Python and Siphon <ncss_python_siphon_cmip5.ipynb>`_
+* `Panoply CMIP5 <Panoply_cmip5.ipynb>`_ 
+* `Panoply eReef and ANU water <Panoply_eReef_ANUwater.ipynb>`_ 
+* `Paraview <ParaView_cmip5.ipynb>`_ 
+
 
 High Performance Data and Computating
 ++++++++++++++++++++++++++++++++++++++++

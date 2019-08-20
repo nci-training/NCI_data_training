@@ -34,5 +34,11 @@ Our climate research community developed a tool `CleF`_ to help programmatically
 Copernicus 
 ~~~~~~~~~~
 
-Sentinel Data service (https://copernicus.nci.org.au/sara.client/#/home).
+Copernicus Australasia (the Hub) is the `regional data repository`_ providing fast, free, open, trusted and reliable access to Cpernicus Sentinel satellite data for users in Australasia, Sourth-East Asia and the South Pacific.
+
+.. _regional data repository: https://copernicus.nci.org.au/sara.client/#/home
+
+Training materials on Copernicus Hub is available `here`_.
+
+.. here: https://drive.google.com/open?id=1O-CZxpr1CnYd-adgLc7xjSvNEOINpGh5
    

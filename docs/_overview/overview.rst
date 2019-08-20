@@ -25,7 +25,10 @@ NCI supports a number of key internationally recognised data principles:
     
 .. image:: ../_static/images/datacollections.jpg
 
-You can find the `Introduction to NCI's Data Collections <../_static/ppt/Introduction_to_NCI's_Data_Collections.pptx>`_ slides.
+You can find the `Introduction to NCI's Data Collections`_ slides.
+
+.. _Introduction to NCI's Data Collections: https://docs.google.com/presentation/d/19mjMiXNm6mb7XmI4TiVZ_AIHl9x79CPG/edit#slide=id.p1
+
 
 
 Training request form

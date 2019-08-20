@@ -53,7 +53,7 @@ Data Manipulation
 * `Programmatically accessing data using Siphon <Python_Siphon_I.ipynb>`_   
 * `Combine datasets: OFAM and Himawari8 <../climate/Python_NetCDF_OFAM_Himawari8.ipynb>`_ 
 * `Combine datasets: Digital Elevation Model (DEM) and Himawari8 <Satellite_Imaging.ipynb>`_ 
-* `Python Siphon example <Python_Siphon_II.ipynb>`_     
+* `Python Siphon data subsetting example <Python_Siphon_II.ipynb>`_     
 * `Analyse and visualise data in QGIS <QGIS_Analysing_Visualising_Data.ipynb>`_     
 
 Use Cases

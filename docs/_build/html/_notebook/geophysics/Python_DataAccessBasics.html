@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Launch the Jupyter Notebook application &mdash; NCI data training  documentation</title>
+  <title>Data Access using netCDF4 library &mdash; NCI data training  documentation</title>
   
 
   
@@ -92,8 +92,8 @@
 </ul>
 <p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
@@ -158,7 +158,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Launch the Jupyter Notebook application</li>
+      <li>Data Access using netCDF4 library</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -400,29 +400,23 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="100%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td># Data Access and Manipulation using iPython
-Notebooks ## The Basics</td>
-</tr>
-<tr class="row-even"><td>### In this notebook:</td>
-</tr>
-<tr class="row-odd"><td><ul class="first simple">
-<li>Using iPython Notebooks with NetCDF data within</li>
+<hr class="docutils" />
+<div class="section" id="Data-Access-using-netCDF4-library">
+<h1>Data Access using netCDF4 library<a class="headerlink" href="#Data-Access-using-netCDF4-library" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="In-this-notebook:">
+<h2>In this notebook:<a class="headerlink" href="#In-this-notebook:" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Launch Jupyter Notebook</li>
+<li>Finding data</li>
+<li>Opening the file</li>
+<li>Extracting data: Remote vs.&nbsp;direct filesystem access</li>
+<li>Small subsets</li>
+<li>Large subsets</li>
 </ul>
-<p class="last">the VDI 1. Launch Jupyter Notebook 2. Finding data
-3. Opening the file 4. Extracting data: Remote
-vs.&nbsp;direct filesystem access 5. Small subsets 6.
-Large subsets</p>
-</td>
-</tr>
-</tbody>
-</table>
+</div>
+<hr class="docutils" />
 <div class="section" id="Launch-the-Jupyter-Notebook-application">
-<h1>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h1>
+<h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
 <p><strong>Using pre-built VDI modules:</strong></p>
 <p>Load the <code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">ipython</span></code>, and <code class="docutils literal notranslate"><span class="pre">netcdf4-python</span></code> modules:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python/2.7.11
@@ -451,7 +445,7 @@ $ source &lt;path_to_virtual_environment&gt;/bin/activate
 NOTE: If you have already followed Python on the VDI: Part II, you should have installed the netcdf4-python package, which is required in the remainder of this notebook.</div>
 </div>
 <div class="section" id="Find-some-NetCDF-data">
-<h1>Find some NetCDF data<a class="headerlink" href="#Find-some-NetCDF-data" title="Permalink to this headline">¶</a></h1>
+<h2>Find some NetCDF data<a class="headerlink" href="#Find-some-NetCDF-data" title="Permalink to this headline">¶</a></h2>
 <p>In this example, we will use a file from the Geoscience Australia Geophysics National Coverages Collection:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">g</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">rr2</span><span class="o">/</span><span class="n">national_geophysical_compilations</span><span class="o">/</span><span class="n">magmap_v6_2015_VRTP</span><span class="o">/</span><span class="n">magmap_v6_2015_VRTP</span><span class="o">.</span><span class="n">nc</span>
 </pre></div>
@@ -480,7 +474,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="section" id="Open-file">
-<h1>Open file<a class="headerlink" href="#Open-file" title="Permalink to this headline">¶</a></h1>
+<h2>Open file<a class="headerlink" href="#Open-file" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -545,7 +539,7 @@ Wall time: 116 ms
 </div>
 </div>
 <div class="section" id="Extracting-data:-Remote-vs.&nbsp;direct-filesystem-access">
-<h1>Extracting data: Remote vs.&nbsp;direct filesystem access<a class="headerlink" href="#Extracting-data:-Remote-vs. direct-filesystem-access" title="Permalink to this headline">¶</a></h1>
+<h2>Extracting data: Remote vs.&nbsp;direct filesystem access<a class="headerlink" href="#Extracting-data:-Remote-vs. direct-filesystem-access" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 One big advantage of working directly on the filesystem is that data access is much faster. For modest subsets, the difference is quite small but as you work with larger data, remote access can become much slower or even exceed NCI’s THREDDS Data Server memory limits.</div>
 <p><strong>Small subsets</strong></p>
@@ -717,6 +711,7 @@ You will notice the remote example below results in an “Access failure” beca
 CPU times: user 39.8 s, sys: 5.01 s, total: 44.8 s
 Wall time: 49.3 s
 </pre></div></div>
+</div>
 </div>
 </div>
 

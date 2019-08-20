@@ -15,8 +15,9 @@ See the comprehensive `GKSY user manual here`_.
 
 .. _GKSY user manual here: https://gsky.readthedocs.io/en/latest/
 
-Slides about the basics of GSKY are available `here <../../_static/slides/Introduction_to_GSKY.pptx>`_ for download.
+Slides about the basics of GSKY are available `here`_ for download.
 
+.. _here: https://drive.google.com/drive/folders/1annFSApe1n9P_2A23zrkc9K_ymULimk-
 
 Datasets available in GSKY
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -42,12 +43,15 @@ GSKY currently serves data collections such as:
 We are continually adding new datasets to GSKY. If you're interested in publishing your own datasets to GSKY, please submit an enquiry to our data collections team via help@nci.org.au
 
 GSKY service end points are:
-http://gsky.nci.org.au/ows/dea
-http://gsky.nci.org.au/ows/geoglam
+
+* http://gsky.nci.org.au/ows/dea
+
+* http://gsky.nci.org.au/ows/geoglam
 
 .. raw:: html
 
     <video controls src="../../_static/movie/gsky_terria_mov.mp4" frameborder="0" allowfullscreen style="width: 100%; height: 140%;"></video>
+
 
 Software/Platforms interact with GSKY
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
