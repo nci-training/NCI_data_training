@@ -81,7 +81,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Info</span></p>
@@ -399,7 +398,7 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<p><img alt="logo" src="../../_images/NCI_logo2.png" /></p>
 <hr class="docutils" />
 <div class="section" id="Geophysics-National-Coverages-Example">
 <h1>Geophysics National Coverages Example<a class="headerlink" href="#Geophysics-National-Coverages-Example" title="Permalink to this headline">¶</a></h1>
@@ -415,16 +414,15 @@ div.rendered_html tbody tr:hover {
 <li>Plotting data along transects</li>
 </ul>
 <p>The following material uses Geoscience Australia’s National Coverages Geophysics Data Collection which is available under the Create Commons License 4.0.</p>
-</div>
 <hr class="docutils" />
 <div class="section" id="Launch-the-Jupyter-Notebook-application">
-<h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
+<h3>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h3>
 <p><strong>Using pre-built VDI modules:</strong></p>
 <p>Load the <code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">ipython</span></code>, and <code class="docutils literal notranslate"><span class="pre">netcdf4-python</span></code> modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python/2.7.11
-$ module load python/2.7.11-matplotlib
-$ module load ipython/4.2.0-py2.7
-$ module load netcdf4-python/1.2.4-ncdf-4.3.3.1-py2.7
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python3
+$ module load python/3.5.2-matplotlib
+$ module load ipython/4.2.0-py3.5
+$ module load netcdf4-python/1.2.4-ncdf-4.3.3.1-py3.5
 </pre></div>
 </div>
 <p>Launch the Jupyter Notebook application:</p>
@@ -447,10 +445,11 @@ $ source &lt;path_to_virtual_environment&gt;/bin/activate
 <div class="admonition warning">
 NOTE: If you have already followed Python on the VDI: Part II, you should have installed the netcdf4-python package, which is required in the remainder of this notebook.</div>
 </div>
+</div>
 <div class="section" id="Import-python-libraries">
 <h2>Import python libraries<a class="headerlink" href="#Import-python-libraries" title="Permalink to this headline">¶</a></h2>
 <p>There are several Python libraries available to work with netCDF and HDF file formats. This tutorial will use <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code> but others, such as <code class="docutils literal notranslate"><span class="pre">h5py</span></code>, <code class="docutils literal notranslate"><span class="pre">cdms2</span></code>, and <code class="docutils literal notranslate"><span class="pre">gdal</span></code> can also be used.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
@@ -461,38 +460,23 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-1-9cf9698db5a9&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> netCDF4 <span class="ansi-green-fg">import</span> Dataset
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-green-fg">import</span> matplotlib<span class="ansi-blue-fg">.</span>pyplot <span class="ansi-green-fg">as</span> plt
-<span class="ansi-green-intense-fg ansi-bold">      3</span> get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>run_line_magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;matplotlib&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;inline&#39;</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;netCDF4&#39;
-</pre></div></div>
-</div>
 </div>
 <div class="section" id="Open/read-file">
 <h2>Open/read file<a class="headerlink" href="#Open/read-file" title="Permalink to this headline">¶</a></h2>
 <p><strong>The “Dataset” function is used to open a file with Python’s netCDF4 library.</strong> For local files, this will be the filepath (i.e., /g/data…) while for remote access, this will be the OPeNDAP data URL. Note that this does not yet load/extract any data, just opens the file.</p>
 <p><strong>1. Accessing data locally (/g/data)</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/g/data1/rr2/national_geophysical_compilations/IR_gravity_anomaly_Australia_V1/IR_gravity_anomaly_Australia_V1.nc&#39;</span>
+<span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/g/data/rr2/national_geophysical_compilations/IR_gravity_anomaly_Australia_V1/IR_gravity_anomaly_Australia_V1.nc&#39;</span>
 </pre></div>
 </div>
 </div>
 <p><strong>2. Accessing data remotely (OPeNDAP)</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -501,33 +485,18 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <p><strong>3. Either the ‘path’ or the ‘url’ can be used now to open the file</strong> Comment/uncomment the access method you would like to use here.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># f = Dataset(path, &#39;r&#39;)</span>
+<span></span><span class="n">f</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
 <span class="c1"># OR</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="c1"># f = Dataset(url, &#39;r&#39;)</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-12-db66a3afe548&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-red-fg"># OR</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span>
-<span class="ansi-green-fg">----&gt; 5</span><span class="ansi-red-fg"> </span>f <span class="ansi-blue-fg">=</span> Dataset<span class="ansi-blue-fg">(</span>url<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;r&#39;</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;Dataset&#39; is not defined
-</pre></div></div>
 </div>
 <p><strong>After opening the file with the OPeNDAP address, the file can be handled in the same manner as a local file.</strong></p>
 </div>
@@ -535,12 +504,12 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 <h2>Browse information about the file<a class="headerlink" href="#Browse-information-about-the-file" title="Permalink to this headline">¶</a></h2>
 <p><strong>File dimensions</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">dimensions</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="n">f</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -549,24 +518,21 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-5-63581ae0d3c7&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">2</span>
-<span class="ansi-red-fg">    print f.dimensions[item].name, f.dimensions[item].size</span>
-          ^
-<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> Missing parentheses in call to &#39;print&#39;. Did you mean print(f.dimensions[item].name, f.dimensions[item].size)?
-
+lon 5717
+lat 4182
 </pre></div></div>
 </div>
 <p><strong>File variables</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="nb">vars</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="s1">&#39;Variable: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">item</span>
-    <span class="nb">print</span> <span class="s1">&#39;Dimensions: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">dimensions</span>
-    <span class="nb">print</span> <span class="s1">&#39;Shape:    </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimensions: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">dimensions</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape:    </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -575,10 +541,21 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-6-b75746b8410f&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">3</span>
-<span class="ansi-red-fg">    print &#39;Variable: \t&#39;, item</span>
-                       ^
-<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> Missing parentheses in call to &#39;print&#39;. Did you mean print(&#39;Variable: \t&#39;, item)?
+Variable:        crs
+Dimensions:      ()
+Shape:           ()
+
+Variable:        lat
+Dimensions:      (&#39;lat&#39;,)
+Shape:           (4182,)
+
+Variable:        lon
+Dimensions:      (&#39;lon&#39;,)
+Shape:           (5717,)
+
+Variable:        grav_ir_anomaly
+Dimensions:      (&#39;lat&#39;, &#39;lon&#39;)
+Shape:           (4182, 5717)
 
 </pre></div></div>
 </div>
@@ -586,8 +563,8 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 <div class="section" id="Extracting-data-(using-index-values)">
 <h2>Extracting data (using index values)<a class="headerlink" href="#Extracting-data-(using-index-values)" title="Permalink to this headline">¶</a></h2>
 <p>A nice feature of netCDF/HDF file formats is that you can extract subsets without having to read the entire file (or variable). The example below demonstrates the simplest subsetting example by directly specifying the subset indices.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -598,25 +575,9 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-7-397a416ebdfe&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># Read variables (but not yet extract)</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>grav <span class="ansi-blue-fg">=</span> f<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;grav_ir_anomaly&#39;</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> lat <span class="ansi-blue-fg">=</span> f<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;lat&#39;</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> lon <span class="ansi-blue-fg">=</span> f<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;lon&#39;</span><span class="ansi-blue-fg">]</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;f&#39; is not defined
-</pre></div></div>
-</div>
 <p><strong>Plot data (extracting all data in this example)</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -653,7 +614,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 <h2>Geospatial search and subset<a class="headerlink" href="#Geospatial-search-and-subset" title="Permalink to this headline">¶</a></h2>
 <p><strong>Define geospatial criteria and extract subset</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -664,7 +625,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -677,7 +638,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 <p><strong>Plot</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -714,7 +675,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 <h2>Plot data along transect lines<a class="headerlink" href="#Plot-data-along-transect-lines" title="Permalink to this headline">¶</a></h2>
 <p><strong>Extract data along lat, lon lines</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -727,7 +688,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -738,7 +699,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 <p><strong>Plot transects</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -787,7 +748,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 <p><strong>Plot data along transect lines</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -824,7 +785,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 <p><strong>Close the file once finished</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>

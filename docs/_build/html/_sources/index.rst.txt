@@ -1,5 +1,5 @@
 
-.. image:: _static/images/NCI_logo.jpg
+.. image:: _static/images/NCI_logo.png
   :width: 300
 
 
@@ -14,7 +14,6 @@ for your interests.
    :maxdepth: 2
 
    Overview <_overview/overview>
-   Upcoming training events <_overview/upcomingevents>
    Training slides list <_overview/slides>
 
 

@@ -4,7 +4,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "![](http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png)\n",
+    "![logo](../../_static/images/NCI_logo.png)\n",
     "\n",
     "\n",
     "# Convert MT time-series to netCDF example\n",

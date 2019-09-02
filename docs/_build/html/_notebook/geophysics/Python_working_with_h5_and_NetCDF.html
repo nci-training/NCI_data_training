@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Launch the Jupyter Notebook application &mdash; NCI data training  documentation</title>
+  <title>Working with HDF and netCDF files &mdash; NCI data training  documentation</title>
   
 
   
@@ -81,7 +81,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Info</span></p>
@@ -158,7 +157,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Launch the Jupyter Notebook application</li>
+      <li>Working with HDF and netCDF files</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -399,32 +398,24 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="100%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td># Working with HDF and netCDF files</td>
-</tr>
-<tr class="row-even"><td>### In this notebook:</td>
-</tr>
-<tr class="row-odd"><td>* Launch Jupyter Notebook</td>
-</tr>
-<tr class="row-even"><td>* Importing Python libraries</td>
-</tr>
-<tr class="row-odd"><td>* How to write HDF and netCDF files</td>
-</tr>
-<tr class="row-even"><td>* Opening file and viewing contents</td>
-</tr>
-<tr class="row-odd"><td>* Command-line tools for HDF5 files</td>
-</tr>
-<tr class="row-even"><td>* NCO basics</td>
-</tr>
-</tbody>
-</table>
+<p><img alt="logo" src="../../_images/NCI_logo2.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Working-with-HDF-and-netCDF-files">
+<h1>Working with HDF and netCDF files<a class="headerlink" href="#Working-with-HDF-and-netCDF-files" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="In-this-notebook:">
+<h2>In this notebook:<a class="headerlink" href="#In-this-notebook:" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Launch Jupyter Notebook</li>
+<li>Importing Python libraries</li>
+<li>How to write HDF and netCDF files</li>
+<li>Opening file and viewing contents</li>
+<li>Command-line tools for HDF5 files</li>
+<li>NCO basics</li>
+</ul>
+</div>
+<hr class="docutils" />
 <div class="section" id="Launch-the-Jupyter-Notebook-application">
-<h1>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h1>
+<h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
 <p><strong>Using pre-built VDI modules:</strong></p>
 <p>Load the following modules:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python/2.7.11
@@ -458,7 +449,7 @@ Then, as above, launch the Jupyter Notebook application:
 NOTE: If you have already followed Python on the VDI: Part II, you should have installed the netcdf4-python package, which is required in the remainder of this notebook.</div>
 </div>
 <div class="section" id="Import-python-modules">
-<h1>Import python modules<a class="headerlink" href="#Import-python-modules" title="Permalink to this headline">¶</a></h1>
+<h2>Import python modules<a class="headerlink" href="#Import-python-modules" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -491,7 +482,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="section" id="How-to-write-HDF5-and-NetCDF-files">
-<h1>How to write HDF5 and NetCDF files<a class="headerlink" href="#How-to-write-HDF5-and-NetCDF-files" title="Permalink to this headline">¶</a></h1>
+<h2>How to write HDF5 and NetCDF files<a class="headerlink" href="#How-to-write-HDF5-and-NetCDF-files" title="Permalink to this headline">¶</a></h2>
 <p><strong>HDF (Heirarchical Data Format)</strong></p>
 <p>Let’s first work on creating a HDF5 (Heirarchical Data Format) file. HDF5 is a powerful binary data format with no upper limit on the file size. It provides parallel IO and runs under the hood low level optimisations to make queries faster and storage requirements smaller. HDF5 files work generally like standard Python file objects. They support standard modes like r/w/a, and should be closed when they are no longer in use.</p>
 <p>We have to initialise our HDF5 file using h5py.File and providing the arguments of filename and mode. As we are writing this file, we provide a <strong>w</strong> for write access:</p>
@@ -1013,7 +1004,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 <p>and the file is written.</p>
 </div>
 <div class="section" id="Opening-file-and-viewing-contents">
-<h1>Opening file and viewing contents<a class="headerlink" href="#Opening-file-and-viewing-contents" title="Permalink to this headline">¶</a></h1>
+<h2>Opening file and viewing contents<a class="headerlink" href="#Opening-file-and-viewing-contents" title="Permalink to this headline">¶</a></h2>
 <p>Let’s first begin with a HDF file. For this example we will use the same file we previously created. To open and read data, use the File method in read mode, <em>r</em>:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1283,7 +1274,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="section" id="Command-line-tools-for-HDF5-files">
-<h1>Command-line tools for HDF5 files<a class="headerlink" href="#Command-line-tools-for-HDF5-files" title="Permalink to this headline">¶</a></h1>
+<h2>Command-line tools for HDF5 files<a class="headerlink" href="#Command-line-tools-for-HDF5-files" title="Permalink to this headline">¶</a></h2>
 <p>There are numerous command-line tools included in the HDF5 distribution to view, edit, convert and compare HDF5 files. Let’s use our testfile.hdf5 file for the following examples. We will begin with h5dump, which enables the user to examine the contents of an HDF5 and dump those contents to an ASCII file:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1322,7 +1313,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 <p>For a complete list of HDF5 tools available, see the HDF5 tools page <a class="reference external" href="https://support.hdfgroup.org/HDF5/doc/RM/Tools.html">https://support.hdfgroup.org/HDF5/doc/RM/Tools.html</a></p>
 </div>
 <div class="section" id="NCO-basics">
-<h1>NCO basics<a class="headerlink" href="#NCO-basics" title="Permalink to this headline">¶</a></h1>
+<h2>NCO basics<a class="headerlink" href="#NCO-basics" title="Permalink to this headline">¶</a></h2>
 <p><strong>NCO (NetCDF Operators)</strong> is a suite of command-line based tools designed to facilitate manipulation and analysis of self-describing data stored in the netCDF-accessible formats, including DAP, HDF4 and HDF5. Let’s begin with the ncks (netCDF kitchen sink) operator. This command can give an overview of a netCDF file, extract certain variables, extract certain dimensions and manipulate record dimensions. Let’s use our example geophys.nc file for this example and open up a terminal.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1380,6 +1371,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 <p>Test ncrcat and ncecat on some files you are interested in.</p>
 <p>Other operators include: - <strong>ncap2</strong>: netCDF Arithmetic Processor - <strong>ncatted</strong>: netCDF Attribute Editor - <strong>ncbo</strong>: netCDF Binary Operator - <strong>nces</strong>: netCDF Ensemble Statistics - <strong>ncflint</strong>: netCDF File Interpolator - <strong>ncra</strong>: netCDF Record Averager - <strong>ncwaa</strong>: netCDF Weighted Averager</p>
 <p>Try these operators out on your netCDF files! For help on a particular operator, type man operator (e.g.&nbsp;man ncbo)</p>
+</div>
 </div>
 
 

@@ -81,7 +81,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Info</span></p>
@@ -92,8 +91,8 @@
 </ul>
 <p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
@@ -399,7 +398,7 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<p><img alt="image0" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<p><img alt="logo" src="../../_images/NCI_logo3.png" /></p>
 <hr class="docutils" />
 <div class="section" id="Using-GSKY’s-WCS-in-Python">
 <h1>Using GSKY’s WCS in Python<a class="headerlink" href="#Using-GSKY’s-WCS-in-Python" title="Permalink to this headline">¶</a></h1>
@@ -455,6 +454,9 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+Layer Name: blend_sentinel2_landsat_nbart_daily
+Title: Multi-sensor (Landsat and Sentinel 2) surface reflectance (Beta)
+
 Layer Name: hltc_high
 Title: DEA High Tide Composite 25m v2.0
 
@@ -511,6 +513,9 @@ Title: 16-day DEA Landsat 8 terrain corrected surface reflectance
 
 Layer Name: landsat8_nbart_daily
 Title: Daily DEA Landsat 8 terrain corrected surface reflectance
+
+Layer Name: sentinel2_nbart_daily
+Title: Sentinel 2 Analysis Ready Data
 
 Layer Name: wofs
 Title: DEA Water Observation Feature Layer
@@ -593,7 +598,7 @@ Bounding Box:
          (-180.0, -90.0, 180.0, 90.0)
 
 Time Positions:
-         [&#39;2018-07-23T00:00:00.000Z&#39;, &#39;2018-08-08T00:00:00.000Z&#39;, &#39;2018-08-24T00:00:00.000Z&#39;, &#39;2018-09-09T00:00:00.000Z&#39;, &#39;2018-09-25T00:00:00.000Z&#39;, &#39;2018-10-11T00:00:00.000Z&#39;, &#39;2018-10-27T00:00:00.000Z&#39;, &#39;2018-11-12T00:00:00.000Z&#39;, &#39;2018-11-28T00:00:00.000Z&#39;, &#39;2018-12-14T00:00:00.000Z&#39;]
+         [&#39;2018-12-14T00:00:00.000Z&#39;, &#39;2018-12-30T00:00:00.000Z&#39;, &#39;2019-01-15T00:00:00.000Z&#39;, &#39;2019-01-31T00:00:00.000Z&#39;, &#39;2019-02-16T00:00:00.000Z&#39;, &#39;2019-03-04T00:00:00.000Z&#39;, &#39;2019-03-20T00:00:00.000Z&#39;, &#39;2019-04-05T00:00:00.000Z&#39;, &#39;2019-04-21T00:00:00.000Z&#39;, &#39;2019-05-07T00:00:00.000Z&#39;]
 
 </pre></div></div>
 </div>
@@ -616,7 +621,7 @@ Time Positions:
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">output</span> <span class="o">=</span> <span class="n">wcs</span><span class="o">.</span><span class="n">getCoverage</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="n">layer</span><span class="p">,</span> <span class="n">Styles</span><span class="o">=</span><span class="s1">&#39;fc&#39;</span><span class="p">,</span>
-                         <span class="n">time</span><span class="o">=</span><span class="n">wcs</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">timepositions</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span>
+                         <span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="n">wcs</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">timepositions</span><span class="p">[</span><span class="mi">6</span><span class="p">]],</span>
                          <span class="n">bbox</span><span class="o">=</span><span class="n">subset_bbox</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;GeoTIFF&#39;</span><span class="p">,</span>
                          <span class="n">crs</span><span class="o">=</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
 </pre></div>
@@ -637,7 +642,7 @@ Time Positions:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service=WCS&amp;Coverage=landsat8_nbar_16day&amp;BBox=137%2C-37%2C139%2C-35&amp;time=2%2C0%2C1%2C3%2C-%2C0%2C6%2C-%2C2%2C3%2CT%2C0%2C0%2C%3A%2C0%2C0%2C%3A%2C0%2C0%2C.%2C0%2C0%2C0%2CZ&amp;crs=EPSG%3A4326&amp;format=GeoTIFF&amp;width=256&amp;height=256&amp;Styles=fc
+http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service=WCS&amp;Coverage=landsat8_nbar_16day&amp;BBox=137%2C-37%2C139%2C-35&amp;time=2013-06-23T00%3A00%3A00.000Z&amp;crs=EPSG%3A4326&amp;format=GeoTIFF&amp;width=256&amp;height=256&amp;Styles=fc
 </pre></div></div>
 </div>
 <p><strong>Write the result to a file:</strong></p>
@@ -682,7 +687,7 @@ http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.image.AxesImage at 0x12569d6d8&gt;
+<span></span>&lt;matplotlib.image.AxesImage at 0x122e17a58&gt;
 </pre></div>
 </div>
 </div>
@@ -702,7 +707,7 @@ http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service
 <span></span><span class="n">subset_bbox</span> <span class="o">=</span> <span class="p">(</span><span class="mi">137</span><span class="p">,</span><span class="o">-</span><span class="mi">37</span><span class="p">,</span><span class="mi">139</span><span class="p">,</span><span class="o">-</span><span class="mi">35</span><span class="p">)</span>
 
 <span class="n">output</span> <span class="o">=</span> <span class="n">wcs</span><span class="o">.</span><span class="n">getCoverage</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="n">layer</span><span class="p">,</span> <span class="n">Styles</span><span class="o">=</span><span class="s1">&#39;tc&#39;</span><span class="p">,</span>
-                         <span class="n">time</span><span class="o">=</span><span class="n">wcs</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">timepositions</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span>
+                         <span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="n">wcs</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">timepositions</span><span class="p">[</span><span class="mi">6</span><span class="p">]],</span>
                          <span class="n">bbox</span><span class="o">=</span><span class="n">subset_bbox</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;NetCDF&#39;</span><span class="p">,</span>
                          <span class="n">crs</span><span class="o">=</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
 </pre></div>
@@ -722,7 +727,7 @@ http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service=WCS&amp;Coverage=landsat8_nbar_16day&amp;BBox=137%2C-37%2C139%2C-35&amp;time=2%2C0%2C1%2C3%2C-%2C0%2C6%2C-%2C2%2C3%2CT%2C0%2C0%2C%3A%2C0%2C0%2C%3A%2C0%2C0%2C.%2C0%2C0%2C0%2CZ&amp;crs=EPSG%3A4326&amp;format=NetCDF&amp;width=256&amp;height=256&amp;Styles=tc
+http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service=WCS&amp;Coverage=landsat8_nbar_16day&amp;BBox=137%2C-37%2C139%2C-35&amp;time=2013-06-23T00%3A00%3A00.000Z&amp;crs=EPSG%3A4326&amp;format=NetCDF&amp;width=256&amp;height=256&amp;Styles=tc
 </pre></div></div>
 </div>
 <p><strong>Again, write the output to a file to save:</strong></p>

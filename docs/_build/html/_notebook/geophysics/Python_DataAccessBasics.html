@@ -81,7 +81,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Info</span></p>
@@ -399,7 +398,7 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<p><img alt="logo" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<p><img alt="logo" src="../../_images/NCI_logo2.png" /></p>
 <hr class="docutils" />
 <div class="section" id="Data-Access-using-netCDF4-library">
 <h1>Data Access using netCDF4 library<a class="headerlink" href="#Data-Access-using-netCDF4-library" title="Permalink to this headline">¶</a></h1>
@@ -419,9 +418,9 @@ div.rendered_html tbody tr:hover {
 <h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
 <p><strong>Using pre-built VDI modules:</strong></p>
 <p>Load the <code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">ipython</span></code>, and <code class="docutils literal notranslate"><span class="pre">netcdf4-python</span></code> modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python/2.7.11
-$ module load ipython/4.2.0-py2.7
-$ module load netcdf4-python/1.2.4-ncdf-4.3.3.1-py2.7
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python3
+$ module load ipython/4.2.0-py3.5
+$ module load netcdf4-python/1.2.4-ncdf-4.3.3.1-py3.5
 </pre></div>
 </div>
 <p>Launch the Jupyter Notebook application:</p>
@@ -457,7 +456,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/g/data1/rr2/national_geophysical_compilations/magmap_v6_2015_VRTP/magmap_v6_2015_VRTP.nc&#39;</span>
+<span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/g/data/rr2/national_geophysical_compilations/magmap_v6_2015_VRTP/magmap_v6_2015_VRTP.nc&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -475,27 +474,14 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 <div class="section" id="Open-file">
 <h2>Open file<a class="headerlink" href="#Open-file" title="Permalink to this headline">¶</a></h2>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">Dataset</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ImportError</span>                               Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-c5d22513aa9b&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> netCDF4 <span class="ansi-green-fg">import</span> Dataset
-
-<span class="ansi-red-fg">ImportError</span>: No module named netCDF4
-</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -513,8 +499,8 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2 ms, sys: 4 ms, total: 6 ms
-Wall time: 91 ms
+CPU times: user 8 ms, sys: 27 ms, total: 35 ms
+Wall time: 2.06 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -533,8 +519,8 @@ Wall time: 91 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 10 ms, sys: 10 ms, total: 20 ms
-Wall time: 116 ms
+CPU times: user 33 ms, sys: 41 ms, total: 74 ms
+Wall time: 797 ms
 </pre></div></div>
 </div>
 </div>
@@ -545,15 +531,15 @@ One big advantage of working directly on the filesystem is that data access is m
 <p><strong>Small subsets</strong></p>
 <p>File variables</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="nb">vars</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="s1">&#39;Variable: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">item</span>
-    <span class="nb">print</span> <span class="s1">&#39;Dimensions: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">f2</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">dimensions</span>
-    <span class="nb">print</span> <span class="s1">&#39;Shape:    </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">f2</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimensions: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">f2</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">dimensions</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape:    </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">f2</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -562,27 +548,27 @@ One big advantage of working directly on the filesystem is that data access is m
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Variable:       lat
-Dimensions:     (u&#39;lat&#39;,)
-Shape:          (41882,)
+Variable:        lat
+Dimensions:      (&#39;lat&#39;,)
+Shape:           (41882,)
 
-Variable:       lon
-Dimensions:     (u&#39;lon&#39;,)
-Shape:          (50591,)
+Variable:        crs
+Dimensions:      ()
+Shape:           ()
 
-Variable:       crs
-Dimensions:     (u&#39;maxStrlen64&#39;,)
-Shape:          (64,)
+Variable:        lon
+Dimensions:      (&#39;lon&#39;,)
+Shape:           (50591,)
 
-Variable:       mag_tmi_rtp_anomaly
-Dimensions:     (u&#39;lat&#39;, u&#39;lon&#39;)
-Shape:          (41882, 50591)
+Variable:        mag_tmi_rtp_anomaly
+Dimensions:      (&#39;lat&#39;, &#39;lon&#39;)
+Shape:           (41882, 50591)
 
 </pre></div></div>
 </div>
 <p>Extract: Remotely</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -600,13 +586,13 @@ Shape:          (41882, 50591)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 36 ms, sys: 24 ms, total: 60 ms
-Wall time: 246 ms
+CPU times: user 64 ms, sys: 35 ms, total: 99 ms
+Wall time: 923 ms
 </pre></div></div>
 </div>
 <p>Extract: Locally</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -624,14 +610,14 @@ Wall time: 246 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 10 ms, sys: 3 ms, total: 13 ms
-Wall time: 25.4 ms
+CPU times: user 26 ms, sys: 19 ms, total: 45 ms
+Wall time: 84.2 ms
 </pre></div></div>
 </div>
 <p><strong>Large subsets</strong></p>
 <p>Extract: Remotely</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -651,37 +637,37 @@ Wall time: 25.4 ms
 <div class="highlight"><pre>
 <span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
 <span class="ansi-red-intense-fg ansi-bold">RuntimeError</span>                              Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-9-8abc03ac70d3&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>get_ipython<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>run_cell_magic<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">u&#39;time&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">u&#39;&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">u&#34;\nlat = f2.variables[&#39;lat&#39;][:]\nlon = f2.variables[&#39;lon&#39;][:]\n\nmag = f2.variables[&#39;mag_tmi_rtp_anomaly&#39;][:,:]&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-10-76ec734a2282&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>get_ipython<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>run_cell_magic<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;time&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#34;\nlat = f2.variables[&#39;lat&#39;][:]\nlon = f2.variables[&#39;lon&#39;][:]\n\nmag = f2.variables[&#39;mag_tmi_rtp_anomaly&#39;][:,:]&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
 
-<span class="ansi-green-intense-fg ansi-bold">/home/900/kad900/mypython0/mypy0/lib/python2.7/site-packages/IPython/core/interactiveshell.pyc</span> in <span class="ansi-cyan-fg">run_cell_magic</span><span class="ansi-blue-intense-fg ansi-bold">(self, magic_name, line, cell)</span>
-<span class="ansi-green-fg">   2291</span>             magic_arg_s <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>var_expand<span class="ansi-yellow-intense-fg ansi-bold">(</span>line<span class="ansi-yellow-intense-fg ansi-bold">,</span> stack_depth<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   2292</span>             <span class="ansi-green-intense-fg ansi-bold">with</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>builtin_trap<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 2293</span><span class="ansi-yellow-intense-fg ansi-bold">                 </span>result <span class="ansi-yellow-intense-fg ansi-bold">=</span> fn<span class="ansi-yellow-intense-fg ansi-bold">(</span>magic_arg_s<span class="ansi-yellow-intense-fg ansi-bold">,</span> cell<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   2294</span>             <span class="ansi-green-intense-fg ansi-bold">return</span> result
-<span class="ansi-green-fg">   2295</span>
+<span class="ansi-green-intense-fg ansi-bold">/apps/ipython/4.2.0-py3.5/lib/python3.5/site-packages/ipython-4.2.0-py3.5.egg/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">run_cell_magic</span><span class="ansi-blue-intense-fg ansi-bold">(self, magic_name, line, cell)</span>
+<span class="ansi-green-fg">   2118</span>             magic_arg_s <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>var_expand<span class="ansi-yellow-intense-fg ansi-bold">(</span>line<span class="ansi-yellow-intense-fg ansi-bold">,</span> stack_depth<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">   2119</span>             <span class="ansi-green-intense-fg ansi-bold">with</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>builtin_trap<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 2120</span><span class="ansi-yellow-intense-fg ansi-bold">                 </span>result <span class="ansi-yellow-intense-fg ansi-bold">=</span> fn<span class="ansi-yellow-intense-fg ansi-bold">(</span>magic_arg_s<span class="ansi-yellow-intense-fg ansi-bold">,</span> cell<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">   2121</span>             <span class="ansi-green-intense-fg ansi-bold">return</span> result
+<span class="ansi-green-fg">   2122</span>
 
 <span class="ansi-green-intense-fg ansi-bold">&lt;decorator-gen-60&gt;</span> in <span class="ansi-cyan-fg">time</span><span class="ansi-blue-intense-fg ansi-bold">(self, line, cell, local_ns)</span>
 
-<span class="ansi-green-intense-fg ansi-bold">/home/900/kad900/mypython0/mypy0/lib/python2.7/site-packages/IPython/core/magic.pyc</span> in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-intense-fg ansi-bold">(f, *a, **k)</span>
+<span class="ansi-green-intense-fg ansi-bold">/apps/ipython/4.2.0-py3.5/lib/python3.5/site-packages/ipython-4.2.0-py3.5.egg/IPython/core/magic.py</span> in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-intense-fg ansi-bold">(f, *a, **k)</span>
 <span class="ansi-green-fg">    191</span>     <span class="ansi-red-intense-fg ansi-bold"># but it&#39;s overkill for just that one bit of state.</span>
 <span class="ansi-green-fg">    192</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> magic_deco<span class="ansi-yellow-intense-fg ansi-bold">(</span>arg<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
 <span class="ansi-green-intense-fg ansi-bold">--&gt; 193</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>call <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-green-intense-fg ansi-bold">lambda</span> f<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span>a<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>k<span class="ansi-yellow-intense-fg ansi-bold">:</span> f<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>a<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>k<span class="ansi-yellow-intense-fg ansi-bold">)</span>
 <span class="ansi-green-fg">    194</span>
 <span class="ansi-green-fg">    195</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> callable<span class="ansi-yellow-intense-fg ansi-bold">(</span>arg<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
 
-<span class="ansi-green-intense-fg ansi-bold">/home/900/kad900/mypython0/mypy0/lib/python2.7/site-packages/IPython/core/magics/execution.pyc</span> in <span class="ansi-cyan-fg">time</span><span class="ansi-blue-intense-fg ansi-bold">(self, line, cell, local_ns)</span>
-<span class="ansi-green-fg">   1165</span>         <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">   1166</span>             st <span class="ansi-yellow-intense-fg ansi-bold">=</span> clock2<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1167</span><span class="ansi-yellow-intense-fg ansi-bold">             </span><span class="ansi-green-intense-fg ansi-bold">exec</span><span class="ansi-yellow-intense-fg ansi-bold">(</span>code<span class="ansi-yellow-intense-fg ansi-bold">,</span> glob<span class="ansi-yellow-intense-fg ansi-bold">,</span> local_ns<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1168</span>             end <span class="ansi-yellow-intense-fg ansi-bold">=</span> clock2<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1169</span>             out <span class="ansi-yellow-intense-fg ansi-bold">=</span> None
+<span class="ansi-green-intense-fg ansi-bold">/apps/ipython/4.2.0-py3.5/lib/python3.5/site-packages/ipython-4.2.0-py3.5.egg/IPython/core/magics/execution.py</span> in <span class="ansi-cyan-fg">time</span><span class="ansi-blue-intense-fg ansi-bold">(self, line, cell, local_ns)</span>
+<span class="ansi-green-fg">   1175</span>         <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">   1176</span>             st <span class="ansi-yellow-intense-fg ansi-bold">=</span> clock2<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1177</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>exec<span class="ansi-yellow-intense-fg ansi-bold">(</span>code<span class="ansi-yellow-intense-fg ansi-bold">,</span> glob<span class="ansi-yellow-intense-fg ansi-bold">,</span> local_ns<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">   1178</span>             end <span class="ansi-yellow-intense-fg ansi-bold">=</span> clock2<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">   1179</span>             out <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-green-intense-fg ansi-bold">None</span>
 
 <span class="ansi-green-intense-fg ansi-bold">&lt;timed exec&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
 
-<span class="ansi-green-intense-fg ansi-bold">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4.Variable.__getitem__ (netCDF4/_netCDF4.c:37076)</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-intense-fg ansi-bold">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4.Variable.__getitem__ (netCDF4/_netCDF4.c:37909)</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
 
-<span class="ansi-green-intense-fg ansi-bold">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4.Variable._get (netCDF4/_netCDF4.c:46963)</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-intense-fg ansi-bold">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4.Variable._get (netCDF4/_netCDF4.c:47129)</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
 
 <span class="ansi-red-intense-fg ansi-bold">RuntimeError</span>: NetCDF: Access failure
 </pre></div></div>
@@ -689,8 +675,8 @@ Wall time: 25.4 ms
 <div class="admonition note">
 You will notice the remote example below results in an “Access failure” because it is too large a request. To access this amount of data remotely, the request would have to be made in iterative chunks. However, the more performant alternative is to work direct on the filesystem from within the VDI.</div>
 <p>Extract: Locally</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -702,15 +688,6 @@ You will notice the remote example below results in an “Access failure” beca
 <span class="n">mag</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;mag_tmi_rtp_anomaly&#39;</span><span class="p">][:,:]</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-CPU times: user 39.8 s, sys: 5.01 s, total: 44.8 s
-Wall time: 49.3 s
-</pre></div></div>
 </div>
 </div>
 </div>

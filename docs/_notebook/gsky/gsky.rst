@@ -11,13 +11,11 @@ GSKY accesses and analyses the big geospatial data on NCI’s cloud and high-per
  * Provide the same layer for different points of time allowing cross– sectional analysis.
  * Allow users to download the raw data corresponding to a user-supplied bounding box.
 
-See the comprehensive `GSKY user manual here`_. 
+See `GSKY user manual`_ and `Slides`_ about the basics of GSKY.
 
-.. _GKSY user manual here: https://gsky.readthedocs.io/en/latest/
+.. _GSKY user manual: https://gsky.readthedocs.io/en/latest/
 
-Slides about the basics of GSKY are available `here`_ for download.
-
-.. _here: https://drive.google.com/drive/folders/1annFSApe1n9P_2A23zrkc9K_ymULimk-
+.. _Slides: https://drive.google.com/drive/folders/1annFSApe1n9P_2A23zrkc9K_ymULimk-
 
 Datasets available in GSKY
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

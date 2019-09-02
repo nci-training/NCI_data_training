@@ -56,7 +56,10 @@ Data Manipulation
 * `Python Siphon data subsetting example <Python_Siphon_II.ipynb>`_     
 * `Analyse and visualise data in QGIS <QGIS_Analysing_Visualising_Data.ipynb>`_     
 
-Use Cases
-+++++++++++++++
 
-* Vegetation fractional cover indicators for land and water management using MODIS data 
+Other associated training resources 
+--------------------------------------------
+
+`The Australian Open Radar Science School`_ offers a suite of tutorials introducting the Australian radar archive for scientific use, the dual polarimetric upgrade of the Australian radar network, the explosion in open source packages for working with radar data. 
+
+.. _The Australian Open Radar Science School: https://github.com/openradar/aus-open-radar-science-school

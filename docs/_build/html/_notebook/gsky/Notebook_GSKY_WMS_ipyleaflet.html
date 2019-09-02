@@ -81,7 +81,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/upcomingevents.html">Upcoming training events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Info</span></p>
@@ -92,8 +91,8 @@
 </ul>
 <p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Installing Jupyter and Python on your local machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Installing Python on the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
@@ -399,7 +398,7 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<p><img alt="image0" src="http://nci.org.au/wp-content/themes/nci/img/img-logo-large.png" /></p>
+<p><img alt="logo" src="../../_images/NCI_logo3.png" /></p>
 <hr class="docutils" />
 <div class="section" id="GSKY-WMS-with-ipyleafet-and-widgets">
 <h1>GSKY WMS with ipyleafet and widgets<a class="headerlink" href="#GSKY-WMS-with-ipyleafet-and-widgets" title="Permalink to this headline">¶</a></h1>
@@ -407,12 +406,12 @@ div.rendered_html tbody tr:hover {
 <hr class="docutils" />
 <p><strong>The following libraries will need to be imported for the below example.</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">ipyleaflet</span> <span class="k">import</span> <span class="n">WMSLayer</span><span class="p">,</span> <span class="n">Map</span><span class="p">,</span> <span class="n">LayersControl</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">ipyleaflet</span> <span class="k">import</span> <span class="n">WMSLayer</span><span class="p">,</span> <span class="n">Map</span><span class="p">,</span> <span class="n">LayersControl</span>
 <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">interact_manual</span>
 <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
@@ -421,7 +420,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -435,7 +434,7 @@ div.rendered_html tbody tr:hover {
 <h2>Defining widgets<a class="headerlink" href="#Defining-widgets" title="Permalink to this headline">¶</a></h2>
 <p><strong>Let’s begin by defining some widgets for GSKY layers, times, latitudes and longitudes:</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -485,7 +484,7 @@ div.rendered_html tbody tr:hover {
 <h2>Selecting Layers<a class="headerlink" href="#Selecting-Layers" title="Permalink to this headline">¶</a></h2>
 <p><strong>Now we can start by first selecting the layer and (lat, lon) region we would like to view:</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -499,23 +498,23 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5fb9f253e436442588dab9027b02f2fc", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d83d83210a6948e7b2772c298fa46f43", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4722f6bda46e4fddba57efb71417e722", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "466faf500fbd4c20b8aba202e5df3624", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4c8dafacd70c440a90ce1f7770d4f04a", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4ea370a213a5490ba15b8c8531a5ec7c", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>Next, we’ll ask GSKY what the available time positions are and select one:</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -528,7 +527,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -540,10 +539,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6592e6e3a4fc4e5f87c34743cbe169c2", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "655a85a5b9054de99e1480a91aa1f533", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -556,7 +555,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -568,11 +567,11 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8677e7da66f94611ba204893ee596578", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "096d0cd490d54fc7b73129ecd0e26ad8", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>Let’s confirm the variables we have chosen:</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -589,10 +588,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-latitude = -29
-longitude = 140
-layer = landsat8_nbar_16day
-date = 2013-09-27T00:00:00.000Z
+latitude = -10
+longitude = 113
+layer = hltc_high
+date = 2016-10-31T23:59:59.000Z
 style = {&#39;title&#39;: &#39;True colour&#39;}
 </pre></div></div>
 </div>
@@ -601,7 +600,7 @@ style = {&#39;title&#39;: &#39;True colour&#39;}
 <h2>Adding layers to the ipyleaflet Map<a class="headerlink" href="#Adding-layers-to-the-ipyleaflet-Map" title="Permalink to this headline">¶</a></h2>
 <p><strong>Let’s use the ipyleaflet Map function to plot a map with a center of our lat and lon values.</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -624,11 +623,11 @@ style = {&#39;title&#39;: &#39;True colour&#39;}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5daddeb5e70a478f9925f07585534356", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d3178b10f0b4472b87718107bb7ead58", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>We can add additional layers from the collection and add them to a layer manager.</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -656,7 +655,7 @@ style = {&#39;title&#39;: &#39;True colour&#39;}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0be841019b6f4631b38d8327522ef5ec", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b365a9047dc0452a94c315e5414d704f", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <hr class="docutils" />
 <p><strong>The following material uses Geoscience Australia’s Earth Observation Collection. Additional information about this data collection can be found</strong> <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/3a2cd509-0e82-4381-98c7-522756da533b">here</a></p>
