@@ -14,8 +14,6 @@ for your interests.
    :maxdepth: 2
 
    Overview <_overview/overview>
-   Training slides list <_overview/slides>
-
 
 .. toctree::
    :caption: Data Info

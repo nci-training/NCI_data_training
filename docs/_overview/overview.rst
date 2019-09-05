@@ -1,7 +1,7 @@
 Overview
 =============
 
-The NCI National Research Data Collection is Australia’s largest collection of research data, encompassing more than 10 PB of nationally and internationally significant datasets. They are available through NCI’s National Environmental Research Data Interoperability Platform (NERDIP), which provides an integrated platform for users to access datasets managed at NCI. NCI has a team of expert data managers who can work with you to curate your data collection for optimal accessibility, analysis and data sharing.
+The NCI National Reference Data Collections is Australia’s largest collection of research data, encompassing more than 10 PB of nationally and internationally significant datasets. They are available for use on  NCI’s platforms and also tuned for new high-performance data and informatics technologies. NCI has a team of expert data managers who can work with you to curate your data collection for optimal accessibility, analysis and data sharing.
 
 NCI Data Training homepage provides a series of data access and analysis tutorials and jupyter notebook examples, as well as training workshop information.
 
