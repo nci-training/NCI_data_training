@@ -52,12 +52,6 @@ for your interests.
    Performance analysis 
    
 .. toctree::
-   :caption: Past data training courses
-   :maxdepth: 2
-   
-   Past data training courses <_overview/pasttraining>
-
-.. toctree::
    :caption: Help
    :maxdepth: 2
 
