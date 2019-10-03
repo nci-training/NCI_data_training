@@ -81,7 +81,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Info</span></p>
 <ul>
@@ -104,10 +103,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Past data training courses</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Help</span></p>
 <ul>
@@ -405,8 +400,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="In-this-notebook:">
 <h2>In this notebook:<a class="headerlink" href="#In-this-notebook:" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Launch Jupyter Notebook</li>
-<li>Importing Python libraries</li>
+<li>Python libraries list</li>
 <li>How to write HDF and netCDF files</li>
 <li>Opening file and viewing contents</li>
 <li>Command-line tools for HDF5 files</li>
@@ -418,40 +412,20 @@ div.rendered_html tbody tr:hover {
 <h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
 <p><strong>Using pre-built VDI modules:</strong></p>
 <p>Load the following modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python/2.7.11
-$ module load python/2.7.11-matplotlib
-$ module load ipython/4.2.0-py2.7
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load python3
+$ module load python3/3.5.2-matplotlib
+$ module load ipython/4.2.0-py3.5
 $ module load netcdf/4.3.3.1
-$ module load netcdf4-python/1.2.4-ncdf-4.3.3.1-py2.7
-$ module load h5py/2.6.0-hdf5-1.8.14p-py2.7
+$ module load netcdf4-python/1.2.4-ncdf-4.3.3.1-py3.5
+$ module load h5py/2.6.0-hdf5-1.8.14-py3.5
 $ module load nco/4.5.3
 </pre></div>
 </div>
-<p>Launch the Jupyter Notebook application:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
-</pre></div>
-</div>
-<div class="admonition note">
-NOTE: This will launch the Notebook Dashboard within a new web browser window.</div>
-<p><strong>Using virtual environments:</strong></p>
-<p>To use along with customised python packages in a virtual environment, begin by following the steps in <strong>Python on the VDI: Part II</strong>.</p>
-<p>Once you have a virtual environment setup with your packages (including <code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>), proceed by loading the required modules and activating the virtual environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      $ module load python/2.7.11
-      $ source &lt;path_to_virtual_environment&gt;/bin/activate
-
-Then, as above, launch the Jupyter Notebook application:
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
-</pre></div>
-</div>
-<div class="admonition warning">
-NOTE: If you have already followed Python on the VDI: Part II, you should have installed the netcdf4-python package, which is required in the remainder of this notebook.</div>
 </div>
 <div class="section" id="Import-python-modules">
 <h2>Import python modules<a class="headerlink" href="#Import-python-modules" title="Permalink to this headline">¶</a></h2>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -463,23 +437,6 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-2-d1d8a2c87d69&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> netCDF4 <span class="ansi-green-fg">import</span> Dataset
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-green-fg">from</span> numpy<span class="ansi-blue-fg">.</span>random <span class="ansi-green-fg">import</span> uniform
-<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-green-fg">import</span> h5py
-<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-green-fg">import</span> numpy <span class="ansi-green-fg">as</span> np
-<span class="ansi-green-intense-fg ansi-bold">      5</span> <span class="ansi-green-fg">import</span> time
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;netCDF4&#39;
-</pre></div></div>
-</div>
 </div>
 <div class="section" id="How-to-write-HDF5-and-NetCDF-files">
 <h2>How to write HDF5 and NetCDF files<a class="headerlink" href="#How-to-write-HDF5-and-NetCDF-files" title="Permalink to this headline">¶</a></h2>
@@ -487,7 +444,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 <p>Let’s first work on creating a HDF5 (Heirarchical Data Format) file. HDF5 is a powerful binary data format with no upper limit on the file size. It provides parallel IO and runs under the hood low level optimisations to make queries faster and storage requirements smaller. HDF5 files work generally like standard Python file objects. They support standard modes like r/w/a, and should be closed when they are no longer in use.</p>
 <p>We have to initialise our HDF5 file using h5py.File and providing the arguments of filename and mode. As we are writing this file, we provide a <strong>w</strong> for write access:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -525,9 +482,9 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </tbody>
 </table>
 <p>Now we can create an HDF5 dataset. Datasets are very similar to NumPy arrays in that they are homogeneous collections of data elements, with an immutable datatype and (hyper)rectangular shape. HDF5 datasets support a variety of transparent storage features (e.g.&nbsp;compression, error-dection and chunked I/O).</p>
-<p>New datasets are created using either Group.create_dataset() or Group.require_dataset(). To make an empty dataset, one must specify a name, shape and (optionally) the data type (default is ‘f’):</p>
+<p>New datasets are created using either Group.create_dataset( ) or Group.require_dataset( ). To make an empty dataset, one must specify a name, shape and (optionally) the data type (default is ‘f’):</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -536,8 +493,8 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <p>HDF5 datasets have both a shape and data type:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -545,8 +502,17 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(1000,)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -554,9 +520,18 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>dtype(&#39;int32&#39;)
+</pre></div>
+</div>
+</div>
 <p>It is possible to initialise the dataset to an existing NumPy array:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -565,7 +540,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -574,7 +549,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -585,7 +560,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 <p>HDF5 datasets are by default contiguous. However, datasets can be created using HDF5’s chunked storage layout. This means the dataset is divided up into regularly-sized pieces which are stored haphazardly on disk, and indexed using a B-tree.</p>
 <p>Chunked storage makes it possible to resize datasets, allowing compression filters. To enable chunked storage, set the keyword chunk to a tuple indicating the chunk shape</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -595,7 +570,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 <p>Here, data will be read and written in blocks with shape (100,100). Since picking a chunk shape can be confusing, h5py can guess a chunk shape for you</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -603,19 +578,27 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span> <span class="n">dset1</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dset2</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dset3</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dset4</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dset5</span><span class="o">.</span><span class="n">shape</span>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">dset1</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dset2</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dset3</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dset4</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dset5</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1000,) (1000,) (1000,) (1000, 1000) (1000, 1000)
+</pre></div></div>
+</div>
 <p><strong>Groups and heirarchical organisation</strong></p>
 <p>Every object in an HDF5 file has a name, and they’re arranged in a POSIX-style hierarchy.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -623,9 +606,18 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&#39;/Zyx&#39;
+</pre></div>
+</div>
+</div>
 <p>The “folders” in this system are called groups. Let’s now create a subgroup using create_group and add some other datasets to this subgroup.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -634,7 +626,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -642,8 +634,8 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -651,9 +643,18 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&#39;/seismic/some_seismic_data&#39;
+</pre></div>
+</div>
+</div>
 <p>You can specify the full path when creating the datasets:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -662,7 +663,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -670,8 +671,8 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -679,9 +680,18 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&#39;/seismic/some_more_seismic&#39;
+</pre></div>
+</div>
+</div>
 <p>We can retrieve objects in the file using the item-relevant syntax:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -690,19 +700,33 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <p>Let’s list all the groups in our file</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">h5file</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="n">name</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Zxx
+Zxy
+Zyx
+Zyy
+Zyyb
+seismic
+subgroup2
+</pre></div></div>
+</div>
 <p>One great feature of HDF5 is that you can store metadata right next to the data it describes. All groups and datasets support attached named bits of data called <em>attributes</em>:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -711,7 +735,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -719,8 +743,8 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -728,9 +752,18 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>True
+</pre></div>
+</div>
+</div>
 <p>All we need to do now is close the file, which will write all our work to disk</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -739,9 +772,9 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </div>
 </div>
 <p><strong>NetCDF (Network Common Data Form)</strong></p>
-<p>Now let’s create a netCDF file. For this we are going to use the netCDF4-python module. To create a netCDF file from python, use the Dataset() constructor. This method is also used to open an existing netCDF file.</p>
+<p>Now let’s create a netCDF file. For this we are going to use the netCDF4-python module. To create a netCDF file from python, use the Dataset( ) constructor. This method is also used to open an existing netCDF file.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -749,18 +782,26 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">file_format</span>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">file_format</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NETCDF4_CLASSIC
+</pre></div></div>
+</div>
 <p>Define a set of dimensions used for your variables:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -772,41 +813,74 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+144 0
+</pre></div></div>
 </div>
 <p><strong>Dimensions</strong>: All of the <em>Dimension</em> instances are stored in a python dictionary. Therefore, we can access each dimension by its name using dictionary key access:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span> <span class="s1">&#39;Lon dimension:&#39;</span><span class="p">,</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
-<span class="nb">print</span> <span class="s1">&#39;Lat dimension:&#39;</span><span class="p">,</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
-<span class="nb">print</span> <span class="s1">&#39;Period dimension:&#39;</span><span class="p">,</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">]</span>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lon dimension:&#39;</span><span class="p">,</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lat dimension:&#39;</span><span class="p">,</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Period dimension:&#39;</span><span class="p">,</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Lon dimension: &lt;class &#39;netCDF4._netCDF4.Dimension&#39;&gt;: name = &#39;lon&#39;, size = 144
+
+Lat dimension: &lt;class &#39;netCDF4._netCDF4.Dimension&#39;&gt;: name = &#39;lat&#39;, size = 73
+
+Period dimension: &lt;class &#39;netCDF4._netCDF4.Dimension&#39;&gt;: name = &#39;period&#39;, size = 20
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">for</span> <span class="n">dimname</span> <span class="ow">in</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">dimensions</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">dimname</span><span class="p">]</span>
-    <span class="nb">print</span> <span class="n">dimname</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dim</span><span class="p">),</span> <span class="n">dim</span><span class="o">.</span><span class="n">isunlimited</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dimname</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dim</span><span class="p">),</span> <span class="n">dim</span><span class="o">.</span><span class="n">isunlimited</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+period 20 False
+apparent_resistivity 503 False
+lat 73 False
+lon 144 False
+time 0 True
+</pre></div></div>
+</div>
 <p><strong>Variables</strong>: NetCDF variables behave much like python multi-dimensional arrays in numpy. However, unlike numpy arrays, netCDF variables can be appended to along the <em>unlimited</em> dimension. To create a netCDF variable, use Dataset.createVariable(var_id, type, dimensions):</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -821,8 +895,8 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -830,31 +904,69 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;class &#39;netCDF4._netCDF4.Variable&#39;&gt;
+float32 apparent_resistivity(time, lat, lon, period)
+unlimited dimensions: time
+current shape = (0, 73, 144, 20)
+filling on, default _FillValue of 9.969209968386869e+36 used
+</pre></div>
+</div>
+</div>
 <p>All of the variables in the <em>Dataset</em> are stored in a Python dictionary:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span> <span class="s1">&#39;lat variable:&#39;</span><span class="p">,</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;lat variable:&#39;</span><span class="p">,</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+lat variable: &lt;class &#39;netCDF4._netCDF4.Variable&#39;&gt;
+float32 latitude(lat)
+unlimited dimensions:
+current shape = (73,)
+filling on, default _FillValue of 9.969209968386869e+36 used
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">for</span> <span class="n">varname</span> <span class="ow">in</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     <span class="n">var</span> <span class="o">=</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span>
-    <span class="nb">print</span> <span class="n">varname</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">dimensions</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">shape</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">varname</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">dimensions</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+time float64 (&#39;time&#39;,) (0,)
+latitude float32 (&#39;lat&#39;,) (73,)
+longitude float32 (&#39;lon&#39;,) (144,)
+period float32 (&#39;period&#39;,) (20,)
+apparent_resistivity float32 (&#39;time&#39;, &#39;lat&#39;, &#39;lon&#39;, &#39;period&#39;) (0, 73, 144, 20)
+</pre></div></div>
+</div>
 <p><strong>Attributes (global)</strong>: Global attributes are set by assigning values to <em>Dataset</em> instance variables. Attributes can be strings, numbers or sequences.</p>
 <p><strong>Attributes (variable)</strong>: Variable attributes are set by assigning to <em>Variable</em> instance variables:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -866,8 +978,24 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-41-ceee81c54111&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> dataset_nCDF<span class="ansi-blue-fg">.</span>description <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;some test EM data&#39;</span>
+<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg"> </span>dataset_nCDF<span class="ansi-blue-fg">.</span>history <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;Created&#39;</span><span class="ansi-blue-fg">+</span>time<span class="ansi-blue-fg">.</span>ctime<span class="ansi-blue-fg">(</span>time<span class="ansi-blue-fg">.</span>time<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> dataset_nCDF<span class="ansi-blue-fg">.</span>source <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;netCDF4 python module tutorial&#39;</span>
+
+<span class="ansi-red-fg">AttributeError</span>: &#39;netCDF4._netCDF4.Dimension&#39; object has no attribute &#39;ctime&#39;
+</pre></div></div>
+</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -882,15 +1010,45 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">description</span>
-<span class="nb">print</span> <span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">history</span>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset_nCDF</span><span class="o">.</span><span class="n">history</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+some test EM data
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-43-f9415eedc594&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> print<span class="ansi-blue-fg">(</span>dataset_nCDF<span class="ansi-blue-fg">.</span>description<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>print<span class="ansi-blue-fg">(</span>dataset_nCDF<span class="ansi-blue-fg">.</span>history<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4.Dataset.__getattr__</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4.Dataset.getncattr</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4._get_att</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4._ensure_nc_success</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-red-fg">AttributeError</span>: NetCDF: Attribute not found
+</pre></div></div>
 </div>
 <p><strong>Writing Data</strong>: To put data into our netCDF Variables, we can assign data to a slice:</p>
 <div class="nbinput nblast docutils container">
@@ -939,7 +1097,7 @@ NOTE: If you have already followed Python on the VDI: Part II, you should have i
 </pre></div>
 </div>
 </div>
-<p><strong>Time coordinates</strong>: Most metadata standards (e.g.&nbsp;CF, COARDS) specify that time be measured relative to a fixed date using a certain calendar (e.g.&nbsp;hours since YY:MM:DD hh-mm-ss”). The functions num2date() and date2num() can be used to convert values to and from calendar dates:</p>
+<p><strong>Time coordinates</strong>: Most metadata standards (e.g.&nbsp;CF, COARDS) specify that time be measured relative to a fixed date using a certain calendar (e.g.&nbsp;hours since YY:MM:DD hh-mm-ss”). The functions num2date( ) and date2num( ) can be used to convert values to and from calendar dates:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>

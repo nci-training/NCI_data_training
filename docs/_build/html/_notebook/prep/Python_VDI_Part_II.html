@@ -81,7 +81,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Info</span></p>
 <ul>
@@ -104,10 +103,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Past data training courses</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Help</span></p>
 <ul>
@@ -256,12 +251,12 @@ NOTE: The flag ‘–user’ is required so that the package is installed locall
 <blockquote>
 <div><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">show</span> <span class="pre">&lt;package&gt;</span></code></div></blockquote>
 <p>Will show information about a particular installed package.</p>
-<p><img alt="python12_vdi_numpy" src="../../_images/python12_vdi_numpy.png" /></p>
+<p><img alt="python12" src="../../_images/python12_vdi_numpy.png" /></p>
 </div>
 <div class="section" id="Python-Virtual-Environments">
 <h2>Python Virtual Environments<a class="headerlink" href="#Python-Virtual-Environments" title="Permalink to this headline">¶</a></h2>
 <p><strong>What is it</strong>?</p>
-<p>Python’s <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> is a tool that helps manage multiple Python projects by creating isolated environments for them.</p>
+<p>Python3’s <code class="docutils literal notranslate"><span class="pre">venv</span></code> is a tool that helps manage multiple Python projects by creating isolated environments for them.</p>
 <p><strong>Why use it</strong>?</p>
 <ul class="simple">
 <li>Keeps your home space clean and manageable.</li>
@@ -298,15 +293,13 @@ NOTE: When activated, the virtual environment name will appear in parentheses.</
 IMPORTANT: The Python module used to create the virtual environment must be loaded each time before activating the environment.</div>
 <p><strong>Let’s create a customised environment that includes several of the common data/science tools</strong></p>
 <p><strong>Installing new (and simple) packages</strong></p>
-<p>To install additional packages within the virtual environment, we can again use `pip install’.</p>
+<p>To install additional packages within the virtual environment, we can again use <em>pip install</em>.</p>
 <div class="admonition note">
 NOTE: You can type <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> to see what packages are copied into the virtual environment upon creation (should show a very short list of packages). Make sure you have activated the environment otherwise this will show a much longer list of global packages.</div>
 <p><strong>NumPy</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install numpy
 </pre></div>
 </div>
-<div class="admonition warning">
-NOTE: No ‘–user’ flag is necessary within the virtualenv.</div>
 <p><strong>Can also install several pacakges at once:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install scipy matplotlib cython
 
@@ -317,9 +310,9 @@ $ pip install ipython jupyter
 <div class="section" id="Installing-more-complicated-packages">
 <h2>Installing more complicated packages<a class="headerlink" href="#Installing-more-complicated-packages" title="Permalink to this headline">¶</a></h2>
 <p>Installing Python packages that have other library dependencies (e.g., NetCDF, h5py, etc.)</p>
-  <div class="alert alert-warning">
-
-NOTE: When installing Python packages that require additional libraries, the order in which modules and environments are loaded/activated matters. Virtual enviornments should be activated after all required required modules are loaded.</div><p><strong>Example: Installing NetCDF Python</strong></p>
+<div class="admonition note">
+NOTE: When installing Python packages that require additional libraries, the order in which modules and environments are loaded/activated matters. Virtual enviornments should be activated after all required required modules are loaded.</div>
+<p><strong>Example: Installing NetCDF Python</strong></p>
 <p>Starting in a new terminal window, load the Python module:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module purge
 $ module load python3
@@ -338,15 +331,18 @@ $ module load szip/2.1
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source &lt;virtual_environment&gt;/bin/activate
 </pre></div>
 </div>
-<p>And finally, again use <strong>``pip install``</strong>:</p>
+<p>And finally, again use <strong>pip install</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install netcdf4
 </pre></div>
 </div>
-  <div class="alert alert-success">
-
-To test whether the install was successful, try: $ python >> import netCDF4 >> (If you get any errors, the install was unsuccessful.)</div>  <div class="alert alert-warning">
-
-NOTE: These additional modules (netCDF, HDF5, slib) are only needed when installing this package. With future use, you do not need to load these to use the netCDF4-python pacakge.</div></div>
+<p>To test whether the install was successful, try:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python import netCDF4
+</pre></div>
+</div>
+<p>If you get any errors, the install was unsuccessful.</p>
+<div class="admonition note">
+NOTE: These additional modules (netCDF, HDF5, szip) are only needed when installing this package. With future use, you do not need to load these to use the netCDF4-python pacakge.</div>
+</div>
 <div class="section" id="Additional-packages">
 <h2>Additional packages<a class="headerlink" href="#Additional-packages" title="Permalink to this headline">¶</a></h2>
 <p>In preparation for additional NCI Notebooks, let’s install a few more packages that will be needed later on.</p>
@@ -388,16 +384,16 @@ $ module load geos/3.5.0
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install cartopy==0.13.0
 </pre></div>
 </div>
-  <div class="alert alert-warning">
-
-NOTE: When using ``cartopy`` from within your virtual environment, you will need the ``geos/3.5.0`` module loaded.</div></div>
+<div class="admonition note">
+NOTE: When using <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> from within your virtual environment, you will need the <code class="docutils literal notranslate"><span class="pre">geos/3.5.0</span></code> module loaded.</div>
+</div>
 <div class="section" id="Exiting-a-virtual-environment">
 <h2>Exiting a virtual environment<a class="headerlink" href="#Exiting-a-virtual-environment" title="Permalink to this headline">¶</a></h2>
 <p>To deactivate (leave the virtualenv, not delete it):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ deactivate
 </pre></div>
 </div>
-  <div class="alert alert-success">
+  <div class="alert alert-info">
 
 TIP: You can combine required modules and the virtual environment activation command into a simple shell script to simplify launching environments.</div></div>
 <div class="section" id="Additional-pip-options-(for-reference)">
@@ -406,7 +402,10 @@ TIP: You can combine required modules and the virtual environment activation com
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install &lt;package&gt; --upgrade
 </pre></div>
 </div>
-<p><strong>Install specific versions:</strong> $ pip install numpy==1.11.0</p>
+<p><strong>Install specific versions:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install numpy==1.11.0
+</pre></div>
+</div>
 <p><strong>Install from a list:</strong></p>
 <p>You can also install packages from a ‘.txt’ file list. This can be particularly helpful for collaborations where exact package versions are important for sharing and developing code.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install --requirement &lt;textfile.txt&gt;

@@ -14,9 +14,7 @@
     "\n",
     "### In this notebook:\n",
     "\n",
-    "* Launch Jupyter Notebook\n",
-    "\n",
-    "* Importing Python libraries\n",
+    "* Python libraries list\n",
     "\n",
     "* How to write HDF and netCDF files\n",
     "\n",
@@ -40,45 +38,15 @@
     "Load the following modules:\n",
     "\n",
     "```\n",
-    "    $ module load python/2.7.11\n",
-    "    $ module load python/2.7.11-matplotlib\n",
-    "    $ module load ipython/4.2.0-py2.7\n",
+    "    $ module load python3\n",
+    "    $ module load python3/3.5.2-matplotlib\n",
+    "    $ module load ipython/4.2.0-py3.5\n",
     "    $ module load netcdf/4.3.3.1\n",
-    "    $ module load netcdf4-python/1.2.4-ncdf-4.3.3.1-py2.7\n",
-    "    $ module load h5py/2.6.0-hdf5-1.8.14p-py2.7\n",
+    "    $ module load netcdf4-python/1.2.4-ncdf-4.3.3.1-py3.5\n",
+    "    $ module load h5py/2.6.0-hdf5-1.8.14-py3.5\n",
     "    $ module load nco/4.5.3\n",
     "```    \n",
-    " \n",
-    "Launch the Jupyter Notebook application:\n",
-    "```\n",
-    "    $ jupyter notebook\n",
-    "``` \n",
-    "\n",
-    "<div class=\"alert alert-info\">\n",
-    "<b>NOTE: </b> This will launch the <b>Notebook Dashboard</b> within a new web browser window. \n",
-    "</div>\n",
-    "\n",
-    "**Using virtual environments:**\n",
-    "\n",
-    "To use along with customised python packages in a virtual environment, begin by following the steps in **Python on the VDI: Part II**. \n",
-    "\n",
-    "Once you have a virtual environment setup with your packages (including `Jupyter`), proceed by loading the required modules and activating the virtual environment:\n",
-    "\n",
-    "```\n",
-    "    $ module load python/2.7.11\n",
-    "    $ source <path_to_virtual_environment>/bin/activate\n",
-    "```\n",
-    "\n",
-    "<br>\n",
-    "Then, as above, launch the Jupyter Notebook application:\n",
-    "\n",
-    "```\n",
-    "    $ jupyter notebook\n",
-    "```    \n",
-    "    \n",
-    "<div class=\"alert alert-warning\">\n",
-    "<b>NOTE: </b> If you have already followed <b>Python on the VDI: Part II</b>, you should have installed the netcdf4-python package, which is required in the remainder of this notebook.  \n",
-    "</div>"
+    " "
    ]
   },
   {
@@ -90,21 +58,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 1,
    "metadata": {},
-   "outputs": [
-    {
-     "ename": "ModuleNotFoundError",
-     "evalue": "No module named 'netCDF4'",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-2-d1d8a2c87d69>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0;32mfrom\u001b[0m \u001b[0mnetCDF4\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mDataset\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0mnumpy\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mrandom\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0muniform\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mh5py\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mnumpy\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mtime\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;31mModuleNotFoundError\u001b[0m: No module named 'netCDF4'"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "from netCDF4 import Dataset\n",
     "from numpy.random import uniform\n",
@@ -138,10 +94,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 3,
+   "metadata": {},
    "outputs": [],
    "source": [
     "h5file = h5py.File(\"testfile.hdf5\", \"w\")"
@@ -173,15 +127,13 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "New datasets are created using either <span style=\"color:red\">Group.create_dataset()</span> or <span style=\"color:red\">Group.require_dataset()</span>. To make an empty dataset, one must specify a name, shape and (optionally) the data type (default is 'f'):"
+    "New datasets are created using either <span style=\"color:red\">Group.create_dataset( )</span> or <span style=\"color:red\">Group.require_dataset( )</span>. To make an empty dataset, one must specify a name, shape and (optionally) the data type (default is 'f'):"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 4,
+   "metadata": {},
    "outputs": [],
    "source": [
     " dset1 = h5file.create_dataset(\"Zxx\", (1000,), dtype='i')"
@@ -196,22 +148,40 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(1000,)"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "dset1.shape"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "dtype('int32')"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "dset1.dtype"
    ]
@@ -225,10 +195,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 7,
+   "metadata": {},
    "outputs": [],
    "source": [
     "initdata = np.arange(0,1,0.001)"
@@ -236,10 +204,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 8,
+   "metadata": {},
    "outputs": [],
    "source": [
     "dset2 = h5file.create_dataset(\"Zxy\", data=initdata)"
@@ -247,10 +213,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 9,
+   "metadata": {},
    "outputs": [],
    "source": [
     "dset3 = h5file.create_dataset(\"Zyx\", data=initdata, dtype='f')"
@@ -267,10 +231,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 10,
+   "metadata": {},
    "outputs": [],
    "source": [
     "dset4 = h5file.create_dataset(\"Zyy\", (1000,1000), chunks=(100,100))"
@@ -285,10 +247,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 11,
+   "metadata": {},
    "outputs": [],
    "source": [
     "dset5 = h5file.create_dataset(\"Zyyb\", (1000,1000), chunks=True)"
@@ -296,13 +256,19 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(1000,) (1000,) (1000,) (1000, 1000) (1000, 1000)\n"
+     ]
+    }
+   ],
    "source": [
-    "print dset1.shape, dset2.shape, dset3.shape, dset4.shape, dset5.shape"
+    "print(dset1.shape, dset2.shape, dset3.shape, dset4.shape, dset5.shape)"
    ]
   },
   {
@@ -321,11 +287,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'/Zyx'"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "dset3.name"
    ]
@@ -339,10 +314,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 16,
+   "metadata": {},
    "outputs": [],
    "source": [
     "group1 = h5file.create_group(\"seismic\")"
@@ -350,10 +323,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 17,
+   "metadata": {},
    "outputs": [],
    "source": [
     "dsetseis1 = group1.create_dataset(\"some_seismic_data\", (50,), dtype = 'f')"
@@ -361,11 +332,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'/seismic/some_seismic_data'"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "dsetseis1.name"
    ]
@@ -379,10 +359,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 19,
+   "metadata": {},
    "outputs": [],
    "source": [
     "dataseis2 = h5file.create_dataset(\"subgroup2/some_more_seismic_data\", (10,), dtype='i')"
@@ -390,10 +368,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 20,
+   "metadata": {},
    "outputs": [],
    "source": [
     "dataseis1a = h5file.create_dataset(\"seismic/some_more_seismic\", (10,), dtype='i')"
@@ -401,11 +377,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'/seismic/some_more_seismic'"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "dataseis1a.name"
    ]
@@ -419,10 +404,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 22,
+   "metadata": {},
    "outputs": [],
    "source": [
     "myfileseis = h5file['seismic/some_more_seismic']"
@@ -437,14 +420,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Zxx\n",
+      "Zxy\n",
+      "Zyx\n",
+      "Zyy\n",
+      "Zyyb\n",
+      "seismic\n",
+      "subgroup2\n"
+     ]
+    }
+   ],
    "source": [
     "for name in h5file:\n",
-    "    print name"
+    "    print(name)"
    ]
   },
   {
@@ -456,10 +451,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 24,
+   "metadata": {},
    "outputs": [],
    "source": [
     "dset1.attrs['latitude'] = 32.2"
@@ -467,10 +460,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 25,
+   "metadata": {},
    "outputs": [],
    "source": [
     "dset1.attrs['longitude'] = 144.2"
@@ -478,11 +469,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "'longitude' in dset1.attrs"
    ]
@@ -496,10 +496,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 27,
+   "metadata": {},
    "outputs": [],
    "source": [
     "h5file.close()"
@@ -516,15 +514,13 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Now let's create a netCDF file. For this we are going to use the netCDF4-python module. To create a netCDF file from python, use the  <span style=\"color:red\">Dataset()</span> constructor. This method is also used to open an existing netCDF file."
+    "Now let's create a netCDF file. For this we are going to use the netCDF4-python module. To create a netCDF file from python, use the  <span style=\"color:red\">Dataset( )</span> constructor. This method is also used to open an existing netCDF file."
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 29,
+   "metadata": {},
    "outputs": [],
    "source": [
     "dataset_nCDF = Dataset('geophys.nc','w',format='NETCDF4_CLASSIC')"
@@ -532,13 +528,19 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 30,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "NETCDF4_CLASSIC\n"
+     ]
+    }
+   ],
    "source": [
-    "print dataset_nCDF.file_format"
+    "print(dataset_nCDF.file_format)"
    ]
   },
   {
@@ -550,10 +552,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 31,
+   "metadata": {},
    "outputs": [],
    "source": [
     "period = dataset_nCDF.createDimension('period', 20)\n",
@@ -565,13 +565,19 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "144 0\n"
+     ]
+    }
+   ],
    "source": [
-    "print len(lon), len(time)"
+    "print(len(lon), len(time))"
    ]
   },
   {
@@ -583,28 +589,49 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 34,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Lon dimension: <class 'netCDF4._netCDF4.Dimension'>: name = 'lon', size = 144\n",
+      "\n",
+      "Lat dimension: <class 'netCDF4._netCDF4.Dimension'>: name = 'lat', size = 73\n",
+      "\n",
+      "Period dimension: <class 'netCDF4._netCDF4.Dimension'>: name = 'period', size = 20\n",
+      "\n"
+     ]
+    }
+   ],
    "source": [
-    "print 'Lon dimension:', dataset_nCDF.dimensions['lon']\n",
-    "print 'Lat dimension:', dataset_nCDF.dimensions['lat']\n",
-    "print 'Period dimension:', dataset_nCDF.dimensions['period']"
+    "print('Lon dimension:', dataset_nCDF.dimensions['lon'])\n",
+    "print('Lat dimension:', dataset_nCDF.dimensions['lat'])\n",
+    "print('Period dimension:', dataset_nCDF.dimensions['period'])"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 35,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "period 20 False\n",
+      "apparent_resistivity 503 False\n",
+      "lat 73 False\n",
+      "lon 144 False\n",
+      "time 0 True\n"
+     ]
+    }
+   ],
    "source": [
     "for dimname in dataset_nCDF.dimensions.keys():\n",
     "    dim = dataset_nCDF.dimensions[dimname]\n",
-    "    print dimname, len(dim), dim.isunlimited()"
+    "    print(dimname, len(dim), dim.isunlimited())"
    ]
   },
   {
@@ -616,10 +643,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 36,
+   "metadata": {},
    "outputs": [],
    "source": [
     "times = dataset_nCDF.createVariable('time', np.float64, ('time',))\n",
@@ -633,11 +658,24 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 37,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<class 'netCDF4._netCDF4.Variable'>\n",
+       "float32 apparent_resistivity(time, lat, lon, period)\n",
+       "unlimited dimensions: time\n",
+       "current shape = (0, 73, 144, 20)\n",
+       "filling on, default _FillValue of 9.969209968386869e+36 used"
+      ]
+     },
+     "execution_count": 37,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "app_resistivities"
    ]
@@ -651,26 +689,47 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 39,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "lat variable: <class 'netCDF4._netCDF4.Variable'>\n",
+      "float32 latitude(lat)\n",
+      "unlimited dimensions: \n",
+      "current shape = (73,)\n",
+      "filling on, default _FillValue of 9.969209968386869e+36 used\n",
+      "\n"
+     ]
+    }
+   ],
    "source": [
-    "print 'lat variable:', dataset_nCDF.variables['latitude']"
+    "print('lat variable:', dataset_nCDF.variables['latitude'])"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 40,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "time float64 ('time',) (0,)\n",
+      "latitude float32 ('lat',) (73,)\n",
+      "longitude float32 ('lon',) (144,)\n",
+      "period float32 ('period',) (20,)\n",
+      "apparent_resistivity float32 ('time', 'lat', 'lon', 'period') (0, 73, 144, 20)\n"
+     ]
+    }
+   ],
    "source": [
     "for varname in dataset_nCDF.variables.keys():\n",
     "    var = dataset_nCDF.variables[varname]\n",
-    "    print varname, var.dtype, var.dimensions, var.shape"
+    "    print(varname, var.dtype, var.dimensions, var.shape)"
    ]
   },
   {
@@ -684,11 +743,21 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 41,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "AttributeError",
+     "evalue": "'netCDF4._netCDF4.Dimension' object has no attribute 'ctime'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-41-ceee81c54111>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0mdataset_nCDF\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdescription\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m'some test EM data'\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 4\u001b[0;31m \u001b[0mdataset_nCDF\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mhistory\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m'Created'\u001b[0m\u001b[0;34m+\u001b[0m\u001b[0mtime\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mctime\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mtime\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mtime\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      5\u001b[0m \u001b[0mdataset_nCDF\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msource\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m'netCDF4 python module tutorial'\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mAttributeError\u001b[0m: 'netCDF4._netCDF4.Dimension' object has no attribute 'ctime'"
+     ]
+    }
+   ],
    "source": [
     "# Global Attributes\n",
     "\n",
@@ -699,10 +768,8 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": 42,
+   "metadata": {},
    "outputs": [],
    "source": [
     "# Variable attributes\n",
@@ -717,14 +784,35 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
+   "execution_count": 43,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "some test EM data\n"
+     ]
+    },
+    {
+     "ename": "AttributeError",
+     "evalue": "NetCDF: Attribute not found",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-43-f9415eedc594>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdataset_nCDF\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdescription\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdataset_nCDF\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mhistory\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;32mnetCDF4/_netCDF4.pyx\u001b[0m in \u001b[0;36mnetCDF4._netCDF4.Dataset.__getattr__\u001b[0;34m()\u001b[0m\n",
+      "\u001b[0;32mnetCDF4/_netCDF4.pyx\u001b[0m in \u001b[0;36mnetCDF4._netCDF4.Dataset.getncattr\u001b[0;34m()\u001b[0m\n",
+      "\u001b[0;32mnetCDF4/_netCDF4.pyx\u001b[0m in \u001b[0;36mnetCDF4._netCDF4._get_att\u001b[0;34m()\u001b[0m\n",
+      "\u001b[0;32mnetCDF4/_netCDF4.pyx\u001b[0m in \u001b[0;36mnetCDF4._netCDF4._ensure_nc_success\u001b[0;34m()\u001b[0m\n",
+      "\u001b[0;31mAttributeError\u001b[0m: NetCDF: Attribute not found"
+     ]
+    }
+   ],
    "source": [
-    "print dataset_nCDF.description\n",
-    "print dataset_nCDF.history"
+    "print(dataset_nCDF.description)\n",
+    "print(dataset_nCDF.history)"
    ]
   },
   {
@@ -798,7 +886,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "__Time coordinates__: Most metadata standards (e.g. CF, COARDS) specify that time be measured relative to a fixed date using a certain calendar (e.g. hours since YY:MM:DD hh-mm-ss\"). The functions <span style=\"color:red\">num2date()</span> and <span style=\"color:red\">date2num()</span> can be used to convert values to and from calendar dates:"
+    "__Time coordinates__: Most metadata standards (e.g. CF, COARDS) specify that time be measured relative to a fixed date using a certain calendar (e.g. hours since YY:MM:DD hh-mm-ss\"). The functions <span style=\"color:red\">num2date( )</span> and <span style=\"color:red\">date2num( )</span> can be used to convert values to and from calendar dates:"
    ]
   },
   {

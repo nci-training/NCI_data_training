@@ -81,7 +81,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Info</span></p>
 <ul>
@@ -104,10 +103,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Past data training courses</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Help</span></p>
 <ul>
@@ -224,14 +219,14 @@ NOTE: The modules with <code class="docutils literal notranslate"><span class="p
 </div>
 <div class="admonition warning">
 NOTE: It will load the default version of python3 on VDI. It is subject to change in the future.</div>
-<p><strong>Python2 is no longer supported (see</strong><a class="reference external" href="https://www.anaconda.com/end-of-life-eol-for-python-2-7-is-coming-are-you-ready/">details here</a><strong>), so it is strongly recommended to use python3 from now on. It is worth noting that some old examples using python2 are not compatible with python3.</strong></p>
+<p>Python2 is no longer supported (see <a class="reference external" href="https://www.anaconda.com/end-of-life-eol-for-python-2-7-is-coming-are-you-ready/">details here</a>), so it is strongly recommended to use python3 from now on. It is worth noting that some old examples using python2 are not compatible with python3.</p>
 <p><strong>Additional Python modules</strong></p>
 <p>There are also several prebuilt Python-specific modules available on the VDI:</p>
 <ul class="simple">
 <li>iPython</li>
 <li>NumPy</li>
 <li>SciPy</li>
-<li>Matplotlib (can be found within <code class="docutils literal notranslate"><span class="pre">/apps/Modules/modulefiles</span></code>)</li>
+<li>Matplotlib</li>
 <li>NetCDF4</li>
 <li>H5py</li>
 <li>Cython</li>
@@ -250,7 +245,21 @@ NOTE: It will load the default version of python3 on VDI. It is subject to chang
 </div>
 <p><img alt="python13" src="../../_images/python13.png" /></p>
 <p><strong>Using Python</strong></p>
-<p>You can run Python several different ways: 1. Python interpreter 2. Python script 3. iPython</p>
+<p>You can run Python several different ways:</p>
+<ul class="simple">
+<li><ol class="first arabic">
+<li>Python interpreter</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="2">
+<li>Python script</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="3">
+<li>iPython</li>
+</ol>
+</li>
+</ul>
 <p><strong>Python interpreter</strong></p>
 <p>To launch the Python interpreter, type the following from the command line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python
@@ -268,10 +277,14 @@ NOTE: It will load the default version of python3 on VDI. It is subject to chang
 </pre></div>
 </div>
 <p><strong>Simple Python script</strong></p>
-<p>Using a text editing tool of your choice, create a new file with the extension <code class="docutils literal notranslate"><span class="pre">&quot;.py&quot;</span></code>. - On the VDI, there are several text editors available under the <code class="docutils literal notranslate"><span class="pre">Applications</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">Accessories</span></code> menu. - Or alternatively, you can create the file directly from command line using <code class="docutils literal notranslate"><span class="pre">nano</span></code> or <code class="docutils literal notranslate"><span class="pre">vi</span></code>, etc.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nano helloworld.py
-</pre></div>
-</div>
+<p>Using a text editing tool of your choice, create a new file with the extension <code class="docutils literal notranslate"><span class="pre">&quot;.py&quot;</span></code>.</p>
+<ul>
+<li><p class="first">On the VDI, there are several text editors available under the <code class="docutils literal notranslate"><span class="pre">Applications</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">Accessories</span></code> menu.</p>
+</li>
+<li><p class="first">Or alternatively, you can create the file directly from command line using <code class="docutils literal notranslate"><span class="pre">nano</span></code> or <code class="docutils literal notranslate"><span class="pre">vi</span></code>, etc.</p>
+<p>$ nano helloworld.py</p>
+</li>
+</ul>
 <p>Add some simple lines of Python code to the file and close:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is my first Python script.&quot;</span><span class="p">)</span>

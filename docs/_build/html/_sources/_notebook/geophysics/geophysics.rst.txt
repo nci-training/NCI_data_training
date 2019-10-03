@@ -34,15 +34,18 @@ MT
 National Geophysical Compilation
 +++++++++++++++++++++++++++++++++++
 
+* `Subset Magnetic Intensity grid data using NCSS <NCSS_mag.ipynb>`_
 * `Access data using NetCDF4 library <Python_DataAccessBasics.ipynb>`_ 
 * `View/manipulate NetCDFs in python <Python_NetCDF_Geophysics_National_Coverages.ipynb>`_   
 
 
-Seismic
-+++++++++
 
-* `Work with HDF and NetCDFs <Python_working_with_h5_and_NetCDF.ipynb>`_   
+Other associated training resources 
+--------------------------------------------
 
+Alex Ip @ Geoscience Australia delivered a geophysical data access and processing workshop in AEGC (Australian Exploration Geophysicists' Conference) 2019. The training material is published under CCBY4.0. Please see the `code repository`_ and `Jupyter notebooks`_.
 
+.. _code repository: https://github.com/GeoscienceAustralia/geophys_utils
+.. _Jupyter notebooks: https://github.com/GeoscienceAustralia/geophys_utils/tree/master/examples
 
 
