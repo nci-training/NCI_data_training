@@ -34,9 +34,10 @@ for your interests.
    :caption: Notebook examples grouped by theme 
    :maxdepth: 2
 
-   Climate and Environment Datasets <_notebook/climate/climate>
+   Climate and Environment <_notebook/climate/climate>
    Earth Observation  <_notebook/eo/eo>
    Geophysics <_notebook/geophysics/geophysics> 
+   Other examples <_notebook/general/general>
    
 .. toctree::
    :caption: Notebook examples grouped by service type 

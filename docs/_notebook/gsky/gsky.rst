@@ -73,7 +73,9 @@ Programmatically access GSKY
 NCI’s GSKY Data Server supports the Open Geospatial Consortium (OGC) Web Map Service (WMS), 
 which is a standard protocol for serving geospatial data as images (e.g., PNG). It also supports the Open Geospatial Consortium (OGC) Web Coverage Service (WCS), which is a standard protocol for serving geospatial data in common formats such as NetCDF and GeoTIFF. Please see this section for some examples on how to use GSKY in Python.
 
-`Request map images through NCI’s GSKY WMS in Python <Notebook_GSKY_WMS.ipynb>`_ 
+`Programmatic WMS access Landsat datasets in Python <Notebook_GSKY_WMS.ipynb>`_ 
+
+`Programmatic WMS access GSKY blended service in Python - bushfire example and create GIF <../eo/request_GSKY_WMS_sentinel2_bushfire_NT_Sep2019.ipynb>`_
 
 `Add layers to the ipyleaflet Map by defining widgets <Notebook_GSKY_WMS_ipyleaflet.ipynb>`_ 
 

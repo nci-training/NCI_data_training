@@ -1,0 +1,1511 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Performance Examples of Accessing Data: Serial IO &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general.html">Other examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Performance Examples of Accessing Data: Serial IO</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/general/data_access_series_io.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="../../_images/NCI_logo7.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Performance-Examples-of-Accessing-Data:-Serial-IO">
+<h1>Performance Examples of Accessing Data: Serial IO<a class="headerlink" href="#Performance-Examples-of-Accessing-Data:-Serial-IO" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>In this notebook:</p>
+<p><p>we will explore the performance of accessing NetCDF4/HDF5 files by using NetCDF4-python and h5py modules. Several IO performance relating parameters, such as access pattern, storage layout, compression and shuffle etc. will be examined for serial IO.</p>
+</p><ul class="simple">
+<li>a few predefined functions</li>
+<li>access pattern</li>
+<li>storage layout</li>
+<li>compression</li>
+<li>effect of shuffle</li>
+</ul>
+<p>The NetCDF architecture is shown below:</p>
+<p><img alt="1" src="../../_images/netcdf_architecture.png" /></p>
+<p>NetCDF4/HDF5 have many features like:</p>
+<ul class="simple">
+<li>Unique technology suite that makes possible the management of extremely large and complex data collections</li>
+<li>Unlimited size, extensibility, and portability</li>
+<li>General data model</li>
+<li>Unlimited variety of datatypes</li>
+<li>Flexible, efficient I/O</li>
+<li>Flexible data storage</li>
+<li>Data transformation and complex subsetting</li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="Prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#Prerequisites" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Please-load-the-following-modules:">
+<h3>Please load the following modules:<a class="headerlink" href="#Please-load-the-following-modules:" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">python3</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">python3</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">matplotlib</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">ipython</span><span class="o">/</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py3</span><span class="o">.</span><span class="mi">5</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">netcdf4</span><span class="o">-</span><span class="n">python</span><span class="o">/</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py3</span><span class="o">.</span><span class="mi">5</span>
+</pre></div>
+</div>
+<div class="section" id="Load-necessary-python-modules">
+<h4>Load necessary python modules<a class="headerlink" href="#Load-necessary-python-modules" title="Permalink to this headline">¶</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">Dataset</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="k">global</span> <span class="n">tmp_file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Useful-Functions">
+<h4>Useful Functions<a class="headerlink" href="#Useful-Functions" title="Permalink to this headline">¶</a></h4>
+<p>Function view_prt : View the metadata of a variable named “varname” of a file named “filename”</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">view_prt</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">varname</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">=</span><span class="n">Dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>                      <span class="c1"># Open the file named &#39;filename&#39; for read</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File Name: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>               <span class="c1"># Print the file name</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Format: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">f</span><span class="o">.</span><span class="n">data_model</span><span class="p">)</span>              <span class="c1"># Print the file format</span>
+
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">dimensions</span><span class="p">:</span>                    <span class="c1"># Print all dimensions</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dimension </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">f</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;    &#39;</span><span class="p">)</span>
+
+    <span class="nb">vars</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">varname</span><span class="o">==</span><span class="s1">&#39;all&#39;</span> <span class="ow">or</span> <span class="n">item</span><span class="o">==</span><span class="n">varname</span><span class="p">:</span>      <span class="c1"># Print the selected metadata of all</span>
+                                                 <span class="c1"># variables or the variable named &#39;varname&#39;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimensions: </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">dimensions</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape:    </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;size:  </span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;data type:  </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;chunksize: </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">chunking</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tendian: </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">endian</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;filters: </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">filters</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ncattrs: </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">ncattrs</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Function read_var: Read and return data of a NetCDF4 variable named “varname” in a file named “filename”</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">read_var</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">varname</span><span class="p">):</span>
+    <span class="n">fr</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;NETCDF4&#39;</span><span class="p">)</span>
+    <span class="n">out</span><span class="o">=</span><span class="n">fr</span><span class="p">[</span><span class="n">varname</span><span class="p">][:]</span>
+    <span class="n">fr</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</div>
+<p>Function link_var: Link a variable named “varname” in a file named “filename”. No actual data movement.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">link_var</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">varname</span><span class="p">):</span>
+    <span class="n">fr</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;NETCDF4&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fr</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Function create_file: Create a NetCDF4 files with 3 dimensions and a 3D variable named “varname” containing the data of ‘val’ array.</p>
+<p>Dimensions are used to define the shape of data in netCDF.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">create_file</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="n">d1_name</span><span class="p">,</span><span class="n">d2</span><span class="p">,</span><span class="n">d2_name</span><span class="p">,</span><span class="n">d3</span><span class="p">,</span><span class="n">d3_name</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">varname</span><span class="p">,</span><span class="o">**</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">tmp_file</span>
+
+    <span class="k">try</span><span class="p">:</span>  <span class="c1"># remove any existing temporary files.</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
+            <span class="n">tmp_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+    <span class="n">tmp_file</span> <span class="o">=</span> <span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># Create the temporary file object.</span>
+    <span class="n">fname</span><span class="o">=</span><span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span>                         <span class="c1"># Get the temporary file name.</span>
+
+    <span class="n">fw</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;NETCDF4&#39;</span><span class="p">)</span>    <span class="c1"># Open the NetCDF file to write</span>
+
+    <span class="n">fw</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="n">d1_name</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">d1</span><span class="p">))</span>                 <span class="c1"># Create the one-dimension named &#39;d1_name&#39;</span>
+                                                        <span class="c1"># in the length of &#39;d1&#39; array.</span>
+    <span class="n">dim_wrt</span><span class="o">=</span><span class="n">fw</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="n">d1_name</span><span class="p">,</span><span class="n">d1</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="n">d1_name</span><span class="p">)</span> <span class="c1"># Create a 1D variable named &#39;d1_name&#39;</span>
+                                                        <span class="c1"># with the data type of array &#39;d1&#39;</span>
+                                                        <span class="c1"># and its dimension is &#39;d1_name&#39;</span>
+    <span class="n">dim_wrt</span><span class="p">[:]</span><span class="o">=</span><span class="n">d1</span>                                       <span class="c1"># Write &#39;d1&#39; data to dimension &#39;d1_name&#39;</span>
+
+
+
+    <span class="n">fw</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="n">d2_name</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">d2</span><span class="p">))</span>                 <span class="c1"># Create the one-dimension named &#39;d2_name&#39;</span>
+                                                        <span class="c1"># in the length of &#39;d2&#39; array.</span>
+    <span class="n">dim_wrt</span><span class="o">=</span><span class="n">fw</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="n">d2_name</span><span class="p">,</span><span class="n">d2</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="n">d2_name</span><span class="p">)</span> <span class="c1"># Create one-dimension variable named &#39;d2_name&#39;</span>
+                                                        <span class="c1"># with the data type of array &#39;d2&#39;</span>
+                                                        <span class="c1"># and its dimension is &#39;d2_name&#39;</span>
+    <span class="n">dim_wrt</span><span class="p">[:]</span><span class="o">=</span><span class="n">d2</span>                                       <span class="c1"># Write the &#39;d2&#39; data to dimension &#39;d2_name&#39;</span>
+
+
+    <span class="n">fw</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="n">d3_name</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">d3</span><span class="p">))</span>                 <span class="c1"># Create the one-dimension named &#39;d3_name&#39;</span>
+                                                        <span class="c1"># in the length of &#39;d3&#39; array.</span>
+    <span class="n">dim_wrt</span><span class="o">=</span><span class="n">fw</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="n">d3_name</span><span class="p">,</span><span class="n">d3</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="n">d3_name</span><span class="p">)</span> <span class="c1"># Create one-dimension variable named &#39;d3_name&#39;</span>
+                                                        <span class="c1"># with the data type of array &#39;d3&#39;</span>
+                                                        <span class="c1"># and its dimension is &#39;d3_name&#39;</span>
+    <span class="n">dim_wrt</span><span class="p">[:]</span><span class="o">=</span><span class="n">d3</span>                                       <span class="c1"># Write the &#39;d3&#39; data to dimension &#39;d3_name&#39;</span>
+
+
+    <span class="n">var_wrt</span><span class="o">=</span><span class="n">fw</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span>
+        <span class="n">varname</span><span class="p">,</span><span class="n">val</span><span class="o">.</span><span class="n">dtype</span><span class="p">,(</span><span class="n">d1_name</span><span class="p">,</span><span class="n">d2_name</span><span class="p">,</span><span class="n">d3_name</span><span class="p">),</span><span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="c1"># Create one-dimension variable named &#39;varname&#39;</span>
+                                                            <span class="c1"># with the data type of array &#39;val&#39; along</span>
+                                                            <span class="c1"># 3 dimensions of &#39;d1_name, d2_name, d3_name&#39;</span>
+    <span class="n">var_wrt</span><span class="p">[:]</span><span class="o">=</span><span class="n">val</span>                                          <span class="c1"># write the &#39;val&#39; data to the variable &#39;varname&#39;</span>
+
+    <span class="n">fw</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                       <span class="c1"># Close the file</span>
+    <span class="k">return</span> <span class="n">tmp_file</span>
+</pre></div>
+</div>
+</div>
+<p>Produce example data source of t, x, y and data array</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">get_data_src</span><span class="p">(</span><span class="n">nt</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">ny</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">nx</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">nt</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">ny</span><span class="p">)</span>
+    <span class="n">x</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">nx</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">nt</span><span class="o">*</span><span class="n">ny</span><span class="o">*</span><span class="n">nx</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Create-example-3D-array-in-the-size-of-(3600,60,60)-along-(t,y,x)">
+<h4>Create example 3D array in the size of (3600,60,60) along (t,y,x)<a class="headerlink" href="#Create-example-3D-array-in-the-size-of-(3600,60,60)-along-(t,y,x)" title="Permalink to this headline">¶</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">src_data</span><span class="o">=</span><span class="n">get_data_src</span><span class="p">(</span><span class="n">nt</span><span class="o">=</span><span class="mi">3600</span><span class="p">,</span><span class="n">ny</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span><span class="n">nx</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Access-Patterns">
+<h4>Access Patterns<a class="headerlink" href="#Access-Patterns" title="Permalink to this headline">¶</a></h4>
+<p>We can access the dataset in arbitary manner such as time series access, spatial access and block access. The IO performance relies on the number of IO operataions, which is arised from the coordination beteween the access pattern and the storage layout of the file. The ‘locality’ rule of access is that reads are generally faster when the data being accessed is all stored together.</p>
+<p><img alt="2" src="../../_images/fig1.png" /></p>
+<p>We produce a variety of accesses from the time series one to the spatial one via different block accesses.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">blk_size</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;spatial_st&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>     <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;block_t002&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>     <span class="mi">2</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>    <span class="mi">30</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;block_t003&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>     <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>    <span class="mi">20</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;block_t006&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>     <span class="mi">6</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>    <span class="mi">10</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;block_t012&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>    <span class="mi">12</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>    <span class="mi">10</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span>    <span class="mi">30</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;block_t024&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>    <span class="mi">24</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>     <span class="mi">5</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span>    <span class="mi">30</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;block_t120&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>   <span class="mi">120</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>     <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span>    <span class="mi">30</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;block_t180&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>   <span class="mi">180</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>     <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span>    <span class="mi">20</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;block_t360&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>   <span class="mi">360</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>     <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span>    <span class="mi">10</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;block_t600&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>   <span class="mi">600</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>     <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span>     <span class="mi">6</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;block_t900&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>   <span class="mi">900</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>     <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span>     <span class="mi">4</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;block_t1k2&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>  <span class="mi">1200</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>     <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span>     <span class="mi">3</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;block_t1k8&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span>  <span class="mi">1800</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>     <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span>     <span class="mi">2</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;full_times&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>     <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">:</span>     <span class="mi">1</span><span class="p">}]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Index-order-storage-layout">
+<h4>Index-order storage layout<a class="headerlink" href="#Index-order-storage-layout" title="Permalink to this headline">¶</a></h4>
+<p>The default storage layout for most file format is index-order layout, i.e.&nbsp;all the elements of multi-dimensional array are stored one after another along each dimension. Python and C use row-major ordering,that is, the ‘fastest-varying’ index is the last dimension.</p>
+<p><img alt="3" src="../../_images/tutr-lodset.png" /></p>
+<p>For 3D array, the index-order data layout will store the data along x, y and t dimension respectively. Thus the ‘spatial access’ as above will be contiguous IO and the ‘time series accesss’ is non-contiguous IO with much more IO opeartions like seek, read, write etc.</p>
+</div>
+</div>
+<div class="section" id="TYX:-Create-index-order-storage-layout-TYX-in-a-temporary-file.">
+<h3>TYX: Create index order storage layout TYX in a temporary file.<a class="headerlink" href="#TYX:-Create-index-order-storage-layout-TYX-in-a-temporary-file." title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create a file with the 3D variable named &#39;band&#39;</span>
+<span class="n">f</span><span class="o">=</span><span class="n">create_file</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">src_data</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+<span class="n">view_prt</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+<span class="c1"># Print the metadata of &#39;band&#39; variable in the above file.</span>
+<span class="n">band</span><span class="o">=</span><span class="n">link_var</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+File Name:       /var/folders/0f/nkhsbsts32j983ld8l5dywgw0000gn/T/tmpm1514i9r
+Format:          NETCDF4
+dimension        t 3600
+dimension        y 60
+dimension        x 60
+
+Variable:        band
+Dimensions:      (&#39;t&#39;, &#39;y&#39;, &#39;x&#39;)
+Shape:           (3600, 60, 60)
+size:            12960000
+data type:       float64
+chunksize:       contiguous
+tendian:         little
+filters:         {&#39;zlib&#39;: False, &#39;shuffle&#39;: False, &#39;complevel&#39;: 0, &#39;fletcher32&#39;: False}
+ncattrs:         []
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="TYX:-Full-variable-access-if-we-have-large-enough-memory">
+<h3>TYX: Full variable access if we have large enough memory<a class="headerlink" href="#TYX:-Full-variable-access-if-we-have-large-enough-memory" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+<span class="n">band_subset</span> <span class="o">=</span> <span class="n">band</span><span class="p">[:,:,:]</span>
+<span class="n">t_end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;elapsed time is &quot;</span><span class="p">,</span><span class="n">t_end</span><span class="o">-</span><span class="n">t_start</span><span class="p">,</span><span class="s2">&quot;Sec.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+elapsed time is  0.027658000000000627 Sec.
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="TYX:-Check-the-read-time-of-different-accesses">
+<h3>TYX: Check the read time of different accesses<a class="headerlink" href="#TYX:-Check-the-read-time-of-different-accesses" title="Permalink to this headline">¶</a></h3>
+<p>Split the data into several ‘read’ operations and each operation reads ‘transfer size’ of data to match the memory requirement.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">t_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;name&#39;: &#39;spatial_st&#39;, &#39;t&#39;: 1, &#39;y&#39;: 60, &#39;x&#39;: 60}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+
+<span></span><span class="n">elap_ctg_tyx</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">blk_size</span><span class="p">:</span>
+<span class="c1"># Count the total number of accessing.</span>
+    <span class="n">access_num</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">t_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span>
+    <span class="n">y_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+    <span class="n">x_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="c1"># Read the whole variable data in multiple read operations.</span>
+    <span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="n">t_size</span><span class="p">)):</span>
+        <span class="n">itbeg</span><span class="o">=</span><span class="n">it</span><span class="o">*</span><span class="n">t_size</span>
+        <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">y_size</span><span class="p">)):</span>
+            <span class="n">iybeg</span><span class="o">=</span><span class="n">iy</span><span class="o">*</span><span class="n">y_size</span>
+            <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x_size</span><span class="p">)):</span>
+                <span class="n">ixbeg</span><span class="o">=</span><span class="n">ix</span><span class="o">*</span><span class="n">x_size</span>
+                <span class="n">band_subset</span> <span class="o">=</span> <span class="n">band</span><span class="p">[</span><span class="n">itbeg</span><span class="p">:</span><span class="n">itbeg</span><span class="o">+</span><span class="n">t_size</span><span class="p">,</span><span class="n">iybeg</span><span class="p">:</span><span class="n">iybeg</span><span class="o">+</span><span class="n">y_size</span><span class="p">,</span><span class="n">ixbeg</span><span class="p">:</span><span class="n">ixbeg</span><span class="o">+</span><span class="n">x_size</span><span class="p">]</span>
+                <span class="n">access_num</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="n">t_end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="s2">&quot; elapsed time is &quot;</span><span class="p">,(</span><span class="n">t_end</span><span class="o">-</span><span class="n">t_start</span><span class="p">),</span><span class="s2">&quot;Sec.&quot;</span><span class="p">,</span> <span class="s2">&quot; access time is&quot;</span><span class="p">,</span><span class="n">access_num</span><span class="p">)</span>
+    <span class="n">elap_ctg_tyx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t_end</span><span class="o">-</span><span class="n">t_start</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+spatial_st  elapsed time is  1.3423860000000012 Sec.  access time is 3600
+block_t002  elapsed time is  1.4476759999999995 Sec.  access time is 3600
+block_t003  elapsed time is  1.3033719999999995 Sec.  access time is 3600
+block_t006  elapsed time is  1.4191659999999988 Sec.  access time is 3600
+block_t012  elapsed time is  1.3909400000000005 Sec.  access time is 3600
+block_t024  elapsed time is  1.3764039999999973 Sec.  access time is 3600
+block_t120  elapsed time is  1.5849100000000007 Sec.  access time is 3600
+block_t180  elapsed time is  1.7217020000000005 Sec.  access time is 3600
+block_t360  elapsed time is  2.2905440000000006 Sec.  access time is 3600
+block_t600  elapsed time is  3.0605500000000028 Sec.  access time is 3600
+block_t900  elapsed time is  4.012226000000002 Sec.  access time is 3600
+block_t1k2  elapsed time is  4.8038380000000025 Sec.  access time is 3600
+block_t1k8  elapsed time is  6.43477 Sec.  access time is 3600
+full_times  elapsed time is  10.279058 Sec.  access time is 3600
+</pre></div></div>
+</div>
+<p><p>For non-contiguous IO, number of disk accesses that make I/O slow, not the number of values read.</p>
+</p></div>
+<div class="section" id="YXT:-Create-index-order-storage-layout-YXT-in-a-temporary-file.">
+<h3>YXT: Create index order storage layout YXT in a temporary file.<a class="headerlink" href="#YXT:-Create-index-order-storage-layout-YXT-in-a-temporary-file." title="Permalink to this headline">¶</a></h3>
+<p><p>If we instead want the time series to be quick, we can reorganize the data so x or y is the most slowly varying dimension and time varies fastest, resulting in fast time-series access and slow spatial access. In either case, the slow access is so slow that it makes the data essentially inaccessible for all practical purposes, e.g.&nbsp;in analysis or visualization.</p>
+<p><p>NCO (netCDF operators) program ncpdq (“permute dimensions quickly”) can be used to exchange dimensions.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create the variable along (y,x,t)</span>
+<span class="n">f</span><span class="o">=</span><span class="n">create_file</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="n">src_data</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+<span class="n">view_prt</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+<span class="n">band</span><span class="o">=</span><span class="n">link_var</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+File Name:       /var/folders/0f/nkhsbsts32j983ld8l5dywgw0000gn/T/tmpt3bfu4ij
+Format:          NETCDF4
+dimension        y 60
+dimension        x 60
+dimension        t 3600
+
+Variable:        band
+Dimensions:      (&#39;y&#39;, &#39;x&#39;, &#39;t&#39;)
+Shape:           (60, 60, 3600)
+size:            12960000
+data type:       float64
+chunksize:       contiguous
+tendian:         little
+filters:         {&#39;zlib&#39;: False, &#39;shuffle&#39;: False, &#39;complevel&#39;: 0, &#39;fletcher32&#39;: False}
+ncattrs:         []
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="YXT:-Full-Access-if-we-have-large-enough-memory">
+<h3>YXT: Full Access if we have large enough memory<a class="headerlink" href="#YXT:-Full-Access-if-we-have-large-enough-memory" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#%%time</span>
+<span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+<span class="n">band_subset</span> <span class="o">=</span> <span class="n">band</span><span class="p">[:,:,:]</span>
+<span class="n">t_end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;elapsed time is &quot;</span><span class="p">,(</span><span class="n">t_end</span><span class="o">-</span><span class="n">t_start</span><span class="p">),</span><span class="s2">&quot;Sec.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+elapsed time is  0.03572600000000392 Sec.
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="YXT:-Check-the-read-time-of-different-accesses">
+<h3>YXT: Check the read time of different accesses<a class="headerlink" href="#YXT:-Check-the-read-time-of-different-accesses" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+
+<span></span><span class="n">elap_ctg_yxt</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">blk_size</span><span class="p">:</span>
+<span class="c1"># Count the total number of accessing.</span>
+    <span class="n">access_num</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">t_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span>
+    <span class="n">y_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+    <span class="n">x_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="c1"># Read the whole variable data in multiple read operations.</span>
+    <span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">y_size</span><span class="p">)):</span>
+        <span class="n">iybeg</span><span class="o">=</span><span class="n">iy</span><span class="o">*</span><span class="n">y_size</span>
+        <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x_size</span><span class="p">)):</span>
+            <span class="n">ixbeg</span><span class="o">=</span><span class="n">ix</span><span class="o">*</span><span class="n">x_size</span>
+            <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="n">t_size</span><span class="p">)):</span>
+                <span class="n">itbeg</span><span class="o">=</span><span class="n">it</span><span class="o">*</span><span class="n">t_size</span>
+                <span class="n">band_subset</span> <span class="o">=</span> <span class="n">band</span><span class="p">[</span><span class="n">iybeg</span><span class="p">:</span><span class="n">iybeg</span><span class="o">+</span><span class="n">y_size</span><span class="p">,</span><span class="n">ixbeg</span><span class="p">:</span><span class="n">ixbeg</span><span class="o">+</span><span class="n">x_size</span><span class="p">,</span><span class="n">itbeg</span><span class="p">:</span><span class="n">itbeg</span><span class="o">+</span><span class="n">t_size</span><span class="p">]</span>
+                <span class="n">access_num</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="n">t_end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="s2">&quot; elapsed time is &quot;</span><span class="p">,(</span><span class="n">t_end</span><span class="o">-</span><span class="n">t_start</span><span class="p">),</span><span class="s2">&quot;Sec.&quot;</span><span class="p">,</span> <span class="s2">&quot; access time is&quot;</span><span class="p">,</span><span class="n">access_num</span> <span class="p">)</span>
+    <span class="n">elap_ctg_yxt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t_end</span><span class="o">-</span><span class="n">t_start</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+spatial_st  elapsed time is  10.175239999999988 Sec.  access time is 3600
+block_t002  elapsed time is  5.985500000000002 Sec.  access time is 3600
+block_t003  elapsed time is  4.655546000000001 Sec.  access time is 3600
+block_t006  elapsed time is  3.0697219999999987 Sec.  access time is 3600
+block_t012  elapsed time is  2.122708000000003 Sec.  access time is 3600
+block_t024  elapsed time is  1.813373999999996 Sec.  access time is 3600
+block_t120  elapsed time is  1.3902279999999934 Sec.  access time is 3600
+block_t180  elapsed time is  1.441824000000011 Sec.  access time is 3600
+block_t360  elapsed time is  1.336677999999992 Sec.  access time is 3600
+block_t600  elapsed time is  1.3956459999999993 Sec.  access time is 3600
+block_t900  elapsed time is  1.3896879999999925 Sec.  access time is 3600
+block_t1k2  elapsed time is  1.3740240000000057 Sec.  access time is 3600
+block_t1k8  elapsed time is  1.3489280000000008 Sec.  access time is 3600
+full_times  elapsed time is  1.3459060000000136 Sec.  access time is 3600
+</pre></div></div>
+</div>
+<div class="section" id="Chunked-storage-layout">
+<h4>Chunked storage layout<a class="headerlink" href="#Chunked-storage-layout" title="Permalink to this headline">¶</a></h4>
+<p><p>A better solution is the use of chunking, storing multidimensional data in multi-dimensional rectangular chunks to speed up slow accesses at the cost of slowing down fast accesses. Programs that access chunked data can be oblivious to whether or how chunking is used.</p>
+<p><p><img alt="4" src="../../_images/chunking.png" /></p>
+<p>Let’s consider these selections</p>
+<p><img alt="5" src="../../_images/contiguous_seek.png" /></p>
+<p><p>If index-order: 2 seeks</p>
+</p><p>If chunked: 10 seeks</p>
+<p><img alt="6" src="../../_images/chunk_seek.png" /></p>
+<p><p>if index-order: 16 seeks</p>
+</p><p>if chunked: 4 seeks</p>
+<p><p>For 2-dimensional data, we could support equally frequent access by either rows or columns by chunking the data into rectangular chunks (or tiles) so that reading a row requires the same number of disk accesses as reading a column. Note each chunk is a disk block that must be read completely to access any of its data values. An optimum solution is to make the chunks similar in shape to the entire array, so that the same number of chunks are required to read an entire row or an entire column.</p>
+</p><p>The appropriate size of chunking depends on access patterns and hardware itself, like disk cache sizes, etc. When writing or reading, try to use hyperslab selections that coincide with chunk boundaries.</p>
+<p>The process of picking a chunk shape is a trade-off between the following constraints:</p>
+<ul><li><p>Larger chunks for a given dataset size reduce the size of the chunk B-tree, making it faster to find and load chunks.</p>
+</li><li><p>Since chunks are all or nothing (reading a portion loads the entire chunk), larger chunks also increase the chance that you’ll read data into memory you won’t use.</p>
+</li><li><p>Chunk cache can only hold a finite number of chunks. Large chunk can not fit into the chunk cache. Entire chunk has to be in memory and may cause OS to page memory to disk, slowing down the entire system.</p>
+</li><li><p>Small chunks may create large amount of metadata to fill the disk space and extra time will be spent to look up each chunk. More IO operations will be invloved as each chunk is stored independently. A good rule of thumb for most datasets is to keep chunks above 10KiB or so.</p>
+</li></ul><p><p>When writing or reading, try to use hyperslab selections that coincide with chunk boundaries.</p>
+</p></div>
+</div>
+<div class="section" id="TYX:-Chunk-number=20">
+<h3>TYX: Chunk number=20<a class="headerlink" href="#TYX:-Chunk-number=20" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Specify the transfer size along each dimension</span>
+<span class="n">chunk_number</span><span class="o">=</span><span class="mi">20</span>
+
+<span class="c1"># Create the chunk shape. Make the number of chunks</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">chunk_number</span><span class="o">*</span><span class="n">chunk_number</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">chunk_number</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">chunk_number</span><span class="p">)</span>
+
+<span class="c1"># Create a chunked NetCDF4 file</span>
+<span class="n">f</span><span class="o">=</span><span class="n">create_file</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">src_data</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">,</span><span class="n">chunksizes</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">)</span>
+
+<span class="n">view_prt</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+<span class="n">band</span><span class="o">=</span><span class="n">link_var</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+File Name:       /var/folders/0f/nkhsbsts32j983ld8l5dywgw0000gn/T/tmpp8xl__8f
+Format:          NETCDF4
+dimension        t 3600
+dimension        y 60
+dimension        x 60
+
+Variable:        band
+Dimensions:      (&#39;t&#39;, &#39;y&#39;, &#39;x&#39;)
+Shape:           (3600, 60, 60)
+size:            12960000
+data type:       float64
+chunksize:       [9, 3, 3]
+tendian:         little
+filters:         {&#39;zlib&#39;: False, &#39;shuffle&#39;: False, &#39;complevel&#39;: 0, &#39;fletcher32&#39;: False}
+ncattrs:         []
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+
+<span></span><span class="n">elap_ck20_tyx</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">blk_size</span><span class="p">:</span>
+<span class="c1"># Count the total number of accessing.</span>
+    <span class="n">access_num</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">t_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span>
+    <span class="n">y_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+    <span class="n">x_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="c1"># Read the whole variable data in multiple read operations.</span>
+    <span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="n">t_size</span><span class="p">)):</span>
+        <span class="n">itbeg</span><span class="o">=</span><span class="n">it</span><span class="o">*</span><span class="n">t_size</span>
+        <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">y_size</span><span class="p">)):</span>
+            <span class="n">iybeg</span><span class="o">=</span><span class="n">iy</span><span class="o">*</span><span class="n">y_size</span>
+            <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x_size</span><span class="p">)):</span>
+                <span class="n">ixbeg</span><span class="o">=</span><span class="n">ix</span><span class="o">*</span><span class="n">x_size</span>
+                <span class="n">band_subset</span> <span class="o">=</span> <span class="n">band</span><span class="p">[</span><span class="n">itbeg</span><span class="p">:</span><span class="n">itbeg</span><span class="o">+</span><span class="n">t_size</span><span class="p">,</span><span class="n">iybeg</span><span class="p">:</span><span class="n">iybeg</span><span class="o">+</span><span class="n">y_size</span><span class="p">,</span><span class="n">ixbeg</span><span class="p">:</span><span class="n">ixbeg</span><span class="o">+</span><span class="n">x_size</span><span class="p">]</span>
+                <span class="n">access_num</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="n">t_end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="s2">&quot; elapsed time is &quot;</span><span class="p">,(</span><span class="n">t_end</span><span class="o">-</span><span class="n">t_start</span><span class="p">),</span><span class="s2">&quot;Sec.&quot;</span><span class="p">,</span> <span class="s2">&quot; access time is&quot;</span><span class="p">,</span><span class="n">access_num</span><span class="p">)</span>
+    <span class="n">elap_ck20_tyx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t_end</span><span class="o">-</span><span class="n">t_start</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+spatial_st  elapsed time is  19.505966 Sec.  access time is 3600
+block_t002  elapsed time is  11.729746000000034 Sec.  access time is 3600
+block_t003  elapsed time is  8.374103999999988 Sec.  access time is 3600
+block_t006  elapsed time is  6.7054240000000505 Sec.  access time is 3600
+block_t012  elapsed time is  5.53598599999998 Sec.  access time is 3600
+block_t024  elapsed time is  5.649370000000033 Sec.  access time is 3600
+block_t120  elapsed time is  8.627094 Sec.  access time is 3600
+block_t180  elapsed time is  8.989864000000011 Sec.  access time is 3600
+block_t360  elapsed time is  9.818036000000006 Sec.  access time is 3600
+block_t600  elapsed time is  8.458425999999974 Sec.  access time is 3600
+block_t900  elapsed time is  12.196875999999975 Sec.  access time is 3600
+block_t1k2  elapsed time is  8.332677999999987 Sec.  access time is 3600
+block_t1k8  elapsed time is  15.348516000000018 Sec.  access time is 3600
+full_times  elapsed time is  21.683029999999974 Sec.  access time is 3600
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="TYX:-Chunk-number=10">
+<h3>TYX: Chunk number=10<a class="headerlink" href="#TYX:-Chunk-number=10" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Specify the transfer size along each dimension</span>
+<span class="n">chunk_number</span><span class="o">=</span><span class="mi">10</span>
+
+<span class="c1"># Create the chunk shape. Make the number of chunks</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">chunk_number</span><span class="o">*</span><span class="n">chunk_number</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">chunk_number</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">chunk_number</span><span class="p">)</span>
+<span class="c1"># Create a chunked NetCDF4 file</span>
+<span class="n">f</span><span class="o">=</span><span class="n">create_file</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">src_data</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">,</span><span class="n">chunksizes</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">)</span>
+
+<span class="n">view_prt</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+<span class="n">band</span><span class="o">=</span><span class="n">link_var</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+
+<span class="n">elap_ck10_tyx</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">blk_size</span><span class="p">:</span>
+<span class="c1"># Count the total number of accessing.</span>
+    <span class="n">access_num</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">t_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span>
+    <span class="n">y_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+    <span class="n">x_size</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="c1"># Read the whole variable data in multiple read operations.</span>
+    <span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="n">t_size</span><span class="p">)):</span>
+        <span class="n">itbeg</span><span class="o">=</span><span class="n">it</span><span class="o">*</span><span class="n">t_size</span>
+        <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">y_size</span><span class="p">)):</span>
+            <span class="n">iybeg</span><span class="o">=</span><span class="n">iy</span><span class="o">*</span><span class="n">y_size</span>
+            <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x_size</span><span class="p">)):</span>
+                <span class="n">ixbeg</span><span class="o">=</span><span class="n">ix</span><span class="o">*</span><span class="n">x_size</span>
+                <span class="n">band_subset</span> <span class="o">=</span> <span class="n">band</span><span class="p">[</span><span class="n">itbeg</span><span class="p">:</span><span class="n">itbeg</span><span class="o">+</span><span class="n">t_size</span><span class="p">,</span><span class="n">iybeg</span><span class="p">:</span><span class="n">iybeg</span><span class="o">+</span><span class="n">y_size</span><span class="p">,</span><span class="n">ixbeg</span><span class="p">:</span><span class="n">ixbeg</span><span class="o">+</span><span class="n">x_size</span><span class="p">]</span>
+                <span class="n">access_num</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="n">t_end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="s2">&quot; elapsed time is &quot;</span><span class="p">,(</span><span class="n">t_end</span><span class="o">-</span><span class="n">t_start</span><span class="p">),</span><span class="s2">&quot;Sec.&quot;</span><span class="p">,</span> <span class="s2">&quot; access time is&quot;</span><span class="p">,</span><span class="n">access_num</span><span class="p">)</span>
+    <span class="n">elap_ck10_tyx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t_end</span><span class="o">-</span><span class="n">t_start</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+File Name:       /var/folders/0f/nkhsbsts32j983ld8l5dywgw0000gn/T/tmpk5pnx7wg
+Format:          NETCDF4
+dimension        t 3600
+dimension        y 60
+dimension        x 60
+
+Variable:        band
+Dimensions:      (&#39;t&#39;, &#39;y&#39;, &#39;x&#39;)
+Shape:           (3600, 60, 60)
+size:            12960000
+data type:       float64
+chunksize:       [36, 6, 6]
+tendian:         little
+filters:         {&#39;zlib&#39;: False, &#39;shuffle&#39;: False, &#39;complevel&#39;: 0, &#39;fletcher32&#39;: False}
+ncattrs:         []
+
+spatial_st  elapsed time is  6.231433999999979 Sec.  access time is 3600
+block_t002  elapsed time is  3.9552779999999643 Sec.  access time is 3600
+block_t003  elapsed time is  3.585072000000025 Sec.  access time is 3600
+block_t006  elapsed time is  2.834412000000043 Sec.  access time is 3600
+block_t012  elapsed time is  2.0341999999999985 Sec.  access time is 3600
+block_t024  elapsed time is  2.011977999999999 Sec.  access time is 3600
+block_t120  elapsed time is  2.41974399999998 Sec.  access time is 3600
+block_t180  elapsed time is  2.480727999999999 Sec.  access time is 3600
+block_t360  elapsed time is  2.702696000000003 Sec.  access time is 3600
+block_t600  elapsed time is  2.5047119999999836 Sec.  access time is 3600
+block_t900  elapsed time is  3.375855999999999 Sec.  access time is 3600
+block_t1k2  elapsed time is  3.3407439999999724 Sec.  access time is 3600
+block_t1k8  elapsed time is  4.625358000000006 Sec.  access time is 3600
+full_times  elapsed time is  7.147319999999979 Sec.  access time is 3600
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="TYX:-Block-access-on-matched-chunk-layout">
+<h3>TYX: Block access on matched chunk layout<a class="headerlink" href="#TYX:-Block-access-on-matched-chunk-layout" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tblk</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">yblk</span><span class="o">=</span><span class="mi">30</span>
+<span class="n">xblk</span><span class="o">=</span><span class="mi">60</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="p">[</span><span class="n">tblk</span><span class="p">,</span><span class="n">yblk</span><span class="p">,</span><span class="n">xblk</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">create_file</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">src_data</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">,</span><span class="n">chunksizes</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">)</span>
+<span class="n">band</span><span class="o">=</span><span class="n">link_var</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+<span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="n">tblk</span><span class="p">)):</span>
+    <span class="n">itbeg</span><span class="o">=</span><span class="n">it</span><span class="o">*</span><span class="n">tblk</span>
+    <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">yblk</span><span class="p">)):</span>
+        <span class="n">iybeg</span><span class="o">=</span><span class="n">iy</span><span class="o">*</span><span class="n">yblk</span>
+        <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">xblk</span><span class="p">)):</span>
+            <span class="n">ixbeg</span><span class="o">=</span><span class="n">ix</span><span class="o">*</span><span class="n">xblk</span>
+<span class="c1">#            print itbeg,iybeg,ixbeg</span>
+            <span class="n">band_subset</span> <span class="o">=</span> <span class="n">band</span><span class="p">[</span><span class="n">itbeg</span><span class="p">:</span><span class="n">itbeg</span><span class="o">+</span><span class="n">tblk</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">iybeg</span><span class="p">:</span><span class="n">iybeg</span><span class="o">+</span><span class="n">yblk</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">ixbeg</span><span class="p">:</span><span class="n">ixbeg</span><span class="o">+</span><span class="n">xblk</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">t_end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;elapsed time is &quot;</span><span class="p">,(</span><span class="n">t_end</span><span class="o">-</span><span class="n">t_start</span><span class="p">),</span><span class="s2">&quot;Sec.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+elapsed time is  1.4954879999999662 Sec.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">elap_ctg_tyx</span><span class="p">,</span><span class="n">elap_ctg_yxt</span><span class="p">,</span><span class="n">elap_ck20_tyx</span><span class="p">,</span><span class="n">elap_ck10_tyx</span><span class="p">]</span>
+<span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;contiguous_tyx&#39;</span><span class="p">,</span><span class="s1">&#39;contiguous_yxt&#39;</span><span class="p">,</span><span class="s1">&#39;chunk20_tyx&#39;</span><span class="p">,</span><span class="s1">&#39;chunk10_tyx&#39;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bplot</span><span class="o">=</span><span class="n">axes</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">vert</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">patch_artist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span><span class="s1">&#39;lightyellow&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">patch</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bplot</span><span class="p">[</span><span class="s1">&#39;boxes&#39;</span><span class="p">],</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Read Time (s)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))],</span>
+         <span class="n">xticklabels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_general_data_access_series_io_57_0.png" src="../../_images/_notebook_general_data_access_series_io_57_0.png" />
+</div>
+</div>
+<div class="section" id="Compression">
+<h4>Compression<a class="headerlink" href="#Compression" title="Permalink to this headline">¶</a></h4>
+<p>If the data is compressed in netCDF-4 or HDF5, it has to be chunked, because a chunk is the atomic unit of compression as well as disk access. There is no need to decompress the whole file when reading a block data.</p>
+</div>
+</div>
+<div class="section" id="Chunk-scale-=-20">
+<h3>Chunk scale = 20<a class="headerlink" href="#Chunk-scale-=-20" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">band2</span><span class="o">=</span><span class="n">get_data_src</span><span class="p">(</span><span class="n">nt</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span><span class="n">ny</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">nx</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">chunk_scale</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">chunk_scale</span><span class="o">*</span><span class="n">chunk_scale</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">chunk_scale</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">chunk_scale</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;chunk size is &#39;</span><span class="p">,</span><span class="n">chunk_size</span><span class="p">)</span>
+<span class="n">cmp_time_cs20</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">cmp_size_cs20</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">cmp_label_cs20</span><span class="o">=</span><span class="p">[]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:&gt;20}{:&gt;20}{:&gt;20}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Comp. Level&#39;</span><span class="p">,</span><span class="s1">&#39;Write Time(s)&#39;</span><span class="p">,</span> <span class="s1">&#39;File Size(MB)&#39;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ilevel</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">=</span><span class="n">create_file</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">band2</span><span class="p">,</span><span class="s1">&#39;band2&#39;</span><span class="p">,</span><span class="n">chunksizes</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">,</span><span class="n">complevel</span><span class="o">=</span><span class="n">ilevel</span><span class="p">,</span><span class="n">zlib</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="n">file_time</span> <span class="o">=</span> <span class="n">elapsed</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="n">file_size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">/</span><span class="mf">1048576.0</span>
+    <span class="n">cmp_time_cs20</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_time</span><span class="p">)</span>
+    <span class="n">cmp_size_cs20</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_size</span><span class="p">)</span>
+    <span class="n">cmp_label_cs20</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ilevel</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:&gt;20d}{:&gt;20.2f}{:&gt;20.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ilevel</span><span class="p">,</span><span class="n">file_time</span><span class="p">,</span><span class="n">file_size</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+chunk size is  (1.0, 5.0, 5.0)
+         Comp. Level       Write Time(s)       File Size(MB)
+                   0                3.52               41.21
+                   1               11.09               42.42
+                   2               10.78               42.38
+                   3               10.61               42.36
+                   4               11.07               42.34
+                   5               11.13               42.33
+                   6               11.32               42.33
+                   7               11.27               42.33
+                   8               11.07               42.33
+                   9               11.06               42.33
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Chunk-scale-=-10">
+<h3>Chunk scale = 10<a class="headerlink" href="#Chunk-scale-=-10" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">chunk_scale</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">chunk_scale</span><span class="o">*</span><span class="n">chunk_scale</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">chunk_scale</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">chunk_scale</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;chunk size is &#39;</span><span class="p">,</span><span class="n">chunk_size</span><span class="p">)</span>
+
+<span class="n">cmp_time_cs10</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">cmp_size_cs10</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">cmp_label_cs10</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:&gt;20}{:&gt;20}{:&gt;20}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Comp. Level&#39;</span><span class="p">,</span><span class="s1">&#39;Write Time(s)&#39;</span><span class="p">,</span> <span class="s1">&#39;File Size(MB)&#39;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ilevel</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">=</span><span class="n">create_file</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">band2</span><span class="p">,</span><span class="s1">&#39;band2&#39;</span><span class="p">,</span><span class="n">chunksizes</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">,</span><span class="n">complevel</span><span class="o">=</span><span class="n">ilevel</span><span class="p">,</span><span class="n">zlib</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="n">file_time</span> <span class="o">=</span> <span class="n">elapsed</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="n">file_size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">/</span><span class="mf">1048576.0</span>
+    <span class="n">cmp_time_cs10</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_time</span><span class="p">)</span>
+    <span class="n">cmp_size_cs10</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_size</span><span class="p">)</span>
+    <span class="n">cmp_label_cs10</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ilevel</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:&gt;20d}{:&gt;20.2f}{:&gt;20.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ilevel</span><span class="p">,</span><span class="n">file_time</span><span class="p">,</span><span class="n">file_size</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+chunk size is  (4.0, 10.0, 10.0)
+         Comp. Level       Write Time(s)       File Size(MB)
+                   0                0.26               31.27
+                   1                1.65               29.42
+                   2                1.68               29.29
+                   3                1.78               29.19
+                   4                1.77               29.14
+                   5                1.93               29.12
+                   6                2.10               29.11
+                   7                2.13               29.11
+                   8                2.15               29.11
+                   9                2.15               29.11
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Chunk-scale-=-5">
+<h3>Chunk scale = 5<a class="headerlink" href="#Chunk-scale-=-5" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">chunk_scale</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">chunk_scale</span><span class="o">*</span><span class="n">chunk_scale</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">chunk_scale</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">chunk_scale</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;chunk size is &#39;</span><span class="p">,</span><span class="n">chunk_size</span><span class="p">)</span>
+<span class="n">cmp_time_cs05</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">cmp_size_cs05</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">cmp_label_cs05</span><span class="o">=</span><span class="p">[]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:&gt;20}{:&gt;20}{:&gt;20}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Comp. Level&#39;</span><span class="p">,</span><span class="s1">&#39;Write Time(s)&#39;</span><span class="p">,</span> <span class="s1">&#39;File Size(MB)&#39;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ilevel</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">=</span><span class="n">create_file</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">band2</span><span class="p">,</span><span class="s1">&#39;band2&#39;</span><span class="p">,</span><span class="n">chunksizes</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">,</span><span class="n">complevel</span><span class="o">=</span><span class="n">ilevel</span><span class="p">,</span><span class="n">zlib</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="n">file_time</span> <span class="o">=</span> <span class="n">elapsed</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="n">file_size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">/</span><span class="mf">1048576.0</span>
+    <span class="n">cmp_time_cs05</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_time</span><span class="p">)</span>
+    <span class="n">cmp_size_cs05</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_size</span><span class="p">)</span>
+    <span class="n">cmp_label_cs05</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ilevel</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:&gt;20d}{:&gt;20.2f}{:&gt;20.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ilevel</span><span class="p">,</span><span class="n">file_time</span><span class="p">,</span><span class="n">file_size</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+chunk size is  (16.0, 20.0, 20.0)
+         Comp. Level       Write Time(s)       File Size(MB)
+                   0                0.04               30.57
+                   1                1.16               27.51
+                   2                1.24               27.41
+                   3                1.35               27.29
+                   4                1.33               27.25
+                   5                1.49               27.21
+                   6                1.89               27.11
+                   7                2.38               27.08
+                   8                6.43               27.07
+                   9                7.11               27.07
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmp_time_cs20</span><span class="p">,</span> <span class="n">cmp_size_cs20</span><span class="p">,</span><span class="s1">&#39;.-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;chunk scale=20&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmp_time_cs10</span><span class="p">,</span> <span class="n">cmp_size_cs10</span><span class="p">,</span><span class="s1">&#39;.-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;chunk scale=10&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmp_time_cs05</span><span class="p">,</span> <span class="n">cmp_size_cs05</span><span class="p">,</span><span class="s1">&#39;.-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;chunk scale= 5&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Compression Benchmark for 3D Random Data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;File Size (MiB)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Compression Time (s)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_general_data_access_series_io_66_0.png" src="../../_images/_notebook_general_data_access_series_io_66_0.png" />
+</div>
+</div>
+<p>The Landsat compression Benchmak is shown below</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">view_prt</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;band2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+File Name:       /var/folders/0f/nkhsbsts32j983ld8l5dywgw0000gn/T/tmp7bz8r33v
+Format:          NETCDF4
+dimension        t 400
+dimension        y 100
+dimension        x 100
+
+Variable:        band2
+Dimensions:      (&#39;t&#39;, &#39;y&#39;, &#39;x&#39;)
+Shape:           (400, 100, 100)
+size:            4000000
+data type:       float64
+chunksize:       [16, 20, 20]
+tendian:         little
+filters:         {&#39;zlib&#39;: True, &#39;shuffle&#39;: True, &#39;complevel&#39;: 9, &#39;fletcher32&#39;: False}
+ncattrs:         []
+
+</pre></div></div>
+</div>
+<div class="section" id="Effect-of-shuffle">
+<h4>Effect of shuffle<a class="headerlink" href="#Effect-of-shuffle" title="Permalink to this headline">¶</a></h4>
+<p>The SHUFFLE filter repacks the data in the chunk so that all the first bytes of the integers are together, then all the second bytes, and so on. For dictionary-based compressors like GZIP and LZF, it is much more efficient to compress long runs of identical values, like all the zero values collected from the first two bytes of the dataset integers. There are also savings from the repeated elements at the third byte position. Only the fourth byte position looks really hard to compress.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">chunk_scale</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">chunk_scale</span><span class="o">*</span><span class="n">chunk_scale</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">chunk_scale</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">chunk_scale</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;chunk size is &#39;</span><span class="p">,</span><span class="n">chunk_size</span><span class="p">)</span>
+
+<span class="n">cmp_time_nosuf</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">cmp_size_nosuf</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">cmp_label_nosuf</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:&gt;20}{:&gt;20}{:&gt;20}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Comp. Level&#39;</span><span class="p">,</span><span class="s1">&#39;Write Time(s)&#39;</span><span class="p">,</span> <span class="s1">&#39;File Size(MB)&#39;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ilevel</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">=</span><span class="n">create_file</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">band2</span><span class="p">,</span><span class="s1">&#39;band2&#39;</span><span class="p">,</span><span class="n">chunksizes</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">,</span><span class="n">complevel</span><span class="o">=</span><span class="n">ilevel</span><span class="p">,</span><span class="n">zlib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="n">file_time</span> <span class="o">=</span> <span class="n">elapsed</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="n">file_size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">/</span><span class="mf">1048576.0</span>
+    <span class="n">cmp_time_nosuf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_time</span><span class="p">)</span>
+    <span class="n">cmp_size_nosuf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_size</span><span class="p">)</span>
+    <span class="n">cmp_label_nosuf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ilevel</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:&gt;20d}{:&gt;20.2f}{:&gt;20.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ilevel</span><span class="p">,</span><span class="n">file_time</span><span class="p">,</span><span class="n">file_size</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+chunk size is  (4.0, 10.0, 10.0)
+         Comp. Level       Write Time(s)       File Size(MB)
+                   0                0.26               31.27
+                   1                1.60               30.30
+                   2                1.58               30.30
+                   3                1.66               30.30
+                   4                1.73               30.30
+                   5                1.69               30.30
+                   6                1.74               30.30
+                   7                1.65               30.30
+                   8                1.75               30.30
+                   9                1.66               30.30
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">view_prt</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;band2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+File Name:       /var/folders/0f/nkhsbsts32j983ld8l5dywgw0000gn/T/tmp5ymixxy7
+Format:          NETCDF4
+dimension        t 400
+dimension        y 100
+dimension        x 100
+
+Variable:        band2
+Dimensions:      (&#39;t&#39;, &#39;y&#39;, &#39;x&#39;)
+Shape:           (400, 100, 100)
+size:            4000000
+data type:       float64
+chunksize:       [4, 10, 10]
+tendian:         little
+filters:         {&#39;zlib&#39;: True, &#39;shuffle&#39;: False, &#39;complevel&#39;: 9, &#39;fletcher32&#39;: False}
+ncattrs:         []
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmp_time_cs10</span><span class="p">,</span> <span class="n">cmp_size_cs10</span><span class="p">,</span><span class="s1">&#39;.-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;shuffle&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmp_time_nosuf</span><span class="p">,</span> <span class="n">cmp_size_nosuf</span><span class="p">,</span><span class="s1">&#39;.-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;no-shuffle&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Compression Benchmark for 3D Random Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;File Size (MiB)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Compression Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_general_data_access_series_io_74_0.png" src="../../_images/_notebook_general_data_access_series_io_74_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="References">
+<h4>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h4>
+<ul><li><p>‘Parallel HDF5’,Quincey Koziol, The HDF group, 2015.</p>
+</li><li><p>‘Portable Parallel I/O: Handling large datasets in heterogeneous parallel environments’, Michael Stephan, JULICH, 2013.</p>
+</li><li><p>‘Python and HDF5’,Andrew Collette, 2014.</p>
+</li><li><p>‘Chunking Data: Why it Matters’, <a class="reference external" href="http://www.unidata.ucar.edu/blogs/developer/entry/chunking_data_why_it_matters">http://www.unidata.ucar.edu/blogs/developer/entry/chunking_data_why_it_matters</a>, 2013</p>
+</li></ul></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
