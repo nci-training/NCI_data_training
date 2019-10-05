@@ -43,7 +43,7 @@ Data Access
 * `view and extract data using GDAL <Python_GDAL_NetCDF.ipynb>`_ 
 * `ncdump <ncdump.ipynb>`_ 
 * `ncview <ncview.ipynb>`_ 
-* `Programmatic WMS access GSKY blended service in Python - bushfire example and create GIF <request_GSKY_WMS_sentinel2_bushfire_NT_Sep2019.ipynb>`_
+* `Programmatic WMS access GSKY blended service in Python - bushfire example and create GIF <request_GSKY_WMS_sentinel2_bushfire_NSW_Sep2019.ipynb>`_
 
 Data Manipulation
 +++++++++++++++++++
