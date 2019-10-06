@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Request GSKY’s WMS from Python (bushfire example) &mdash; NCI data training  documentation</title>
+  <title>Request GSKY’s WMS in Python (cyclone example) &mdash; NCI data training  documentation</title>
   
 
   
@@ -153,13 +153,13 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Request GSKY’s WMS from Python (bushfire example)</li>
+      <li>Request GSKY’s WMS in Python (cyclone example)</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/_notebook/eo/request_GSKY_WMS_sentinel2_bushfire_NSW_Sep2019.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/_notebook/eo/request_GSKY_WMS_Himawari8_cyclone_debbie2017_create_gif.ipynb.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -396,19 +396,19 @@ div.rendered_html tbody tr:hover {
 </style>
 <p><img alt="image0" src="../../_images/NCI_logo1.png" /></p>
 <hr class="docutils" />
-<div class="section" id="Request-GSKY’s-WMS-from-Python-(bushfire-example)">
-<h1>Request GSKY’s WMS from Python (bushfire example)<a class="headerlink" href="#Request-GSKY’s-WMS-from-Python-(bushfire-example)" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Request-GSKY’s-WMS-in-Python-(cyclone-example)">
+<h1>Request GSKY’s WMS in Python (cyclone example)<a class="headerlink" href="#Request-GSKY’s-WMS-in-Python-(cyclone-example)" title="Permalink to this headline">¶</a></h1>
 <p>In this notebook,</p>
 <ul class="simple">
 <li>request images through GSKY WMS endpoints</li>
 <li>create a GIF using those images</li>
 </ul>
 <p>NCI’s GSKY Data Server supports the Open Geospatial Consortium (OGC) Web Map Service (WMS), which is a standard protocol for serving geospatial data as images (e.g., PNG).</p>
-<p>In this example, we extract data from the “Multi-sensor (Landsat and Sentinel 2) surface reflectance false colour (Beta)” (DEA products) to view a bushfire in NSW, Australia over two days, 12-13 of September, 2019.</p>
+<p>In this example, we extract the Himawari8 products to view the <a class="reference external" href="http://www.bom.gov.au/cyclone/history/debbie17.shtml">Debbie Cyclone</a> during 23-29 of March, 2017.</p>
 <div class="section" id="The-following-libraries-will-need-to-be-imported-for-this-example:">
 <h2>The following libraries will need to be imported for this example:<a class="headerlink" href="#The-following-libraries-will-need-to-be-imported-for-this-example:" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -422,17 +422,17 @@ div.rendered_html tbody tr:hover {
 </div>
 <p><strong>To start, we will need the base GSKY server URL:</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">gsky_url</span> <span class="o">=</span> <span class="s1">&#39;http://gsky.nci.org.au/ows/dea&#39;</span>
+<span></span><span class="n">gsky_url</span> <span class="o">=</span> <span class="s1">&#39;http://130.56.242.6/ows/himawari8/2017/03&#39;</span>
 </pre></div>
 </div>
 </div>
 <p><strong>Using OWSLib, we can begin by inspecting the service metadata:</strong> <strong>To find out the available data layers that can be requested:</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -448,74 +448,47 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Layer Name: blend_sentinel2_landsat_nbart_daily_false_colour
-Title: Multi-sensor (Landsat and Sentinel 2) surface reflectance false colour (Beta)
+Layer Name: cloud_particle_effective_radius
+Title: DCOMP_mode_1_cloud_particle_effective_radius
 
-Layer Name: blend_sentinel2_landsat_nbart_daily_true_colour
-Title: Multi-sensor (Landsat and Sentinel 2) surface reflectance true colour (Beta)
+Layer Name: cloud_spherical_albedo
+Title: DCOMP_mode_1_cloud_spherical_albedo
 
-Layer Name: hltc_high
-Title: DEA High Tide Composite 25m v2.0
+Layer Name: cloud_transmission
+Title: DCOMP_mode_1_cloud_transmission_view
 
-Layer Name: hltc_low
-Title: DEA Low Tide Composite 25m v2.0
+Layer Name: cloud_optical_depth_vis
+Title: DCOMP_mode_1_cloud_optical_depth_vis
 
-Layer Name: item_relative
-Title: DEA Intertidal Extents Model Relative Layer 25m v2.0
+Layer Name: MVFR_fog_probability
+Title: goesr_fog_MVFR_fog_probability
 
-Layer Name: item_stddev
-Title: DEA Intertidal Extents Model Confidence Layer 25m v2.0
+Layer Name: IFR_fog_probability
+Title: goesr_fog_IFR_fog_probability
 
-Layer Name: landsat5_geomedian
-Title: DEA Landsat 5 terrain corrected surface reflectance geometric median
+Layer Name: IFR_RHonly_fog_probability
+Title: goesr_fog_IFR_RHonly_Fog_Probability
 
-Layer Name: landsat5_nbar_16day
-Title: 16-day DEA Landsat 5 surface reflectance
+Layer Name: LIFR_fog_probability
+Title: goesr_fog_LIFR_fog_probability
 
-Layer Name: landsat5_nbar_daily
-Title: Daily DEA Landsat 5 surface reflectance
+Layer Name: cloud_phase
+Title: seviri cloud phase
 
-Layer Name: landsat5_nbart_16day
-Title: 16-day DEA Landsat 5 terrain corrected surface reflectance
+Layer Name: cloud_type
+Title: seviri cloud type
 
-Layer Name: landsat5_nbart_daily
-Title: Daily DEA Landsat 5 terrain corrected surface reflectance
+Layer Name: cloud_top_temperature
+Title: seviri cloud phase
 
-Layer Name: landsat7_geomedian
-Title: DEA Landsat 7 terrain corrected surface reflectance geometric median
+Layer Name: cloud_top_height
+Title: seviri cloud phase
 
-Layer Name: landsat7_nbar_16day
-Title: 16-day DEA Landsat 7 surface reflectance
+Layer Name: clear_sky_probability
+Title: seviri cloud mask
 
-Layer Name: landsat7_nbar_daily
-Title: Daily DEA Landsat 7 surface reflectance
-
-Layer Name: landsat7_nbart_16day
-Title: 16-day DEA Landsat 7 terrain corrected surface reflectance
-
-Layer Name: landsat7_nbart_daily
-Title: Daily DEA Landsat 7 terrain corrected surface reflectance
-
-Layer Name: landsat8_geomedian
-Title: DEA Landsat 8 terrain corrected surface reflectance geometric median
-
-Layer Name: landsat8_nbar_16day
-Title: 16-day DEA Landsat 8 surface reflectance
-
-Layer Name: landsat8_nbar_daily
-Title: Daily DEA Landsat 8 surface reflectance
-
-Layer Name: landsat8_nbart_16day
-Title: 16-day DEA Landsat 8 terrain corrected surface reflectance
-
-Layer Name: landsat8_nbart_daily
-Title: Daily DEA Landsat 8 terrain corrected surface reflectance
-
-Layer Name: sentinel2_nbart_daily
-Title: Sentinel 2 Analysis Ready Data
-
-Layer Name: wofs
-Title: DEA Water Observation Feature Layer
+Layer Name: cloud_top_pressure
+Title: seviri cloud phase
 
 </pre></div></div>
 </div>
@@ -525,17 +498,15 @@ Title: DEA Water Observation Feature Layer
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">layer</span> <span class="o">=</span> <span class="s2">&quot;blend_sentinel2_landsat_nbart_daily_false_colour&quot;</span>
+<span></span><span class="n">layer</span> <span class="o">=</span> <span class="s2">&quot;cloud_spherical_albedo&quot;</span>
 </pre></div>
 </div>
 </div>
-<p><strong>Or view the CRS options, bounding box, and time positions available (these details will be needed to construct the GetMap request):</strong></p>
-<p>Bush fire in NSW Australia, over two days, 12-13 of September, 2019.</p>
-</div>
-<div class="section" id="You-can-view-this-example-via-Terria-Map.">
-<h2>You can view this example via <a class="reference external" href="http://terria-cube.terria.io/#share=s-lbRTW2mmLscIY4mMtA2tHk1SSoB">Terria Map</a>.<a class="headerlink" href="#You-can-view-this-example-via-Terria-Map." title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Or-view-the-CRS-options,-bounding-box,-and-time-positions-available-(these-details-will-be-needed-to-construct-the-GetMap-request):">
+<h3><strong>Or view the CRS options, bounding box, and time positions available (these details will be needed to construct the GetMap request):</strong><a class="headerlink" href="#Or-view-the-CRS-options,-bounding-box,-and-time-positions-available-(these-details-will-be-needed-to-construct-the-GetMap-request):" title="Permalink to this headline">¶</a></h3>
+<p>Debbie Cyclone during 23-29 of March, 2017 is choosed as an example.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -549,7 +520,7 @@ Title: DEA Water Observation Feature Layer
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time Positions: &quot;</span><span class="p">)</span>
 <span class="n">time</span> <span class="o">=</span> <span class="n">wms</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">timepositions</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">time</span><span class="p">[</span><span class="mi">12081</span><span class="p">:</span><span class="mi">12083</span><span class="p">],</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">time</span><span class="p">[</span><span class="mi">6</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="mi">21</span><span class="o">-</span><span class="mi">21</span><span class="p">:</span><span class="mi">6</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="mi">27</span><span class="o">-</span><span class="mi">21</span><span class="p">:</span><span class="mi">24</span><span class="o">*</span><span class="mi">6</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -565,52 +536,49 @@ Bounding Box:
          (-180.0, -90.0, 180.0, 90.0, &#39;CRS:84&#39;)
 
 Time Positions:
-         [&#39;2019-09-12T00:00:00.000Z&#39;]
+         [&#39;2017-03-23T00:00:00.000Z&#39;, &#39;2017-03-24T00:00:00.000Z&#39;, &#39;2017-03-25T00:00:00.000Z&#39;, &#39;2017-03-25T23:50:00.000Z&#39;, &#39;2017-03-26T23:40:00.000Z&#39;, &#39;2017-03-27T23:50:00.000Z&#39;, &#39;2017-03-29T00:00:00.000Z&#39;]
 
 </pre></div></div>
 </div>
 <p><strong>Now let’s use the information above to construct and make the GetMap request.</strong></p>
 <p><strong>We’ll need to define a bounding box for our request:</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[84]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">subset_bbox</span> <span class="o">=</span> <span class="p">(</span><span class="mf">152.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">30.1</span><span class="p">,</span> <span class="mf">152.45</span><span class="p">,</span> <span class="o">-</span><span class="mf">30.02</span><span class="p">)</span>
-<span class="c1">#subset_bbox = (152, -31.2, 152.3, -30.5) You can modify this bounding box to look at different area.</span>
+<span></span><span class="n">subset_bbox</span> <span class="o">=</span> <span class="p">(</span><span class="mi">145</span><span class="p">,</span> <span class="o">-</span><span class="mi">22</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p><strong>OWSLib’s library can now be used to make the GetMap request and print out the images:</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[87]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># 2019-09-12 - 09-13</span>
-<span class="n">dates</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="mi">12081</span><span class="p">:</span><span class="mi">12083</span><span class="p">]</span>
-
+<span></span><span class="c1"># 2017-03-28</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="mi">6</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="mi">21</span><span class="o">-</span><span class="mi">21</span><span class="p">:</span><span class="mi">6</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="mi">27</span><span class="o">-</span><span class="mi">21</span><span class="p">:</span><span class="mi">24</span><span class="o">*</span><span class="mi">6</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
 <span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+
     <span class="n">img</span> <span class="o">=</span> <span class="n">wms</span><span class="o">.</span><span class="n">getmap</span><span class="p">(</span><span class="n">layers</span><span class="o">=</span><span class="p">[</span><span class="n">layer</span><span class="p">],</span>
                     <span class="n">srs</span><span class="o">=</span><span class="n">crs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
                     <span class="n">bbox</span><span class="o">=</span><span class="p">(</span><span class="n">subset_bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">subset_bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">subset_bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">subset_bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
-                    <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span>
+                    <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
                     <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;image/png&#39;</span><span class="p">,</span>
                     <span class="n">time</span><span class="o">=</span><span class="n">date</span>
                     <span class="p">)</span>
     <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
     <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
-    <span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;gsky_getMap</span><span class="si">%.10s</span><span class="s1">.png&#39;</span> <span class="o">%</span> <span class="n">date</span><span class="p">)</span>
+    <span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;gsky_getMap</span><span class="si">%.19s</span><span class="s1">.png&#39;</span> <span class="o">%</span> <span class="n">date</span><span class="p">)</span>
 
-    <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span>
     <span class="n">imgplot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">subset_bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">subset_bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">subset_bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">subset_bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
 
 
-<span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;bushfire_NSW.gif&#39;</span><span class="p">,</span><span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="n">images</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">optimize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">duration</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">loop</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;cyclone_Debbie.gif&#39;</span><span class="p">,</span><span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="n">images</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">optimize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">duration</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">loop</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -619,24 +587,24 @@ Time Positions:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2019-09-12T00:00:00.000Z
-2019-09-13T00:00:00.000Z
+[&#39;2017-03-23T00:00:00.000Z&#39;, &#39;2017-03-24T00:00:00.000Z&#39;, &#39;2017-03-25T00:00:00.000Z&#39;, &#39;2017-03-25T23:50:00.000Z&#39;, &#39;2017-03-26T23:40:00.000Z&#39;, &#39;2017-03-27T23:50:00.000Z&#39;, &#39;2017-03-29T00:00:00.000Z&#39;]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_eo_request_GSKY_WMS_sentinel2_bushfire_NSW_Sep2019_16_1.png" src="../../_images/_notebook_eo_request_GSKY_WMS_sentinel2_bushfire_NSW_Sep2019_16_1.png" />
+<img alt="../../_images/_notebook_eo_request_GSKY_WMS_Himawari8_cyclone_debbie2017_create_gif_15_1.png" src="../../_images/_notebook_eo_request_GSKY_WMS_Himawari8_cyclone_debbie2017_create_gif_15_1.png" />
 </div>
 </div>
-<p>Another way to make GIF is using <a class="reference external" href="https://giphy.com/create/gifmaker">https://giphy.com/create/gifmaker</a>, where you can upload all .png files, and create a fancier GIF. For example, you can add annotation.</p>
+<p>Another way to make GIF is using <a class="reference external" href="https://giphy.com/create/gifmaker">https://giphy.com/create/gifmaker</a>, where you can upload all .png files, and create a fancier GIF.</p>
 <hr class="docutils" />
 <p><strong>For more information on the OGC WMS standard specifications and the Python OWSLib package:</strong></p>
 <ul class="simple">
 <li><a class="reference external" href="http://www.opengeospatial.org/standards/wms">http://www.opengeospatial.org/standards/wms</a></li>
 <li><a class="reference external" href="https://geopython.github.io/OWSLib/#wms">https://geopython.github.io/OWSLib/#wms</a></li>
 </ul>
+</div>
 </div>
 </div>
 
