@@ -67,14 +67,14 @@ coverage layer by making a **DescribeCoverage** request.
 
 http://gsky.nci.org.au/ows/dea?service=WCS&version=1.0.0&request=GetCapabilities
 
-.. image:: ../_static/images/gsky_wcs1.png
-
+.. image:: images/gsky_wcs1.png
+ 
 
 **DescribeCoverage example:**
 
 http://gsky.nci.org.au/ows/dea?service=WCS&version=1.0.0&coverage=landsat5_nbart_16day&request=DescribeCoverage
 
-.. image:: ../_static/images/gsky_wcs2a.png
+.. image:: images/gsky_wcs2a.png
 
 
 GetCoverage request

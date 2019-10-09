@@ -308,7 +308,7 @@ Building 143, Corner of Ward Road and Garran Road, Ward Rd, Acton ACT 2601
 <span class="nt">&lt;/wps:Capabilities&gt;</span>
 </pre></div>
 </div>
-<img alt="_notebook/gsky/../_static/images/wps_getcaps.png" src="_notebook/gsky/../_static/images/wps_getcaps.png" />
+<img alt="../../_images/wps_getcaps.png" src="../../_images/wps_getcaps.png" />
 </div>
 <div class="section" id="describeprocess">
 <h2>DescribeProcess<a class="headerlink" href="#describeprocess" title="Permalink to this headline">¶</a></h2>
@@ -318,7 +318,7 @@ Building 143, Corner of Ward Road and Garran Road, Ward Rd, Acton ACT 2601
 <p><strong>WPS DescribeProcess example:</strong></p>
 <p><a class="reference external" href="http://130.56.242.16/ows/edge/generic_wps?service=WPS&amp;request=DescribeProcess&amp;version=1.0.0&amp;Identifier=8-day+drill">http://130.56.242.16/ows/edge/generic_wps?service=WPS&amp;request=DescribeProcess&amp;version=1.0.0&amp;Identifier=8-day+drill</a></p>
 <p>The <strong>DescribeProcess</strong> request produces an <code class="docutils literal notranslate"><span class="pre">xml</span></code> containing metadata about the requested process, with information about the inputs required to execute the 8-day drill process:</p>
-<img alt="_notebook/gsky/../_static/images/wps_describeprocess.png" src="_notebook/gsky/../_static/images/wps_describeprocess.png" />
+<img alt="../../_images/wps_describeprocess.png" src="../../_images/wps_describeprocess.png" />
 </div>
 <div class="section" id="execute">
 <h2>Execute<a class="headerlink" href="#execute" title="Permalink to this headline">¶</a></h2>
@@ -329,14 +329,14 @@ Building 143, Corner of Ward Road and Garran Road, Ward Rd, Acton ACT 2601
 <h3>Geometry - defining a region in GeoJSON<a class="headerlink" href="#geometry-defining-a-region-in-geojson" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://geojson.io">geojson.io</a> allows us to draw polygons and get their gjson representation.</p>
 <p>Let’s first navigate to the <a class="reference external" href="http://geojson.io">geojson.io</a> webpage:</p>
-<img alt="_notebook/gsky/../_static/images/geojson1.png" src="_notebook/gsky/../_static/images/geojson1.png" />
+<img alt="../../_images/geojson1.png" src="../../_images/geojson1.png" />
 <p>Now we can zoom into an area of interest:</p>
-<img alt="_notebook/gsky/../_static/images/geojson1b.png" src="_notebook/gsky/../_static/images/geojson1b.png" />
-<img alt="_notebook/gsky/../_static/images/geojson2.png" src="_notebook/gsky/../_static/images/geojson2.png" />
+<img alt="../../_images/geojson1b.png" src="../../_images/geojson1b.png" />
+<img alt="../../_images/geojson2.png" src="../../_images/geojson2.png" />
 <p>Next let’s use the <em>Draw Polygon</em> or <em>Draw rectangle</em> tools to draw a bounding box over the area we are interested in (for this example, we are looking in Western Australia):</p>
-<img alt="_notebook/gsky/../_static/images/geojson3.png" src="_notebook/gsky/../_static/images/geojson3.png" />
+<img alt="../../_images/geojson3.png" src="../../_images/geojson3.png" />
 <p>Finally, we can copy over the coordinates from the json output:</p>
-<img alt="_notebook/gsky/../_static/images/geojson4.png" src="_notebook/gsky/../_static/images/geojson4.png" />
+<img alt="../../_images/geojson4.png" src="../../_images/geojson4.png" />
 <p>which for our example is:</p>
 <p><code class="docutils literal notranslate"><span class="pre">{&quot;type&quot;:&quot;Polygon&quot;,&quot;coordinates&quot;:[[[116.2,-30.4],[123.0,-30.4],[123.0,-26.3],[116.2,-26.3],[116.2,-30.4]]]}</span></code></p>
 <p>Finally, we need to build our <strong>Execute</strong> POST request.</p>

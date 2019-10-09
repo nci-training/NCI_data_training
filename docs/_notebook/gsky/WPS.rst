@@ -130,7 +130,7 @@ The **GetCapabilities** request produces an ``xml`` showing a list of the WPS pr
 	</wps:Capabilities>
 
 
-.. image:: ../_static/images/wps_getcaps.png
+.. image:: images/wps_getcaps.png
 
 DescribeProcess
 ---------------
@@ -147,7 +147,7 @@ http://GSKY_URL/ows?\ :red:`service`\ =WPS&\ :red:`request`\ =DescribeProcess&\ 
 
 The **DescribeProcess** request produces an ``xml`` containing metadata about the requested process, with information about the inputs required to execute the 8-day drill process:
 
-.. image:: ../_static/images/wps_describeprocess.png
+.. image:: images/wps_describeprocess.png
 
 
 Execute
@@ -167,22 +167,22 @@ Geometry - defining a region in GeoJSON
 
 Let's first navigate to the `geojson.io <http://geojson.io>`_ webpage:
 
-.. image:: ../_static/images/geojson1.png
+.. image:: images/geojson1.png
 
 Now we can zoom into an area of interest:
 
-.. image:: ../_static/images/geojson1b.png
+.. image:: images/geojson1b.png
 
-.. image:: ../_static/images/geojson2.png
+.. image:: images/geojson2.png
 
 
 Next let's use the *Draw Polygon* or *Draw rectangle* tools to draw a bounding box over the area we are interested in (for this example, we are looking in Western Australia):
 
-.. image:: ../_static/images/geojson3.png
+.. image:: images/geojson3.png
 
 Finally, we can copy over the coordinates from the json output:
 
-.. image:: ../_static/images/geojson4.png
+.. image:: images/geojson4.png
 
 
 which for our example is:

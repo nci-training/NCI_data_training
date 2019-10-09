@@ -79,7 +79,7 @@ made available by NCI's GSKY server.
   http://gsky.nci.org.au/ows/dea?service=WMS&version=1.3.0&request=GetCapabilities
 
 
-.. image:: ../_static/images/gsky_wms1.png
+.. image:: images/gsky_wms1.png
 
 
 WMS GetMap request
@@ -109,4 +109,4 @@ and then entered into the address bar of any web browser.
 
  **If the URL is correctly formed, the requested map will be displayed.**
 
- .. image:: ../_static/images/gsky_wms2a.png
+ .. image:: images/gsky_wms2a.png
