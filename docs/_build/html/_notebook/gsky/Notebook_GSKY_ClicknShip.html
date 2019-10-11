@@ -81,7 +81,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Info</span></p>
 <ul>
@@ -96,18 +95,15 @@
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gsky.html">GSKY</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Past data training courses</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Help</span></p>
 <ul>
@@ -458,6 +454,12 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+Layer Name: blend_sentinel2_landsat_nbart_daily_false_colour
+Title: Multi-sensor (Landsat and Sentinel 2) surface reflectance false colour (Beta)
+
+Layer Name: blend_sentinel2_landsat_nbart_daily_true_colour
+Title: Multi-sensor (Landsat and Sentinel 2) surface reflectance true colour (Beta)
+
 Layer Name: hltc_high
 Title: DEA High Tide Composite 25m v2.0
 
@@ -515,6 +517,9 @@ Title: 16-day DEA Landsat 8 terrain corrected surface reflectance
 Layer Name: landsat8_nbart_daily
 Title: Daily DEA Landsat 8 terrain corrected surface reflectance
 
+Layer Name: sentinel2_nbart_daily
+Title: Sentinel 2 Analysis Ready Data
+
 Layer Name: wofs
 Title: DEA Water Observation Feature Layer
 
@@ -522,16 +527,16 @@ Title: DEA Water Observation Feature Layer
 </div>
 <p><strong>We can also view metadata that is available about a selected layer. For example, you can view the abstract associated with that data layer.</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">layer</span> <span class="o">=</span> <span class="s2">&quot;landsat8_nbart_16day&quot;</span>
+<span></span><span class="n">layer</span> <span class="o">=</span> <span class="s2">&quot;blend_sentinel2_landsat_nbart_daily_false_colour&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -544,80 +549,7 @@ Title: DEA Water Observation Feature Layer
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-This product has been corrected to remove the influences of the atmosphere, the time of year, terrain shadow and satellite view angles using the methods described in Li et al. 2012 https://doi.org/10.1016/j.rse.2012.06.018. Landsat 8 Operational Land Imager (OLI) data is available from March 2013 and onwards. More detailed information about the terrain corrected surface reflectance product suite produced using Digital Earth Australia including CCBY4.0 is available at http://dx.doi.org/10.4225/25/5a7a76d2e129e. This service provides access to Landsat 8 OLI terrain corrected surface reflectance data. The image composites are made from images acquired within a 16 day period, and may include clouds.
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span><span class="p">(</span><span class="n">wms</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">styles</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-{&#39;fc&#39;: {&#39;title&#39;: &#39;False colour&#39;}, &#39;tc&#39;: {&#39;title&#39;: &#39;True colour&#39;}}
-</pre></div></div>
-</div>
-<p><strong>Let’s request a preview of the dataset through WMS</strong></p>
-<p><strong>WMS function</strong></p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">get_map</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">bbox</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">Styles</span><span class="p">):</span>
-    <span class="n">output</span> <span class="o">=</span> <span class="n">wms</span><span class="o">.</span><span class="n">getmap</span><span class="p">(</span><span class="n">layers</span><span class="o">=</span><span class="p">[</span><span class="n">layer</span><span class="p">],</span>
-                        <span class="n">srs</span><span class="o">=</span><span class="n">wms</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">crsOptions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                        <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span>
-                        <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span>
-                        <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;image/png&#39;</span><span class="p">,</span>
-                        <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-                        <span class="n">Styles</span><span class="o">=</span><span class="n">style</span>
-                        <span class="p">)</span>
-
-    <span class="n">pngfile</span> <span class="o">=</span> <span class="s1">&#39;./output/gsky_getMap.png&#39;</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pngfile</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
-        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-
-    <span class="k">return</span> <span class="n">pngfile</span>
-</pre></div>
-</div>
-</div>
-<p><strong>Make a request</strong></p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">subset_bbox</span> <span class="o">=</span> <span class="p">(</span><span class="mi">148</span><span class="p">,</span> <span class="o">-</span><span class="mi">37</span><span class="p">,</span> <span class="mi">151</span><span class="p">,</span> <span class="o">-</span><span class="mi">36</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time Positions: &quot;</span><span class="p">)</span>
-<span class="n">time</span> <span class="o">=</span> <span class="n">wms</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">timepositions</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">time</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Time Positions:
-         [&#39;2013-03-19T00:00:00.000Z&#39;, &#39;2013-04-04T00:00:00.000Z&#39;, &#39;2013-04-20T00:00:00.000Z&#39;, &#39;2013-05-06T00:00:00.000Z&#39;, &#39;2013-05-22T00:00:00.000Z&#39;, &#39;2013-06-07T00:00:00.000Z&#39;, &#39;2013-06-23T00:00:00.000Z&#39;, &#39;2013-07-09T00:00:00.000Z&#39;, &#39;2013-07-25T00:00:00.000Z&#39;, &#39;2013-08-10T00:00:00.000Z&#39;]
-
+This multi-sensor service has been corrected to remove the influences of the atmosphere, the time of year, terrain shadow and satellite view angles using the methods described in Li et al. 2012 https://doi.org/10.1016/j.rse.2012.06.018. This service combines terrain corrected surface reflectance observations from three Landsat sensors (Landsat 5 TM, Landsat 7 ETM+, Landsat 8 OLI) and two Sentinel 2 sensors (Sentinel 2A and 2B). More detailed information about the terrain corrected surface reflectance product suite produced using Digital Earth Australia including CCBY4.0 is available at http://dx.doi.org/10.4225/25/5a7a76d2e129e. The service for each day is composed from all acquisitions that occurred over the Australian region on that calendar day.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -634,11 +566,84 @@ Time Positions:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;fc&#39;: {&#39;title&#39;: &#39;False colour&#39;}, &#39;tc&#39;: {&#39;title&#39;: &#39;True colour&#39;}}
+{&#39;fc&#39;: {&#39;title&#39;: &#39;False colour&#39;}}
+</pre></div></div>
+</div>
+<p><strong>Let’s request a preview of the dataset through WMS</strong></p>
+<p><strong>WMS function</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">get_map</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">bbox</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">Styles</span><span class="p">):</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">wms</span><span class="o">.</span><span class="n">getmap</span><span class="p">(</span><span class="n">layers</span><span class="o">=</span><span class="p">[</span><span class="n">layer</span><span class="p">],</span>
+                        <span class="n">srs</span><span class="o">=</span><span class="n">wms</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">crsOptions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                        <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span>
+                        <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span>
+                        <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;image/png&#39;</span><span class="p">,</span>
+                        <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
+                        <span class="n">Styles</span><span class="o">=</span><span class="n">style</span>
+                        <span class="p">)</span>
+
+    <span class="n">pngfile</span> <span class="o">=</span> <span class="s1">&#39;./gsky_getMap.png&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pngfile</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">pngfile</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Make a request</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">subset_bbox</span> <span class="o">=</span> <span class="p">(</span><span class="mf">150.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">36.5</span><span class="p">,</span> <span class="mi">151</span><span class="p">,</span> <span class="o">-</span><span class="mi">36</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time Positions: &quot;</span><span class="p">)</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">wms</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">timepositions</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">time</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Time Positions:
+         [&#39;1986-08-15T00:00:00.000Z&#39;, &#39;1986-08-16T00:00:00.000Z&#39;, &#39;1986-08-17T00:00:00.000Z&#39;, &#39;1986-08-18T00:00:00.000Z&#39;, &#39;1986-08-19T00:00:00.000Z&#39;, &#39;1986-08-20T00:00:00.000Z&#39;, &#39;1986-08-21T00:00:00.000Z&#39;, &#39;1986-08-22T00:00:00.000Z&#39;, &#39;1986-08-23T00:00:00.000Z&#39;, &#39;1986-08-24T00:00:00.000Z&#39;]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">wms</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">styles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;fc&#39;: {&#39;title&#39;: &#39;False colour&#39;}}
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -646,19 +651,20 @@ Time Positions:
 </pre></div>
 </div>
 </div>
+<p><strong>Make sure to choose the time stamp where data exists, otherwise, you will get a blank image.</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[93]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pngfile</span> <span class="o">=</span> <span class="n">get_map</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">subset_bbox</span><span class="p">,</span> <span class="n">time</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">style</span><span class="p">)</span>
+<span></span><span class="n">pngfile</span> <span class="o">=</span> <span class="n">get_map</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">subset_bbox</span><span class="p">,</span> <span class="n">time</span><span class="p">[</span><span class="mi">10008</span><span class="p">],</span> <span class="n">style</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="And-if-we’d-like-to-confirm-the-result:">
 <h3>And if we’d like to confirm the result:<a class="headerlink" href="#And-if-we’d-like-to-confirm-the-result:" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[94]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -669,11 +675,11 @@ Time Positions:
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[94]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.image.AxesImage at 0x1202f4940&gt;
+<span></span>&lt;matplotlib.image.AxesImage at 0x12131fa90&gt;
 </pre></div>
 </div>
 </div>
@@ -681,11 +687,11 @@ Time Positions:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_gsky_Notebook_GSKY_ClicknShip_23_1.png" src="../../_images/_notebook_gsky_Notebook_GSKY_ClicknShip_23_1.png" />
+<img alt="../../_images/_notebook_gsky_Notebook_GSKY_ClicknShip_24_1.png" src="../../_images/_notebook_gsky_Notebook_GSKY_ClicknShip_24_1.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[144]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -701,7 +707,7 @@ Time Positions:
                              <span class="n">height</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
 
 
-    <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;./output/gsky_wcs.nc&#39;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;./gsky_wcs.nc&#39;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
@@ -714,7 +720,7 @@ Time Positions:
 <div class="section" id="Select/click-region">
 <h2>Select/click region<a class="headerlink" href="#Select/click-region" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[156]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -747,7 +753,7 @@ Time Positions:
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[157]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -760,16 +766,16 @@ Time Positions:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d53207922f3b4ce881e5bc3c6de44148", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b386217b968545a7974795ee15ef85c0", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d13871814fe64af4902625cddda37466", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "68a7d415bb884b9590800737d72f9137", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[158]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -788,7 +794,7 @@ longitude = (135, 145)
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[159]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -797,11 +803,12 @@ longitude = (135, 145)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[160]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;fc&#39;</span>
+<span></span><span class="n">layer</span> <span class="o">=</span> <span class="s2">&quot;landsat8_nbart_16day&quot;</span>
+<span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;fc&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -809,16 +816,16 @@ longitude = (135, 145)
 <div class="section" id="And-ship!">
 <h2>And ship!<a class="headerlink" href="#And-ship!" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[161]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">wcs_output</span> <span class="o">=</span> <span class="n">get_coverage</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">time</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span></span><span class="n">wcs_output</span> <span class="o">=</span> <span class="n">get_coverage</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">time</span><span class="p">[</span><span class="mi">10008</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[162]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -851,11 +858,15 @@ longitude = (135, 145)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_gsky_Notebook_GSKY_ClicknShip_33_0.png" src="../../_images/_notebook_gsky_Notebook_GSKY_ClicknShip_33_0.png" />
+<img alt="../../_images/_notebook_gsky_Notebook_GSKY_ClicknShip_34_0.png" src="../../_images/_notebook_gsky_Notebook_GSKY_ClicknShip_34_0.png" />
 </div>
 </div>
 <hr class="docutils" />
-<p><strong>For more information on the OGC WMS standard specifications and the Python OWSLib package:</strong> <a class="reference external" href="http://www.opengeospatial.org/standards/wms">http://www.opengeospatial.org/standards/wms</a> <a class="reference external" href="https://geopython.github.io/OWSLib/#wms">https://geopython.github.io/OWSLib/#wms</a></p>
+<p><strong>For more information on the OGC WMS standard specifications and the Python OWSLib package:</strong></p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.opengeospatial.org/standards/wms">http://www.opengeospatial.org/standards/wms</a></li>
+<li><a class="reference external" href="https://geopython.github.io/OWSLib/#wms">https://geopython.github.io/OWSLib/#wms</a></li>
+</ul>
 </div>
 </div>
 

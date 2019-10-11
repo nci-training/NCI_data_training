@@ -54,15 +54,15 @@ GSKY service end points are:
 Software/Platforms interact with GSKY
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+`How to load GSKY layer to National Map website <nationalmap.rst>`_
+
+`How to load GSKY layer to TerriaJS <TerriaJS.rst>`_
+
 `How to load GSKY layer into ArcGIS online version <GSKY_ArcGIS.rst>`_ 
 
 `How to load GSKY layer into QGIS <GSKY_QGIS.rst>`_ 
 
 `How to load KML into Google Earth web application <GoogleEarthWeb.rst>`_ 
-
-`How to load GSKY layer to TerriaJS <TerriaJS.rst>`_
-
-`How to load GSKY layer to National Map website <nationalmap.rst>`_
 
 `How to request WPS to GEOGLAM RAPP <geoglam.rst>`_
 
@@ -73,21 +73,21 @@ Programmatically access GSKY
 NCI’s GSKY Data Server supports the Open Geospatial Consortium (OGC) Web Map Service (WMS), 
 which is a standard protocol for serving geospatial data as images (e.g., PNG). It also supports the Open Geospatial Consortium (OGC) Web Coverage Service (WCS), which is a standard protocol for serving geospatial data in common formats such as NetCDF and GeoTIFF. Please see this section for some examples on how to use GSKY in Python.
 
+`Construct WMS GetCapabilities and GetMap requests <WMS.rst>`_ 
+
 `Programmatic WMS access Landsat datasets from Python <Notebook_GSKY_WMS.ipynb>`_ 
 
 `Programmatic WMS access GSKY blended service from Python - bushfire example and create GIF <../eo/request_GSKY_WMS_sentinel2_bushfire_NSW_Sep2019.ipynb>`_
 
-`Programmatic WMS access GSKY Himarawi8 products from Python - cyclone example and create GIF <../eo/request_GSKY_WMS_Himawari8_cyclone_debbie2017_create_gif.ipynb>`_
+`Programmatic WMS access GSKY Himarawi8 products from Python - cyclone example and create GIF (TBA) <../eo/request_GSKY_WMS_Himawari8_cyclone_debbie2017_create_gif.ipynb>`_
 
 `Add layers to the ipyleaflet Map by defining widgets <Notebook_GSKY_WMS_ipyleaflet.ipynb>`_ 
+
+`Construct WCS GetCoverage, GetCapabilities and DescribeCoverage requests <WCS.rst>`_ 
 
 `Request map images through NCI’s GSKY WCS in Python. <Notebook_GSKY_WCS.ipynb>`_ 
 
 `WCS click to select the region, then ship the data <Notebook_GSKY_ClicknShip.ipynb>`_ 
-
-`Construct WMS GetCapabilities and GetMap requests <WMS.rst>`_ 
-
-`Construct WCS GetCoverage, GetCapabilities and DescribeCoverage requests <WCS.rst>`_ 
 
 `Construct WPS request <WPS.rst>`_ 
 

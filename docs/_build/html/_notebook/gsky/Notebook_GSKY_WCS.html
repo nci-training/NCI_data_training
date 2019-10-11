@@ -81,7 +81,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Info</span></p>
 <ul>
@@ -96,18 +95,15 @@
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gsky.html">GSKY</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Past data training courses</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Help</span></p>
 <ul>
@@ -454,8 +450,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Layer Name: blend_sentinel2_landsat_nbart_daily
-Title: Multi-sensor (Landsat and Sentinel 2) surface reflectance (Beta)
+Layer Name: blend_sentinel2_landsat_nbart_daily_false_colour
+Title: Multi-sensor (Landsat and Sentinel 2) surface reflectance false colour (Beta)
+
+Layer Name: blend_sentinel2_landsat_nbart_daily_true_colour
+Title: Multi-sensor (Landsat and Sentinel 2) surface reflectance true colour (Beta)
 
 Layer Name: hltc_high
 Title: DEA High Tide Composite 25m v2.0
@@ -647,11 +646,11 @@ http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service
 </div>
 <p><strong>Write the result to a file:</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;./output/gsky_wcs.tiff&#39;</span>
+<span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;./gsky_wcs.tiff&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
@@ -659,7 +658,7 @@ http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service
 </div>
 <p><strong>And if we’d like to confirm the result, we can open and view the GeoTIFF with the Python GDAL library for example:</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -670,7 +669,7 @@ http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -683,11 +682,11 @@ http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.image.AxesImage at 0x122e17a58&gt;
+<span></span>&lt;matplotlib.image.AxesImage at 0x11e4150b8&gt;
 </pre></div>
 </div>
 </div>
@@ -700,7 +699,7 @@ http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service
 </div>
 <p><strong>To request a coverage returned as in the NetCDF format, a similar GetCoverage request is constructed with the format parameter now specifying the NetCDF option.</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -714,7 +713,7 @@ http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -732,11 +731,11 @@ http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service
 </div>
 <p><strong>Again, write the output to a file to save:</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;./output/gsky_wcs.nc&#39;</span>
+<span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;./gsky_wcs.nc&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
@@ -744,7 +743,7 @@ http://gsky.nci.org.au/ows/dea?version=1.0.0&amp;request=GetCoverage&amp;service
 </div>
 <p><strong>To confirm or inspect the contents of the NetCDF file, libraries such as NetCDF4 Python or GDAL can be used.</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>

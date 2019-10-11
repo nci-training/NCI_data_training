@@ -53,6 +53,7 @@ GetCoverage parameters
 ``*`` For large files and/or files with a time dimension, these might be necessary. If ``bbox`` is not defined, the entire spatial domain will be returned (if server limits allow)
 and if ``time`` is not specified, either the first or sometimes the last timestep is returned.
 
+**The current GSKY server limit is 30 second. When a request takes GSKY more than 30 seconds to process, GSKY will return no data, but a time out error message.**
 
 WCS GetCapabilities and DescribeCoverage
 -----------------------------------------
@@ -119,3 +120,7 @@ Using the information returned from the GetCapabilities and DescribeCoverage req
 
 
   `http://gsky.nci.org.au/ows/dea?service=WCS&crs=EPSG:4326&format=GeoTIFF&request=GetCoverage \ &height=256&width=256&version=1.0.0&bbox=147,-37,148,-35&coverage=landsat8_nbart_16day \ &time=2013-04-20T00:00:00.000Z&Styles=tc <http://gsky.nci.org.au/ows/dea?service=WCS&crs=EPSG:4326&format=GeoTIFF&request=GetCoverage&height=256&width=256&version=1.0.0&bbox=147,-37,148,-35&coverage=landsat8_nbart_16day&time=2013-04-20T00:00:00.000Z&Styles=tc>`_.
+
+**If you copy and paste the example links above, make sure that the link pasted on the web browser don't have additional characters by accident. Otherwise, it will not show the image properly.**
+
+For example, when I click the links above, it works. But when I copy and pasted the link in the web browser, it adds \ :red:`%20` in some of the and sign \ :red:`&`. It will work if those addtional characters are removed manually. This is a readthedocs syntex when defining exact search. We will see how to improve this later.   
