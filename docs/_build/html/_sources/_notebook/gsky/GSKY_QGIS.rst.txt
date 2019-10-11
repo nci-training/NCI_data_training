@@ -1,8 +1,12 @@
 GSKY interacts with QGIS
 ===============================================================
 
-This tutorial demonstrate how to load the GSKY WMS layer into QGIS. In this tutorial, you will learn to add the layer by calling GSKY WMS server. See `here <../eo/QGIS_Analysing_Visualising_Data.ipynb>`_ for more advanced usage of QGIS.
+This tutorial demonstrate how to load the GSKY WMS layer into QGIS. In this tutorial, you will learn
 
+* how to add the layer by calling GSKY WMS server
+* how to load the layer by calling GSKY WCS server
+
+See `here <../eo/QGIS_Analysing_Visualising_Data.ipynb>`_ for more advanced usage of QGIS.
 
 
 Introduction
@@ -12,12 +16,6 @@ Introduction
  
 .. _QGIS: https://qgis.org/en/site/about/index.html
 
-
-In this tutorial, we are going to demonstrate 
-
-* Create a map showing evacuation routes in Houston
-* Use smart mapping and pop-ups to determine areas with low vehicle ownership.
-* Configure a web app to share your findings with others.
 
 0. Prerequisite 
 ~~~~~~~~~~~~~~~~~~~~~~~
