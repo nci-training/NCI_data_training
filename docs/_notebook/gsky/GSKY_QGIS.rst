@@ -42,7 +42,7 @@ In the "Data Source Manager", click "New"
 
 .. image:: images/GSKY_QGIS3.png
 
-Type "Name" and "URL" Https://gsky.nci.org.au/ows/geoglam, click "OK".
+Type "Name" and "URL" https://gsky.nci.org.au/ows/geoglam, click "OK".
 
 .. image:: images/GSKY_QGIS4.png
 
@@ -60,3 +60,54 @@ Click "Add" and then "close" the window. Choose "WMS/WMTS | NCI GSKY | Layer nam
 .. image:: images/GSKY_QGIS7.png
 
 You can save the layer by click "Save" button on the menu bar.
+
+3. Add GSKY WCS layer
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Click "Layer | Add Layer | Add WCS Layer"  
+
+.. image:: images/GSKY_QGIS8.png
+
+In the "Data Source Manager", click "New"
+
+.. image:: images/GSKY_QGIS9.png
+
+Type "Name" GSKY WCS and "URL" https://gsky.nci.org.au/ows/geoglam, click "OK".
+
+.. image:: images/GSKY_QGIS10.png
+
+In the "Data Source Manager", click "Connect"
+
+.. image:: images/GSKY_QGIS11.png
+
+A list of GSKY layers is presented in the box.
+
+.. image:: images/GSKY_QGIS12.png
+
+Time, CRS, and Format can be selected from this window.
+
+.. image:: images/GSKY_QGIS13.png
+
+Click "Time" and then scroll up and down to choose the time 
+
+.. image:: images/GSKY_QGIS14.png
+
+Once you are happy with your choice, click "Add". 
+
+.. image:: images/GSKY_QGIS15.png
+
+Use zoom in button to select the area of your interests.
+
+.. image:: images/GSKY_QGIS16.png
+
+You can save the layer by click "Layer | save as ... " button on the menu bar.
+
+.. image:: images/GSKY_QGIS17.png
+
+You can define your output parameters. 
+
+.. image:: images/GSKY_QGIS18.png
+
+There are a number of output formats can be selected from the list.
+
+.. image:: images/GSKY_QGIS19.png
