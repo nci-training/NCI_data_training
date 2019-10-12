@@ -20,6 +20,7 @@ Data Quick Preview
          
 Data Manipulation
 ++++++++++++++++++++
+* `Calculate monthly anomally and Nino Index using CMIP6 data <CDO_monthly_anomaly_and_NinoIndex_CMIP6.ipynb>`_
 * `Access and plot data using Xarray <Python_DataAccessBasics_cmip5.ipynb>`_ 
 * `Load data and do more complicated operations using Xarray <Python_DataStatsVis_cmip6.ipynb>`_ 
 * `Netcdf Subset Service (NCSS) with Python and Siphon <ncss_python_siphon_cmip5.ipynb>`_
