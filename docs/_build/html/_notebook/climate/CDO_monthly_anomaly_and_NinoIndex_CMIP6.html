@@ -406,7 +406,7 @@ div.rendered_html tbody tr:hover {
 <li>calculate Nino34Index</li>
 <li>visulise the data using ncview</li>
 </ul>
-<p>The following material uses Coupled Model Intercomparison Project (CMIP6) collections. The CMIP5 terms of use are found <a class="reference external" href="https://cmip.llnl.gov/cmip5/terms.html">here</a>. For more information on the collection, please <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563">click here</a>.</p>
+<p>The following material uses Coupled Model Intercomparison Project (CMIP6) collections. The CMIP6 terms of use are found <a class="reference external" href="https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html">here</a>. For more information on the collection, please <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563">click here</a>.</p>
 <p>CDO stands for “Cliamte Data Operators”. CDO is a collection of command line Operators to manipulate and analyse Climate and NWP model Data. Supported data formats are GRIB 1/2, netCDF 3/4, SERVICE, EXTRA and IEG. There are more than 600 operators available. See <a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo">here</a> for more information about this library.</p>
 <div class="section" id="Load-CDO-module-from-Raijin">
 <h2>Load CDO module from Raijin<a class="headerlink" href="#Load-CDO-module-from-Raijin" title="Permalink to this headline">¶</a></h2>
@@ -439,7 +439,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Let’s-see-which-year-this-file-includes">
 <h2>Let’s see which year this file includes<a class="headerlink" href="#Let’s-see-which-year-this-file-includes" title="Permalink to this headline">¶</a></h2>
-<p>We show a function <strong>showyear</strong> to display all the years in this file</p>
+<p>We use function <strong>showyear</strong> to display all the years in this file</p>
 <p>Basic usage:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo showyear &lt;file&gt;
 </pre></div>
@@ -449,20 +449,11 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Calculate-monthly-anomaly">
 <h2>Calculate monthly anomaly<a class="headerlink" href="#Calculate-monthly-anomaly" title="Permalink to this headline">¶</a></h2>
 <p>In this exercise, we are going to calculate the monthly anomoly between 1971 and 2000. A few steps are in the following order:</p>
-<ul class="simple">
-<li><ol class="first arabic">
+<ol class="arabic simple">
 <li>choose climatology years 1971-2000</li>
-</ol>
-</li>
-<li><ol class="first arabic" start="2">
 <li>calculate the monthly average during 1971-2000</li>
-</ol>
-</li>
-<li><ol class="first arabic" start="3">
 <li>Subtract the monthly average from the original file to obtain the difference, i.e., anomaly.</li>
 </ol>
-</li>
-</ul>
 <p>We need three functions to implement this procedure as below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo selyear, &lt;year-range&gt; &lt;input.nc&gt; &lt;output.nc&gt;
 </pre></div>
