@@ -55,9 +55,9 @@ Clone Jupyter notebooks
 
 For example, open up or create a working directory where we can clone the NCI Jupyter notebooks::
 
-   $ git clone https://github.com/nci-training/AMOS_10_June_2019.git
+   $ git clone https://github.com/nci-training/notebooks-demo.git
 
-   $ cd AMOS_10_June_2019
+   $ cd notebooks-demo
    
 **note:** we use name convention <event>-<date> to organise our training examples. They are hosted on `github`_,
 
