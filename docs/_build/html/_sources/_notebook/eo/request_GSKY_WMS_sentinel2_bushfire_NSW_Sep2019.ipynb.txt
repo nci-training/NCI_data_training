@@ -62,8 +62,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "**Using OWSLib, we can begin by inspecting the service metadata:**\n",
-    "**To find out the available data layers that can be requested:**"
+    "**Using OWSLib, we can begin by inspecting the service metadata to find out the available data layers:**"
    ]
   },
   {

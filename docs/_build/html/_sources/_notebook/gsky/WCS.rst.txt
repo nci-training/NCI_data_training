@@ -102,8 +102,8 @@ Using the information returned from the GetCapabilities and DescribeCoverage req
 
  `http://gsky.nci.org.au/ows/dea?service=WCS&crs=EPSG:4326&format=NetCDF&request=GetCoverage \ &height=256&width=256&version=1.0.0&bbox=147,-37,148,-35&coverage=landsat8_nbart_16day \ &time=2013-04-20T00:00:00.000Z&Styles=tc <http://gsky.nci.org.au/ows/dea?service=WCS&crs=EPSG:4326&format=NetCDF&request=GetCoverage&height=256&width=256&version=1.0.0&bbox=147,-37,148,-35&coverage=landsat8_nbart_16day&time=2013-04-20T00:00:00.000Z&Styles=tc>`_.
 
- **Example GetCoverage (GeoTIFF format)**
 
+**Example GetCoverage (GeoTIFF format)**
 
    | http://gsky.nci.org.au/ows/dea?
    | :red:`service`\ =WCS&
