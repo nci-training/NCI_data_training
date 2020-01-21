@@ -79,7 +79,7 @@ which is a standard protocol for serving geospatial data as images (e.g., PNG). 
 
 `Programmatic WMS access GSKY blended service from Python - bushfire example and create GIF <../eo/request_GSKY_WMS_sentinel2_bushfire_NSW_Sep2019.ipynb>`_
 
-`Programmatic WMS access GSKY Himarawi8 products from Python - cyclone example and create GIF (TBA) <../eo/request_GSKY_WMS_Himawari8_cyclone_debbie2017_create_gif.ipynb>`_
+`Programmatic WMS access GSKY Himarawi8 products from Python - cyclone example and create GIF (TBA) <../eo/request_GSKY_WMS_Himawari8_cyclone_debbie2017_create_gif1.ipynb>`_
 
 `Add layers to the ipyleaflet Map by defining widgets <Notebook_GSKY_WMS_ipyleaflet.ipynb>`_ 
 
