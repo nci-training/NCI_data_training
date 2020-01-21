@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Setup Pangeo Environment &mdash; NCI data training  documentation</title>
+  <title>Setup for Pangeo Environment on Raijin &mdash; NCI data training  documentation</title>
   
 
   
@@ -153,7 +153,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Setup Pangeo Environment</li>
+      <li>Setup for Pangeo Environment on Raijin</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -196,56 +196,57 @@
     text-align: unset;
 }
 </style>
-<p><img alt="logo" src="../../_images/NCI_logo7.png" /></p>
-<hr class="docutils" />
-<div class="section" id="Setup-Pangeo-Environment">
-<h1>Setup Pangeo Environment<a class="headerlink" href="#Setup-Pangeo-Environment" title="Permalink to this headline">¶</a></h1>
-<p>In this notebook:</p>
+<div class="section" id="Setup-for-Pangeo-Environment-on-Raijin">
+<h1>Setup for Pangeo Environment on Raijin<a class="headerlink" href="#Setup-for-Pangeo-Environment-on-Raijin" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we will go through:</p>
 <ul class="simple">
-<li>Load Pangeo module</li>
-<li>Activate pangeo enviornment</li>
-<li>submit a batch job script to the queue system</li>
-<li>Set up port forwarding at the client machine</li>
-<li>Connect to the remote Jupyter lab server from client machine</li>
-<li>Utilise the dask server in Jupyter notebook</li>
-<li>Visulise dask dashboard</li>
-<li>Run Jupyter notebook in a batch job</li>
+<li>Configuring the Pangeo environment on your Raijin account</li>
+<li>Submitting and monitoring a multi-node Pangeo job to Raijin</li>
+<li>Running a Pangeo Jupyter notebook in batch mode non-interactively</li>
 </ul>
-<hr class="docutils" />
-<p><strong>Pangeo</strong> is a community platform for big data in geoscience, funded by US NSF. Pangeo project serves as a coordination point between scientists, software and computing infrastructure. The Pangeo software ecosystem involves open source tools such as xarray, iris, dask, jupyter, and many other packages. <a class="reference external" href="http://pangeo.io">This site</a> provides guidance for accessing data and performing analysis using these tools. NCI has installed the Pangeo environment on Raijin by following instructions
-<a class="reference external" href="http://pangeo.io/setup_guides/hpc.html">here</a>.</p>
-<p>Please note that Pangeo will be transferred to Gadi when major Raijin/Gadi transition happens in Nov 2019. This notebook provides instructions on how to use the Pangeo environment to run your jupyter notebook on your desktop and interact with Raijin remotely.</p>
-<div class="section" id="Load-Pangeo-module-on-Raijin-and-activate-Pangeo-environment">
-<h2>Load Pangeo module on Raijin and activate Pangeo environment<a class="headerlink" href="#Load-Pangeo-module-on-Raijin-and-activate-Pangeo-environment" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="http://pangeo.io">Pangeo</a> software ecosystem involves open source tools such as <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a>, <a class="reference external" href="https://scitools.org.uk/iris/docs/latest/">iris</a>, <a class="reference external" href="https://dask.org/">dask</a>, <a class="reference external" href="https://jupyter.org/">Jupyter</a> and many other packages.</p>
+<p>This notebook provides instructions on how to use the Pangeo environment to run a multi-node parallel Jupyter notebook within the queues of Raijin and shows how to interact with it from your desktop.</p>
+<p>Please note that Pangeo will soon be enabled on Gadi.</p>
+<div class="section" id="Configuring-your-account-on-Raijin">
+<h2>Configuring your account on Raijin<a class="headerlink" href="#Configuring-your-account-on-Raijin" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Step-1:-Enabling-Pangeo-in-your-shell-envorinment">
+<h3>Step 1: Enabling Pangeo in your shell envorinment<a class="headerlink" href="#Step-1:-Enabling-Pangeo-in-your-shell-envorinment" title="Permalink to this headline">¶</a></h3>
+<p>To enable the Pangeo environment, you will use the following commands within jobs, or within an interactive environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load pangeo/2019.10
 $ source ${PANGEO_ROOT}/etc/profile.d/conda.sh
 $ conda activate pangeo
 </pre></div>
 </div>
-<p>You will see pangeo appear in the brackets in front of the prompt. You can quit the enviornment using <strong>conda deactivate</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$conda deactivate
-</pre></div>
-</div>
+<p>You should now see Pangeo appear in the brackets in front of the prompt. Note that Pangeo has its own python installation.</p>
 <p><img alt="1" src="../../_images/pangeo_setup1.png" /></p>
-<p>If you ask where your Python command lives, it should direct you to where pangeo was installed on Raijin.</p>
 <p><img alt="2" src="../../_images/pangeo_setup2.png" /></p>
 </div>
-<div class="section" id="Configure-Jupyter">
-<h2>Configure Jupyter<a class="headerlink" href="#Configure-Jupyter" title="Permalink to this headline">¶</a></h2>
-<p>Run the following two lines of command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook --generate-config
-$ jupyter notebook password
+<div class="section" id="Step-2:-Configuring-your-JupyterLab-password-on-Raijin">
+<h3>Step 2: Configuring your JupyterLab password on Raijin<a class="headerlink" href="#Step-2:-Configuring-your-JupyterLab-password-on-Raijin" title="Permalink to this headline">¶</a></h3>
+<p>We will use JupyterLab to load notebooks and monitor jobs. JupyterLab is bundled within the Pangeo environment. To setup this environment run the following two commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) $ jupyter notebook --generate-config
+(pangeo) $ jupyter notebook password
 </pre></div>
 </div>
-<p>It will prompt you to enter a password for opening the jupyter notebook on your local machine later. You can simply type a password and you need to remember it!</p>
-<p>If the command does not work (often in older versions of Jupyter), there are <a class="reference external" href="http://pangeo.io/setup_guides/hpc.html">instructions</a> on how to set up step-by-step.</p>
+<p>This is a stand-alone password that you will use later for accessing the JupyterLab server. You can use this command to reset this password at any time.</p>
 </div>
-<div class="section" id="Start-a-Jupyter-Notebook-Server">
-<h2>Start a Jupyter Notebook Server<a class="headerlink" href="#Start-a-Jupyter-Notebook-Server" title="Permalink to this headline">¶</a></h2>
-<p>First create a directory where you will run the jupyter notebook, let’s call it ~/pangeo/tutorial.</p>
-<p>Submit a batch job script as below to the queue system. You can create a shell script by copying the following commands into a script file. Let’s name it as run_ipynb_job.sh. Or you can download the example script here. We request 2 notes with 32 CPU and 64GB memory in this instance. Further instructions about job submission and running jobs on Raijin can be found <a class="reference external" href="https://opus.nci.org.au/display/Help/Running+Jobs">here</a>.</p>
+<div class="section" id="Step-3:-Exiting-the-Pangeo-environment">
+<h3>Step 3: Exiting the Pangeo environment<a class="headerlink" href="#Step-3:-Exiting-the-Pangeo-environment" title="Permalink to this headline">¶</a></h3>
+<p>You can quit the environment at any time by using “conda deactivate”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda deactivate
+</pre></div>
+</div>
+</div>
+<div class="section" id="Submitting-a-multi-node-Pangeo-job-to-Raijin">
+<h3>Submitting a multi-node Pangeo job to Raijin<a class="headerlink" href="#Submitting-a-multi-node-Pangeo-job-to-Raijin" title="Permalink to this headline">¶</a></h3>
+<p>First create a directory where you will run the jupyter notebook:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/pangeo/tutorial
+</pre></div>
+</div>
+<p>You can create a shell script by copying the following commands into a script file. Let’s name this file run_ipynb_job.sh:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#PBS -N pangeo_test</span>
+<span class="c1">#PBS -P c25</span>
 <span class="c1">#PBS -q normal</span>
 <span class="c1">#PBS -l walltime=5:00:00</span>
 <span class="c1">#PBS -l ncpus=32</span>
@@ -256,22 +257,28 @@ $ jupyter notebook password
 <span class="n">sleep</span> <span class="n">infinity</span>
 </pre></div>
 </div>
-<p><img alt="3" src="../../_images/pangeo_setup3.png" /></p>
-<p>Please always request one or multiple whole nodes in your job script. The above job will load the pangeo module, run the initialization script called <strong>pangeo.ini.all.sh</strong>, and keep alive in the job lifetime. The initialization script will set up the dask scheduler at one node and multiple workers on all nodes. After that, it will start up the jupyter lab and create port forwarding commands for the user by putting them into a file named ‘client_cmd’ .</p>
+<p>Dask requires whole nodes so you need to have a job that needs these resources. In this example we request 2 Raijin Sandy Bridge nodes with 32 CPU and 64GB memory. For further instructions about node types on Raijin, consult the <a class="reference external" href="https://opus.nci.org.au/display/Help/Running+Jobs">NCI user guide</a> on the specific configurations.</p>
+<p>The above jobscript will load the Pangeo module, run the initialization script called <strong>pangeo.ini.all.sh</strong>, and keeps the environment alive for the lifetime of the PBS job. The initialization script will set up the dask scheduler on one node and multiple workers on all the other nodes.</p>
+<p>Now, submit the job to the queue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qsub run_ipynb_job.sh
+</pre></div>
 </div>
-<div class="section" id="Set-up-port-forwarding-at-the-client-machine">
-<h2>Set up port forwarding at the client machine<a class="headerlink" href="#Set-up-port-forwarding-at-the-client-machine" title="Permalink to this headline">¶</a></h2>
-<p>Once the job is complete, there are two files appearing in your current directory.</p>
+<p>and take note of your job_id (which may look something like <em>3139991.r-man2</em>). Check the queue to see when the job is running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat &lt;job_id&gt;
+</pre></div>
+</div>
+<p><img alt="3" src="../../_images/pangeo_setup3.png" /></p>
+</div>
+<div class="section" id="Set-up-port-forwarding-to-access-from-your-desktop-machine">
+<h3>Set up port forwarding to access from your desktop machine<a class="headerlink" href="#Set-up-port-forwarding-to-access-from-your-desktop-machine" title="Permalink to this headline">¶</a></h3>
+<p>Once the job is running on Raijin, there are two files that will appear in your current Raijin directory:</p>
 <ul class="simple">
 <li>client_cmd</li>
 <li>scheduler.json</li>
 </ul>
+<p>The file client_cmd contains commands to forward network traffic from the defined port number of the worker node to an external client machine (i.e., your desktop) via the login node raijin.nci.org.au. In the example below, JupyterLab uses port 8343 and dask dashboard occupies port 8890 respectively from Raijin worker node r225. Note both port numbers are randomly chosen for each job – they will be different each time you run a job.</p>
 <p><img alt="4" src="../../_images/pangeo_setup4.png" /></p>
-<p>The file client_cmd contains commands to forward network traffic from the defined port number of worker node to client machine via the login node raijin.nci.org.au. In the example below, jupyter lab uses port 8343 and dask dashboard occupies port 8890 respectively at the Raijin worker node r225. Note both port numbers are randomly picked up in each job so they keep changing in different job submissions.</p>
-</div>
-<div class="section" id="SSH-login-with/without-password">
-<h2>SSH login with/without password<a class="headerlink" href="#SSH-login-with/without-password" title="Permalink to this headline">¶</a></h2>
-<p>You may need to run each command and type in your Raijin password when needed:</p>
+<p>Next, on your remote machine (e.g., Desktop), run each command separately and enter your Raijin password when prompted.</p>
 <p>CLI_1:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh -N -L 8343:r225:8343 jbw900@raijin.nci.org.au
 jbw900@raijin.nci.org.au&#39;s password:
@@ -281,6 +288,7 @@ jbw900@raijin.nci.org.au&#39;s password:
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bg
 </pre></div>
 </div>
+<p><strong>bg</strong> is a job control command. It resumes suspended jobs in the background, returning the user to the shell prompt while the job runs.</p>
 <p>CLI_2:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh -N -L 8890:r225:8890 jbw900@raijin.nci.org.au
 jbw900@raijin.nci.org.au&#39;s password:
@@ -290,50 +298,44 @@ jbw900@raijin.nci.org.au&#39;s password:
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bg
 </pre></div>
 </div>
-<p>If you have set up the SSH login with trust between the two machines then you could paste the above two lines in one command line interface (CLI) of the client machine (recommend to use VDI or a computer with MAC OS or Linux).</p>
-<p><img alt="5" src="../../_images/pangeo_setup5.png" /></p>
 </div>
-<div class="section" id="Connect-to-the-remote-Jupyter-lab-server-from-your-client-machine">
-<h2>Connect to the remote Jupyter lab server from your client machine<a class="headerlink" href="#Connect-to-the-remote-Jupyter-lab-server-from-your-client-machine" title="Permalink to this headline">¶</a></h2>
-<p>By typing in “localhost:8343” in a web browser of client machine, you could enter the remote jupyter lab interface.</p>
+<div class="section" id="Connect-to-the-remote-JupyterLab-server-from-your-remote-desktop-computer">
+<h3>Connect to the remote JupyterLab server from your remote desktop computer<a class="headerlink" href="#Connect-to-the-remote-JupyterLab-server-from-your-remote-desktop-computer" title="Permalink to this headline">¶</a></h3>
+<p>In a browser on your local desktop, type the following URL “localhost:8343” – where the port matches the details above:</p>
 <p><img alt="6" src="../../_images/pangeo_setup6.png" /></p>
-<p>Then it will prompt the password. Type the password that you set up in the second step in this tutorial.</p>
-<p><img alt="7" src="../../_images/pangeo_setup7.png" /></p>
-<p>Once your authentication passed, a jupyterlab interface will be launched in a few seconds.</p>
+<p>You will be prompted for your JupyterLab password that you created earlier: <img alt="7" src="../../_images/pangeo_setup7.png" /></p>
+<p>Once your authentication has passed, a JupyterLab interface will be launched in a few seconds.</p>
 <p><img alt="8" src="../../_images/pangeo_setup8.png" /></p>
-<p>Now you are ready to run your own notebooks.</p>
 </div>
-<div class="section" id="Let’s-import-a-notebook-example">
-<h2>Let’s import a notebook example<a class="headerlink" href="#Let’s-import-a-notebook-example" title="Permalink to this headline">¶</a></h2>
-<p>You can drag and drop a notebook from your local computer into this Jupyterlab. Then the file will also appear in your working directory in Raijin.</p>
-<p><img alt="9" src="../../_images/pangeo_setup9.png" /></p>
+<div class="section" id="Importing-a-notebook-example">
+<h3>Importing a notebook example<a class="headerlink" href="#Importing-a-notebook-example" title="Permalink to this headline">¶</a></h3>
+<p>You can drag and drop a notebook from your local computer into this JupyterLab. Then the file will also appear in your working directory in Raijin: <img alt="9" src="../../_images/pangeo_setup9.png" /></p>
 <p>The screen shot above shows</p>
 <ol class="arabic simple">
-<li>jupyter notebook interface opened from your local computer</li>
-<li>a directory on local computer from where a notebook is dragged and dropped into the Jupyterlab interface</li>
-<li>Raijin command window showing the notebook appears instantly</li>
+<li>Jupyter notebook interface opened from your local computer and connecting to Raijin</li>
+<li>A directory on local computer from where a notebook is dragged and dropped into the JupyterLab interface</li>
+<li>Raijin command window showing that the notebook appears instantly</li>
 </ol>
 </div>
-<div class="section" id="Utilize-the-dask-server-in-Jupyter-notebook">
-<h2>Utilize the dask server in Jupyter notebook<a class="headerlink" href="#Utilize-the-dask-server-in-Jupyter-notebook" title="Permalink to this headline">¶</a></h2>
-<p>To utilize the dask server established from the PBS job, it is necessary to add and run the following cell at the beginning of your notebook:</p>
+<div class="section" id="Setting-up-your-Jupyter-notebook-to-use-the-dask-server">
+<h3>Setting up your Jupyter notebook to use the dask server<a class="headerlink" href="#Setting-up-your-Jupyter-notebook-to-use-the-dask-server" title="Permalink to this headline">¶</a></h3>
+<p><strong>At the beginning of the notebook</strong></p>
+<p>To utilise the dask server established from the PBS job, it is necessary to add and run the following cell at the beginning of your notebook:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span><span class="p">,</span><span class="n">LocalCluster</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">scheduler_file</span><span class="o">=</span><span class="s1">&#39;scheduler.json&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Its output will show configurations of client and cluster. Make sure the number of cores matches what you requested in the job script. Now you could run your notebook as usual.</p>
-</div>
-<div class="section" id="Terminate-the-job">
-<h2>Terminate the job<a class="headerlink" href="#Terminate-the-job" title="Permalink to this headline">¶</a></h2>
-<p>After all work finished, add and run a cell as below to stop the job.</p>
+<p>The output will show the configuration of the client and dask cluster. You can check that the number of cores matches what you requested in the job script. Now you could run your notebook as usual.</p>
+<p><strong>At the end of the jobscript</strong></p>
+<p>Add and run a cell as below to gracefully stop the job:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pangeo.end.sh
 </pre></div>
 </div>
 </div>
 <div class="section" id="Recap-important-notes">
-<h2>Recap important notes<a class="headerlink" href="#Recap-important-notes" title="Permalink to this headline">¶</a></h2>
-<p>Please make sure the following two lines are added at the beginning and the end of the notebook.</p>
+<h3>Recap important notes<a class="headerlink" href="#Recap-important-notes" title="Permalink to this headline">¶</a></h3>
+<p>Please make sure the following start and stop instructions are added at the beginning and the end of the notebook respectively.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># start the dask client
 client =  Client(scheduler_file=&#39;scheduler.json&#39;)
 
@@ -342,20 +344,21 @@ client =  Client(scheduler_file=&#39;scheduler.json&#39;)
 </pre></div>
 </div>
 </div>
-<div class="section" id="View-threads-using-Dask-dashboard">
-<h2>View threads using Dask dashboard<a class="headerlink" href="#View-threads-using-Dask-dashboard" title="Permalink to this headline">¶</a></h2>
-<p>Open a new tab in the web browser, type the following, the second port in the client_cmd file. If the job starts running, you should be able to see the dynamic resources of the processing.</p>
+<div class="section" id="View-compute-threads-using-Dask-dashboard">
+<h3>View compute threads using Dask dashboard<a class="headerlink" href="#View-compute-threads-using-Dask-dashboard" title="Permalink to this headline">¶</a></h3>
+<p>From your local desktop, open a new tab in the web browser, type the following, the second port in the client_cmd file to open the Dask dashboard. This will allow you to see the dynamic resources of the processing. In your Jupyter notebook, a computationally intensive task will be recognised with a (*) at the start of a cell that is currently in execution. In the Dask dashboard you would then see something similar to the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">localhost</span><span class="p">:</span><span class="mi">8890</span>
 </pre></div>
 </div>
 <p><img alt="10" src="../../_images/pangeo_setup10.png" /></p>
 </div>
 <div class="section" id="Run-Jupyter-notebook-in-a-batch-job">
-<h2>Run Jupyter notebook in a batch job<a class="headerlink" href="#Run-Jupyter-notebook-in-a-batch-job" title="Permalink to this headline">¶</a></h2>
+<h3>Run Jupyter notebook in a batch job<a class="headerlink" href="#Run-Jupyter-notebook-in-a-batch-job" title="Permalink to this headline">¶</a></h3>
+<p>Of course you don’t need to run jupyter notebooks interactively. You can just submit as a job.</p>
 </div>
-<div class="section" id="convert-your-jupyter-notebook-to-a-python-script">
-<h2>convert your jupyter notebook to a python script<a class="headerlink" href="#convert-your-jupyter-notebook-to-a-python-script" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">script</span> <span class="p">[</span><span class="n">YOUR_NOTEBOOK</span><span class="p">}</span><span class="o">.</span><span class="n">ipynb</span>
+<div class="section" id="Step-1:-convert-your-jupyter-notebook-to-a-python-script">
+<h3>Step 1: convert your jupyter notebook to a python script<a class="headerlink" href="#Step-1:-convert-your-jupyter-notebook-to-a-python-script" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter nbconvert --to script [YOUR_NOTEBOOK}.ipynb
 </pre></div>
 </div>
 <p>Make sure you have added the following lines at the beginning of the python script.</p>
@@ -365,11 +368,12 @@ client =  Client(scheduler_file=&#39;scheduler.json&#39;)
 </pre></div>
 </div>
 </div>
-<div class="section" id="Create-the-job-script-as-below">
-<h2>Create the job script as below<a class="headerlink" href="#Create-the-job-script-as-below" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Step-2:-Create-the-job-script-as-below">
+<h3>Step 2: Create the job script as below<a class="headerlink" href="#Step-2:-Create-the-job-script-as-below" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 #PBS -N pangeo_test
 #PBS -q normal
+#PBS -P c25
 #PBS -l walltime=5:00:00
 #PBS -l ncpus=32
 #PBS -l mem=64GB
@@ -387,17 +391,18 @@ pangeo.end.sh
 </div>
 <p>Modify parameters that suit your case, and name it as <strong>run_py.sh</strong></p>
 </div>
-<div class="section" id="Submit-your-job-script-via-‘qsub’-command">
-<h2>Submit your job script via ‘qsub’ command<a class="headerlink" href="#Submit-your-job-script-via-‘qsub’-command" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">run_py</span><span class="o">.</span><span class="n">sh</span>
+<div class="section" id="Step-3:-Submit-your-job-script-via-‘qsub’-command">
+<h3>Step 3: Submit your job script via ‘qsub’ command<a class="headerlink" href="#Step-3:-Submit-your-job-script-via-‘qsub’-command" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qsub run_py.sh
 </pre></div>
 </div>
 </div>
 <div class="section" id="Reference">
-<h2>Reference<a class="headerlink" href="#Reference" title="Permalink to this headline">¶</a></h2>
+<h3>Reference<a class="headerlink" href="#Reference" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><a class="reference external" href="http://pangeo.io">http://pangeo.io</a></li>
 </ul>
+</div>
 </div>
 </div>
 

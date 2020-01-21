@@ -81,7 +81,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Info</span></p>
 <ul>
@@ -96,18 +95,15 @@
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tds.html">THREDDS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Past data training courses</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Help</span></p>
 <ul>
@@ -200,7 +196,7 @@
     text-align: unset;
 }
 </style>
-<p><img alt="logo" src="../../_images/NCI_logo5.png" /></p>
+<p><img alt="logo" src="../../_images/NCI_logo6.png" /></p>
 <hr class="docutils" />
 <div class="section" id="THREDDS-Data-Server:-Netcdf-Subset-Service-(NCSS)">
 <h1>THREDDS Data Server: Netcdf Subset Service (NCSS)<a class="headerlink" href="#THREDDS-Data-Server:-Netcdf-Subset-Service-(NCSS)" title="Permalink to this headline">¶</a></h1>
@@ -217,10 +213,10 @@
 <p>The Netcdf Subset Service (NCSS) is one of the data service endpoints available on many of NCI’s hosted data collections. NCSS is currently available on NCI’s gridded datasets and allows users to request spatial and temporal queries using longitude and latitude values directly.</p>
 <p><strong>Using Netcdf Subset interactively through THREDDS</strong></p>
 <p>Begin by navigating to the THREDDS catalog page for the selected data file (<a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog/rs0/datacube/002/LS8_OLI_NBAR/">http://dapds00.nci.org.au/thredds/catalog/rs0/datacube/002/LS8_OLI_NBAR/</a>-<a href="#id1"><span class="problematic" id="id2">10_</span></a>-21/catalog.html?dataset=LS8_OLI_NBAR/-<a href="#id3"><span class="problematic" id="id4">10_</span></a>-21/<a href="#id5"><span class="problematic" id="id6">LS8_OLI_NBAR_3577_</span></a>-<a href="#id7"><span class="problematic" id="id8">10_</span></a>-21_2013_v1496403192.nc):</p>
-<p><img alt="image0" src="../../_images/ncss1.png" /></p>
-<p>Next, decide whether you want to extract a spatial subset (left/red arrow), defined by a bounding box, or a single point in space (right/green arrow), defined by a single latitude and longitude: <img alt="image1" src="../../_images/ncss21.png" /></p>
+<p><img alt="image0" src="_notebook/tds/images/ncss1.png" /></p>
+<p>Next, decide whether you want to extract a spatial subset (left/red arrow), defined by a bounding box, or a single point in space (right/green arrow), defined by a single latitude and longitude: <img alt="image1" src="_notebook/tds/images/ncss2.png" /></p>
 <p>Then proceed by selecting the desired variables, spatial (or lat/lon point) and temporal extents. As selections are made, the NCSS Request URL (near bottom of the page) will update with these parameters.</p>
-<p><img alt="image2" src="../../_images/ncss31.png" /></p>
+<p><img alt="image2" src="_notebook/tds/images/ncss3.png" /></p>
 <p>Click ‘Submit’ and the request file should begin to download. Alternatively, the NCSS URL can be copied/pasted into a new web browser or used in workflows along with <code class="docutils literal notranslate"><span class="pre">wget</span></code> or <code class="docutils literal notranslate"><span class="pre">curl</span></code> commands.</p>
 <p><strong>Examples of different NCSS Request URLs:</strong> &gt; <a class="reference external" href="http://dapds00.nci.org.au/thredds/ncss/rs0/datacube/002/LS8_OLI_NBAR/">http://dapds00.nci.org.au/thredds/ncss/rs0/datacube/002/LS8_OLI_NBAR/</a>-<a href="#id9"><span class="problematic" id="id10">10_</span></a>-21/<a href="#id11"><span class="problematic" id="id12">LS8_OLI_NBAR_3577_</span></a>-<a href="#id13"><span class="problematic" id="id14">10_</span></a>-21_2013_v1496403192.nc?var=green&amp;latitude=-18.9&amp;longitude=122.89&amp;time_start=2013-04-15T01%3A51%3A20Z&amp;time_end=2013-12-27T01%3A51%3A07Z&amp;accept=netCDF</p>
 <blockquote>

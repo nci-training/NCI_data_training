@@ -1,0 +1,449 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Setup for Pangeo Environment on Gadi &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general.html">Other examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Setup for Pangeo Environment on Gadi</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/general/Setup_Pangeo_environment_Gadi.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Setup-for-Pangeo-Environment-on-Gadi">
+<h1>Setup for Pangeo Environment on Gadi<a class="headerlink" href="#Setup-for-Pangeo-Environment-on-Gadi" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we will go through:</p>
+<ul class="simple">
+<li>Configuring the Pangeo environment using your Gadi account</li>
+<li>Submitting and monitoring multi-node Pangeo jobs to Gadi</li>
+<li>Running Pangeo Jupyter notebooks in batch mode non-interactively</li>
+</ul>
+<p>The <a class="reference external" href="http://pangeo.io">Pangeo</a> software ecosystem involves open source tools such as <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a>, <a class="reference external" href="https://scitools.org.uk/iris/docs/latest/">iris</a>, <a class="reference external" href="https://dask.org/">dask</a>, <a class="reference external" href="https://jupyter.org/">Jupyter</a> and many other packages.</p>
+<p>This notebook provides instructions on how to use the Pangeo environment to run a multi-node parallel Jupyter notebook within the queues on Gadi and shows how to interact with it from your desktop.</p>
+<div class="section" id="Configuring-your-account-on-Gadi">
+<h2>Configuring your account on Gadi<a class="headerlink" href="#Configuring-your-account-on-Gadi" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Step-1:-Enabling-Pangeo-in-your-shell-envorinment">
+<h3>Step 1: Enabling Pangeo in your shell envorinment<a class="headerlink" href="#Step-1:-Enabling-Pangeo-in-your-shell-envorinment" title="Permalink to this headline">¶</a></h3>
+<p>To enable the Pangeo environment, you can use the following command within jobs, or within an interactive environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load pangeo/2019.12
+        Loading requirement: intel-mkl/2019.3.199 python3/3.7.4 hdf5/1.10.5 netcdf/4.7.1
+</pre></div>
+</div>
+<p>Note that Pangeo has its own Python installation.</p>
+</div>
+<div class="section" id="Step-2:-Configuring-your-JupyterLab-password-on-Gadi">
+<h3>Step 2: Configuring your JupyterLab password on Gadi<a class="headerlink" href="#Step-2:-Configuring-your-JupyterLab-password-on-Gadi" title="Permalink to this headline">¶</a></h3>
+<p>We will use JupyterLab to load notebooks and monitor jobs. JupyterLab is bundled within the Pangeo environment. To setup this environment, run the following two commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook --generate-config
+$ jupyter notebook password
+</pre></div>
+</div>
+<p>This is a stand-alone password that you will use later for accessing the JupyterLab server. You can use this command to reset your password at any time.</p>
+</div>
+<div class="section" id="Step-3:-Exiting-the-Pangeo-environment">
+<h3>Step 3: Exiting the Pangeo environment<a class="headerlink" href="#Step-3:-Exiting-the-Pangeo-environment" title="Permalink to this headline">¶</a></h3>
+<p>You can quit the environment at any time by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ !pangeo.end.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="Submitting-a-multi-node-Pangeo-job-to-Raijin">
+<h3>Submitting a multi-node Pangeo job to Raijin<a class="headerlink" href="#Submitting-a-multi-node-Pangeo-job-to-Raijin" title="Permalink to this headline">¶</a></h3>
+<p>First create a directory where you will run the jupyter notebook:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/pangeo/tutorial
+</pre></div>
+</div>
+<p>You can create a shell script by copying the following commands into a script file. Let’s name this file run_ipynb_job.sh:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#PBS -N pangeo_test</span>
+<span class="c1">#PBS -P c25</span>
+<span class="c1">#PBS -q normal</span>
+<span class="c1">#PBS -l walltime=5:00:00</span>
+<span class="c1">#PBS -l ncpus=96</span>
+<span class="c1">#PBS -l mem=384GB</span>
+<span class="c1">#PBS -l jobfs=100GB</span>
+<span class="c1">#PBS -l storage=scratch/z00+scratch/c25+gdata/c25</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">pangeo</span><span class="o">/</span><span class="mf">2019.12</span>
+<span class="n">pangeo</span><span class="o">.</span><span class="n">ini</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">sleep</span> <span class="n">infinity</span>
+</pre></div>
+</div>
+<p>Note that for Gadi, the “#PBS -l storage=” flag is required which must include <strong>all</strong> the scratch and gdata project IDs that will be used in your codes.</p>
+<p>Additionally, jobs beyond a single node must use multiples of 48 for their ncpus request.</p>
+<p>Dask requires whole nodes so you need to have a job that requires these resources. In this example we request 2 Gadi Cascade Lake nodes with 96 CPUs and 384GB memory. For further instructions about node types on Gadi, consult the <a class="reference external" href="https://opus.nci.org.au/display/Help/Gadi+Job+Queues">NCI user guide</a> on the specific configurations.</p>
+<p>The above jobscript will load the Pangeo module, run the initialisation script called <strong>pangeo.ini.all.sh</strong>, and keep the environment alive for the lifetime of the PBS job. The initialisation script will set up the dask scheduler on one node and multiple workers on all the other nodes.</p>
+<p>To submit the job to the queue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qsub run_ipynb_job.sh
+</pre></div>
+</div>
+<p>and take note of your job_id (which may look something like 1030967.gadi-pbs). Check the queue to see when the job is running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat &lt;job_id&gt;
+</pre></div>
+</div>
+<p><img alt="3" src="../../_images/pangeo_setup3_gadi.png" /></p>
+</div>
+<div class="section" id="Set-up-port-forwarding-to-access-from-your-desktop-machine">
+<h3>Set up port forwarding to access from your desktop machine<a class="headerlink" href="#Set-up-port-forwarding-to-access-from-your-desktop-machine" title="Permalink to this headline">¶</a></h3>
+<p>Once the job is running on Gadi, there will be two files that are created in your current Gadi directory:</p>
+<ul class="simple">
+<li>client_cmd</li>
+<li>scheduler.json</li>
+</ul>
+<p>The file client_cmd contains commands to forward network traffic from the defined port number of the worker node to an external client machine (i.e., your desktop) via the login node gadi.nci.org.au.</p>
+<p>Running</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ more client_cmd
+</pre></div>
+</div>
+<p>should give an output that looks something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">N</span> <span class="o">-</span><span class="n">L</span> <span class="mi">8388</span><span class="p">:</span><span class="n">gadi</span><span class="o">-</span><span class="n">cpu</span><span class="o">-</span><span class="n">clx</span><span class="o">-</span><span class="mf">2224.</span><span class="n">gadi</span><span class="o">.</span><span class="n">nci</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">au</span><span class="p">:</span><span class="mi">8388</span> <span class="n">abc123</span><span class="nd">@gadi</span><span class="o">.</span><span class="n">nci</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">au</span>
+<span class="n">ssh</span> <span class="o">-</span><span class="n">N</span> <span class="o">-</span><span class="n">L</span> <span class="mi">8768</span><span class="p">:</span><span class="n">gadi</span><span class="o">-</span><span class="n">cpu</span><span class="o">-</span><span class="n">clx</span><span class="o">-</span><span class="mf">2224.</span><span class="n">gadi</span><span class="o">.</span><span class="n">nci</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">au</span><span class="p">:</span><span class="mi">8768</span> <span class="n">abc123</span><span class="nd">@gadi</span><span class="o">.</span><span class="n">nci</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">au</span>
+</pre></div>
+</div>
+<p>For this example, JupyterLab uses port 8388 and dask dashboard occupies port 8768 respectively from Gadi worker node gadi-cpu-clx-2224.</p>
+<p>Note that both port numbers are randomly chosen for each job and will be different each time you run a new job.</p>
+<p>Next, on your remote machine (e.g., Desktop), run each of the following commands separately and enter your Gadi password if prompted.</p>
+<p>CLI_1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh -N -L 8388:gadi-cpu-clx-2224.gadi.nci.org.au:8388 abc123@gadi.nci.org.au &amp;
+</pre></div>
+</div>
+<p>CLI_2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh -N -L 8768:gadi-cpu-clx-2224.gadi.nci.org.au:8768 abc123@gadi.nci.org.au &amp;
+</pre></div>
+</div>
+</div>
+<div class="section" id="Connect-to-the-remote-JupyterLab-server-from-your-remote-desktop-computer">
+<h3>Connect to the remote JupyterLab server from your remote desktop computer<a class="headerlink" href="#Connect-to-the-remote-JupyterLab-server-from-your-remote-desktop-computer" title="Permalink to this headline">¶</a></h3>
+<p>In a browser on your local desktop, type the following URL “localhost:8388” – where the port matches the details above:</p>
+<p><img alt="6" src="../../_images/pangeo_setup6_gadi.png" /></p>
+<p>You will be prompted for your JupyterLab password that you created earlier: <img alt="7" src="../../_images/pangeo_setup7.png" /></p>
+<p>Once your authentication has passed, a JupyterLab interface will be launched in a few seconds.</p>
+<p><img alt="8" src="../../_images/pangeo_setup8.png" /></p>
+</div>
+<div class="section" id="Importing-a-notebook-example">
+<h3>Importing a notebook example<a class="headerlink" href="#Importing-a-notebook-example" title="Permalink to this headline">¶</a></h3>
+<p>You can drag and drop a notebook from your local machine into the JupyterLab. This file will then also appear in your working directory on Gadi: <img alt="9" src="../../_images/pangeo_setup9.png" /></p>
+<p>The screen shot above shows</p>
+<ol class="arabic simple">
+<li>Jupyter notebook interface opened from your local computer and connecting to Gadi</li>
+<li>A directory on your local machine from where a notebook is dragged and dropped into the JupyterLab interface</li>
+<li>Gadi command window showing that the notebook appears instantly</li>
+</ol>
+</div>
+<div class="section" id="Setting-up-your-Jupyter-notebook-to-use-the-dask-server">
+<h3>Setting up your Jupyter notebook to use the dask server<a class="headerlink" href="#Setting-up-your-Jupyter-notebook-to-use-the-dask-server" title="Permalink to this headline">¶</a></h3>
+<p><strong>At the beginning of the notebook</strong></p>
+<p>To utilise the dask server established from the PBS job, it is necessary to add and run the following cell at the beginning of your notebook:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span><span class="p">,</span><span class="n">LocalCluster</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">scheduler_file</span><span class="o">=</span><span class="s1">&#39;scheduler.json&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The output will show the configuration of the client and dask cluster. You can check that the number of cores matches what you requested in the job script. Now you could run your notebook as usual.</p>
+<p><strong>At the end of the jobscript</strong></p>
+<p>Add and run a cell as below to gracefully stop the job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pangeo.end.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="Recap-important-notes">
+<h3>Recap important notes<a class="headerlink" href="#Recap-important-notes" title="Permalink to this headline">¶</a></h3>
+<p>Please make sure the following start and stop instructions are added at the beginning and the end of the notebook respectively.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># start the dask client
+client =  Client(scheduler_file=&#39;scheduler.json&#39;)
+
+# stop the pbs job.
+!pangeo.end.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="View-compute-threads-using-Dask-dashboard">
+<h3>View compute threads using Dask dashboard<a class="headerlink" href="#View-compute-threads-using-Dask-dashboard" title="Permalink to this headline">¶</a></h3>
+<p>From your local desktop, open a new tab in the web browser and type the second port in the client_cmd file to open the Dask dashboard. This will allow you to see the dynamic resources of the processing. In your Jupyter notebook, a computationally intensive task will be recognised with a (*) at the start of a cell that is currently in execution. In the Dask dashboard you would then see something similar to the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">localhost</span><span class="p">:</span><span class="mi">8768</span>
+</pre></div>
+</div>
+<p><img alt="10" src="../../_images/pangeo_setup10.png" /></p>
+</div>
+<div class="section" id="Run-Jupyter-notebook-in-a-batch-job">
+<h3>Run Jupyter notebook in a batch job<a class="headerlink" href="#Run-Jupyter-notebook-in-a-batch-job" title="Permalink to this headline">¶</a></h3>
+<p>Of course you don’t need to run Jupyter notebooks interactively. You can just submit them as a job.</p>
+</div>
+<div class="section" id="Step-1:-Convert-your-Jupyter-notebook-to-a-Python-script">
+<h3>Step 1: Convert your Jupyter notebook to a Python script<a class="headerlink" href="#Step-1:-Convert-your-Jupyter-notebook-to-a-Python-script" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load pangeo
+
+$ jupyter nbconvert --to script [YOUR_NOTEBOOK}.ipynb
+</pre></div>
+</div>
+<p>Make sure you have added the following lines to the beginning of the Python script.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span><span class="p">,</span><span class="n">LocalCluster</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">scheduler_file</span><span class="o">=</span><span class="s1">&#39;scheduler.json&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Step-2:-Create-the-job-script">
+<h3>Step 2: Create the job script<a class="headerlink" href="#Step-2:-Create-the-job-script" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#PBS -N pangeo_test
+#PBS -q normal
+#PBS -P c25
+#PBS -l walltime=5:00:00
+#PBS -l ncpus=96
+#PBS -l mem=384GB
+#PBS -l jobfs=100GB
+#PBS -l storage=scratch/c25+gdata/c25
+
+module load pangeo/2019.10
+pangeo.ini.all.sh
+
+cd $PBS_O_WORKDIR
+python3 YOUR_PYSCRIPT_NAME.py
+pangeo.end.sh
+</pre></div>
+</div>
+<p>Modify the parameters to suit your code and give it a name (e.g. <strong>run_py.sh</strong>)</p>
+</div>
+<div class="section" id="Step-3:-Submit-your-job-script-via-‘qsub’-command">
+<h3>Step 3: Submit your job script via ‘qsub’ command<a class="headerlink" href="#Step-3:-Submit-your-job-script-via-‘qsub’-command" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qsub run_py.sh
+</pre></div>
+</div>
+<p>Note that users need to manage all necessary modules by themselves.</p>
+</div>
+<div class="section" id="Reference">
+<h3>Reference<a class="headerlink" href="#Reference" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://pangeo.io">http://pangeo.io</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

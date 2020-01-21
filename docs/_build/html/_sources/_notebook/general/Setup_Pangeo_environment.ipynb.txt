@@ -4,107 +4,127 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "![logo](../../_static/images/NCI_logo.png)\n",
     "\n",
-    "-------\n",
-    "\n",
-    "# Setup Pangeo Environment\n",
+    "# Setup for Pangeo Environment on Raijin\n",
     "\n",
     "\n",
-    "In this notebook:\n",
+    "In this notebook we will go through:\n",
     "\n",
-    "- Load Pangeo module\n",
-    "- Activate pangeo enviornment\n",
-    "- submit a batch job script to the queue system\n",
-    "- Set up port forwarding at the client machine\n",
-    "- Connect to the remote Jupyter lab server from client machine\n",
-    "- Utilise the dask server in Jupyter notebook\n",
-    "- Visulise dask dashboard\n",
-    "- Run Jupyter notebook in a batch job\n",
-    "\n",
-    "--- "
+    "- Configuring the Pangeo environment on your Raijin account\n",
+    "- Submitting and monitoring a multi-node Pangeo job to Raijin\n",
+    "- Running a Pangeo Jupyter notebook in batch mode non-interactively\n"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "**Pangeo** is a community platform for big data in geoscience, funded by US NSF. Pangeo project serves as a coordination point between scientists, software and computing infrastructure. The Pangeo software ecosystem involves open source tools such as xarray, iris, dask, jupyter, and many other packages. [This site](http://pangeo.io) provides guidance for accessing data and performing analysis using these tools. NCI has installed the Pangeo environment on Raijin by following instructions [here](http://pangeo.io/setup_guides/hpc.html). \n",
+    "The [Pangeo](http://pangeo.io) software ecosystem involves open source tools such as [xarray](http://xarray.pydata.org/en/stable/), [iris](https://scitools.org.uk/iris/docs/latest/), [dask](https://dask.org/), [Jupyter](https://jupyter.org/) and many other packages. \n",
     "\n",
-    "Please note that Pangeo will be transferred to Gadi when major Raijin/Gadi transition happens in Nov 2019. This notebook provides instructions on how to use the Pangeo environment to run your jupyter notebook on your desktop and interact with Raijin remotely. "
+    "This notebook provides instructions on how to use the Pangeo environment to run a multi-node parallel Jupyter notebook within the queues of Raijin and shows how to interact with it from your desktop.\n",
+    "\n",
+    "Please note that Pangeo will soon be enabled on Gadi."
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Load Pangeo module on Raijin and activate Pangeo environment"
+    "## Configuring your account on Raijin"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "###  Step 1: Enabling Pangeo in your shell envorinment"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "To enable the Pangeo environment, you will use the following commands within jobs, or within an interactive environment:\n",
+    "\n",
     "```\n",
     "$ module load pangeo/2019.10\n",
     "$ source ${PANGEO_ROOT}/etc/profile.d/conda.sh\n",
     "$ conda activate pangeo\n",
     "```\n",
-    "You will see pangeo appear in the brackets in front of the prompt. You can quit the enviornment using **conda deactivate**\n",
+    "You should now see Pangeo appear in the brackets in front of the prompt. Note that Pangeo has its own python installation.\n",
     "\n",
-    "```\n",
-    "$conda deactivate\n",
-    "```\n",
     "\n",
-    "![1](images/pangeo_setup1.png)\n",
-    "\n",
-    "If you ask where your Python command lives, it should direct you to where pangeo was installed on Raijin. \n",
-    "\n",
-    "![2](images/pangeo_setup2.png)\n",
-    "\n"
+    "![1](images/pangeo_setup1.png)"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Configure Jupyter"
+    "![2](images/pangeo_setup2.png)"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Run the following two lines of command.\n",
+    "###  Step 2: Configuring your JupyterLab password on Raijin"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We will use JupyterLab to load notebooks and monitor jobs. JupyterLab is bundled within the Pangeo environment. To setup this environment run the following two commands:\n",
     "\n",
     "```\n",
-    "$ jupyter notebook --generate-config\n",
-    "$ jupyter notebook password\n",
+    "(pangeo) $ jupyter notebook --generate-config\n",
+    "(pangeo) $ jupyter notebook password\n",
     "```\n",
-    "It will prompt you to enter a password for opening the jupyter notebook on your local machine later. You can simply type a password and you need to remember it!\n",
     "\n",
-    "If the command does not work (often in older versions of Jupyter), there are [instructions](http://pangeo.io/setup_guides/hpc.html) on how to set up step-by-step."
+    "This is a stand-alone password that you will use later for accessing the JupyterLab server. You can use this command to reset this password at any time."
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Start a Jupyter Notebook Server"
+    "### Step 3: Exiting the Pangeo environment"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "First create a directory where you will run the jupyter notebook, let's call it ~/pangeo/tutorial. \n",
+    "You can quit the environment at any time by using \"conda deactivate\":\n",
+    "```\n",
+    "$ conda deactivate\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Submitting a multi-node Pangeo job to Raijin"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "First create a directory where you will run the jupyter notebook:\n",
     "\n",
-    "Submit a batch job script as below to the queue system. You can create a shell script by copying the following commands into a script file. Let's name it as run_ipynb_job.sh. Or you can download the example script here. We request 2 notes with 32 CPU and 64GB memory in this instance. Further instructions  about job submission and running jobs on Raijin can be found [here](https://opus.nci.org.au/display/Help/Running+Jobs).\n",
+    "```\n",
+    "$ mkdir ~/pangeo/tutorial\n",
     "\n",
+    "```\n",
+    "You can create a shell script by copying the following commands into a script file. Let’s name this file run_ipynb_job.sh:\n",
     "\n",
     "```\n",
     "#!/bin/bash\n",
     "#PBS -N pangeo_test\n",
+    "#PBS -P c25\n",
     "#PBS -q normal\n",
     "#PBS -l walltime=5:00:00\n",
     "#PBS -l ncpus=32\n",
@@ -115,26 +135,51 @@
     "sleep infinity\n",
     "```\n",
     "\n",
-    "![3](images/pangeo_setup3.png)\n",
+    "Dask requires whole nodes so you need to have a job that needs these resources. In this example we request 2 Raijin Sandy Bridge nodes with 32 CPU and 64GB memory. For further instructions about node types on Raijin, consult the [NCI user guide](https://opus.nci.org.au/display/Help/Running+Jobs) on the specific configurations. \n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The above jobscript will load the Pangeo module, run the initialization script called **pangeo.ini.all.sh**, and keeps the environment alive for the lifetime of the PBS job. The initialization script will set up the dask scheduler on one node and multiple workers on all the other nodes. \n",
     "\n",
-    "Please always request one or multiple whole nodes in your job script. The above job will load the pangeo module, run the initialization script called **pangeo.ini.all.sh**, and keep alive in the job lifetime. The initialization script will set up the dask scheduler at one node and multiple workers on all nodes. After that, it will start up the jupyter lab and create port forwarding commands for the user by putting them into a file named ‘client_cmd’ . "
+    "Now, submit the job to the queue:\n",
+    "\n",
+    "```\n",
+    "$ qsub run_ipynb_job.sh\n",
+    "\n",
+    "```\n",
+    "\n",
+    "and take note of your job_id (which may look something like *3139991.r-man2*). Check the queue to see when the job is running:\n",
+    "\n",
+    "```\n",
+    "$ qstat <job_id>\n",
+    "\n",
+    "```\n",
+    "\n",
+    "\n",
+    "![3](images/pangeo_setup3.png)\n",
+    "\n"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Set up port forwarding at the client machine"
+    "### Set up port forwarding to access from your desktop machine"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Once the job is complete, there are two files appearing in your current directory. \n",
+    "Once the job is running on Raijin, there are two files that will appear in your current Raijin directory: \n",
     "\n",
     "* client_cmd\n",
     "* scheduler.json\n",
+    "\n",
+    "The file client_cmd contains commands to forward network traffic from the defined port number of the worker node to an external client machine (i.e., your desktop) via the login node raijin.nci.org.au. In the example below, JupyterLab uses port 8343 and dask dashboard occupies port 8890 respectively from Raijin worker node r225. Note both port numbers are randomly chosen for each job – they will be different each time you run a job.\n",
     "\n",
     "![4](images/pangeo_setup4.png)\n"
    ]
@@ -143,22 +188,13 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "The file client_cmd contains commands to forward network traffic from the defined port number of worker node to client machine via the login node raijin.nci.org.au. In the example below, jupyter lab uses port 8343 and dask dashboard occupies port 8890 respectively at the Raijin worker node r225. Note both port numbers are randomly picked up in each job so they keep changing in different job submissions. "
+    "Next, on your remote machine (e.g., Desktop), run each command separately and enter your Raijin password when prompted."
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### SSH login with/without password"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "You may need to run each command and type in your Raijin password when needed: \n",
-    " \n",
     "CLI_1: \n",
     "\n",
     "```\n",
@@ -171,6 +207,7 @@
     "```\n",
     "$ bg\n",
     "```\n",
+    "**bg** is a job control command. It resumes suspended jobs in the background, returning the user to the shell prompt while the job runs.\n",
     "\n",
     "CLI_2: \n",
     "\n",
@@ -183,69 +220,77 @@
     "\n",
     "```\n",
     "$ bg\n",
-    "```\n",
-    "\n",
-    "If you have set up the SSH login with trust between the two machines then you could paste the above two lines in one command line interface (CLI) of the client machine (recommend to use VDI or a computer with MAC OS or Linux). \n",
-    "\n",
-    "![5](images/pangeo_setup5.png)\n",
-    "\n"
+    "```"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Connect to the remote Jupyter lab server from your client machine\n",
+    "### Connect to the remote JupyterLab server from your remote desktop computer\n",
     "\n",
-    "By typing in “localhost:8343” in a web browser of client machine, you could enter the remote jupyter lab interface. \n",
+    "In a browser on your local desktop, type the following URL “localhost:8343” – where the port matches the details above:\n",
     "\n",
-    "![6](images/pangeo_setup6.png)\n",
-    "\n",
-    "Then it will prompt the password. Type the password that you set up in the second step in this tutorial. \n",
-    "\n",
-    "![7](images/pangeo_setup7.png)\n",
-    "\n",
-    "Once your authentication passed, a jupyterlab interface will be launched in a few seconds.\n",
-    "\n",
-    "![8](images/pangeo_setup8.png)\n",
-    "\n",
-    "Now you are ready to run your own notebooks."
+    "![6](images/pangeo_setup6.png)"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Let's import a notebook example"
+    "You will be prompted for your JupyterLab password that you created earlier:\n",
+    "![7](images/pangeo_setup7.png)"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "You can drag and drop a notebook from your local computer into this Jupyterlab. Then the file will also appear in your working directory in Raijin. \n",
+    "Once your authentication has passed, a JupyterLab interface will be launched in a few seconds.\n",
     "\n",
+    "![8](images/pangeo_setup8.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Importing a notebook example"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You can drag and drop a notebook from your local computer into this JupyterLab. Then the file will also appear in your working directory in Raijin:\n",
     "![9](images/pangeo_setup9.png)\n",
     "\n",
     "The screen shot above shows\n",
     "\n",
-    "1. jupyter notebook interface opened from your local computer\n",
-    "2. a directory on local computer from where a notebook is dragged and dropped into the Jupyterlab interface\n",
-    "3. Raijin command window showing the notebook appears instantly"
+    "1. Jupyter notebook interface opened from your local computer and connecting to Raijin\n",
+    "2. A directory on local computer from where a notebook is dragged and dropped into the JupyterLab interface\n",
+    "3. Raijin command window showing that the notebook appears instantly"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Utilize the dask server in Jupyter notebook"
+    "### Setting up your Jupyter notebook to use the dask server"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "To utilize the dask server established from the PBS job, it is necessary to add and run the following cell at the beginning of your notebook: \n",
+    "**At the beginning of the notebook**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "To utilise the dask server established from the PBS job, it is necessary to add and run the following cell at the beginning of your notebook: \n",
     "\n",
     "```\n",
     "from dask.distributed import Client,LocalCluster \n",
@@ -253,16 +298,16 @@
     "print(client) \n",
     "```\n",
     "\n",
-    "Its output will show configurations of client and cluster. Make sure the number of cores matches what you requested in the job script. Now you could run your notebook as usual."
+    "The output will show the configuration of the client and dask cluster. You can check that the number of cores matches what you requested in the job script. Now you could run your notebook as usual."
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Terminate the job\n",
+    "**At the end of the jobscript**\n",
     "\n",
-    "After all work finished, add and run a cell as below to stop the job.\n",
+    "Add and run a cell as below to gracefully stop the job:\n",
     "\n",
     "```\n",
     "!pangeo.end.sh\n",
@@ -275,7 +320,7 @@
    "source": [
     "### Recap important notes\n",
     "\n",
-    "Please make sure the following two lines are added at the beginning and the end of the notebook.\n",
+    "Please make sure the following start and stop instructions are added at the beginning and the end of the notebook respectively.\n",
     "\n",
     "```\n",
     "# start the dask client\n",
@@ -290,14 +335,14 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### View threads using Dask dashboard\n",
+    "### View compute threads using Dask dashboard\n",
     "\n",
-    "Open a new tab in the web browser, type the following, the second port in the client_cmd file. \n",
-    "If the job starts running, you should be able to see the dynamic resources of the processing.\n",
+    "From your local desktop, open a new tab in the web browser, type the following, the second port in the client_cmd file to open the Dask dashboard. This will allow you to see the dynamic resources of the processing.  In your Jupyter notebook, a computationally intensive task will be recognised with a (*) at the start of a cell that is currently in execution.  In the Dask dashboard you would then see something similar to the following:\n",
     "\n",
     "```\n",
     "localhost:8890\n",
     "```\n",
+    "\n",
     "![10](images/pangeo_setup10.png)"
    ]
   },
@@ -305,14 +350,16 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Run Jupyter notebook in a batch job"
+    "### Run Jupyter notebook in a batch job\n",
+    "\n",
+    "Of course you don’t need to run jupyter notebooks interactively. You can just submit as a job."
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### convert your jupyter notebook to a python script"
+    "### Step 1: convert your jupyter notebook to a python script"
    ]
   },
   {
@@ -320,7 +367,7 @@
    "metadata": {},
    "source": [
     "```\n",
-    "jupyter nbconvert --to script [YOUR_NOTEBOOK}.ipynb\n",
+    "$ jupyter nbconvert --to script [YOUR_NOTEBOOK}.ipynb\n",
     "```\n",
     "\n",
     "Make sure you have added the following lines at the beginning of the python script.\n",
@@ -336,7 +383,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Create the job script as below"
+    "### Step 2: Create the job script as below"
    ]
   },
   {
@@ -347,6 +394,7 @@
     "#!/bin/bash \n",
     "#PBS -N pangeo_test \n",
     "#PBS -q normal\n",
+    "#PBS -P c25\n",
     "#PBS -l walltime=5:00:00 \n",
     "#PBS -l ncpus=32 \n",
     "#PBS -l mem=64GB \n",
@@ -369,7 +417,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Submit your job script via 'qsub' command"
+    "### Step 3: Submit your job script via 'qsub' command"
    ]
   },
   {
@@ -378,7 +426,7 @@
    "source": [
     "\n",
     "```\n",
-    "qsub run_py.sh\n",
+    "$ qsub run_py.sh\n",
     "```"
    ]
   },

@@ -10,19 +10,27 @@ Notebook examples
 ----------------------
 
 
-Data Quick Preview
+Data Access and Quick Preview
 ++++++++++++++++++++++++++++++++++++++++
 
 * `ncdump <ncdump_cmip5.ipynb>`_
 * `ncview <ncview_cmip5.ipynb>`_
 * `GDALinfo <gdalbasics_cmip5.ipynb>`_
 * `Python_GDAL_netCDF <python_GDAL_netcdf_cmip5.ipynb>`_
+* `Search and Access CMIP5 data using Clef and Xarray <CMIP5_Data_Search_Access.ipynb>`_
+* `Search and Access CMIP6 data using Clef and Xarray <CMIP6_Data_Search_Access.ipynb>`_
+
          
 Data Manipulation
 ++++++++++++++++++++
-* `Calculate monthly anomally and Nino Index using CMIP6 data <CDO_monthly_anomaly_and_NinoIndex_CMIP6.ipynb>`_
-* `Access and plot data using Xarray <Python_DataAccessBasics_cmip5.ipynb>`_ 
-* `Load data and do more complicated operations using Xarray <Python_DataStatsVis_cmip6.ipynb>`_ 
+* `CDO - calculate monthly anomally and Nino Index using CMIP6 data <CDO_monthly_anomaly_and_NinoIndex_CMIP6.ipynb>`_
+* `CDO - compare model and observational data <CDO_model_obs_compare.ipynb>`_
+* `CDO - mask ocean or land <CDO_ocean_land_mask.ipynb>`_
+* `Xarray - open and read data <Xarray_access_cmip5.ipynb>`_ 
+* `Xarray - subset and plot data (sliding and dicing) <Xarray_subset_plot_cmip5.ipynb>`_ 
+* `Xarray - calculate surface temperature anomalies in Australian <Xarray_calculate_metrics.ipynb>`_ 
+* `Xarray - calculate Nino 34 time series <Xarray_calculate_Nino34_time_series.ipynb>`_
+* `Xarray - common operations, resampling, rolling and climatology <Xarray_statistical_resample_roll_climatology.ipynb>`_
 * `Netcdf Subset Service (NCSS) with Python and Siphon <ncss_python_siphon_cmip5.ipynb>`_
 * `Panoply CMIP5 <Panoply_cmip5.ipynb>`_ 
 * `Panoply eReef and ANU water <Panoply_eReef_ANUwater.ipynb>`_ 

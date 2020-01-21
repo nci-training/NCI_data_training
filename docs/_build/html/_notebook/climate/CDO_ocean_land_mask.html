@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Use cdo to create land/sea mask &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Use cdo to create land/sea mask</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/CDO_ocean_land_mask.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="../../_images/NCI_logo.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Use-cdo-to-create-land/sea-mask">
+<h1>Use cdo to create land/sea mask<a class="headerlink" href="#Use-cdo-to-create-land/sea-mask" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook:</p>
+<ul class="simple">
+<li>Load CDO module</li>
+<li>Look at the information of the file</li>
+<li>visulise the data using ncview</li>
+<li>Create land and ocean masks to limit the field to land/ocean values</li>
+</ul>
+<p>The following material uses Coupled Model Intercomparison Project (CMIP6) collections. The CMIP6 terms of use are found <a class="reference external" href="https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html">here</a>. For more information on the collection, please <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563">click here</a>.</p>
+<p>CDO stands for “Cliamte Data Operators”. CDO is a collection of command line Operators to manipulate and analyse Climate and NWP model Data. Supported data formats are GRIB 1/2, netCDF 3/4, SERVICE, EXTRA and IEG. There are more than 600 operators available. See <a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo">here</a> for more information about this library.</p>
+<div class="section" id="Load-CDO-module-from-Raijin">
+<h2>Load CDO module from Raijin<a class="headerlink" href="#Load-CDO-module-from-Raijin" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load cdo
+</pre></div>
+</div>
+</div>
+<div class="section" id="List-the-path-of-the-CMIP6-data">
+<h2>List the path of the CMIP6 data<a class="headerlink" href="#List-the-path-of-the-CMIP6-data" title="Permalink to this headline">¶</a></h2>
+<p>Here we will be using CMIP6 data as an example.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc
+</pre></div>
+</div>
+<p>This file includes the near surface temperature from the 20th century all-forcing historical simulation based on CESM2.0 model of NCAR.</p>
+</div>
+<div class="section" id="Have-a-look-at-the-data-file-using-cdo-info">
+<h2>Have a look at the data file using cdo info<a class="headerlink" href="#Have-a-look-at-the-data-file-using-cdo-info" title="Permalink to this headline">¶</a></h2>
+<p>Basic usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo info &lt;filename&gt; | less
+</pre></div>
+</div>
+<p><strong>less</strong> display only one page at a time in the termial. You can move forwards and backwards to see more. Press <strong>q</strong> to quit the view.</p>
+<p><img alt="1" src="../../_images/cdo_anomoly_nino3.png" /></p>
+<p>Use <strong>ncview</strong> to show the data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncview /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc
+</pre></div>
+</div>
+<p>The data looks like this</p>
+<p><img alt="1" src="../../_images/cdo_anomoly_nino3.png" /></p>
+</div>
+<div class="section" id="Let’s-see-which-year-this-file-includes">
+<h2>Let’s see which year this file includes<a class="headerlink" href="#Let’s-see-which-year-this-file-includes" title="Permalink to this headline">¶</a></h2>
+<p>We use function <strong>showyear</strong> to display all the years in this file</p>
+<p><strong>Basic usage</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo showyear &lt;file&gt;
+</pre></div>
+</div>
+<p><img alt="2" src="../../_images/cdo_anomoly_nino2.png" /></p>
+</div>
+<div class="section" id="Create-topography-data">
+<h2>Create topography data<a class="headerlink" href="#Create-topography-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo -f nc topo topo.nc
+</pre></div>
+</div>
+<p>The operator topo creates a half degree regular grid with the heights and depths. This can be very usefull for generating masks to a certain height/depth.</p>
+<p>The created topo.nc file is shown below. Here in the topo.nc file, the topography values over land areas are greater than 0 whearas over ocean areas the topography is less than 0.</p>
+<p><img alt="3" src="../../_images/cdo_mask1.png" /></p>
+</div>
+<div class="section" id="Create-ocean-mask-file">
+<h2>Create ocean mask file<a class="headerlink" href="#Create-ocean-mask-file" title="Permalink to this headline">¶</a></h2>
+<p><strong>Basic usage</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo gtc, 0 -remapcon, &lt;input.nc&gt; topo.nc &lt;output.nc&gt;
+</pre></div>
+</div>
+<p>There are several steps involved in here:</p>
+<p>First, remapping topo.nc file to change its reserlution so that it is consistent with the input data that we use.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo remapcon, &lt;input.nc&gt; topo.nc &lt;output.nc&gt;
+$ cdo -remapcon,/g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc topo.nc topo_adjusted.nc
+</pre></div>
+</div>
+<p>Second, create a mask containing 1 if the topography element is greater than 0.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo gtc, 0 &lt;input.nc&gt; &lt;output.nc&gt;
+$ cdo gtc, 0 topo_adjusted.nc seamask.nc
+</pre></div>
+</div>
+</div>
+<div class="section" id="Now-we-will-try-to-chain-all-the-commands-together">
+<h2>Now we will try to chain all the commands together<a class="headerlink" href="#Now-we-will-try-to-chain-all-the-commands-together" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo -f nc -gtc, 0 -remapcon, &lt;input.nc&gt; -topo &lt;output.nc&gt;
+$ cdo -f nc  -gtc,0  -remapcon,/g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc -topo seamask.nc
+</pre></div>
+</div>
+</div>
+<div class="section" id="Similarly,-we-can-get-land-mask-using-the-following-commands">
+<h2>Similarly, we can get land mask using the following commands<a class="headerlink" href="#Similarly,-we-can-get-land-mask-using-the-following-commands" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cdo</span> <span class="o">-</span><span class="n">f</span> <span class="n">nc</span>  <span class="o">-</span><span class="n">lec</span><span class="p">,</span> <span class="mi">0</span>  <span class="o">-</span><span class="n">remapcon</span><span class="p">,</span><span class="o">/</span><span class="n">g</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">oi10</span><span class="o">/</span><span class="n">replicas</span><span class="o">/</span><span class="n">CMIP6</span><span class="o">/</span><span class="n">CMIP</span><span class="o">/</span><span class="n">NCAR</span><span class="o">/</span><span class="n">CESM2</span><span class="o">/</span><span class="n">historical</span><span class="o">/</span><span class="n">r1i1p1f1</span><span class="o">/</span><span class="n">Amon</span><span class="o">/</span><span class="n">tas</span><span class="o">/</span><span class="n">gn</span><span class="o">/</span><span class="n">v20190308</span><span class="o">/</span><span class="n">tas_Amon_CESM2_historical_r1i1p1f1_gn_185001</span><span class="o">-</span><span class="mf">201412.</span><span class="n">nc</span> <span class="o">-</span><span class="n">topo</span> <span class="n">landmask</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Let’s-have-a-look-at-what-the-generated-seamask.nc-looks-like">
+<h2>Let’s have a look at what the generated seamask.nc looks like<a class="headerlink" href="#Let’s-have-a-look-at-what-the-generated-seamask.nc-looks-like" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load ncview
+$ ncview seamask.nc
+</pre></div>
+</div>
+<p><img alt="4" src="../../_images/cdo_mask2.png" /></p>
+<p>Now we get a topograghy file where all ocean values are 0 and land values are 1.</p>
+</div>
+<div class="section" id="Now-we-can-apply-the-seamask-to-the-original-data-to-mask-out-ocean-data">
+<h2>Now we can apply the seamask to the original data to mask out ocean data<a class="headerlink" href="#Now-we-can-apply-the-seamask-to-the-original-data-to-mask-out-ocean-data" title="Permalink to this headline">¶</a></h2>
+<p>Multiply input.nc and seamask, and the ocean values in output.nc become all 0.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo mul &lt;input.nc&gt; seamask.nc &lt;output.nc&gt;
+</pre></div>
+</div>
+<p>Set 0 as missing value in the data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo setmissval,0 &lt;input.nc&gt; &lt;output.nc&gt;
+</pre></div>
+</div>
+<p>To combine these two commands together:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo setmissval,0 -mul &lt;input.nc&gt; seamask.nc &lt;output.nc&gt;
+$ cdo setmissval,0 -mul /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc seamask.nc tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412_land.nc
+</pre></div>
+</div>
+<p>Warning: Be cautious when using 0 as the missing value in case that 0 has already been used as a reasonaable element in the original data. In this example though, the data use Kelvin(K) as the unit of temperature, therefore using 0 as the missing value is not an issue because 0 cannot be a reasonable earth near surface temperature.</p>
+</div>
+<div class="section" id="Let’s-have-a-look-at-the-new-land-data-file">
+<h2>Let’s have a look at the new land data file<a class="headerlink" href="#Let’s-have-a-look-at-the-new-land-data-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncview tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412_land.nc
+</pre></div>
+</div>
+<p><img alt="5" src="../../_images/cdo_mask3.png" /></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

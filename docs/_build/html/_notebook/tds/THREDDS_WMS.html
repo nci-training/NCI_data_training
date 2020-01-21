@@ -81,7 +81,6 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/slides.html">Training slides list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Info</span></p>
 <ul>
@@ -96,18 +95,15 @@
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tds.html">THREDDS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Past data training courses</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_overview/pasttraining.html">Past data training courses</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Help</span></p>
 <ul>
@@ -200,7 +196,7 @@
     text-align: unset;
 }
 </style>
-<p><img alt="logo" src="../../_images/NCI_logo5.png" /></p>
+<p><img alt="logo" src="../../_images/NCI_logo6.png" /></p>
 <hr class="docutils" />
 <div class="section" id="Web-Map-Service-(WMS)">
 <h1>Web Map Service (WMS)<a class="headerlink" href="#Web-Map-Service-(WMS)" title="Permalink to this headline">¶</a></h1>
@@ -222,12 +218,12 @@
 <div class="section" id="Navigate-to-the-dataset-THREDDS-catalog-page-and-select-the-WMS-link">
 <h3>Navigate to the dataset THREDDS catalog page and select the WMS link<a class="headerlink" href="#Navigate-to-the-dataset-THREDDS-catalog-page-and-select-the-WMS-link" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog/rs0/datacube/002/LS8_OLI_NBART/">http://dapds00.nci.org.au/thredds/catalog/rs0/datacube/002/LS8_OLI_NBART/</a>-<a href="#id1"><span class="problematic" id="id2">10_</span></a>-11/catalog.html?dataset=LS8_OLI_NBART/-<a href="#id3"><span class="problematic" id="id4">10_</span></a>-11/<a href="#id5"><span class="problematic" id="id6">LS8_OLI_NBART_3577_</span></a>-<a href="#id7"><span class="problematic" id="id8">10_</span></a>-11_20160109015321000000.nc</p>
-<p><img alt="image0" src="../../_images/threddsWMS4.png" /></p>
+<p><img alt="image0" src="_notebook/tds/images/threddsWMS4.png" /></p>
 </div>
 <div class="section" id="GetCapabilities">
 <h3>GetCapabilities<a class="headerlink" href="#GetCapabilities" title="Permalink to this headline">¶</a></h3>
 <p>This will display the WMS ‘GetCapabilities’ request in xml, which describes the WMS parameters (metadata, services, and data) available by the server. These options are used to generate a GetMap request, an operation which requests that the server generate a map.</p>
-<p><img alt="image0" src="../../_images/threddsWMS4.png" /></p>
+<p><img alt="image0" src="_notebook/tds/images/threddsWMS4.png" /></p>
 <blockquote>
 <div><strong>GetCapabilities example:</strong></div></blockquote>
 <blockquote>
@@ -247,31 +243,31 @@
 <li>Select <strong>Add Data</strong></li>
 <li>Select “My Data”</li>
 </ol>
-<p><img alt="image0" src="../../_images/threddsWMS4.png" /></p>
+<p><img alt="image0" src="_notebook/tds/images/threddsWMS4.png" /></p>
 <ol class="arabic simple" start="5">
 <li>“Add Web Data”</li>
 </ol>
-<p><img alt="image1" src="../../_images/threddsWMS5.png" /></p>
+<p><img alt="image1" src="_notebook/tds/images/threddsWMS5.png" /></p>
 <ol class="arabic simple" start="6">
 <li>Enter your “GetCapabilities URL” and select “Add”</li>
 </ol>
-<p><img alt="image2" src="../../_images/natmap3.png" /></p>
+<p><img alt="image2" src="_notebook/tds/images/natmap3.png" /></p>
 <ol class="arabic simple" start="7">
 <li>Select a layer (i.e., variable) to add to the map</li>
 </ol>
-<p><img alt="image3" src="../../_images/natmap4.png" /></p>
+<p><img alt="image3" src="_notebook/tds/images/natmap4.png" /></p>
 <ol class="arabic simple" start="8">
 <li>Then select “Done” and data should then display on map</li>
 </ol>
-<p><img alt="image4" src="../../_images/natmap5.png" /></p>
+<p><img alt="image4" src="_notebook/tds/images/natmap5.png" /></p>
 <ol class="arabic simple" start="9">
 <li>The default colour range may often be inappropriate. Enter new min/max values to adjust colourscale.</li>
 </ol>
-<p><img alt="image5" src="../../_images/natmap6.png" /></p>
+<p><img alt="image5" src="_notebook/tds/images/natmap6.png" /></p>
 <ol class="arabic simple" start="10">
 <li>When data includes a time dimension, NationalMap will display a toolbar at the bottom of page that allows you to browse through time.</li>
 </ol>
-<p><img alt="image6" src="../../_images/natmap7.png" /></p>
+<p><img alt="image6" src="_notebook/tds/images/natmap7.png" /></p>
 </div>
 <div class="section" id="Constructing-GetMap-Requests">
 <h3>Constructing GetMap Requests<a class="headerlink" href="#Constructing-GetMap-Requests" title="Permalink to this headline">¶</a></h3>
@@ -360,14 +356,14 @@
 </div>
 <div class="section" id="The-above-parameters-can-all-be-found-within-the-GetCapabilities-request.">
 <h3>The above parameters can all be found within the <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> request.<a class="headerlink" href="#The-above-parameters-can-all-be-found-within-the-GetCapabilities-request." title="Permalink to this headline">¶</a></h3>
-<p><img alt="image0" src="../../_images/threddsWMS4.png" /></p>
+<p><img alt="image0" src="_notebook/tds/images/threddsWMS4.png" /></p>
 <blockquote>
 <div><strong>GetMap request example:</strong></div></blockquote>
 <blockquote>
 <div><a class="reference external" href="http://dapds00.nci.org.au/thredds/wms/rs0/datacube/002/LS8_OLI_NBART/-10_-11/LS8_OLI_NBART_3577_-10_-11_20160109015321000000.nc?service=WMS&amp;version=1.3.0&amp;request=GetMap&amp;Layers=blue&amp;crs=EPSG:4326&amp;styles=boxfill/rainbow&amp;format=image/png&amp;colorscalerange=0,2000&amp;bbox=-10.219164100335659,123.11286155202026,-9.229043719254628,124.05434305622438&amp;width=1000&amp;height=1000&amp;transparent=true&amp;time=2016-01-09T01:53:21.000Z">http://dapds00.nci.org.au/thredds/wms/rs0/datacube/002/LS8_OLI_NBART/-10_-11/LS8_OLI_NBART_3577_-10_-11_20160109015321000000.nc? service=WMS&amp; version=1.3.0&amp; request=GetMap&amp; Layers=blue&amp; crs=EPSG:4326&amp; styles=boxfill/rainbow&amp; format=image/png&amp; colorscalerange=0,2000&amp; bbox=-10.219164100335659,123.11286155202026,-9.229043719254628,124.05434305622438&amp; width=1000&amp; height=1000&amp; transparent=true&amp;
 time=2016-01-09T01:53:21.000Z</a></div></blockquote>
 <p>Once complete, the <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> URL can be tested in a web browser. If the URL is correctly form, the requested map will be displayed.</p>
-<p><img alt="image1" src="../../_images/threddsWMS5.png" /></p>
+<p><img alt="image1" src="_notebook/tds/images/threddsWMS5.png" /></p>
 <hr class="docutils" />
 <p><strong>For more information on OGC standards specifications (WMS, WCS) and ncWMS:</strong> <a class="reference external" href="http://www.opengeospatial.org/standards/wms">http://www.opengeospatial.org/standards/wms</a> <a class="reference external" href="http://www.opengeospatial.org/standards/wcs">http://www.opengeospatial.org/standards/wcs</a> <a class="reference external" href="https://reading-escience-centre.github.io/ncwms/">https://reading-escience-centre.github.io/ncwms/</a></p>
 </div>

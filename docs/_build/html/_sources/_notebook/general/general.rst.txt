@@ -16,7 +16,7 @@ Performance
 
 Pangeo
 ----------
-* `Setup Pangeo environment and run Jupyter notebook locally to interact with Raijin <Setup_Pangeo_environment.ipynb>`_ 
+* `Setup Pangeo environment and run Jupyter notebook locally to interact with Gadi <Setup_Pangeo_environment_Gadi.ipynb>`_ 
 
 Mapping and Visulisation
 --------------------------
