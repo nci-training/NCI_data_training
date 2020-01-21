@@ -87,7 +87,7 @@ which is a standard protocol for serving geospatial data as images (e.g., PNG). 
 
 `Request map images through NCI’s GSKY WCS in Python. <Notebook_GSKY_WCS.ipynb>`_ 
 
-`WCS click to select the region, then ship the data <Notebook_GSKY_ClicknShip.ipynb>`_ 
+`WCS click to select the region, then ship the data <Notebook_GSKY_ClicknShip1.ipynb>`_ 
 
 `Construct WPS request <WPS.rst>`_ 
 
