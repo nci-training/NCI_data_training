@@ -229,7 +229,7 @@ $ jupyter notebook password
 <div class="section" id="Step-3:-Exiting-the-Pangeo-environment">
 <h3>Step 3: Exiting the Pangeo environment<a class="headerlink" href="#Step-3:-Exiting-the-Pangeo-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can quit the environment at any time by running:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ !pangeo.end.sh
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$pangeo.end.sh
 </pre></div>
 </div>
 </div>
@@ -257,7 +257,7 @@ $ jupyter notebook password
 <p>Note that for Gadi, the “#PBS -l storage=” flag is required which must include <strong>all</strong> the scratch and gdata project IDs that will be used in your codes.</p>
 <p>Additionally, jobs beyond a single node must use multiples of 48 for their ncpus request.</p>
 <p>Dask requires whole nodes so you need to have a job that requires these resources. In this example we request 2 Gadi Cascade Lake nodes with 96 CPUs and 384GB memory. For further instructions about node types on Gadi, consult the <a class="reference external" href="https://opus.nci.org.au/display/Help/Gadi+Job+Queues">NCI user guide</a> on the specific configurations.</p>
-<p>The above jobscript will load the Pangeo module, run the initialisation script called <strong>pangeo.ini.all.sh</strong>, and keep the environment alive for the lifetime of the PBS job. The initialisation script will set up the dask scheduler on one node and multiple workers on all the other nodes.</p>
+<p>The above jobscript will load the Pangeo module, run the initialisation script called <strong>pangeo.ini.all.sh</strong>, and keep the environment alive for the lifetime of the PBS job. The initialisation script will set up the dask scheduler on one node and multiple workers on all nodes.</p>
 <p>To submit the job to the queue:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qsub run_ipynb_job.sh
 </pre></div>

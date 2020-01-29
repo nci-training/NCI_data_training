@@ -86,7 +86,7 @@
    "source": [
     "You can quit the environment at any time by running:\n",
     "```\n",
-    "$ !pangeo.end.sh\n",
+    "$pangeo.end.sh\n",
     "```"
    ]
   },
@@ -135,7 +135,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "The above jobscript will load the Pangeo module, run the initialisation script called **pangeo.ini.all.sh**, and keep the environment alive for the lifetime of the PBS job. The initialisation script will set up the dask scheduler on one node and multiple workers on all the other nodes. \n",
+    "The above jobscript will load the Pangeo module, run the initialisation script called **pangeo.ini.all.sh**, and keep the environment alive for the lifetime of the PBS job. The initialisation script will set up the dask scheduler on one node and multiple workers on all nodes.\n",
     "\n",
     "To submit the job to the queue:\n",
     "\n",
@@ -453,7 +453,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.6.9"
+   "version": "3.7.3"
   }
  },
  "nbformat": 4,
