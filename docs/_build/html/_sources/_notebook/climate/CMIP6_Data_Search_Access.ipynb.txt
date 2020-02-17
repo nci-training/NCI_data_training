@@ -11,9 +11,9 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "In this notebook, we demonstrate how to use CleF and Xarray to search and access CMIP5 data from NCI. You need to run this notebook in VDI so as to access data through file system. \n",
+    "In this notebook, we demonstrate how to use CleF and Xarray to search and access CMIP6 data from NCI. You need to run this notebook in VDI so as to access data through file system. \n",
     "\n",
-    "The following material uses Coupled Model Intercomparison Project (CMIP5) collections. The CMIP5 terms of use are found[here](https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html). For more information on the collection, please click [here]( https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563)."
+    "The following material uses Coupled Model Intercomparison Project (CMIP6) collections. The CMIP6 terms of use are found[here](https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html). For more information on the collection, please click [here]( https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563)."
    ]
   },
   {
@@ -37,14 +37,14 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "We use Clef to search CMIP5 data path. Clef is available within the analysis3-unstable packages. \n",
+    "We use Clef to search CMIP6 data path. Clef is available within the analysis3-unstable packages. \n",
     "\n",
     "Clef searches the Earth System Grid Federation datasets stored at the Australian National Computational Infrastructure, both data published on the NCI ESGF node as well as files that are locally replicated from other ESGF nodes.\n",
     "\n",
     "Currently it searches for the following datasets:\n",
     "\n",
     "- CMIP5 raijin projects: rr3, where NCI is the primary publisher and al33 for replicas\n",
-    "- CMIP6 raijin projects: 0i10 for replicas\n",
+    "- CMIP6 raijin projects: oi10 for replicas\n",
     "\n",
     "For more detailed information about using 'Clef', check out this [website](https://clef.readthedocs.io/en/latest/gettingstarted.html)."
    ]
@@ -77,7 +77,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "First, check out help information to see search options in clef cmip5."
+    "First, check out help information to see search options in clef cmip6."
    ]
   },
   {
@@ -182,10 +182,10 @@
     "\n",
     "For more information about CMIP6 drs tree (for more information, see this [documentation](https://docs.google.com/document/d/1h0r8RZr_f3-8egBMMh7aqLwy3snpD6_MrDz1q8n5XUk/edit).\n",
     "\n",
-    "In SenarioMIP there are four future pathways of societal development, the Shared Socioeconomic Pathways (SSPs), in which ssp126 is the lowest emission senario. \n",
-    "For information about SenarioMIP senarios, see here https://www.geosci-model-dev.net/9/3461/2016/   \n",
+    "In SenarioMIP there are four future pathways of societal development, the Shared Socioeconomic Pathways (SSPs), in which ssp126 is the lowest emission scenario. \n",
+    "For information about SenarioMIP scenarios, see here https://www.geosci-model-dev.net/9/3461/2016/   \n",
     "\n",
-    "Below, we have set up these attributes in oreder to get the future projection data under the ssp126 senario using member 'r1i1p1f2' of CNRM_CM6-1 model simulations as an example. "
+    "Below, we have set up these attributes in order to get the future projection data under the ssp126 scenario using member 'r1i1p1f2' of CNRM_CM6-1 model simulations as an example. "
    ]
   },
   {
@@ -353,7 +353,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.6.2"
+   "version": "3.7.3"
   }
  },
  "nbformat": 4,

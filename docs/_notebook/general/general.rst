@@ -17,6 +17,7 @@ Performance
 Pangeo
 ----------
 * `Setup Pangeo environment and run Jupyter notebook locally to interact with Gadi <Setup_Pangeo_environment_Gadi.ipynb>`_ 
+* `How to load modules and install packages within Pangeo environment on Gadi <Customise_Pangeo_environment_Gadi.ipynb>`_ 
 
 Mapping and Visulisation
 --------------------------

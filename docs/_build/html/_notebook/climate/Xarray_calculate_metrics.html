@@ -396,18 +396,24 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Calculate-metrics">
 <h1>Calculate metrics<a class="headerlink" href="#Calculate-metrics" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="Spatial-trends-in-Australian-surface-temperature-anomalies">
-<h2>Spatial trends in Australian surface temperature anomalies<a class="headerlink" href="#Spatial-trends-in-Australian-surface-temperature-anomalies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Monthly-temperature-anomalies-in-Australia">
+<h2>Monthly temperature anomalies in Australia<a class="headerlink" href="#Monthly-temperature-anomalies-in-Australia" title="Permalink to this headline">¶</a></h2>
 <p>In this notebook:</p>
-<ul class="simple">
-<li>Launch Jupyter Notebook</li>
-<li>Subsetting</li>
-<li>Create a monthly climatology for 1950-1980 period</li>
-<li>Plot all 12 climatological months</li>
-<li>Calculate the anomalies from the climatology</li>
+<ul>
+<li><p class="first">Launch Jupyter Notebook</p>
+</li>
+<li><p class="first">Subsetting</p>
+</li>
+<li><p class="first">Create a monthly climatology for 1950-1980 period</p>
+</li>
+<li><p class="first">Plot all 12 climatological months</p>
+</li>
+<li><p class="first">Calculate the monthly anomalies from the climatology</p>
+</li>
+<li><p class="first rubric" id="calculate-and-plot-the-mean-anomalies-over-the-whole-time-period">Calculate and plot the mean anomalies over the whole time period</p>
+</li>
 </ul>
 </div>
-<hr class="docutils" />
 <div class="section" id="Launch-the-Jupyter-Notebook-application">
 <h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
 <p>Launch the Jupyter Notebook application:</p>
@@ -471,7 +477,7 @@ Attributes:
 </pre></div>
 </div>
 </div>
-<p>Just check the slicing is correct by plotting the first time step</p>
+<p>Just check the slicing is correct by plotting the first timestep:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -543,7 +549,7 @@ Attributes:
 </pre></div>
 </div>
 </div>
-<p>Now plot the mean anomaly from 1990 to the end of 2005, the last time point in the dataset, by month. This shows the spatial pattern of warming in the model by month.</p>
+<p>Now plot the mean anomaly from 1990 to the end of 2005 (the last time point in the dataset) by month. This shows the spatial pattern of warming in the model by month.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
@@ -630,7 +636,7 @@ Attributes:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, NCI
+        &copy; Copyright 2020, NCI
 
     </p>
   </div>

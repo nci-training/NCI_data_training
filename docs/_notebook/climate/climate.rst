@@ -23,11 +23,11 @@ Data Access and Quick Preview
          
 Data Manipulation
 ++++++++++++++++++++
-* `CDO - calculate monthly anomally and Nino Index using CMIP6 data <CDO_monthly_anomaly_and_NinoIndex_CMIP6.ipynb>`_
+* `CDO - calculate monthly anomaly and Nino Index using CMIP6 data <CDO_monthly_anomaly_and_NinoIndex_CMIP6.ipynb>`_
 * `CDO - compare model and observational data <CDO_model_obs_compare.ipynb>`_
 * `CDO - mask ocean or land <CDO_ocean_land_mask.ipynb>`_
 * `Xarray - open and read data <Xarray_access_cmip5.ipynb>`_ 
-* `Xarray - subset and plot data (sliding and dicing) <Xarray_subset_plot_cmip5.ipynb>`_ 
+* `Xarray - subset and plot data (slicing and dicing) <Xarray_subset_plot_cmip5.ipynb>`_ 
 * `Xarray - calculate surface temperature anomalies in Australian <Xarray_calculate_metrics.ipynb>`_ 
 * `Xarray - calculate Nino 34 time series <Xarray_calculate_Nino34_time_series.ipynb>`_
 * `Xarray - common operations, resampling, rolling and climatology <Xarray_statistical_resample_roll_climatology.ipynb>`_

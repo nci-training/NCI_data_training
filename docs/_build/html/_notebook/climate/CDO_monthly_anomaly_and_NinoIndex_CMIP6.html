@@ -174,204 +174,6 @@
             
   
 <style>
-/* CSS for nbsphinx extension */
-
-/* remove conflicting styling from Sphinx themes */
-div.nbinput,
-div.nbinput div.prompt,
-div.nbinput div.input_area,
-div.nbinput div[class*=highlight],
-div.nbinput div[class*=highlight] pre,
-div.nboutput,
-div.nbinput div.prompt,
-div.nbinput div.output_area,
-div.nboutput div[class*=highlight],
-div.nboutput div[class*=highlight] pre {
-    background: none;
-    border: none;
-    padding: 0 0;
-    margin: 0;
-    box-shadow: none;
-}
-
-/* avoid gaps between output lines */
-div.nboutput div[class*=highlight] pre {
-    line-height: normal;
-}
-
-/* input/output containers */
-div.nbinput,
-div.nboutput {
-    display: -webkit-flex;
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-}
-@media (max-width: 540px) {
-    div.nbinput,
-    div.nboutput {
-        flex-direction: column;
-    }
-}
-
-/* input container */
-div.nbinput {
-    padding-top: 5px;
-}
-
-/* last container */
-div.nblast {
-    padding-bottom: 5px;
-}
-
-/* input prompt */
-div.nbinput div.prompt pre {
-    color: #307FC1;
-}
-
-/* output prompt */
-div.nboutput div.prompt pre {
-    color: #BF5B3D;
-}
-
-/* all prompts */
-div.nbinput div.prompt,
-div.nboutput div.prompt {
-    min-width: 5ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
-    text-align: right;
-    flex: 0;
-}
-@media (max-width: 540px) {
-    div.nbinput div.prompt,
-    div.nboutput div.prompt {
-        text-align: left;
-        padding: 0.4em;
-    }
-    div.nboutput div.prompt.empty {
-        padding: 0;
-    }
-}
-
-/* disable scrollbars on prompts */
-div.nbinput div.prompt pre,
-div.nboutput div.prompt pre {
-    overflow: hidden;
-}
-
-/* input/output area */
-div.nbinput div.input_area,
-div.nboutput div.output_area {
-    padding: 0.4em;
-    -webkit-flex: 1;
-    flex: 1;
-    overflow: auto;
-}
-@media (max-width: 540px) {
-    div.nbinput div.input_area,
-    div.nboutput div.output_area {
-        width: 100%;
-    }
-}
-
-/* input area */
-div.nbinput div.input_area {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    background: #f5f5f5;
-}
-
-/* override MathJax center alignment in output cells */
-div.nboutput div[class*=MathJax] {
-    text-align: left !important;
-}
-
-/* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput div.math p {
-    text-align: left;
-}
-
-/* standard error */
-div.nboutput div.output_area.stderr {
-    background: #fdd;
-}
-
-/* ANSI colors */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-default-inverse-fg { color: #FFFFFF; }
-.ansi-default-inverse-bg { background-color: #000000; }
-
-.ansi-bold { font-weight: bold; }
-.ansi-underline { text-decoration: underline; }
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-div.rendered_html th {
-  font-weight: bold;
-}
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
-
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
@@ -402,9 +204,9 @@ div.rendered_html tbody tr:hover {
 <ul class="simple">
 <li>Load CDO module</li>
 <li>Look at the information of the file</li>
-<li>calculate monthly anomaly</li>
-<li>calculate Nino34Index</li>
-<li>visulise the data using ncview</li>
+<li>Calculate monthly anomaly</li>
+<li>Calculate Nino34Index</li>
+<li>Visualise the data using ncview</li>
 </ul>
 <p>The following material uses Coupled Model Intercomparison Project (CMIP6) collections. The CMIP6 terms of use are found <a class="reference external" href="https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html">here</a>. For more information on the collection, please <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563">click here</a>.</p>
 <p>CDO stands for “Cliamte Data Operators”. CDO is a collection of command line Operators to manipulate and analyse Climate and NWP model Data. Supported data formats are GRIB 1/2, netCDF 3/4, SERVICE, EXTRA and IEG. There are more than 600 operators available. See <a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo">here</a> for more information about this library.</p>
@@ -424,10 +226,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Have-a-look-at-the-data-file-using-cdo-info">
 <h2>Have a look at the data file using cdo info<a class="headerlink" href="#Have-a-look-at-the-data-file-using-cdo-info" title="Permalink to this headline">¶</a></h2>
-<p>Basic usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo info &lt;filename&gt; | less
-</pre></div>
-</div>
+<p><strong>Basic usage: cdo info filename | less</strong></p>
 <p><strong>less</strong> display only one page at a time in the termial. You can move forwards and backwards to see more. Press <strong>q</strong> to quit the view.</p>
 <p><img alt="1" src="../../_images/cdo_anomoly_nino1.png" /></p>
 <p>Use <strong>ncview</strong> to show the data:</p>
@@ -440,44 +239,33 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Let’s-see-which-year-this-file-includes">
 <h2>Let’s see which year this file includes<a class="headerlink" href="#Let’s-see-which-year-this-file-includes" title="Permalink to this headline">¶</a></h2>
 <p>We use function <strong>showyear</strong> to display all the years in this file</p>
-<p>Basic usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo showyear &lt;file&gt;
-</pre></div>
-</div>
+<p><strong>Basic usage: cdo showyear file</strong></p>
 <p><img alt="2" src="../../_images/cdo_anomoly_nino2.png" /></p>
 </div>
 <div class="section" id="Calculate-monthly-anomaly">
 <h2>Calculate monthly anomaly<a class="headerlink" href="#Calculate-monthly-anomaly" title="Permalink to this headline">¶</a></h2>
-<p>In this exercise, we are going to calculate the monthly anomoly between 1971 and 2000. A few steps are in the following order:</p>
+<p>In this exercise, we are going to calculate the monthly anomaly between 1971 and 2000. A few steps are in the following order:</p>
 <ol class="arabic simple">
-<li>choose climatology years 1971-2000</li>
-<li>calculate the monthly average during 1971-2000</li>
+<li>Choose climatology years 1971-2000</li>
+<li>Calculate the monthly average during 1971-2000</li>
 <li>Subtract the monthly average from the original file to obtain the difference, i.e., anomaly.</li>
 </ol>
 <p>We need three functions to implement this procedure as below</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo selyear, &lt;year-range&gt; &lt;input.nc&gt; &lt;output.nc&gt;
-</pre></div>
-</div>
+<p><strong>cdo selyear, year-range input.nc output.nc</strong></p>
 <p>Select the years and generate a new file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo ymonmean &lt;input.nc&gt; &lt;output.nc&gt;
-</pre></div>
-</div>
+<p><strong>cdo ymonmean input.nc output.nc</strong></p>
 <p>Get the mean value of each month</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo ymonsub &lt;input1.nc&gt; &lt;input2.nc&gt; &lt;output.nc&gt;
-</pre></div>
-</div>
+<p><strong>cdo ymonsub input1.nc input2.nc output.nc</strong></p>
 <p>Get the difference between two input files and save an output file.</p>
-<p>However, if we do three steps, we will generate unecessary intermediate files. CDO allows piping multiple commands in a row. A way to chain these commands together is as the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo ymonsub input.nc -ymonmean -selyear,1971/2000 input.nc output.nc
-</pre></div>
-</div>
+<p>However, if we do three steps, we will generate unnecessary intermediate files. CDO allows piping multiple commands in a row. A way to chain these commands together is as the following:</p>
+<p><strong>cdo ymonsub input.nc -ymonmean -selyear,1971/2000 input.nc output.nc</strong></p>
 <p><strong>-ymonmean -selyear,1971/2000 input.nc</strong> is treated as the monthly average file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo ymonsub /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc -ymonmean -selyear,1971/2000 /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc tas_Amon_CESM2_historical_r1i1p1f1_gn_197101-200012_anomoly.nc
 </pre></div>
 </div>
 </div>
-<div class="section" id="Let’s-have-a-look-at-the-monthly-anomoly">
-<h2>Let’s have a look at the monthly anomoly<a class="headerlink" href="#Let’s-have-a-look-at-the-monthly-anomoly" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Let’s-have-a-look-at-the-monthly-anomaly">
+<h2>Let’s have a look at the monthly anomaly<a class="headerlink" href="#Let’s-have-a-look-at-the-monthly-anomaly" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load ncview
 $ ncview tas_Amon_CESM2_historical_r1i1p1f1_gn_197101-200012_anomaly.nc
 </pre></div>
@@ -490,18 +278,9 @@ $ ncview tas_Amon_CESM2_historical_r1i1p1f1_gn_197101-200012_anomaly.nc
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo sellonlatbox,-170,-120,-5,5 tas_Amon_CESM2_historical_r1i1p1f1_gn_197101-200012_anomaly.nc Nino34Region.nc
 </pre></div>
 </div>
-<p>Then use function <strong>fldavg</strong> to calculate the field average, and save the result as the Nino34 index.</p>
+<p>Then use function <strong>fldavg</strong> to calculate the field average and save the result as the Nino34 index.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo fldavg Nino34Region.nc Nino34Idx.nc
 </pre></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -517,7 +296,7 @@ $ ncview tas_Amon_CESM2_historical_r1i1p1f1_gn_197101-200012_anomaly.nc
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, NCI
+        &copy; Copyright 2020, NCI
 
     </p>
   </div>

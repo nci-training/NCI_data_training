@@ -204,13 +204,13 @@
 <ul class="simple">
 <li>Load CDO module</li>
 <li>Look at the information of the file</li>
-<li>visulise the data using ncview</li>
+<li>Visualise the data using ncview</li>
 <li>Create land and ocean masks to limit the field to land/ocean values</li>
 </ul>
 <p>The following material uses Coupled Model Intercomparison Project (CMIP6) collections. The CMIP6 terms of use are found <a class="reference external" href="https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html">here</a>. For more information on the collection, please <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563">click here</a>.</p>
-<p>CDO stands for “Cliamte Data Operators”. CDO is a collection of command line Operators to manipulate and analyse Climate and NWP model Data. Supported data formats are GRIB 1/2, netCDF 3/4, SERVICE, EXTRA and IEG. There are more than 600 operators available. See <a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo">here</a> for more information about this library.</p>
-<div class="section" id="Load-CDO-module-from-Raijin">
-<h2>Load CDO module from Raijin<a class="headerlink" href="#Load-CDO-module-from-Raijin" title="Permalink to this headline">¶</a></h2>
+<p>CDO stands for “Climate Data Operators”. CDO is a collection of command line Operators to manipulate and analyse Climate and NWP model Data. Supported data formats are GRIB 1/2, netCDF 3/4, SERVICE, EXTRA and IEG. There are more than 600 operators available. See <a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo">here</a> for more information about this library.</p>
+<div class="section" id="Load-CDO-module">
+<h2>Load CDO module<a class="headerlink" href="#Load-CDO-module" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load cdo
 </pre></div>
 </div>
@@ -221,15 +221,15 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc
 </pre></div>
 </div>
-<p>This file includes the near surface temperature from the 20th century all-forcing historical simulation based on CESM2.0 model of NCAR.</p>
+<p>This file includes the near surface temperature from the 20th century all-forcing historical simulation based on the CESM2.0 model of NCAR.</p>
 </div>
 <div class="section" id="Have-a-look-at-the-data-file-using-cdo-info">
 <h2>Have a look at the data file using cdo info<a class="headerlink" href="#Have-a-look-at-the-data-file-using-cdo-info" title="Permalink to this headline">¶</a></h2>
-<p>Basic usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo info &lt;filename&gt; | less
+<p>Basic usage: <strong>cdo info filename | less</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo info /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc | less
 </pre></div>
 </div>
-<p><strong>less</strong> display only one page at a time in the termial. You can move forwards and backwards to see more. Press <strong>q</strong> to quit the view.</p>
+<p><strong>less</strong> display only one page at a time in the terminal. You can move forwards and backwards to see more. Press <strong>q</strong> to quit the view.</p>
 <p><img alt="1" src="../../_images/cdo_anomoly_nino3.png" /></p>
 <p>Use <strong>ncview</strong> to show the data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncview /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc
@@ -241,8 +241,8 @@
 <div class="section" id="Let’s-see-which-year-this-file-includes">
 <h2>Let’s see which year this file includes<a class="headerlink" href="#Let’s-see-which-year-this-file-includes" title="Permalink to this headline">¶</a></h2>
 <p>We use function <strong>showyear</strong> to display all the years in this file</p>
-<p><strong>Basic usage</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo showyear &lt;file&gt;
+<p><strong>Basic usage</strong>: <strong>cdo showyear file</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo showyear /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc
 </pre></div>
 </div>
 <p><img alt="2" src="../../_images/cdo_anomoly_nino2.png" /></p>
@@ -252,32 +252,27 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo -f nc topo topo.nc
 </pre></div>
 </div>
-<p>The operator topo creates a half degree regular grid with the heights and depths. This can be very usefull for generating masks to a certain height/depth.</p>
-<p>The created topo.nc file is shown below. Here in the topo.nc file, the topography values over land areas are greater than 0 whearas over ocean areas the topography is less than 0.</p>
+<p>The operator topo creates a half degree regular grid with the heights and depths. This can be very useful for generating masks to a certain height/depth.</p>
+<p>The created topo.nc file is shown below. Here in the topo.nc file, the topography values over land areas are greater than 0 whereas over ocean areas the topography is less than 0.</p>
 <p><img alt="3" src="../../_images/cdo_mask1.png" /></p>
 </div>
 <div class="section" id="Create-ocean-mask-file">
 <h2>Create ocean mask file<a class="headerlink" href="#Create-ocean-mask-file" title="Permalink to this headline">¶</a></h2>
-<p><strong>Basic usage</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo gtc, 0 -remapcon, &lt;input.nc&gt; topo.nc &lt;output.nc&gt;
-</pre></div>
-</div>
+<p><strong>Basic usage</strong>: <strong>cdo gtc, 0 -remapcon, input.nc topo.nc output.nc</strong></p>
 <p>There are several steps involved in here:</p>
-<p>First, remapping topo.nc file to change its reserlution so that it is consistent with the input data that we use.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo remapcon, &lt;input.nc&gt; topo.nc &lt;output.nc&gt;
-$ cdo -remapcon,/g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc topo.nc topo_adjusted.nc
+<p>First, remapping topo.nc file to change its resolution so that it is consistent with the input data that we use: <strong>cdo remapcon, input.nc topo.nc output.nc</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo -remapcon,/g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc topo.nc topo_adjusted.nc
 </pre></div>
 </div>
-<p>Second, create a mask containing 1 if the topography element is greater than 0.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo gtc, 0 &lt;input.nc&gt; &lt;output.nc&gt;
-$ cdo gtc, 0 topo_adjusted.nc seamask.nc
+<p>Second, create a mask containing 1 if the topography element is greater than 0: <strong>cdo gtc, 0 input.nc output.nc</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo gtc, 0 topo_adjusted.nc seamask.nc
 </pre></div>
 </div>
 </div>
 <div class="section" id="Now-we-will-try-to-chain-all-the-commands-together">
 <h2>Now we will try to chain all the commands together<a class="headerlink" href="#Now-we-will-try-to-chain-all-the-commands-together" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo -f nc -gtc, 0 -remapcon, &lt;input.nc&gt; -topo &lt;output.nc&gt;
-$ cdo -f nc  -gtc,0  -remapcon,/g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc -topo seamask.nc
+<p><strong>Basic Usage: cdo -f nc -gtc, 0 -remapcon, input.nc -topo output.nc</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo -f nc  -gtc,0  -remapcon,/g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc -topo seamask.nc
 </pre></div>
 </div>
 </div>
@@ -294,24 +289,20 @@ $ ncview seamask.nc
 </pre></div>
 </div>
 <p><img alt="4" src="../../_images/cdo_mask2.png" /></p>
-<p>Now we get a topograghy file where all ocean values are 0 and land values are 1.</p>
+<p>Now we get a topography file where all ocean values are 0 and land values are 1.</p>
 </div>
 <div class="section" id="Now-we-can-apply-the-seamask-to-the-original-data-to-mask-out-ocean-data">
 <h2>Now we can apply the seamask to the original data to mask out ocean data<a class="headerlink" href="#Now-we-can-apply-the-seamask-to-the-original-data-to-mask-out-ocean-data" title="Permalink to this headline">¶</a></h2>
 <p>Multiply input.nc and seamask, and the ocean values in output.nc become all 0.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo mul &lt;input.nc&gt; seamask.nc &lt;output.nc&gt;
-</pre></div>
-</div>
+<p><strong>cdo mul input.nc seamask.nc output.nc</strong></p>
 <p>Set 0 as missing value in the data:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo setmissval,0 &lt;input.nc&gt; &lt;output.nc&gt;
-</pre></div>
-</div>
+<p><strong>cdo setmissval, 0 input.nc output.nc</strong></p>
 <p>To combine these two commands together:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo setmissval,0 -mul &lt;input.nc&gt; seamask.nc &lt;output.nc&gt;
-$ cdo setmissval,0 -mul /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc seamask.nc tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412_land.nc
+<p><strong>cdo setmissval, 0 -mul input.nc seamask.nc output.nc</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo setmissval, 0 -mul /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc seamask.nc tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412_land.nc
 </pre></div>
 </div>
-<p>Warning: Be cautious when using 0 as the missing value in case that 0 has already been used as a reasonaable element in the original data. In this example though, the data use Kelvin(K) as the unit of temperature, therefore using 0 as the missing value is not an issue because 0 cannot be a reasonable earth near surface temperature.</p>
+<p>Warning: Be cautious when using 0 as the missing value in case that 0 has already been used as a reasonable element in the original data. In this example though, the data use Kelvin(K) as the unit of temperature, therefore using 0 as the missing value is not an issue because 0 cannot be a reasonable earth near surface temperature.</p>
 </div>
 <div class="section" id="Let’s-have-a-look-at-the-new-land-data-file">
 <h2>Let’s have a look at the new land data file<a class="headerlink" href="#Let’s-have-a-look-at-the-new-land-data-file" title="Permalink to this headline">¶</a></h2>
@@ -333,7 +324,7 @@ $ cdo setmissval,0 -mul /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, NCI
+        &copy; Copyright 2020, NCI
 
     </p>
   </div>

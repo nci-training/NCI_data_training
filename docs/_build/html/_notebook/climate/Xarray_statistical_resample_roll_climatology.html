@@ -406,7 +406,7 @@ div.rendered_html tbody tr:hover {
 </li>
 <li><p class="first">Resampling and Rolling Mean</p>
 </li>
-<li><p class="first">Climatologies</p>
+<li><p class="first">Groupby and Climatology</p>
 </li>
 <li><p class="first rubric" id="plot-extras">Plot - Extras</p>
 </li>
@@ -718,9 +718,9 @@ tas.sel(lat=slice(10,20),lon=slice(80,120)).min()
 </div>
 </div>
 </div>
-<div class="section" id="Climatologies">
-<h2>Climatologies<a class="headerlink" href="#Climatologies" title="Permalink to this headline">¶</a></h2>
-<p>With <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> you can easily create a climatology and calculate anomalies. In this example, working with monthly data, a new dimenion will be created that is the months of the year.</p>
+<div class="section" id="Climatology">
+<h2>Climatology<a class="headerlink" href="#Climatology" title="Permalink to this headline">¶</a></h2>
+<p>With <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> you can easily create a climatology and calculate anomalies. In this example, working with monthly data, a new dimension will be created that is the months of the year.</p>
 <p>Let’s create a climatology from pre-1900 data:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
@@ -786,7 +786,7 @@ climatology_seas.sel(season='DJF').plot()
 </div>
 <div class="section" id="Subplots">
 <h2>Subplots<a class="headerlink" href="#Subplots" title="Permalink to this headline">¶</a></h2>
-<p>In the seasonal climatology case we have created a climatology with 4 periods in time relating the the seasons. It is very simple to plot all the seasons in a single plot simply by specifying which variable defines the <code class="docutils literal notranslate"><span class="pre">row</span></code> and how many columns to produce (we have also defined the colourbar limits using <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code>):</p>
+<p>In the seasonal climatology case we have created a climatology with 4 periods in time relating to seasons. It is very simple to plot all the seasons in a single plot simply by specifying which variable defines the <code class="docutils literal notranslate"><span class="pre">row</span></code> and how many columns to produce (we have also defined the colourbar limits using <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code>):</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
@@ -859,15 +859,6 @@ climatology_seas.sel(season='DJF').plot()
 <div class="section" id="Exercise">
 <h2>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h2>
 <p>Make your own plot using your favorite projection: <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/crs/projections.html">https://scitools.org.uk/cartopy/docs/latest/crs/projections.html</a></p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 
@@ -882,7 +873,7 @@ climatology_seas.sel(season='DJF').plot()
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, NCI
+        &copy; Copyright 2020, NCI
 
     </p>
   </div>

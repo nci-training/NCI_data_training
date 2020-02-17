@@ -396,8 +396,8 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Search-and-Access-CMIP6-data-from-NCI">
 <h1>Search and Access CMIP6 data from NCI<a class="headerlink" href="#Search-and-Access-CMIP6-data-from-NCI" title="Permalink to this headline">¶</a></h1>
-<p>In this notebook, we demonstrate how to use CleF and Xarray to search and access CMIP5 data from NCI. You need to run this notebook in VDI so as to access data through file system.</p>
-<p>The following material uses Coupled Model Intercomparison Project (CMIP5) collections. The CMIP5 terms of use are found<a class="reference external" href="https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html">here</a>. For more information on the collection, please click <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563">here</a>.</p>
+<p>In this notebook, we demonstrate how to use CleF and Xarray to search and access CMIP6 data from NCI. You need to run this notebook in VDI so as to access data through file system.</p>
+<p>The following material uses Coupled Model Intercomparison Project (CMIP6) collections. The CMIP6 terms of use are found<a class="reference external" href="https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html">here</a>. For more information on the collection, please click <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563">here</a>.</p>
 <div class="section" id="Set-up-environment">
 <h2>Set up environment<a class="headerlink" href="#Set-up-environment" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
@@ -410,12 +410,12 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>We use Clef to search CMIP5 data path. Clef is available within the analysis3-unstable packages.</p>
+<p>We use Clef to search CMIP6 data path. Clef is available within the analysis3-unstable packages.</p>
 <p>Clef searches the Earth System Grid Federation datasets stored at the Australian National Computational Infrastructure, both data published on the NCI ESGF node as well as files that are locally replicated from other ESGF nodes.</p>
 <p>Currently it searches for the following datasets:</p>
 <ul class="simple">
 <li>CMIP5 raijin projects: rr3, where NCI is the primary publisher and al33 for replicas</li>
-<li>CMIP6 raijin projects: 0i10 for replicas</li>
+<li>CMIP6 raijin projects: oi10 for replicas</li>
 </ul>
 <p>For more detailed information about using ‘Clef’, check out this <a class="reference external" href="https://clef.readthedocs.io/en/latest/gettingstarted.html">website</a>.</p>
 </div>
@@ -434,7 +434,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Use-Clef--cmip6-to-serach-data">
 <h2>Use Clef -cmip6 to serach data<a class="headerlink" href="#Use-Clef--cmip6-to-serach-data" title="Permalink to this headline">¶</a></h2>
-<p>First, check out help information to see search options in clef cmip5.</p>
+<p>First, check out help information to see search options in clef cmip6.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
@@ -522,8 +522,8 @@ Everything available on ESGF is also available locally
 <p>We can then set up values for CMIP6 attributions according to the CleF search results.</p>
 <p>CMIP6 data are organised according to its global attributes. We can access different data by changing attributes from the below directory: <strong>/g/data1b/oi10/replicas/CMIP6/activity_id/institution_id/source_id/experiment_id /member_id/table_id/variable/grid_label/version/</strong></p>
 <p>For more information about CMIP6 drs tree (for more information, see this <a class="reference external" href="https://docs.google.com/document/d/1h0r8RZr_f3-8egBMMh7aqLwy3snpD6_MrDz1q8n5XUk/edit">documentation</a>.</p>
-<p>In SenarioMIP there are four future pathways of societal development, the Shared Socioeconomic Pathways (SSPs), in which ssp126 is the lowest emission senario. For information about SenarioMIP senarios, see here <a class="reference external" href="https://www.geosci-model-dev.net/9/3461/2016/">https://www.geosci-model-dev.net/9/3461/2016/</a></p>
-<p>Below, we have set up these attributes in oreder to get the future projection data under the ssp126 senario using member ‘r1i1p1f2’ of CNRM_CM6-1 model simulations as an example.</p>
+<p>In SenarioMIP there are four future pathways of societal development, the Shared Socioeconomic Pathways (SSPs), in which ssp126 is the lowest emission scenario. For information about SenarioMIP scenarios, see here <a class="reference external" href="https://www.geosci-model-dev.net/9/3461/2016/">https://www.geosci-model-dev.net/9/3461/2016/</a></p>
+<p>Below, we have set up these attributes in order to get the future projection data under the ssp126 scenario using member ‘r1i1p1f2’ of CNRM_CM6-1 model simulations as an example.</p>
 <div class="admonition note">
 NOTE: Due to different DRS (Directory Reference Structure) between CMIP5 and CMIP6, search syntax using clef is slightly different between two datasets. They have to be strictly consistent with each DRS tree and they are also case sensitive.</div>
 </div>
@@ -642,7 +642,7 @@ Attributes:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, NCI
+        &copy; Copyright 2020, NCI
 
     </p>
   </div>

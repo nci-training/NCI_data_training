@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'NCI data training'
-copyright = '2019, NCI'
+copyright = '2020, NCI'
 author = 'NCI'
 
 # The short X.Y version

@@ -493,8 +493,8 @@ NOTE: This will launch the Notebook Dashboard within a new web browser window.</
 </div>
 <div class="section" id="2.-Using-.sel(-)-for-label-based-indexing">
 <h3>2. Using .sel( ) for label based indexing<a class="headerlink" href="#2.-Using-.sel(-)-for-label-based-indexing" title="Permalink to this headline">¶</a></h3>
-<p>In the case below we find the values of tasmax for latitude of -12.46 and longitude at 130.85 degrees - approxmately Darwin. This is done using the <code class="docutils literal notranslate"><span class="pre">.sel()</span></code> method which can be performed on a Dataset or DataArray. This method permits selection based on coordinates rather than indices.</p>
-<p>However, it is unlikely there is a specific lat/lon coordinate value at those exact locations. For example look at the available values of longitude:</p>
+<p>In the case below we find the values of tasmax at latitude of -12.46 and longitude at 130.85 degrees - approximately Darwin. This is done using the <code class="docutils literal notranslate"><span class="pre">.sel()</span></code> method which can be performed on a Dataset or DataArray. This method permits selection based on coordinates rather than indices.</p>
+<p>However, it is unlikely there is a specific lat/lon coordinate value at those exact locations. For example, look at the available values of longitude:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
@@ -667,7 +667,7 @@ tasmax.sel(time='2005')
 </div>
 <div class="section" id="Selecting-data-within-a-range-of-values">
 <h2>Selecting data within a range of values<a class="headerlink" href="#Selecting-data-within-a-range-of-values" title="Permalink to this headline">¶</a></h2>
-<p>In the above examples we found the tasmax values at a particular lat/lon location, and a particular time. To select data over a range of values you can use the <code class="docutils literal notranslate"><span class="pre">slice()</span></code> function under the <code class="docutils literal notranslate"><span class="pre">sel()</span></code> command.</p>
+<p>In the above examples we found the tasmax values at a nearest lat/lon location, and a specific time. To select data over a range of values you can use the <code class="docutils literal notranslate"><span class="pre">slice()</span></code> function under the <code class="docutils literal notranslate"><span class="pre">sel()</span></code> command.</p>
 <p>In the below case we are getting the subset of tasmax data from years 2000 to 2005 and between latitudes 20S to 20N.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
@@ -719,7 +719,7 @@ Attributes:
 </div>
 <div class="section" id="Xarray-.plot()">
 <h2>Xarray .plot()<a class="headerlink" href="#Xarray-.plot()" title="Permalink to this headline">¶</a></h2>
-<p>Plotting with xarray it very simple. Xarray plots will automatically define the axes values and labels based on the information contained within the data array.</p>
+<p>Plotting with xarray is very simple. Xarray plots will automatically define the axes values and labels based on the information contained within the data array.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
@@ -797,7 +797,7 @@ Attributes:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, NCI
+        &copy; Copyright 2020, NCI
 
     </p>
   </div>
