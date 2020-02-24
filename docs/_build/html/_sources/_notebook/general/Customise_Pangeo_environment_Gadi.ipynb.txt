@@ -8,7 +8,7 @@
     "# Customise Pangeo Environment on Gadi\n",
     "\n",
     "\n",
-    "In this notebook we demonstrate\n",
+    "In this notebook we demonstrate how to\n",
     "\n",
     "- load additional modules \n",
     "- install packages not available on Gadi"
@@ -18,7 +18,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "The centralised Pangeo Environment on Gadi includes essential modules:\n",
+    "The centralised Pangeo Environment on Gadi includes the following essential modules:\n",
     "\n",
     "- Python 3.7\n",
     "- xarray 0.14.1\n",
@@ -31,8 +31,8 @@
     "- netcdf4-python 1.5.3\n",
     "- h5py 2.10.0\n",
     "\n",
-    "Users might need to load additional modules to run their own workflow. If the pacakge is not\n",
-    "available on Gadi, users can install it under their own working directory. Please note, Pangeo environment should always be loaded before adding other modules or installing new modules."
+    "Users may need to load additional modules to run their own workflows. If a particular pacakge is not\n",
+    "available on Gadi, users can install it under their own working directory. Please note, the Pangeo environment should always be loaded **<span style=\"color:red\">before</span>** adding other modules or installing new modules."
    ]
   },
   {
@@ -60,17 +60,21 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "###  Step 2: Check if a module is available or not"
+    "###  Step 2: Check if a module is available on Gadi"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Lets try the **scipy** to see if it is available on Gadi.\n",
+    "Lets see if **tensorflow** is available on Gadi.\n",
     "\n",
     "```\n",
-    "(pangeo) bash-4.1$ module avil scipy\n",
+    "[abc123@gadi-login-01 ~]$ module avail tensorflow\n",
+    "\n",
+    "-----------------------/apps/Modules/modulefiles-----------------------\n",
+    "tensorflow/2.0.0\n",
+    "\n",
     "```"
    ]
   },
@@ -85,16 +89,21 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "If the module exists, it will list all the versions. Pick the one that you would like to use:\n",
+    "If the module exists, it will list all the versions available. Pick the one that you would like to use:\n",
     "\n",
     "```\n",
-    "(pangeo) bash-4.1$ module load scipy\n",
+    "[abc123@gadi-login-01 ~]$ module load tensorflow/2.0.0\n",
     "```\n",
     "\n",
-    "Check if the module is loaded properly:\n",
+    "Check if the module has loaded properly:\n",
     "\n",
     "```\n",
-    "(pangeo) bash-4.1$ module list\n",
+    "[abc123@gadi-login-01 ~]$ module list\n",
+    "\n",
+    "Currently loaded Module files:\n",
+    "1) pbs                   3) python3/3.7.4  5)netcdf/4.7.1    7) cuda/10.1              9) ncll/2.5.6-1+cuda10.1\n",
+    "2) intel-mkl/2019.3.199  4) hdf5/1.10.5    6)pangeo/2019.12  8) cudnn/7.6.5-cuda10.1  10) openmpi/4.0.1\n",
+    "11)tensorflow/2.0.0\n",
     "```"
    ]
   },
@@ -109,55 +118,60 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Lets try the **deepgraph** to see if it is available on Gadi.\n",
+    "Lets try the **Deep Graph Library** to see if it is available on Gadi. We can list all modules that start with the letter **d**:\n",
     "\n",
     "```\n",
-    "(pangeo) bash-4.1$ python\n",
-    "Python 3.7.3 | packaged by conda-forge | (default, Jul  1 2019, 21:52:21)\n",
-    "[GCC 7.3.0] :: Anaconda, Inc. on linux\n",
-    "Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n",
-    ">>> import deepgraph\n",
-    "Traceback (most recent call last):\n",
-    "  File \"<stdin>\", line 1, in <module>\n",
-    "ModuleNotFoundError: No module named 'deepgraph'\n",
-    ">>> exit()\n",
-    "```"
+    "[abc123@gadi-login-01 ~]$ module avail d\n",
+    "\n",
+    "-----------------------/apps/Modules/modulefiles-----------------------\n",
+    "dalton/2018.2   dftbplus/19.1    dmo13/2018\n",
+    "\n",
+    "```\n",
+    "We can see that the **Deep Graph Library** is not available as a module on Gadi and therefore we will need to install it ourselves.\n",
+    "\n",
+    "\n"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "#### There are multiple ways to install packages. For example, you can use install from the Python Package Index or build packges from the source. See instruction here: https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site for appropriate option for your own perference. \n",
-    "#### Please note: the packages should be installed within user's own directory"
+    "There are multiple ways to install Python packages. For example, you could use the **pip** package manager which is a de facto standard package-management system used to install and manage software packages written in Python (see instruction here: https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site ). Another popular way to install packages is through [Conda](https://docs.conda.io/en/latest/) which is an open source package, dependency and environment management system for any language - Python, R, Ruby, Jua, Scala, Java, JavaScript, C/C++, FORTRAN and many more.\n",
+    "\n",
+    "\n",
+    "Please note: Additional packages should be installed within a user's own directory"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "For example, you can use pip by running:\n",
-    "\n",
-    "$ pip install --install-option=\"--prefix=YOUR_OWN_DIRECTORY\" <package name>\n",
-    "\n",
-    "Here is an example:\n",
+    "As an example, you can use pip to install a package by running:\n",
     "\n",
     "```\n",
-    "(pangeo) bash-4.1$ pip install --install-option=\"--prefix=YOUR_OWN_DIRECTORY\" deepgraph\n",
-    "/apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages/pip/_internal/commands/install.py:243: UserWarning: Disabling all use of wheels due to the use of --build-options / --global-options / --install-options.\n",
-    "  cmdoptions.check_install_build_global(options)\n",
+    "$ pip install --user <package name>\n",
+    "\n",
+    "```\n",
+    "\n",
+    "Let's now install the **Deep Graph Library** using pip:\n",
+    "\n",
+    "```\n",
+    "[abc123@gadi-login-01 ~]$ pip install --user deepgraph\n",
+    "\n",
     "Collecting deepgraph\n",
-    "  Downloading https://files.pythonhosted.org/packages/fc/3e/4a34a5316a5f886b8d7a6787c24852d9e5a5ef00b4ec6af0736f681a3a58/DeepGraph-0.2.2.tar.gz (160kB)\n",
-    " \t|████████████████████████████████| 163kB 4.7MB/s\n",
-    "Requirement already satisfied: numpy>=1.6 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from deepgraph) (1.17.2)\n",
-    "Requirement already satisfied: pandas>=0.17.0 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from deepgraph) (0.25.1)\n",
-    "Requirement already satisfied: python-dateutil>=2.6.1 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from pandas>=0.17.0->deepgraph) (2.8.0)\n",
-    "Requirement already satisfied: pytz>=2017.2 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from pandas>=0.17.0->deepgraph) (2019.2)\n",
-    "Requirement already satisfied: six>=1.5 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from python-dateutil>=2.6.1->pandas>=0.17.0->deepgraph) (1.12.0)\n",
-    "Skipping bdist_wheel for deepgraph, due to binaries being disabled for it.\n",
+    "  Using cached https://files.pythonhosted.org/packages/fc/3e/4a34a5316a5f886b8d7a6787c24852d9e5a5ef00b4ec6af0736f681a3a58/DeepGraph-0.2.2.tar.gz\n",
+    "Requirement already satisfied: numpy>=1.6 in /apps/python3/3.7.4/lib/python3.7/site-packages/numpy-1.17.2-py3.7-linux-x86_64.egg (from deepgraph) (1.17.2)\n",
+    "Requirement already satisfied: pandas>=0.17.0 in /apps/pangeo/2019.12/lib/python3.7/site-packages (from deepgraph) (0.25.3)\n",
+    "Requirement already satisfied: pytz>=2017.2 in /apps/pangeo/2019.12/lib/python3.7/site-packages (from pandas>=0.17.0->deepgraph) (2019.3)\n",
+    "Requirement already satisfied: python-dateutil>=2.6.1 in /apps/python3/3.7.4/lib/python3.7/site-packages (from pandas>=0.17.0->deepgraph) (2.8.1)\n",
+    "Requirement already satisfied: six>=1.5 in /apps/python3/3.7.4/lib/python3.7/site-packages (from python-dateutil>=2.6.1->pandas>=0.17.0->deepgraph) (1.13.0)\n",
+    "Building wheels for collected packages: deepgraph\n",
+    "  Building wheel for deepgraph (setup.py) ... done\n",
+    "  Created wheel for deepgraph: filename=DeepGraph-0.2.2-cp37-cp37m-linux_x86_64.whl size=373893 sha256=53e6966cdd833e99af226dd925f9d9f1a10259053cd13f4391caa356bbfedabb\n",
+    "  Stored in directory: /home/900/nre900/.cache/pip/wheels/7f/4b/45/caf95420067f7a1795c5664bce0beda747d0ce931c2424c5ff\n",
+    "Successfully built deepgraph\n",
     "Installing collected packages: deepgraph\n",
-    "  Running setup.py install for deepgraph ... done\n",
-    "Successfully installed deepgraph\n",
+    "Successfully installed deepgraph-0.2.2\n",
     "\n",
     "```"
    ]
@@ -166,7 +180,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Step 4: Setup environment of the new package"
+    "### Step 4: Validate new installation \n"
    ]
   },
   {
@@ -174,26 +188,12 @@
    "metadata": {},
    "source": [
     "```\n",
-    "(pangeo) bash-4.1$ export PYTHONPATH=$PYTHONPATH:YOUR_OWN_DIRECTORY/lib/python3.7/site-packages\n",
-    "```"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "### Step 5: Validate new Installation \n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "```\n",
-    "(pangeo) bash-4.1$ python\n",
-    "Python 3.7.3 | packaged by conda-forge | (default, Jul  1 2019, 21:52:21)\n",
-    "[GCC 7.3.0] :: Anaconda, Inc. on linux\n",
+    "[abc123@gadi-login-01 ~]$ python\n",
+    "\n",
+    "Python 3.7.4 (default, Nov  6 2019, 12:34:08) \n",
+    "[GCC 8.2.1 20180905 (Red Hat 8.2.1-3)] on linux\n",
     "Type \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n",
+    "\n",
     ">>> import deepgraph\n",
     ">>> exit()\n",
     "```"

@@ -17,7 +17,7 @@ Data Access and Quick Preview
 * `ncview <ncview_cmip5.ipynb>`_
 * `GDALinfo <gdalbasics_cmip5.ipynb>`_
 * `Python_GDAL_netCDF <python_GDAL_netcdf_cmip5.ipynb>`_
-* `Search and Access CMIP5 data using Clef and Xarray <CMIP5_Data_Search_Access1.ipynb>`_
+* `Search and Access CMIP5 data using Clef and Xarray <CMIP5_Data_Search_Access.ipynb>`_
 * `Search and Access CMIP6 data using Clef and Xarray <CMIP6_Data_Search_Access.ipynb>`_
 
          

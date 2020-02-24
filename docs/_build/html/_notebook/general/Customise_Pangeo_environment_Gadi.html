@@ -198,12 +198,12 @@
 </style>
 <div class="section" id="Customise-Pangeo-Environment-on-Gadi">
 <h1>Customise Pangeo Environment on Gadi<a class="headerlink" href="#Customise-Pangeo-Environment-on-Gadi" title="Permalink to this headline">¶</a></h1>
-<p>In this notebook we demonstrate</p>
+<p>In this notebook we demonstrate how to</p>
 <ul class="simple">
 <li>load additional modules</li>
 <li>install packages not available on Gadi</li>
 </ul>
-<p>The centralised Pangeo Environment on Gadi includes essential modules:</p>
+<p>The centralised Pangeo Environment on Gadi includes the following essential modules:</p>
 <ul class="simple">
 <li>Python 3.7</li>
 <li>xarray 0.14.1</li>
@@ -216,7 +216,7 @@
 <li>netcdf4-python 1.5.3</li>
 <li>h5py 2.10.0</li>
 </ul>
-<p>Users might need to load additional modules to run their own workflow. If the pacakge is not available on Gadi, users can install it under their own working directory. Please note, Pangeo environment should always be loaded before adding other modules or installing new modules.</p>
+<p>Users may need to load additional modules to run their own workflows. If a particular pacakge is not available on Gadi, users can install it under their own working directory. Please note, the Pangeo environment should always be loaded <strong>before</strong> adding other modules or installing new modules.</p>
 <div class="section" id="Step-1:-Enable-Pangeo-in-your-shell-envorinment">
 <h2>Step 1: Enable Pangeo in your shell envorinment<a class="headerlink" href="#Step-1:-Enable-Pangeo-in-your-shell-envorinment" title="Permalink to this headline">¶</a></h2>
 <p>To enable the Pangeo environment, you can use the following command within jobs, or within an interactive environment:</p>
@@ -226,77 +226,77 @@
 </div>
 <p>Note that Pangeo has its own Python installation.</p>
 </div>
-<div class="section" id="Step-2:-Check-if-a-module-is-available-or-not">
-<h2>Step 2: Check if a module is available or not<a class="headerlink" href="#Step-2:-Check-if-a-module-is-available-or-not" title="Permalink to this headline">¶</a></h2>
-<p>Lets try the <strong>scipy</strong> to see if it is available on Gadi.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ module avil scipy
+<div class="section" id="Step-2:-Check-if-a-module-is-available-on-Gadi">
+<h2>Step 2: Check if a module is available on Gadi<a class="headerlink" href="#Step-2:-Check-if-a-module-is-available-on-Gadi" title="Permalink to this headline">¶</a></h2>
+<p>Lets see if <strong>tensorflow</strong> is available on Gadi.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[abc123@gadi-login-01 ~]$ module avail tensorflow
+
+-----------------------/apps/Modules/modulefiles-----------------------
+tensorflow/2.0.0
 </pre></div>
 </div>
 </div>
 <div class="section" id="Step-3a:-Load-modules-if-they-are-available-on-Gadi">
 <h2>Step 3a: Load modules if they are available on Gadi<a class="headerlink" href="#Step-3a:-Load-modules-if-they-are-available-on-Gadi" title="Permalink to this headline">¶</a></h2>
-<p>If the module exists, it will list all the versions. Pick the one that you would like to use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ module load scipy
+<p>If the module exists, it will list all the versions available. Pick the one that you would like to use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[abc123@gadi-login-01 ~]$ module load tensorflow/2.0.0
 </pre></div>
 </div>
-<p>Check if the module is loaded properly:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ module list
+<p>Check if the module has loaded properly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[abc123@gadi-login-01 ~]$ module list
+
+Currently loaded Module files:
+1) pbs                   3) python3/3.7.4  5)netcdf/4.7.1    7) cuda/10.1              9) ncll/2.5.6-1+cuda10.1
+2) intel-mkl/2019.3.199  4) hdf5/1.10.5    6)pangeo/2019.12  8) cudnn/7.6.5-cuda10.1  10) openmpi/4.0.1
+11)tensorflow/2.0.0
 </pre></div>
 </div>
 </div>
 <div class="section" id="Step-3b:-Install-modules-if-they-are-NOT-available-on-Gadi">
 <h2>Step 3b: Install modules if they are NOT available on Gadi<a class="headerlink" href="#Step-3b:-Install-modules-if-they-are-NOT-available-on-Gadi" title="Permalink to this headline">¶</a></h2>
-<p>Lets try the <strong>deepgraph</strong> to see if it is available on Gadi.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ python
-Python 3.7.3 | packaged by conda-forge | (default, Jul  1 2019, 21:52:21)
-[GCC 7.3.0] :: Anaconda, Inc. on linux
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-&gt;&gt;&gt; import deepgraph
-Traceback (most recent call last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-ModuleNotFoundError: No module named &#39;deepgraph&#39;
-&gt;&gt;&gt; exit()
+<p>Lets try the <strong>Deep Graph Library</strong> to see if it is available on Gadi. We can list all modules that start with the letter <strong>d</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[abc123@gadi-login-01 ~]$ module avail d
+
+-----------------------/apps/Modules/modulefiles-----------------------
+dalton/2018.2   dftbplus/19.1    dmo13/2018
 </pre></div>
 </div>
-<div class="section" id="There-are-multiple-ways-to-install-packages.-For-example,-you-can-use-install-from-the-Python-Package-Index-or-build-packges-from-the-source.-See-instruction-here:-https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site-for-appropriate-option-for-your-own-perference.">
-<h3>There are multiple ways to install packages. For example, you can use install from the Python Package Index or build packges from the source. See instruction here: <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site">https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site</a> for appropriate option for your own perference.<a class="headerlink" href="#There-are-multiple-ways-to-install-packages.-For-example,-you-can-use-install-from-the-Python-Package-Index-or-build-packges-from-the-source.-See-instruction-here:-https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site-for-appropriate-option-for-your-own-perference." title="Permalink to this headline">¶</a></h3>
+<p>We can see that the <strong>Deep Graph Library</strong> is not available as a module on Gadi and therefore we will need to install it ourselves.</p>
+<p>There are multiple ways to install Python packages. For example, you could use the <strong>pip</strong> package manager which is a de facto standard package-management system used to install and manage software packages written in Python (see instruction here: <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site">https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site</a> ). Another popular way to install packages is through <a class="reference external" href="https://docs.conda.io/en/latest/">Conda</a> which is an open source package, dependency and environment
+management system for any language - Python, R, Ruby, Jua, Scala, Java, JavaScript, C/C++, FORTRAN and many more.</p>
+<p>Please note: Additional packages should be installed within a user’s own directory</p>
+<p>As an example, you can use pip to install a package by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install --user &lt;package name&gt;
+</pre></div>
 </div>
-<div class="section" id="Please-note:-the-packages-should-be-installed-within-user’s-own-directory">
-<h3>Please note: the packages should be installed within user’s own directory<a class="headerlink" href="#Please-note:-the-packages-should-be-installed-within-user’s-own-directory" title="Permalink to this headline">¶</a></h3>
-<p>For example, you can use pip by running:</p>
-<p>$ pip install –install-option=“–prefix=YOUR_OWN_DIRECTORY”</p>
-<p>Here is an example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ pip install --install-option=&quot;--prefix=YOUR_OWN_DIRECTORY&quot; deepgraph
-/apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages/pip/_internal/commands/install.py:243: UserWarning: Disabling all use of wheels due to the use of --build-options / --global-options / --install-options.
-  cmdoptions.check_install_build_global(options)
+<p>Let’s now install the <strong>Deep Graph Library</strong> using pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[abc123@gadi-login-01 ~]$ pip install --user deepgraph
+
 Collecting deepgraph
-  Downloading https://files.pythonhosted.org/packages/fc/3e/4a34a5316a5f886b8d7a6787c24852d9e5a5ef00b4ec6af0736f681a3a58/DeepGraph-0.2.2.tar.gz (160kB)
-    |████████████████████████████████| 163kB 4.7MB/s
-Requirement already satisfied: numpy&gt;=1.6 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from deepgraph) (1.17.2)
-Requirement already satisfied: pandas&gt;=0.17.0 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from deepgraph) (0.25.1)
-Requirement already satisfied: python-dateutil&gt;=2.6.1 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from pandas&gt;=0.17.0-&gt;deepgraph) (2.8.0)
-Requirement already satisfied: pytz&gt;=2017.2 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from pandas&gt;=0.17.0-&gt;deepgraph) (2019.2)
-Requirement already satisfied: six&gt;=1.5 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from python-dateutil&gt;=2.6.1-&gt;pandas&gt;=0.17.0-&gt;deepgraph) (1.12.0)
-Skipping bdist_wheel for deepgraph, due to binaries being disabled for it.
+  Using cached https://files.pythonhosted.org/packages/fc/3e/4a34a5316a5f886b8d7a6787c24852d9e5a5ef00b4ec6af0736f681a3a58/DeepGraph-0.2.2.tar.gz
+Requirement already satisfied: numpy&gt;=1.6 in /apps/python3/3.7.4/lib/python3.7/site-packages/numpy-1.17.2-py3.7-linux-x86_64.egg (from deepgraph) (1.17.2)
+Requirement already satisfied: pandas&gt;=0.17.0 in /apps/pangeo/2019.12/lib/python3.7/site-packages (from deepgraph) (0.25.3)
+Requirement already satisfied: pytz&gt;=2017.2 in /apps/pangeo/2019.12/lib/python3.7/site-packages (from pandas&gt;=0.17.0-&gt;deepgraph) (2019.3)
+Requirement already satisfied: python-dateutil&gt;=2.6.1 in /apps/python3/3.7.4/lib/python3.7/site-packages (from pandas&gt;=0.17.0-&gt;deepgraph) (2.8.1)
+Requirement already satisfied: six&gt;=1.5 in /apps/python3/3.7.4/lib/python3.7/site-packages (from python-dateutil&gt;=2.6.1-&gt;pandas&gt;=0.17.0-&gt;deepgraph) (1.13.0)
+Building wheels for collected packages: deepgraph
+  Building wheel for deepgraph (setup.py) ... done
+  Created wheel for deepgraph: filename=DeepGraph-0.2.2-cp37-cp37m-linux_x86_64.whl size=373893 sha256=53e6966cdd833e99af226dd925f9d9f1a10259053cd13f4391caa356bbfedabb
+  Stored in directory: /home/900/nre900/.cache/pip/wheels/7f/4b/45/caf95420067f7a1795c5664bce0beda747d0ce931c2424c5ff
+Successfully built deepgraph
 Installing collected packages: deepgraph
-  Running setup.py install for deepgraph ... done
-Successfully installed deepgraph
+Successfully installed deepgraph-0.2.2
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Step-4:-Setup-environment-of-the-new-package">
-<h2>Step 4: Setup environment of the new package<a class="headerlink" href="#Step-4:-Setup-environment-of-the-new-package" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ export PYTHONPATH=$PYTHONPATH:YOUR_OWN_DIRECTORY/lib/python3.7/site-packages
-</pre></div>
-</div>
-</div>
-<div class="section" id="Step-5:-Validate-new-Installation">
-<h2>Step 5: Validate new Installation<a class="headerlink" href="#Step-5:-Validate-new-Installation" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ python
-Python 3.7.3 | packaged by conda-forge | (default, Jul  1 2019, 21:52:21)
-[GCC 7.3.0] :: Anaconda, Inc. on linux
+<div class="section" id="Step-4:-Validate-new-installation">
+<h2>Step 4: Validate new installation<a class="headerlink" href="#Step-4:-Validate-new-installation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[abc123@gadi-login-01 ~]$ python
+
+Python 3.7.4 (default, Nov  6 2019, 12:34:08)
+[GCC 8.2.1 20180905 (Red Hat 8.2.1-3)] on linux
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+
 &gt;&gt;&gt; import deepgraph
 &gt;&gt;&gt; exit()
 </pre></div>
