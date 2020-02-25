@@ -75,16 +75,37 @@ Combined dataset
 * `OFAM and Himawari8 <Python_NetCDF_OFAM_Himawari8.ipynb>`_ 
 * `Digital Elevation Model (DEM) and Himawari8 <../eo/Satellite_Imaging.ipynb>`_ 
         
-Community Forums, Tools and Packages
+Community developed packages
+++++++++++++++++++++++++++++++
+* `xgcm - xarray-based tools for general circulation model analysis`_ 
+* `ldcpy - tools for analyzing and applying lossy data compression to geoscience data`_ 
+* `easy_coloc - project ocean model gridded fields onto observation space`_
+* `pangeo-pyinterp - python library for optimized geo-referenced interpolation`_
+* `xsd - statistical downscaling and postprocessing models for climate and weather model simulations`_
+* `Gsw Python package`_
+* `xskillscore - provides verification metrics of deterministic forecasts with xarray`_
+* `Xrviz - an interactive visualisation interface for Xarrays`_
+* `POT - Python Optimal Transport`_
+* `mom_xtools - collection of xarray based analysis tools for MOM ocean model output`_
+
+
+.. _xgcm - xarray-based tools for general circulation model analysis: https://github.com/xgcm
+.. _ldcpy - tools for analyzing and applying lossy data compression to geoscience data: https://github.com/NCAR/ldcpy
+.. _easy_coloc - project ocean model gridded fields onto observation space https://github.com/raphaeldussin/easy_coloc
+.. _pangeo-pyinterp - python library for optimized geo-referenced interpolation: https://github.com/raphaeldussin/easy_coloc
+.. _xsd - statistical downscaling and postprocessing models for climate and weather model simulations: https://github.com/jhamman/scikit-downscale
+.. _Gsw Python package: https://github.com/TEOS-10/GSW-Python        
+.. _xskillscore - provides verification metrics of deterministic forecasts with xarray: https://github.com/raybellwaves/xskillscore 
+.. _Xrviz - an interactive visualisation interface for Xarrays: https://xrviz.readthedocs.io/en/latest/
+.. _POT - Python Optimal Transport: https://github.com/rflamary/POT
+.. _mom_xtools - collection of xarray based analysis tools for MOM ocean model output: https://github.com/jbusecke/mom_xtools
+        
+Community Forums
 --------------------------------------------
 
 NCI hosts a `CMIP community wiki page`_ for more information.
 
 .. _CMIP community wiki page: https://opus.nci.org.au/display/CMIP/CMIP+Community+Home/
-
-We summerised a `list of tools and packages`_ developed for climate and weather community. 
-
-.. _list of tools and packages: https://nci-rei.atlassian.net/wiki/spaces/TPR/pages/613384225/Community+Tools
 
 Other associated training resources 
 --------------------------------------------
