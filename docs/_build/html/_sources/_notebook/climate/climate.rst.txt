@@ -91,7 +91,7 @@ Community developed packages
 
 .. _xgcm - xarray-based tools for general circulation model analysis: https://github.com/xgcm
 .. _ldcpy - tools for analyzing and applying lossy data compression to geoscience data: https://github.com/NCAR/ldcpy
-.. _easy_coloc - project ocean model gridded fields onto observation space https://github.com/raphaeldussin/easy_coloc
+.. _easy_coloc - project ocean model gridded fields onto observation space: https://github.com/raphaeldussin/easy_coloc
 .. _pangeo-pyinterp - python library for optimized geo-referenced interpolation: https://github.com/raphaeldussin/easy_coloc
 .. _xsd - statistical downscaling and postprocessing models for climate and weather model simulations: https://github.com/jhamman/scikit-downscale
 .. _Gsw Python package: https://github.com/TEOS-10/GSW-Python        
