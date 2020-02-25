@@ -5,14 +5,6 @@ HDF5 and NetCDF
 ----------------------
 
 * `Create HDF5 and NetCDF files <create_HDF5_and_NetCDF.ipynb>`_
-* `Basic features of NetCDF operator <NCO_basics1.ipynb>`_
-
-Performance
--------------
-
-* `Data access serial I/O <data_access_serial_io.ipynb>`_
-* `Data access parallel I/O <data_access_parallel_io1.ipynb>`_ (`parallel_io.py <parallel_io.py>`_ and `collective_io.py <collective_io.py>`_ should be downloaded when running this example) 
-
 
 Pangeo
 ----------

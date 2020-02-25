@@ -233,10 +233,10 @@ $ jupyter notebook password
 </pre></div>
 </div>
 </div>
-<div class="section" id="Submitting-a-multi-node-Pangeo-job-to-Raijin">
-<h3>Submitting a multi-node Pangeo job to Raijin<a class="headerlink" href="#Submitting-a-multi-node-Pangeo-job-to-Raijin" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Submitting-a-multi-node-Pangeo-job-to-Gadi">
+<h3>Submitting a multi-node Pangeo job to Gadi<a class="headerlink" href="#Submitting-a-multi-node-Pangeo-job-to-Gadi" title="Permalink to this headline">¶</a></h3>
 <p>First create a directory where you will run the jupyter notebook:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/pangeo/tutorial
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p ~/pangeo/tutorial
 </pre></div>
 </div>
 <p>You can create a shell script by copying the following commands into a script file. Let’s name this file run_ipynb_job.sh:</p>
@@ -287,7 +287,7 @@ $ jupyter notebook password
 </div>
 <p>For this example, JupyterLab uses port 8388 and dask dashboard occupies port 8768 respectively from Gadi worker node gadi-cpu-clx-2224.</p>
 <p>Note that both port numbers are randomly chosen for each job and will be different each time you run a new job.</p>
-<p>Next, on your remote machine (e.g., Desktop), run each of the following commands separately and enter your Gadi password if prompted.</p>
+<p>Next, on your remote machine (e.g., Desktop), run each of the following commands separately if you have already set up SSH keys, you can run command like below.</p>
 <p>CLI_1:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh -N -L 8388:gadi-cpu-clx-2224.gadi.nci.org.au:8388 abc123@gadi.nci.org.au &amp;
 </pre></div>
@@ -296,6 +296,7 @@ $ jupyter notebook password
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh -N -L 8768:gadi-cpu-clx-2224.gadi.nci.org.au:8768 abc123@gadi.nci.org.au &amp;
 </pre></div>
 </div>
+<p>If you haven’t set up SSH keys, instructions can be found <a class="reference external" href="https://opus.nci.org.au/x/7g3y">here</a>. Alternatively, you should enter your Gadi password when prompted.</p>
 </div>
 <div class="section" id="Connect-to-the-remote-JupyterLab-server-from-your-remote-desktop-computer">
 <h3>Connect to the remote JupyterLab server from your remote desktop computer<a class="headerlink" href="#Connect-to-the-remote-JupyterLab-server-from-your-remote-desktop-computer" title="Permalink to this headline">¶</a></h3>

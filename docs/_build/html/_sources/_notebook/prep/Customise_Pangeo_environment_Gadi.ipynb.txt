@@ -18,21 +18,8 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "The centralised Pangeo Environment on Gadi includes the following essential modules:\n",
-    "\n",
-    "- Python 3.7\n",
-    "- xarray 0.14.1\n",
-    "- jupyterlab  1.2.4\n",
-    "- nbserverproxy  0.8.8\n",
-    "- dask   2.9.1\n",
-    "- distributed 2.9.1\n",
-    "- dask-jobqueue 0.7.0\n",
-    "- bokeh 1.4.0\n",
-    "- netcdf4-python 1.5.3\n",
-    "- h5py 2.10.0\n",
-    "\n",
-    "Users may need to load additional modules to run their own workflows. If a particular pacakge is not\n",
-    "available on Gadi, users can install it under their own working directory. Please note, the Pangeo environment should always be loaded **<span style=\"color:red\">before</span>** adding other modules or installing new modules."
+    "Existing software list available on Gadi is [here](https://opus.nci.org.au/x/6YT_Ag). Users may need to load additional modules to run their own workflows. If a particular package is not\n",
+    "available on Gadi, users can install it under their own working directory, e.g., their computer project space if it is allowed. Please note, the Pangeo environment should always be loaded **<span style=\"color:red\">before</span>** adding other modules or installing new modules."
    ]
   },
   {
@@ -75,9 +62,7 @@
     "-----------------------/apps/Modules/modulefiles-----------------------\n",
     "tensorflow/2.0.0\n",
     "\n",
-    "```\n",
-    "\n",
-    "Note: You can also browse the list of software available on Gadi [here](https://opus.nci.org.au/x/6YT_Ag)."
+    "```"
    ]
   },
   {

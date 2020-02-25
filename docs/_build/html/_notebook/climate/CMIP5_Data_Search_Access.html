@@ -400,8 +400,8 @@ div.rendered_html tbody tr:hover {
 <p>The following material uses Coupled Model Intercomparison Project (CMIP5) collections. The CMIP5 terms of use are found <a class="reference external" href="https://cmip.llnl.gov/cmip5/terms.html">here</a>. For more information on the collection, please click <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716">here</a>.</p>
 <div class="section" id="Set-up-environment">
 <h2>Set up environment<a class="headerlink" href="#Set-up-environment" title="Permalink to this headline">¶</a></h2>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -409,15 +409,6 @@ div.rendered_html tbody tr:hover {
 <span class="o">!</span>module load conda/analysis3-unstable
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-/bin/sh: module: command not found
-/bin/sh: module: command not found
-</pre></div></div>
 </div>
 <p>We use Clef to search CMIP5 data path. Clef is available within the analysis3-unstable packages.</p>
 <p>Clef searches the Earth System Grid Federation datasets stored at the Australian National Computational Infrastructure, both data published on the NCI ESGF node as well as files that are locally replicated from other ESGF nodes.</p>
@@ -430,7 +421,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Import-python-packages">
 <h2>Import python packages<a class="headerlink" href="#Import-python-packages" title="Permalink to this headline">¶</a></h2>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
@@ -440,23 +431,12 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/anaconda3/lib/python3.7/site-packages/dask/config.py:168: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
-  data = yaml.load(f.read()) or {}
-/anaconda3/lib/python3.7/site-packages/distributed/config.py:20: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
-  defaults = yaml.load(f)
-</pre></div></div>
-</div>
 </div>
 <div class="section" id="Use-Clef--cmip5-to-serach-data">
 <h2>Use Clef -cmip5 to serach data<a class="headerlink" href="#Use-Clef--cmip5-to-serach-data" title="Permalink to this headline">¶</a></h2>
 <p>First, check out help information to see search options in clef cmip5.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -464,31 +444,15 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-/bin/sh: clef: command not found
-</pre></div></div>
-</div>
 <p>Then, we will search available temperature and precipitation data by defining all the parameters. See example below:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">!</span>clef cmip5  --experiment rcp26  --ensemble r1i1p1 --table Amon   --variable tas --variable pr
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-/bin/sh: clef: command not found
-</pre></div></div>
 </div>
 <p>We can then set up values for CMIP5 attributions according to the CleF search results.</p>
 <p>CMIP5 data are organised according to its global attributes. We can access different data by changing attributes in the directory below: <strong>/g/data1b/al33/replicas/CMIP5/product/institute/model/experiment/frequency/realm/table/ensemble/version/variable</strong></p>
@@ -497,22 +461,14 @@ div.rendered_html tbody tr:hover {
 <div class="admonition note">
 NOTE: Due to different DRS (Directory Reference Structure) between CMIP5 and CMIP6, search syntax using clef is slightly different between two datasets. They have to be strictly consistent with each DRS tree and they are also case sensitive.</div>
 <p>See a wrong request as below:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">!</span>clef cmip5  --activity ScenarioMIP  --source_id  CNRM-CM6-1 --table Amon  --variable tas  --variable pr   --grid gr
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-/bin/sh: clef: command not found
-</pre></div></div>
 </div>
 </div>
 <div class="section" id="Show-data-file-names">
@@ -531,7 +487,7 @@ NOTE: Due to different DRS (Directory Reference Structure) between CMIP5 and CMI
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-ls: /g/data1b/al33/replicas/CMIP5/combined/MIROC/MIROC-ESM/rcp26/mon/atmos/Amon/r1i1p1/v20120710/tas/: No such file or directory
+tas_Amon_MIROC-ESM_rcp26_r1i1p1_200601-210012.nc
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -548,7 +504,7 @@ ls: /g/data1b/al33/replicas/CMIP5/combined/MIROC/MIROC-ESM/rcp26/mon/atmos/Amon/
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-ls: /g/data1b/al33/replicas/CMIP5/combined/MIROC/MIROC-ESM/rcp26/mon/atmos/Amon/r1i1p1/v20120710/pr/: No such file or directory
+pr_Amon_MIROC-ESM_rcp26_r1i1p1_200601-210012.nc
 </pre></div></div>
 </div>
 </div>
@@ -580,96 +536,28 @@ ls: /g/data1b/al33/replicas/CMIP5/combined/MIROC/MIROC-ESM/rcp26/mon/atmos/Amon/
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">_acquire_with_cache_info</span><span class="ansi-blue-fg">(self, needs_lock)</span>
-<span class="ansi-green-intense-fg ansi-bold">    185</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 186</span><span class="ansi-red-fg">                 </span>file <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">[</span>self<span class="ansi-blue-fg">.</span>_key<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    187</span>             <span class="ansi-green-fg">except</span> KeyError<span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/lru_cache.py</span> in <span class="ansi-cyan-fg">__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-intense-fg ansi-bold">     41</span>         <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>_lock<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">---&gt; 42</span><span class="ansi-red-fg">             </span>value <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">[</span>key<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">     43</span>             self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">.</span>move_to_end<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/g/data1b/al33/replicas/CMIP5/combined/MIROC/MIROC-ESM/rcp26/mon/atmos/Amon/r1i1p1/v20120710/tas/tas_Amon_MIROC-ESM_rcp26_r1i1p1_200601-210012.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False))]
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-8-6883e7d07a01&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">     11</span> variable<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;tas&#39;</span>
-<span class="ansi-green-intense-fg ansi-bold">     12</span> period<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;200601-210012&#39;</span>
-<span class="ansi-green-fg">---&gt; 13</span><span class="ansi-red-fg"> </span>ds<span class="ansi-blue-fg">=</span>xr<span class="ansi-blue-fg">.</span>open_dataset<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;&#39;</span><span class="ansi-blue-fg">+</span>cmip5Dir<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>product<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>institute<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>model<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>experiment<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>frenquency<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>realm<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>table<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>ensemble<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>version<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>variable<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>variable<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;_&#39;</span><span class="ansi-blue-fg">+</span>table<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;_&#39;</span><span class="ansi-blue-fg">+</span>model<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;_&#39;</span><span class="ansi-blue-fg">+</span>experiment<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;_&#39;</span><span class="ansi-blue-fg">+</span>ensemble<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;_&#39;</span><span class="ansi-blue-fg">+</span>period<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;.nc&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     14</span> tas<span class="ansi-blue-fg">=</span>ds<span class="ansi-blue-fg">.</span>tas
-<span class="ansi-green-intense-fg ansi-bold">     15</span> tas
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/api.py</span> in <span class="ansi-cyan-fg">open_dataset</span><span class="ansi-blue-fg">(filename_or_obj, group, decode_cf, mask_and_scale, decode_times, autoclose, concat_characters, decode_coords, engine, chunks, lock, cache, drop_variables, backend_kwargs, use_cftime)</span>
-<span class="ansi-green-intense-fg ansi-bold">    418</span>         <span class="ansi-green-fg">if</span> engine <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;netcdf4&#39;</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    419</span>             store = backends.NetCDF4DataStore.open(
-<span class="ansi-green-fg">--&gt; 420</span><span class="ansi-red-fg">                 filename_or_obj, group=group, lock=lock, **backend_kwargs)
-</span><span class="ansi-green-intense-fg ansi-bold">    421</span>         <span class="ansi-green-fg">elif</span> engine <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;scipy&#39;</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    422</span>             store <span class="ansi-blue-fg">=</span> backends<span class="ansi-blue-fg">.</span>ScipyDataStore<span class="ansi-blue-fg">(</span>filename_or_obj<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>backend_kwargs<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">open</span><span class="ansi-blue-fg">(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)</span>
-<span class="ansi-green-intense-fg ansi-bold">    333</span>             netCDF4.Dataset, filename, mode=mode, kwargs=kwargs)
-<span class="ansi-green-intense-fg ansi-bold">    334</span>         return cls(manager, group=group, mode=mode, lock=lock,
-<span class="ansi-green-fg">--&gt; 335</span><span class="ansi-red-fg">                    autoclose=autoclose)
-</span><span class="ansi-green-intense-fg ansi-bold">    336</span>
-<span class="ansi-green-intense-fg ansi-bold">    337</span>     <span class="ansi-green-fg">def</span> _acquire<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, manager, group, mode, lock, autoclose)</span>
-<span class="ansi-green-intense-fg ansi-bold">    291</span>         self<span class="ansi-blue-fg">.</span>_group <span class="ansi-blue-fg">=</span> group
-<span class="ansi-green-intense-fg ansi-bold">    292</span>         self<span class="ansi-blue-fg">.</span>_mode <span class="ansi-blue-fg">=</span> mode
-<span class="ansi-green-fg">--&gt; 293</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>format <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>ds<span class="ansi-blue-fg">.</span>data_model
-<span class="ansi-green-intense-fg ansi-bold">    294</span>         self<span class="ansi-blue-fg">.</span>_filename <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>ds<span class="ansi-blue-fg">.</span>filepath<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    295</span>         self<span class="ansi-blue-fg">.</span>is_remote <span class="ansi-blue-fg">=</span> is_remote_uri<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_filename<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">ds</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-intense-fg ansi-bold">    342</span>     <span class="ansi-blue-fg">@</span>property
-<span class="ansi-green-intense-fg ansi-bold">    343</span>     <span class="ansi-green-fg">def</span> ds<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 344</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_acquire<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    345</span>
-<span class="ansi-green-intense-fg ansi-bold">    346</span>     <span class="ansi-green-fg">def</span> open_store_variable<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> var<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">_acquire</span><span class="ansi-blue-fg">(self, needs_lock)</span>
-<span class="ansi-green-intense-fg ansi-bold">    336</span>
-<span class="ansi-green-intense-fg ansi-bold">    337</span>     <span class="ansi-green-fg">def</span> _acquire<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 338</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>_manager<span class="ansi-blue-fg">.</span>acquire_context<span class="ansi-blue-fg">(</span>needs_lock<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> root<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    339</span>             ds <span class="ansi-blue-fg">=</span> _nc4_require_group<span class="ansi-blue-fg">(</span>root<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_group<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_mode<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    340</span>         <span class="ansi-green-fg">return</span> ds
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/contextlib.py</span> in <span class="ansi-cyan-fg">__enter__</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-intense-fg ansi-bold">    110</span>         <span class="ansi-green-fg">del</span> self<span class="ansi-blue-fg">.</span>args<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>kwds<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>func
-<span class="ansi-green-intense-fg ansi-bold">    111</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 112</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> next<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>gen<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    113</span>         <span class="ansi-green-fg">except</span> StopIteration<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    114</span>             <span class="ansi-green-fg">raise</span> RuntimeError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;generator didn&#39;t yield&#34;</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">from</span> <span class="ansi-green-fg">None</span>
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">acquire_context</span><span class="ansi-blue-fg">(self, needs_lock)</span>
-<span class="ansi-green-intense-fg ansi-bold">    172</span>     <span class="ansi-green-fg">def</span> acquire_context<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    173</span>         <span class="ansi-blue-fg">&#34;&#34;&#34;Context manager for acquiring a file.&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">--&gt; 174</span><span class="ansi-red-fg">         </span>file<span class="ansi-blue-fg">,</span> cached <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_acquire_with_cache_info<span class="ansi-blue-fg">(</span>needs_lock<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    175</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    176</span>             <span class="ansi-green-fg">yield</span> file
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">_acquire_with_cache_info</span><span class="ansi-blue-fg">(self, needs_lock)</span>
-<span class="ansi-green-intense-fg ansi-bold">    190</span>                     kwargs <span class="ansi-blue-fg">=</span> kwargs<span class="ansi-blue-fg">.</span>copy<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    191</span>                     kwargs<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;mode&#39;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_mode
-<span class="ansi-green-fg">--&gt; 192</span><span class="ansi-red-fg">                 </span>file <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_opener<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>self<span class="ansi-blue-fg">.</span>_args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    193</span>                 <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_mode <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;w&#39;</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    194</span>                     <span class="ansi-red-fg"># ensure file doesn&#39;t get overriden when opened again</span>
-
-<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4.Dataset.__init__</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4._ensure_nc_success</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: b&#39;/g/data1b/al33/replicas/CMIP5/combined/MIROC/MIROC-ESM/rcp26/mon/atmos/Amon/r1i1p1/v20120710/tas/tas_Amon_MIROC-ESM_rcp26_r1i1p1_200601-210012.nc&#39;
-</pre></div></div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;xarray.DataArray &#39;tas&#39; (time: 1140, lat: 64, lon: 128)&gt;
+[9338880 values with dtype=float64]
+Coordinates:
+  * time     (time) datetime64[ns] 2006-01-16T12:00:00 2006-02-15 ...
+  * lat      (lat) float64 -87.86 -85.1 -82.31 -79.53 -76.74 -73.95 -71.16 ...
+  * lon      (lon) float64 0.0 2.812 5.625 8.438 11.25 14.06 16.88 19.69 ...
+    height   float64 2.0
+Attributes:
+    standard_name:     air_temperature
+    long_name:         Near-Surface Air Temperature
+    units:             K
+    original_name:     T2
+    cell_methods:      time: mean
+    cell_measures:     area: areacella
+    history:           2011-09-13T04:34:56Z altered by CMOR: Treated scalar d...
+    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation...
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="precipitation">
@@ -698,96 +586,29 @@ During handling of the above exception, another exception occurred:
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">_acquire_with_cache_info</span><span class="ansi-blue-fg">(self, needs_lock)</span>
-<span class="ansi-green-intense-fg ansi-bold">    185</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 186</span><span class="ansi-red-fg">                 </span>file <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">[</span>self<span class="ansi-blue-fg">.</span>_key<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    187</span>             <span class="ansi-green-fg">except</span> KeyError<span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/lru_cache.py</span> in <span class="ansi-cyan-fg">__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-intense-fg ansi-bold">     41</span>         <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>_lock<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">---&gt; 42</span><span class="ansi-red-fg">             </span>value <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">[</span>key<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">     43</span>             self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">.</span>move_to_end<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/g/data1b/al33/replicas/CMIP5/combined/MIROC/MIROC-ESM/rcp26/mon/atmos/Amon/r1i1p1/v20120710/pr/pr_Amon_MIROC-ESM_rcp26_r1i1p1_200601-210012.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False))]
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-9-50b2a41d89cb&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">     11</span> variable<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;pr&#39;</span>
-<span class="ansi-green-intense-fg ansi-bold">     12</span> period<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;200601-210012&#39;</span>
-<span class="ansi-green-fg">---&gt; 13</span><span class="ansi-red-fg"> </span>ds<span class="ansi-blue-fg">=</span>xr<span class="ansi-blue-fg">.</span>open_dataset<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;&#39;</span><span class="ansi-blue-fg">+</span>cmip5Dir<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>product<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>institute<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>model<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>experiment<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>frenquency<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>realm<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>table<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>ensemble<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>version<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>variable<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;/&#39;</span><span class="ansi-blue-fg">+</span>variable<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;_&#39;</span><span class="ansi-blue-fg">+</span>table<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;_&#39;</span><span class="ansi-blue-fg">+</span>model<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;_&#39;</span><span class="ansi-blue-fg">+</span>experiment<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;_&#39;</span><span class="ansi-blue-fg">+</span>ensemble<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;_&#39;</span><span class="ansi-blue-fg">+</span>period<span class="ansi-blue-fg">+</span><span class="ansi-blue-fg">&#39;.nc&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     14</span> pr<span class="ansi-blue-fg">=</span>ds<span class="ansi-blue-fg">.</span>pr
-<span class="ansi-green-intense-fg ansi-bold">     15</span> pr
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/api.py</span> in <span class="ansi-cyan-fg">open_dataset</span><span class="ansi-blue-fg">(filename_or_obj, group, decode_cf, mask_and_scale, decode_times, autoclose, concat_characters, decode_coords, engine, chunks, lock, cache, drop_variables, backend_kwargs, use_cftime)</span>
-<span class="ansi-green-intense-fg ansi-bold">    418</span>         <span class="ansi-green-fg">if</span> engine <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;netcdf4&#39;</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    419</span>             store = backends.NetCDF4DataStore.open(
-<span class="ansi-green-fg">--&gt; 420</span><span class="ansi-red-fg">                 filename_or_obj, group=group, lock=lock, **backend_kwargs)
-</span><span class="ansi-green-intense-fg ansi-bold">    421</span>         <span class="ansi-green-fg">elif</span> engine <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;scipy&#39;</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    422</span>             store <span class="ansi-blue-fg">=</span> backends<span class="ansi-blue-fg">.</span>ScipyDataStore<span class="ansi-blue-fg">(</span>filename_or_obj<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>backend_kwargs<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">open</span><span class="ansi-blue-fg">(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)</span>
-<span class="ansi-green-intense-fg ansi-bold">    333</span>             netCDF4.Dataset, filename, mode=mode, kwargs=kwargs)
-<span class="ansi-green-intense-fg ansi-bold">    334</span>         return cls(manager, group=group, mode=mode, lock=lock,
-<span class="ansi-green-fg">--&gt; 335</span><span class="ansi-red-fg">                    autoclose=autoclose)
-</span><span class="ansi-green-intense-fg ansi-bold">    336</span>
-<span class="ansi-green-intense-fg ansi-bold">    337</span>     <span class="ansi-green-fg">def</span> _acquire<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, manager, group, mode, lock, autoclose)</span>
-<span class="ansi-green-intense-fg ansi-bold">    291</span>         self<span class="ansi-blue-fg">.</span>_group <span class="ansi-blue-fg">=</span> group
-<span class="ansi-green-intense-fg ansi-bold">    292</span>         self<span class="ansi-blue-fg">.</span>_mode <span class="ansi-blue-fg">=</span> mode
-<span class="ansi-green-fg">--&gt; 293</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>format <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>ds<span class="ansi-blue-fg">.</span>data_model
-<span class="ansi-green-intense-fg ansi-bold">    294</span>         self<span class="ansi-blue-fg">.</span>_filename <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>ds<span class="ansi-blue-fg">.</span>filepath<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    295</span>         self<span class="ansi-blue-fg">.</span>is_remote <span class="ansi-blue-fg">=</span> is_remote_uri<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_filename<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">ds</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-intense-fg ansi-bold">    342</span>     <span class="ansi-blue-fg">@</span>property
-<span class="ansi-green-intense-fg ansi-bold">    343</span>     <span class="ansi-green-fg">def</span> ds<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 344</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_acquire<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    345</span>
-<span class="ansi-green-intense-fg ansi-bold">    346</span>     <span class="ansi-green-fg">def</span> open_store_variable<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> var<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">_acquire</span><span class="ansi-blue-fg">(self, needs_lock)</span>
-<span class="ansi-green-intense-fg ansi-bold">    336</span>
-<span class="ansi-green-intense-fg ansi-bold">    337</span>     <span class="ansi-green-fg">def</span> _acquire<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 338</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>_manager<span class="ansi-blue-fg">.</span>acquire_context<span class="ansi-blue-fg">(</span>needs_lock<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> root<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    339</span>             ds <span class="ansi-blue-fg">=</span> _nc4_require_group<span class="ansi-blue-fg">(</span>root<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_group<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_mode<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    340</span>         <span class="ansi-green-fg">return</span> ds
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/contextlib.py</span> in <span class="ansi-cyan-fg">__enter__</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-intense-fg ansi-bold">    110</span>         <span class="ansi-green-fg">del</span> self<span class="ansi-blue-fg">.</span>args<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>kwds<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>func
-<span class="ansi-green-intense-fg ansi-bold">    111</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 112</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> next<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>gen<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    113</span>         <span class="ansi-green-fg">except</span> StopIteration<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    114</span>             <span class="ansi-green-fg">raise</span> RuntimeError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;generator didn&#39;t yield&#34;</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">from</span> <span class="ansi-green-fg">None</span>
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">acquire_context</span><span class="ansi-blue-fg">(self, needs_lock)</span>
-<span class="ansi-green-intense-fg ansi-bold">    172</span>     <span class="ansi-green-fg">def</span> acquire_context<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    173</span>         <span class="ansi-blue-fg">&#34;&#34;&#34;Context manager for acquiring a file.&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">--&gt; 174</span><span class="ansi-red-fg">         </span>file<span class="ansi-blue-fg">,</span> cached <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_acquire_with_cache_info<span class="ansi-blue-fg">(</span>needs_lock<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    175</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    176</span>             <span class="ansi-green-fg">yield</span> file
-
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">_acquire_with_cache_info</span><span class="ansi-blue-fg">(self, needs_lock)</span>
-<span class="ansi-green-intense-fg ansi-bold">    190</span>                     kwargs <span class="ansi-blue-fg">=</span> kwargs<span class="ansi-blue-fg">.</span>copy<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    191</span>                     kwargs<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;mode&#39;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_mode
-<span class="ansi-green-fg">--&gt; 192</span><span class="ansi-red-fg">                 </span>file <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_opener<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>self<span class="ansi-blue-fg">.</span>_args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    193</span>                 <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_mode <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;w&#39;</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    194</span>                     <span class="ansi-red-fg"># ensure file doesn&#39;t get overriden when opened again</span>
-
-<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4.Dataset.__init__</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4._ensure_nc_success</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: b&#39;/g/data1b/al33/replicas/CMIP5/combined/MIROC/MIROC-ESM/rcp26/mon/atmos/Amon/r1i1p1/v20120710/pr/pr_Amon_MIROC-ESM_rcp26_r1i1p1_200601-210012.nc&#39;
-</pre></div></div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;xarray.DataArray &#39;pr&#39; (time: 1140, lat: 64, lon: 128)&gt;
+[9338880 values with dtype=float64]
+Coordinates:
+  * time     (time) datetime64[ns] 2006-01-16T12:00:00 2006-02-15 ...
+  * lat      (lat) float64 -87.86 -85.1 -82.31 -79.53 -76.74 -73.95 -71.16 ...
+  * lon      (lon) float64 0.0 2.812 5.625 8.438 11.25 14.06 16.88 19.69 ...
+Attributes:
+    standard_name:     precipitation_flux
+    long_name:         Precipitation
+    comment:           at surface; includes both liquid and solid phases from...
+    units:             kg m-2 s-1
+    original_name:     PRCP
+    original_units:    kg/m**2/s
+    history:           2011-09-13T04:36:18Z altered by CMOR: Converted units ...
+    cell_methods:      time: mean
+    cell_measures:     area: areacella
+    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation...
+</pre></div>
+</div>
 </div>
 </div>
 </div>

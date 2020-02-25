@@ -90,15 +90,16 @@
 </ul>
 <p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pangeo.html">On Gadi</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="general.html">Other examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
 <ul>
@@ -159,7 +160,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/_notebook/general/Customise_Pangeo_environment_Gadi.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/_notebook/prep/Customise_Pangeo_environment_Gadi.ipynb.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -203,20 +204,7 @@
 <li>load additional modules</li>
 <li>install packages not available on Gadi</li>
 </ul>
-<p>The centralised Pangeo Environment on Gadi includes the following essential modules:</p>
-<ul class="simple">
-<li>Python 3.7</li>
-<li>xarray 0.14.1</li>
-<li>jupyterlab 1.2.4</li>
-<li>nbserverproxy 0.8.8</li>
-<li>dask 2.9.1</li>
-<li>distributed 2.9.1</li>
-<li>dask-jobqueue 0.7.0</li>
-<li>bokeh 1.4.0</li>
-<li>netcdf4-python 1.5.3</li>
-<li>h5py 2.10.0</li>
-</ul>
-<p>Users may need to load additional modules to run their own workflows. If a particular pacakge is not available on Gadi, users can install it under their own working directory. Please note, the Pangeo environment should always be loaded <strong>before</strong> adding other modules or installing new modules.</p>
+<p>Existing software list available on Gadi is <a class="reference external" href="https://opus.nci.org.au/x/6YT_Ag">here</a>. Users may need to load additional modules to run their own workflows. If a particular package is not available on Gadi, users can install it under their own working directory, e.g., their computer project space if it is allowed. Please note, the Pangeo environment should always be loaded <strong>before</strong> adding other modules or installing new modules.</p>
 <div class="section" id="Step-1:-Enable-Pangeo-in-your-shell-envorinment">
 <h2>Step 1: Enable Pangeo in your shell envorinment<a class="headerlink" href="#Step-1:-Enable-Pangeo-in-your-shell-envorinment" title="Permalink to this headline">¶</a></h2>
 <p>To enable the Pangeo environment, you can use the following command within jobs, or within an interactive environment:</p>
@@ -235,7 +223,6 @@
 tensorflow/2.0.0
 </pre></div>
 </div>
-<p>Note: You can also browse the list of software available on Gadi <a class="reference external" href="https://opus.nci.org.au/x/6YT_Ag">here</a>.</p>
 </div>
 <div class="section" id="Step-3a:-Load-modules-if-they-are-available-on-Gadi">
 <h2>Step 3a: Load modules if they are available on Gadi<a class="headerlink" href="#Step-3a:-Load-modules-if-they-are-available-on-Gadi" title="Permalink to this headline">¶</a></h2>

@@ -27,8 +27,9 @@ for your interests.
    :caption: How to run Jupyter notebooks
    :maxdepth: 1
    
-   Install Jupyter and Python on your local machine <_notebook/prep/install_jupyter>
-   Setup Python environment on the VDI <_notebook/prep/python_on_vdi>
+   On your local machine <_notebook/prep/install_jupyter>
+   On the VDI <_notebook/prep/python_on_vdi>
+   On Gadi <_notebook/prep/pangeo>
       
 .. toctree::
    :caption: Notebook examples grouped by theme 

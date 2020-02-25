@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Generic Tools examples and Others &mdash; NCI data training  documentation</title>
+  <title>Configure and Customise Your Own Pangeo Environment on Gadi &mdash; NCI data training  documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="THREDDS" href="../tds/tds.html" />
-    <link rel="prev" title="Geophysics" href="../geophysics/geophysics.html" /> 
+    <link rel="next" title="Climate and Environment Science" href="../climate/climate.html" />
+    <link rel="prev" title="Installing Jupyter and Python on VDI" href="python_on_vdi.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,23 +91,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">On Gadi</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Other examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#hdf5-and-netcdf">HDF5 and NetCDF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pangeo">Pangeo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mapping-and-visulisation">Mapping and Visulisation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#astronomy">Astronomy</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
 <ul>
@@ -162,13 +156,13 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Generic Tools examples and Others</li>
+      <li>Configure and Customise Your Own Pangeo Environment on Gadi</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/_notebook/general/general.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/_notebook/prep/pangeo.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -205,31 +199,29 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="generic-tools-examples-and-others">
-<h1>Generic Tools examples and Others<a class="headerlink" href="#generic-tools-examples-and-others" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="hdf5-and-netcdf">
-<h2>HDF5 and NetCDF<a class="headerlink" href="#hdf5-and-netcdf" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="configure-and-customise-your-own-pangeo-environment-on-gadi">
+<h1>Configure and Customise Your Own Pangeo Environment on Gadi<a class="headerlink" href="#configure-and-customise-your-own-pangeo-environment-on-gadi" title="Permalink to this headline">¶</a></h1>
+<p>You can follow instructions below to set up Pangeo environment on Gadi.</p>
 <ul class="simple">
-<li><a class="reference internal" href="create_HDF5_and_NetCDF.html"><span class="doc">Create HDF5 and NetCDF files</span></a></li>
+<li><a class="reference internal" href="Setup_Pangeo_environment_Gadi.html"><span class="doc">Load and use Python modules</span></a></li>
 </ul>
-</div>
-<div class="section" id="pangeo">
-<h2>Pangeo<a class="headerlink" href="#pangeo" title="Permalink to this headline">¶</a></h2>
+<p>The centralised Pangeo Environment on Gadi includes the following essential modules:</p>
 <ul class="simple">
-<li><a class="reference external" href="Setup_Pangeo_environment_Gadi.ipynb">Setup Pangeo environment and run Jupyter notebook locally to interact with Gadi</a></li>
-<li><a class="reference external" href="Customise_Pangeo_environment_Gadi.ipynb">How to load modules and install packages within Pangeo environment on Gadi</a></li>
+<li>Python 3.7</li>
+<li>xarray 0.14.1</li>
+<li>jupyterlab 1.2.4</li>
+<li>nbserverproxy 0.8.8</li>
+<li>dask 2.9.1</li>
+<li>distributed 2.9.1</li>
+<li>dask-jobqueue 0.7.0</li>
+<li>bokeh 1.4.0</li>
+<li>netcdf4-python 1.5.3</li>
+<li>h5py 2.10.0</li>
 </ul>
-</div>
-<div class="section" id="mapping-and-visulisation">
-<h2>Mapping and Visulisation<a class="headerlink" href="#mapping-and-visulisation" title="Permalink to this headline">¶</a></h2>
+<p>You may need to load additional modules. Check <a class="reference external" href="https://opus.nci.org.au/x/6YT_Ag">here</a> for existing packages available on Gadi. If a particular package is not available on Gadi, users can install it under their own working directory, e.g., their compute project space if it is alloweds. Please note, the Pangeo environment should always be loaded before adding other modules or installing new modules.</p>
 <ul class="simple">
-<li><a class="reference internal" href="create_basemap_add_data.html"><span class="doc">Create a basemap and add some data</span></a></li>
+<li><a class="reference internal" href="Customise_Pangeo_environment_Gadi.html"><span class="doc">Customise Pangeo environment</span></a></li>
 </ul>
-</div>
-<div class="section" id="astronomy">
-<h2>Astronomy<a class="headerlink" href="#astronomy" title="Permalink to this headline">¶</a></h2>
-<p>NCI hosts Skymapper products. Please see the a useful documentation space <a class="reference external" href="https://python4astronomers.github.io/index.html">python for astronomers here</a>.</p>
-</div>
 </div>
 
 
@@ -240,10 +232,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tds/tds.html" class="btn btn-neutral float-right" title="THREDDS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../climate/climate.html" class="btn btn-neutral float-right" title="Climate and Environment Science" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../geophysics/geophysics.html" class="btn btn-neutral float-left" title="Geophysics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_on_vdi.html" class="btn btn-neutral float-left" title="Installing Jupyter and Python on VDI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
