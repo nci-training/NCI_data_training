@@ -26,21 +26,39 @@ Data Manipulation
 * `CDO - calculate monthly anomaly and Nino Index using CMIP6 data <CDO_monthly_anomaly_and_NinoIndex_CMIP6.ipynb>`_
 * `CDO - compare model and observational data <CDO_model_obs_compare.ipynb>`_
 * `CDO - mask ocean or land <CDO_ocean_land_mask.ipynb>`_
+* `CDO - Regrid CMIP5 modules into 1.5 degree grid`_
+* `CDO - Regrid CMIP6 modules into 1.5 degree grid`_
 * `Xarray - open and read data <Xarray_access_cmip5.ipynb>`_ 
 * `Xarray - subset and plot data (slicing and dicing) <Xarray_subset_plot_cmip5.ipynb>`_ 
 * `Xarray - calculate surface temperature anomalies in Australian <Xarray_calculate_metrics.ipynb>`_ 
 * `Xarray - calculate Nino 34 time series <Xarray_calculate_Nino34_time_series.ipynb>`_
 * `Xarray - common operations, resampling, rolling and climatology <Xarray_statistical_resample_roll_climatology.ipynb>`_
+* `Xarray - climate toolbox by Francois Delage`_
 * `Netcdf Subset Service (NCSS) with Python and Siphon <ncss_python_siphon_cmip5.ipynb>`_
 * `Panoply CMIP5 <Panoply_cmip5.ipynb>`_ 
 * `Panoply eReef and ANU water <Panoply_eReef_ANUwater.ipynb>`_ 
-* `Paraview <ParaView_cmip5.ipynb>`_ 
+* `Paraview <ParaView_cmip5.ipynb>`_
+
+.. _CDO - Regrid CMIP5 modules into 1.5 degree grid: https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/CMIP5_regrid-lp01.ipynb
+.. _CDO - Regrid CMIP6 modules into 1.5 degree grid: https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/CMIP6_regrid-lp01.ipynb
+.. _Xarray - climate toolbox by Francois Delage: https://github.com/fanchic/pangeo/blob/master/xarray%20climate%20toolbox.ipynb
+
+Data Plotting 
+++++++++++++++++++++
+
+* `Plot seasonality hovmoller`_
+
+.. _Plot seasonality hovmoller: https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/common_plots.py 
 
 
-High Performance Data and Computating
+
+High Performance Data and Analysis
 ++++++++++++++++++++++++++++++++++++++++
 
 * `Data chunking using Dask <Python_DataChunks_cmip6.ipynb>`_
+* `Build a common model as a zarr database for analysis`_ 
+
+.. _Build a common model as a zarr database for analysis: https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/read_to_zarr-lp01.ipynb 
 
 
 Data Services

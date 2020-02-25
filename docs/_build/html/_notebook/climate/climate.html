@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Earth Observation" href="../eo/eo.html" />
-    <link rel="prev" title="Installing Jupyter and Python on VDI" href="../prep/python_on_vdi.html" /> 
+    <link rel="prev" title="Configure and Customise Your Own Pangeo Environment on Gadi" href="../prep/pangeo.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,8 +92,9 @@
 </ul>
 <p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul class="current">
@@ -102,7 +103,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#notebook-examples">Notebook examples</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#data-access-and-quick-preview">Data Access and Quick Preview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-manipulation">Data Manipulation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#high-performance-data-and-computating">High Performance Data and Computating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-plotting">Data Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#high-performance-data-and-analysis">High Performance Data and Analysis</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-services">Data Services</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#combined-dataset">Combined dataset</a></li>
 </ul>
@@ -236,21 +238,31 @@
 <li><a class="reference internal" href="CDO_monthly_anomaly_and_NinoIndex_CMIP6.html"><span class="doc">CDO - calculate monthly anomaly and Nino Index using CMIP6 data</span></a></li>
 <li><a class="reference internal" href="CDO_model_obs_compare.html"><span class="doc">CDO - compare model and observational data</span></a></li>
 <li><a class="reference internal" href="CDO_ocean_land_mask.html"><span class="doc">CDO - mask ocean or land</span></a></li>
+<li><a class="reference external" href="https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/CMIP5_regrid-lp01.ipynb">CDO - Regrid CMIP5 modules into 1.5 degree grid</a></li>
+<li><a class="reference external" href="https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/CMIP6_regrid-lp01.ipynb">CDO - Regrid CMIP6 modules into 1.5 degree grid</a></li>
 <li><a class="reference internal" href="Xarray_access_cmip5.html"><span class="doc">Xarray - open and read data</span></a></li>
 <li><a class="reference internal" href="Xarray_subset_plot_cmip5.html"><span class="doc">Xarray - subset and plot data (slicing and dicing)</span></a></li>
 <li><a class="reference internal" href="Xarray_calculate_metrics.html"><span class="doc">Xarray - calculate surface temperature anomalies in Australian</span></a></li>
 <li><a class="reference internal" href="Xarray_calculate_Nino34_time_series.html"><span class="doc">Xarray - calculate Nino 34 time series</span></a></li>
 <li><a class="reference internal" href="Xarray_statistical_resample_roll_climatology.html"><span class="doc">Xarray - common operations, resampling, rolling and climatology</span></a></li>
+<li><a class="reference external" href="https://github.com/fanchic/pangeo/blob/master/xarray%20climate%20toolbox.ipynb">Xarray - climate toolbox by Francois Delage</a></li>
 <li><a class="reference internal" href="ncss_python_siphon_cmip5.html"><span class="doc">Netcdf Subset Service (NCSS) with Python and Siphon</span></a></li>
 <li><a class="reference internal" href="Panoply_cmip5.html"><span class="doc">Panoply CMIP5</span></a></li>
 <li><a class="reference internal" href="Panoply_eReef_ANUwater.html"><span class="doc">Panoply eReef and ANU water</span></a></li>
 <li><a class="reference internal" href="ParaView_cmip5.html"><span class="doc">Paraview</span></a></li>
 </ul>
 </div>
-<div class="section" id="high-performance-data-and-computating">
-<h3>High Performance Data and Computating<a class="headerlink" href="#high-performance-data-and-computating" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="data-plotting">
+<h3>Data Plotting<a class="headerlink" href="#data-plotting" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/common_plots.py">Plot seasonality hovmoller</a></li>
+</ul>
+</div>
+<div class="section" id="high-performance-data-and-analysis">
+<h3>High Performance Data and Analysis<a class="headerlink" href="#high-performance-data-and-analysis" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><a class="reference internal" href="Python_DataChunks_cmip6.html"><span class="doc">Data chunking using Dask</span></a></li>
+<li><a class="reference external" href="https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/read_to_zarr-lp01.ipynb">Build a common model as a zarr database for analysis</a></li>
 </ul>
 </div>
 <div class="section" id="data-services">
@@ -295,7 +307,7 @@ and data related topics. You can find more information on their <a class="refere
         <a href="../eo/eo.html" class="btn btn-neutral float-right" title="Earth Observation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../prep/python_on_vdi.html" class="btn btn-neutral float-left" title="Installing Jupyter and Python on VDI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../prep/pangeo.html" class="btn btn-neutral float-left" title="Configure and Customise Your Own Pangeo Environment on Gadi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
