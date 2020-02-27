@@ -1,11 +1,11 @@
-Configure and Customise Your Own Pangeo Environment on Gadi 
+How to run notebooks on Gadi 
 ============================================================
 
-You can follow instructions below to set up Pangeo environment on Gadi. 
+Running jobs on Gadi is mostly done using the command line. However, NCI also provides `Pangeo`_ environment for running Jupyter notebooks in an interactive environment on Gadi. Pange environment is a software ecosystem involving open source tools such as xarray, iris, dask, jupyter, and many other packages. This can be useful if you have a complex workflow that requires HPC resources but also want to control the workflow with an interactive interface. The tutorial developed at NCI has simplified the setup of the Pangeo environment on Gadi. The following instructions will guide you through the process to get started with Pangeo including how to set up and customise the environment as well as how to run Jupyter notebooks on your local machine with interaction on Gadi.
 
-* `Load and use Python modules <Setup_Pangeo_environment_Gadi.ipynb>`_ 
+* `How to setup Pangeo environment on Gadi and run Jupyter notebooks <Setup_Pangeo_environment_Gadi.ipynb>`_ 
 
-The centralised Pangeo Environment on Gadi includes the following essential modules:
+The centralised Pangeo Environment on Gadi includes the following modules:
 
 * Python 3.7
 * xarray 0.14.1
@@ -18,8 +18,10 @@ The centralised Pangeo Environment on Gadi includes the following essential modu
 * netcdf4-python 1.5.3
 * h5py 2.10.0
 
-You may need to load additional modules. Check `here`_ for existing packages available on Gadi. If a particular package is not available on Gadi, users can install it under their own working directory, e.g., their compute project space if it is alloweds. Please note, the Pangeo environment should always be loaded before adding other modules or installing new modules. 
+Once setup is complete, you can customise the Pangeo environment by loading software modules from the `existing packages available on Gadi`_ or installing additional software packages. The following instructions explain both options.
 
-* `Customise Pangeo environment <Customise_Pangeo_environment_Gadi.ipynb>`_ 
+* `How to customise Pangeo environment on Gadi <Customise_Pangeo_environment_Gadi.ipynb>`_ 
 
-.. _here: https://opus.nci.org.au/x/6YT_Ag
+.. _Pangeo: http://pangeo.io/index.html
+.. _Instruction of Pangeo on HPC: http://pangeo.io/setup_guides/hpc.html 
+.. _existing packages available on Gadi: https://opus.nci.org.au/x/6YT_Ag

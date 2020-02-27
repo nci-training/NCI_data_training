@@ -90,8 +90,9 @@
 </ul>
 <p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
@@ -266,7 +267,7 @@ $ jupyter notebook password
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat &lt;job_id&gt;
 </pre></div>
 </div>
-<p><img alt="3" src="../../_images/pangeo_setup3_gadi.png" /></p>
+<p><img alt="3" src="_notebook/general/images/pangeo_setup3_gadi.png" /></p>
 </div>
 <div class="section" id="Set-up-port-forwarding-to-access-from-your-desktop-machine">
 <h3>Set up port forwarding to access from your desktop machine<a class="headerlink" href="#Set-up-port-forwarding-to-access-from-your-desktop-machine" title="Permalink to this headline">¶</a></h3>
@@ -301,14 +302,14 @@ $ jupyter notebook password
 <div class="section" id="Connect-to-the-remote-JupyterLab-server-from-your-remote-desktop-computer">
 <h3>Connect to the remote JupyterLab server from your remote desktop computer<a class="headerlink" href="#Connect-to-the-remote-JupyterLab-server-from-your-remote-desktop-computer" title="Permalink to this headline">¶</a></h3>
 <p>In a browser on your local desktop, type the following URL “localhost:8388” – where the port matches the details above:</p>
-<p><img alt="6" src="../../_images/pangeo_setup6_gadi.png" /></p>
-<p>You will be prompted for your JupyterLab password that you created earlier: <img alt="7" src="../../_images/pangeo_setup7.png" /></p>
+<p><img alt="6" src="_notebook/general/images/pangeo_setup6_gadi.png" /></p>
+<p>You will be prompted for your JupyterLab password that you created earlier: <img alt="7" src="_notebook/general/images/pangeo_setup7.png" /></p>
 <p>Once your authentication has passed, a JupyterLab interface will be launched in a few seconds.</p>
-<p><img alt="8" src="../../_images/pangeo_setup8.png" /></p>
+<p><img alt="8" src="_notebook/general/images/pangeo_setup8.png" /></p>
 </div>
 <div class="section" id="Importing-a-notebook-example">
 <h3>Importing a notebook example<a class="headerlink" href="#Importing-a-notebook-example" title="Permalink to this headline">¶</a></h3>
-<p>You can drag and drop a notebook from your local machine into the JupyterLab. This file will then also appear in your working directory on Gadi: <img alt="9" src="../../_images/pangeo_setup9.png" /></p>
+<p>You can drag and drop a notebook from your local machine into the JupyterLab. This file will then also appear in your working directory on Gadi: <img alt="9" src="_notebook/general/images/pangeo_setup9.png" /></p>
 <p>The screen shot above shows</p>
 <ol class="arabic simple">
 <li>Jupyter notebook interface opened from your local computer and connecting to Gadi</li>
@@ -349,7 +350,7 @@ client =  Client(scheduler_file=&#39;scheduler.json&#39;)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">localhost</span><span class="p">:</span><span class="mi">8768</span>
 </pre></div>
 </div>
-<p><img alt="10" src="../../_images/pangeo_setup10.png" /></p>
+<p><img alt="10" src="_notebook/general/images/pangeo_setup10.png" /></p>
 </div>
 <div class="section" id="Run-Jupyter-notebook-in-a-batch-job">
 <h3>Run Jupyter notebook in a batch job<a class="headerlink" href="#Run-Jupyter-notebook-in-a-batch-job" title="Permalink to this headline">¶</a></h3>

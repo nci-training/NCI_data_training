@@ -26,8 +26,8 @@ Data Manipulation
 * `CDO - calculate monthly anomaly and Nino Index using CMIP6 data <CDO_monthly_anomaly_and_NinoIndex_CMIP6.ipynb>`_
 * `CDO - compare model and observational data <CDO_model_obs_compare.ipynb>`_
 * `CDO - mask ocean or land <CDO_ocean_land_mask.ipynb>`_
-* `CDO - Regrid CMIP5 modules into 1.5 degree grid`_
-* `CDO - Regrid CMIP6 modules into 1.5 degree grid`_
+* `CDO - Regrid CMIP5 modules into 1.5 degree grid by Francois Delage`_
+* `CDO - Regrid CMIP6 modules into 1.5 degree grid by Francois Delage`_
 * `Xarray - open and read data <Xarray_access_cmip5.ipynb>`_ 
 * `Xarray - subset and plot data (slicing and dicing) <Xarray_subset_plot_cmip5.ipynb>`_ 
 * `Xarray - calculate surface temperature anomalies in Australian <Xarray_calculate_metrics.ipynb>`_ 
@@ -39,16 +39,16 @@ Data Manipulation
 * `Panoply eReef and ANU water <Panoply_eReef_ANUwater.ipynb>`_ 
 * `Paraview <ParaView_cmip5.ipynb>`_
 
-.. _CDO - Regrid CMIP5 modules into 1.5 degree grid: https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/CMIP5_regrid-lp01.ipynb
-.. _CDO - Regrid CMIP6 modules into 1.5 degree grid: https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/CMIP6_regrid-lp01.ipynb
+.. _CDO - Regrid CMIP5 modules into 1.5 degree grid by Francois Delage: https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/CMIP5_regrid-lp01.ipynb
+.. _CDO - Regrid CMIP6 modules into 1.5 degree grid by Francois Delage: https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/CMIP6_regrid-lp01.ipynb
 .. _Xarray - climate toolbox by Francois Delage: https://github.com/fanchic/pangeo/blob/master/xarray%20climate%20toolbox.ipynb
 
 Data Plotting 
 ++++++++++++++++++++
 
-* `Plot seasonality hovmoller`_
+* `Plot seasonality hovmoller by Sugata Narsey`_
 
-.. _Plot seasonality hovmoller: https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/common_plots.py 
+.. _Plot seasonality hovmoller by Sugata Narsey: https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/common_plots.py 
 
 
 
@@ -100,10 +100,10 @@ Community developed packages
 .. _POT - Python Optimal Transport: https://github.com/rflamary/POT
 .. _mom_xtools - collection of xarray based analysis tools for MOM ocean model output: https://github.com/jbusecke/mom_xtools
         
-Community Forums
+CMIP community wiki
 --------------------------------------------
 
-NCI hosts a `CMIP community wiki page`_ for more information.
+NCI hosts a `CMIP community wiki page`_ for more information. This is the homepage for information and updates relating to the Coupled Model Intercomparison Project (CMIP) data and activities at NCI for use by the Australian climate science community. 
 
 .. _CMIP community wiki page: https://opus.nci.org.au/display/CMIP/CMIP+Community+Home/
 

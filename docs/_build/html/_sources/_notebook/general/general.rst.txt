@@ -11,6 +11,12 @@ Mapping and Visulisation
 
 * `Create a basemap and add some data <create_basemap_add_data.ipynb>`_ 
 
+Pangeo
+-------
+
+* `How to setup Pangeo environment on Gadi <Setup_Pangeo_environment_Gadi.ipynb>`_ 
+* `How to customise Pangeo environment on Gadi <Customise_Pangeo_environment_Gadi.ipynb>`_ 
+
 Astronomy 
 --------------------------------------------
 
