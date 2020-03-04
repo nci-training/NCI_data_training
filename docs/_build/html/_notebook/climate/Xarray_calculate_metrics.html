@@ -90,8 +90,9 @@
 </ul>
 <p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
@@ -404,7 +405,7 @@ div.rendered_html tbody tr:hover {
 </li>
 <li><p class="first">Subsetting</p>
 </li>
-<li><p class="first">Create a monthly climatology for 1950-1980 period</p>
+<li><p class="first">Create a monthly climatology for 2000-2014 period</p>
 </li>
 <li><p class="first">Plot all 12 climatological months</p>
 </li>
@@ -413,19 +414,10 @@ div.rendered_html tbody tr:hover {
 <li><p class="first rubric" id="calculate-and-plot-the-mean-anomalies-over-the-whole-time-period">Calculate and plot the mean anomalies over the whole time period</p>
 </li>
 </ul>
-</div>
-<div class="section" id="Launch-the-Jupyter-Notebook-application">
-<h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
-<p>Launch the Jupyter Notebook application:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
-</pre></div>
-</div>
-<div class="admonition note">
-NOTE: This will launch the Notebook Dashboard within a new web browser window.</div>
 <div class="section" id="Import-the-xarray-and-netCDF-modules">
 <h3>Import the xarray and netCDF modules<a class="headerlink" href="#Import-the-xarray-and-netCDF-modules" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -434,17 +426,9 @@ NOTE: This will launch the Notebook Dashboard within a new web browser window.</
 </pre></div>
 </div>
 </div>
-<p>Open the monthly surface temperature dataset from the ACCESS-1.3 CMIP5 model from 1950 to the most recent output (2005). Also select out the <code class="docutils literal notranslate"><span class="pre">tas</span></code> variable and do spatial slicing in the same call</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://dapds00.nci.org.au/thredds/dodsC/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/atmos/Amon/r1i1p1/latest/tas/tas_Amon_ACCESS1-3_historical_r1i1p1_185001-200512.nc&#39;</span>
-<span class="n">tas_aus</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">tas</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">lon</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">110</span><span class="p">,</span><span class="mi">160</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
+<p>Open the monthly surface temperature dataset from the ACCESS-ESM1.5 CMIP6 model from 2000 to the most recent output (2014). Also select out the <code class="docutils literal notranslate"><span class="pre">tas</span></code> variable and do spatial slicing in the same call</p>
+<p>path_CMIP6 = ‘/g/data/oi10/replicas/CMIP6/CMIP/CSIRO/ACCESS-ESM1-5/historical/r1i1p1f1/
+day/tas/gn/v20191115/tas_day_ACCESS-ESM1-5_historical_r1i1p1f1_gn_20000101-20141231.nc’ tas_aus = xarray.open_dataset(path_CMIP6).tas.sel(lat=slice(-50,-5), lon=slice(110,160))</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -458,24 +442,22 @@ NOTE: This will launch the Notebook Dashboard within a new web browser window.</
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.DataArray &#39;tas&#39; (time: 1872, lat: 37, lon: 27)&gt;
-[1870128 values with dtype=float32]
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tas&#x27; (time: 5479, lat: 37, lon: 27)&gt;
+[5473521 values with dtype=float32]
 Coordinates:
-  * time     (time) datetime64[ns] 1850-01-16T12:00:00 ... 2005-12-16T12:00:00
+  * time     (time) datetime64[ns] 2000-01-01T12:00:00 ... 2014-12-31T12:00:00
   * lat      (lat) float64 -50.0 -48.75 -47.5 -46.25 ... -8.75 -7.5 -6.25 -5.0
   * lon      (lon) float64 110.6 112.5 114.4 116.2 ... 153.8 155.6 157.5 159.4
     height   float64 ...
 Attributes:
-    standard_name:     air_temperature
-    long_name:         Near-Surface Air Temperature
-    units:             K
-    cell_methods:      time: mean
-    cell_measures:     area: areacella
-    history:           2012-02-05T23:49:51Z altered by CMOR: Treated scalar d...
-    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation...
-</pre></div>
-</div>
+    standard_name:  air_temperature
+    long_name:      Near-Surface Air Temperature
+    comment:        near-surface (usually, 2 meter) air temperature
+    units:          K
+    cell_methods:   area: time: mean
+    cell_measures:  area: areacella
+    history:        2019-11-15T17:42:13Z altered by CMOR: Treated scalar dime...</pre></div>
 </div>
 <p>Just check the slicing is correct by plotting the first timestep:</p>
 <div class="nbinput docutils container">
@@ -492,7 +474,7 @@ Attributes:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x321dbdb70&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x14e319de48d0&gt;
 </pre></div>
 </div>
 </div>
@@ -500,22 +482,22 @@ Attributes:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_calculate_metrics_8_1.png" src="../../_images/_notebook_climate_Xarray_calculate_metrics_8_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_calculate_metrics_6_1.png" src="../../_images/_notebook_climate_Xarray_calculate_metrics_6_1.png" />
 </div>
 </div>
-<p>Now create a monthly climatology for 1950-1980 period</p>
+<p>Now create a monthly climatology for 2001-2014 period</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">tas_aus_clim</span> <span class="o">=</span> <span class="n">tas_aus</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1950-01&#39;</span><span class="p">,</span><span class="s1">&#39;1979-12&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span></span><span class="n">tas_aus_clim</span> <span class="o">=</span> <span class="n">tas_aus</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2001-01&#39;</span><span class="p">,</span><span class="s1">&#39;2014-12&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p>Plot all 12 climatological months</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -524,11 +506,11 @@ Attributes:
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.plot.facetgrid.FacetGrid at 0x322057860&gt;
+<span></span>&lt;xarray.plot.facetgrid.FacetGrid at 0x14e319af1850&gt;
 </pre></div>
 </div>
 </div>
@@ -536,12 +518,12 @@ Attributes:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_calculate_metrics_12_1.png" src="../../_images/_notebook_climate_Xarray_calculate_metrics_12_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_calculate_metrics_10_1.png" src="../../_images/_notebook_climate_Xarray_calculate_metrics_10_1.png" />
 </div>
 </div>
 <p>Calculate the anomalies from the climatology</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -549,22 +531,22 @@ Attributes:
 </pre></div>
 </div>
 </div>
-<p>Now plot the mean anomaly from 1990 to the end of 2005 (the last time point in the dataset) by month. This shows the spatial pattern of warming in the model by month.</p>
+<p>Now plot the mean anomaly from 2013 to the end of 2014 (the last time point in the dataset) by month. This shows the spatial pattern of warming in the model by month.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">tas_aus_anom</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1990-01&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="n">col_wrap</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span></span><span class="n">tas_aus_anom</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2013-01&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="n">col_wrap</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.plot.facetgrid.FacetGrid at 0x322adc550&gt;
+<span></span>&lt;xarray.plot.facetgrid.FacetGrid at 0x14e313fa32d0&gt;
 </pre></div>
 </div>
 </div>
@@ -572,12 +554,12 @@ Attributes:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_calculate_metrics_16_1.png" src="../../_images/_notebook_climate_Xarray_calculate_metrics_16_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_calculate_metrics_14_1.png" src="../../_images/_notebook_climate_Xarray_calculate_metrics_14_1.png" />
 </div>
 </div>
 <p>Could use the land fraction data to only plot the land cells</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -586,38 +568,13 @@ Attributes:
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">tas_aus_anom</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1990-01&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">landfrac</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="n">col_wrap</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span></span><span class="n">tas_aus_anom</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2000-01&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">landfrac</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="n">col_wrap</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/Users/liuyiling/anaconda3/lib/python3.7/site-packages/xarray/core/nanops.py:159: RuntimeWarning: Mean of empty slice
-  return np.nanmean(a, axis=axis, dtype=dtype)
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.plot.facetgrid.FacetGrid at 0x322057588&gt;
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_calculate_metrics_19_2.png" src="../../_images/_notebook_climate_Xarray_calculate_metrics_19_2.png" />
 </div>
 </div>
 <p><strong>Reference</strong>: This example was modified from the original example developed by Dr Aidan Heerdegen from ARC COE Clex.</p>

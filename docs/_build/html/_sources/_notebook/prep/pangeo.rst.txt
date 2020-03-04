@@ -1,7 +1,7 @@
 How to run notebooks on Gadi 
 ============================================================
 
-Running jobs on Gadi is mostly done using the command line. However, NCI also provides `Pangeo`_ environment for running Jupyter notebooks in an interactive environment on Gadi. Pange environment is a software ecosystem involving open source tools such as xarray, iris, dask, jupyter, and many other packages. This can be useful if you have a complex workflow that requires HPC resources but also want to control the workflow with an interactive interface. The tutorial developed at NCI has simplified the setup of the Pangeo environment on Gadi. The following instructions will guide you through the process to get started with Pangeo including how to set up and customise the environment as well as how to run Jupyter notebooks on your local machine with interaction on Gadi.
+Running jobs on Gadi is mostly done using the command line. However, NCI also provides a `Pangeo`_ environment for running Jupyter notebooks in an interactive session on Gadi. The Pangeo environment is a software ecosystem involving open source tools such as xarray, iris, dask, jupyter, and many other packages. This can be useful if you have a complex workflow that requires HPC resources but also want to control the workflow with an interactive interface. The tutorial developed at NCI has simplified the setup of the Pangeo environment on Gadi. The following instructions will guide you through the process to get started with Pangeo including how to set up and customise the environment as well as how to run Jupyter notebooks on your local machine with interaction on Gadi.
 
 * `How to setup Pangeo environment on Gadi and run Jupyter notebooks <Setup_Pangeo_environment_Gadi.ipynb>`_ 
 
@@ -23,5 +23,4 @@ Once setup is complete, you can customise the Pangeo environment by loading soft
 * `How to customise Pangeo environment on Gadi <Customise_Pangeo_environment_Gadi.ipynb>`_ 
 
 .. _Pangeo: http://pangeo.io/index.html
-.. _Instruction of Pangeo on HPC: http://pangeo.io/setup_guides/hpc.html 
 .. _existing packages available on Gadi: https://opus.nci.org.au/x/6YT_Ag

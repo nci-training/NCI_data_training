@@ -29,10 +29,11 @@ Data Manipulation
 * `CDO - Regrid CMIP5 modules into 1.5 degree grid by Francois Delage`_
 * `CDO - Regrid CMIP6 modules into 1.5 degree grid by Francois Delage`_
 * `Xarray - open and read data <Xarray_access_cmip5.ipynb>`_ 
-* `Xarray - subset and plot data (slicing and dicing) <Xarray_subset_plot_cmip5.ipynb>`_ 
+* `Xarray - subset and plot data (slicing and dicing) <Xarray_subset_plot_cmip6.ipynb>`_ 
 * `Xarray - calculate surface temperature anomalies in Australian <Xarray_calculate_metrics.ipynb>`_ 
-* `Xarray - calculate Nino 34 time series <Xarray_calculate_Nino34_time_series.ipynb>`_
-* `Xarray - common operations, resampling, rolling and climatology <Xarray_statistical_resample_roll_climatology.ipynb>`_
+* `Xarray - calculate Nino 34 time series for ACCESS1.3 CMIP5 <Xarray_calculate_Nino34_time_series_for_ARCCSS1-3.ipynb>`_
+* `Xarray - calculate Nino 34 time series for CESM2 CMIP6 <Xarray_calculate_Nino34_time_series_for_CESM2.ipynb>`_
+* `Xarray - common operations, resampling, rolling and climatology on CMIP6 data <Xarray_statistical_resample_roll_climatology.ipynb>`_
 * `Xarray - climate toolbox by Francois Delage`_
 * `Netcdf Subset Service (NCSS) with Python and Siphon <ncss_python_siphon_cmip5.ipynb>`_
 * `Panoply CMIP5 <Panoply_cmip5.ipynb>`_ 

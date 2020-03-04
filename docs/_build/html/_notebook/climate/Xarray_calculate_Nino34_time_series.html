@@ -415,97 +415,87 @@ div.rendered_html tbody tr:hover {
 <blockquote>
 <div>Nino X Index computation: (a) Compute area averaged total SST from Niño X region; (b) Compute monthly climatology (e.g., 1950-1979) for area averaged total SST from Niño X region, and subtract climatology from area averaged total SST time series to obtain anomalies; (c) Smooth the anomalies with a 5-month running mean; (d) Normalize the smoothed values by its standard deviation over the climatological period.</div></blockquote>
 <hr class="docutils" />
-<div class="section" id="Launch-the-Jupyter-Notebook-application">
-<h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
-<p>Launch the Jupyter Notebook application:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
-</pre></div>
-</div>
-<div class="admonition note">
-NOTE: This will launch the Notebook Dashboard within a new web browser window.</div>
 <div class="section" id="Import-the-xarray-and-netCDF-modules">
-<h3>Import the xarray and netCDF modules<a class="headerlink" href="#Import-the-xarray-and-netCDF-modules" title="Permalink to this headline">¶</a></h3>
+<h2>Import the xarray and netCDF modules<a class="headerlink" href="#Import-the-xarray-and-netCDF-modules" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">netCDF4</span> <span class="k">as</span> <span class="nn">nc</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
-<p>The URL for the relevant dataset is</p>
-<p><a class="reference external" href="http://dapds00.nci.org.au/thredds/dodsC/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/ocean/Omon/r1i1p1/latest/tos/tos_Omon_ACCESS1-3_historical_r1i1p1_185001-200512.nc">http://dapds00.nci.org.au/thredds/dodsC/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/ocean/Omon/r1i1p1/latest/tos/tos_Omon_ACCESS1-3_historical_r1i1p1_185001-200512.nc</a></p>
 <p>First step is to open the dataset (remember to import any packages you will need)</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">xarray</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="n">path_CMIP6</span> <span class="o">=</span> <span class="s1">&#39;/g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/</span><span class="se">\</span>
+<span class="s1">gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc&#39;</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path_CMIP6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/conventions.py:494: SerializationWarning: variable &#39;tas&#39; has multiple fill values {1e+20, 1e+20}, decoding all values to NaN.
+  use_cftime=use_cftime,
+</pre></div></div>
+</div>
+<p>Find the sea surface temperature (SST) variable name and create a new variable which selects out all data after 1950. Probably a good idea to plot the first time slice as a reference</p>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://dapds00.nci.org.au/thredds/dodsC/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/ocean/Omon/r1i1p1/latest/tos/tos_Omon_ACCESS1-3_historical_r1i1p1_185001-200512.nc&#39;</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>Find the sea surface temperature (SST) variable name and create a new variable which selects out all data after 1950. Probably a good idea to plot the first time slice as a reference</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">tos</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">tos</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1950&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
+<span></span><span class="n">tos</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">tas</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1950&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
 <span class="n">tos</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.DataArray &#39;tos&#39; (time: 672, j: 300, i: 360)&gt;
-[72576000 values with dtype=float32]
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tas&#x27; (time: 780, lat: 192, lon: 288)&gt;
+[43130880 values with dtype=float32]
 Coordinates:
-  * time     (time) datetime64[ns] 1950-01-16T12:00:00 ... 2005-12-16T12:00:00
-  * j        (j) int32 0 1 2 3 4 5 6 7 8 ... 291 292 293 294 295 296 297 298 299
-  * i        (i) int32 0 1 2 3 4 5 6 7 8 ... 351 352 353 354 355 356 357 358 359
-    lat      (j, i) float32 ...
-    lon      (j, i) float32 ...
+  * lat      (lat) float64 -90.0 -89.06 -88.12 -87.17 ... 87.17 88.12 89.06 90.0
+  * lon      (lon) float64 0.0 1.25 2.5 3.75 5.0 ... 355.0 356.2 357.5 358.8
+  * time     (time) object 1950-01-15 12:00:00 ... 2014-12-15 12:00:00
 Attributes:
-    standard_name:     sea_surface_temperature
-    long_name:         Sea Surface Temperature
-    comment:           &quot;this may differ from &quot;&quot;surface temperature&quot;&quot; in regio...
-    units:             K
-    cell_methods:      time: mean
-    cell_measures:     area: areacello
-    history:           2012-02-06T01:20:16Z altered by CMOR: replaced missing...
-    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation...
-</pre></div>
-</div>
+    cell_measures:  area: areacella
+    cell_methods:   area: time: mean
+    comment:        near-surface (usually, 2 meter) air temperature
+    description:    near-surface (usually, 2 meter) air temperature
+    frequency:      mon
+    id:             tas
+    long_name:      Near-Surface Air Temperature
+    mipTable:       Amon
+    out_name:       tas
+    prov:           Amon ((isd.003))
+    realm:          atmos
+    standard_name:  air_temperature
+    time:           time
+    time_label:     time-mean
+    time_title:     Temporal mean
+    title:          Near-Surface Air Temperature
+    type:           real
+    units:          K
+    variable_id:    tas</pre></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -514,11 +504,11 @@ Attributes:
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f43c9ff22b0&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x14f982f111d0&gt;
 </pre></div>
 </div>
 </div>
@@ -526,7 +516,7 @@ Attributes:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_11_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_11_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_7_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_7_1.png" />
 </div>
 </div>
 <p>MOM5 is the ocean model component of ACCESS-1.3. In this configuration the ocean has a tripolar grid. This means there are three poles, to avoid having a convergent point in the ocean. All three poles are over land points where there are no wet cells. One pole in the south over Antarctica and two in the north. What this means is that the data have coordinates <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code> and the <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code> data variables are 2D and also have coordinates <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code>. The tripolar grid only starts
@@ -542,7 +532,7 @@ diverging from a normal grid above 60N, so does not affect the calculation of Ni
 <p><code class="docutils literal notranslate"><span class="pre">var.where((var.lat&lt;5)</span> <span class="pre">&amp;</span> <span class="pre">(var.lat&gt;-5)</span> <span class="pre">&amp;</span> <span class="pre">(var.lon&gt;190)</span> <span class="pre">&amp;</span> <span class="pre">(var.lon&lt;240),drop=True)</span></code></p>
 <p>note the <code class="docutils literal notranslate"><span class="pre">drop=True</span></code> option, which will remove all masked cells, which in this case is equivalent to a <code class="docutils literal notranslate"><span class="pre">sel</span></code> operation using <code class="docutils literal notranslate"><span class="pre">slice</span></code> on <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -551,7 +541,7 @@ diverging from a normal grid above 60N, so does not affect the calculation of Ni
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -560,56 +550,123 @@ diverging from a normal grid above 60N, so does not affect the calculation of Ni
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.DataArray &#39;tos&#39; (time: 672, j: 30, i: 50)&gt;
-array([[[300.94846, 300.88568, ..., 297.60992, 297.57465],
-        [300.62796, 300.58807, ..., 297.4986 , 297.47824],
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tas&#x27; (time: 780, lat: 10, lon: 39)&gt;
+array([[[300.6584 , 300.59756, 300.536  , ..., 299.10626, 299.0689 ,
+         299.03012],
+        [300.36444, 300.29074, 300.23166, ..., 298.9751 , 298.94797,
+         298.91922],
+        [300.13898, 300.0713 , 300.01108, ..., 298.83292, 298.8215 ,
+         298.7999 ],
         ...,
-        [299.68683, 299.54962, ..., 301.09686, 301.13242],
-        [300.4037 , 300.18784, ..., 301.11496, 301.1423 ]],
+        [300.09766, 300.04602, 299.96268, ..., 299.11624, 299.08328,
+         299.06625],
+        [300.19257, 300.1653 , 300.08908, ..., 299.3384 , 299.29007,
+         299.25452],
+        [300.34726, 300.33972, 300.2986 , ..., 299.53806, 299.51913,
+         299.5042 ]],
 
-       [[300.71313, 300.59174, ..., 298.63116, 298.65945],
-        [300.49048, 300.41953, ..., 298.61975, 298.65106],
+       [[300.5525 , 300.5186 , 300.49994, ..., 299.66388, 299.63385,
+         299.58823],
+        [300.46564, 300.45923, 300.44824, ..., 299.49564, 299.47797,
+         299.44022],
+        [300.32352, 300.32883, 300.30957, ..., 299.2984 , 299.3124 ,
+         299.294  ],
         ...,
-        [299.50064, 299.48386, ..., 300.90625, 300.95218],
-        [299.88474, 299.7831 , ..., 300.94666, 300.9566 ]],
+        [299.78952, 299.74576, 299.73807, ..., 299.41562, 299.42792,
+         299.4217 ],
+        [300.0122 , 299.968  , 299.95068, ..., 299.6218 , 299.6296 ,
+         299.63422],
+        [300.31845, 300.2829 , 300.26117, ..., 299.82022, 299.8061 ,
+         299.78802]],
+
+       [[300.98944, 300.94272, 300.88382, ..., 299.76834, 299.73837,
+         299.70444],
+        [300.84155, 300.7721 , 300.7145 , ..., 299.63757, 299.61063,
+         299.57623],
+        [300.5931 , 300.538  , 300.483  , ..., 299.48215, 299.48264,
+         299.45947],
+        ...,
+        [300.25128, 300.24857, 300.23883, ..., 299.438  , 299.39655,
+         299.35138],
+        [300.4103 , 300.41302, 300.4152 , ..., 299.55585, 299.50977,
+         299.46176],
+        [300.3824 , 300.40076, 300.41846, ..., 299.65326, 299.59293,
+         299.53146]],
 
        ...,
 
-       [[302.79315, 302.81284, ..., 298.5471 , 298.43106],
-        [302.6761 , 302.67557, ..., 298.36536, 298.26703],
+       [[299.8456 , 299.7827 , 299.72012, ..., 296.35843, 296.23996,
+         296.15143],
+        [299.62955, 299.5716 , 299.50574, ..., 296.00372, 295.92017,
+         295.85623],
+        [299.40472, 299.3385 , 299.27246, ..., 295.65634, 295.6    ,
+         295.54407],
         ...,
-        [302.6383 , 302.61084, ..., 301.62723, 301.63782],
-        [302.8222 , 302.80893, ..., 301.8747 , 301.88324]],
+        [299.22522, 299.1549 , 299.04727, ..., 295.89563, 295.91452,
+         295.87347],
+        [299.34402, 299.28552, 299.2045 , ..., 296.4006 , 296.43542,
+         296.44608],
+        [299.58182, 299.55136, 299.51022, ..., 297.01453, 297.05432,
+         297.09802]],
 
-       [[302.58627, 302.5506 , ..., 298.61194, 298.5167 ],
-        [302.33844, 302.2614 , ..., 298.43848, 298.3609 ],
+       [[299.73587, 299.6468 , 299.56686, ..., 296.55402, 296.51288,
+         296.44617],
+        [299.5893 , 299.5046 , 299.4237 , ..., 296.31186, 296.29337,
+         296.2495 ],
+        [299.4413 , 299.37128, 299.3053 , ..., 296.10733, 296.0997 ,
+         296.06934],
         ...,
-        [301.98654, 301.98233, ..., 301.89926, 301.84207],
-        [302.10608, 302.11246, ..., 302.05737, 302.03275]]], dtype=float32)
+        [299.53262, 299.4238 , 299.33136, ..., 296.1926 , 296.28638,
+         296.45123],
+        [299.7054 , 299.6185 , 299.5414 , ..., 296.8013 , 296.93524,
+         297.0863 ],
+        [299.93744, 299.86343, 299.78766, ..., 297.57355, 297.67072,
+         297.7475 ]],
+
+       [[300.07138, 299.99158, 299.91684, ..., 297.31732, 297.2709 ,
+         297.20673],
+        [299.8658 , 299.78833, 299.71268, ..., 297.07935, 297.0489 ,
+         297.0113 ],
+        [299.69867, 299.61328, 299.5344 , ..., 296.89194, 296.8767 ,
+         296.85782],
+        ...,
+        [299.68628, 299.5646 , 299.4404 , ..., 297.8582 , 297.7556 ,
+         297.5717 ],
+        [299.83105, 299.711  , 299.61243, ..., 298.215  , 298.05106,
+         297.8504 ],
+        [299.9815 , 299.90024, 299.85388, ..., 298.6285 , 298.45184,
+         298.27957]]], dtype=float32)
 Coordinates:
-  * time     (time) datetime64[ns] 1950-01-16T12:00:00 ... 2005-12-16T12:00:00
-  * j        (j) int32 122 123 124 125 126 127 128 ... 146 147 148 149 150 151
-  * i        (i) int32 110 111 112 113 114 115 116 ... 154 155 156 157 158 159
-    lat      (j, i) float32 -4.8328757 -4.8328757 ... 4.8328757 4.8328757
-    lon      (j, i) float32 190.5 191.5 192.5 193.5 ... 236.5 237.5 238.5 239.5
+  * lat      (lat) float64 -4.241 -3.298 -2.356 -1.414 ... 2.356 3.298 4.241
+  * lon      (lon) float64 191.2 192.5 193.8 195.0 ... 235.0 236.2 237.5 238.8
+  * time     (time) object 1950-01-15 12:00:00 ... 2014-12-15 12:00:00
 Attributes:
-    standard_name:     sea_surface_temperature
-    long_name:         Sea Surface Temperature
-    comment:           &quot;this may differ from &quot;&quot;surface temperature&quot;&quot; in regio...
-    units:             K
-    cell_methods:      time: mean
-    cell_measures:     area: areacello
-    history:           2012-02-06T01:20:16Z altered by CMOR: replaced missing...
-    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation...
-</pre></div>
-</div>
+    cell_measures:  area: areacella
+    cell_methods:   area: time: mean
+    comment:        near-surface (usually, 2 meter) air temperature
+    description:    near-surface (usually, 2 meter) air temperature
+    frequency:      mon
+    id:             tas
+    long_name:      Near-Surface Air Temperature
+    mipTable:       Amon
+    out_name:       tas
+    prov:           Amon ((isd.003))
+    realm:          atmos
+    standard_name:  air_temperature
+    time:           time
+    time_label:     time-mean
+    time_title:     Temporal mean
+    title:          Near-Surface Air Temperature
+    type:           real
+    units:          K
+    variable_id:    tas</pre></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -625,13 +682,13 @@ Attributes:
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Check we have the correct spatial extent
-Latitude range: -4.8 - 4.8
-Longitude range: 190.5 - 239.5
+Latitude range: -4.2 - 4.2
+Longitude range: 191.2 - 238.8
 </pre></div></div>
 </div>
 <p>Calculate a monthly climatology of mean SST for the 1950-1979 period. Note this should be a single value for each month</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -639,34 +696,25 @@ Longitude range: 190.5 - 239.5
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/g/data3/hh5/public/apps/miniconda3/envs/analysis3-19.07/lib/python3.6/site-packages/xarray/core/groupby.py:639: FutureWarning: Default reduction dimension will be changed to the grouped dimension in a future version of xarray. To silence this warning, pass dim=xarray.ALL_DIMS explicitly.
-  skipna=skipna, allow_lazy=True, **kwargs)
-</pre></div></div>
-</div>
 <p>Compare the values of climatological mean SST with those from the <a class="reference external" href="https://doi.org/10.1175/1520-0477(1997)078%3C2771:TDOENO%3E2.0.CO;2">classic Trenberth paper</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="p">(</span><span class="n">tos_nino34_climatology</span> <span class="o">-</span> <span class="mi">273</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;ACCESS-1.3&#39;</span><span class="p">)</span>
-<span class="n">mean_sst_trenberth</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span><span class="p">([</span><span class="mf">26.4</span><span class="p">,</span> <span class="mf">26.6</span><span class="p">,</span> <span class="mf">27.1</span><span class="p">,</span> <span class="mf">27.6</span><span class="p">,</span> <span class="mf">27.5</span><span class="p">,</span> <span class="mf">27.4</span><span class="p">,</span> <span class="mf">27.0</span><span class="p">,</span> <span class="mf">26.7</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">26.5</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">],</span> <span class="n">coords</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">mean_sst_trenberth</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">([</span><span class="mf">26.4</span><span class="p">,</span> <span class="mf">26.6</span><span class="p">,</span> <span class="mf">27.1</span><span class="p">,</span> <span class="mf">27.6</span><span class="p">,</span> <span class="mf">27.5</span><span class="p">,</span> <span class="mf">27.4</span><span class="p">,</span> <span class="mf">27.0</span><span class="p">,</span> <span class="mf">26.7</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">26.5</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">],</span> <span class="n">coords</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">mean_sst_trenberth</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Trenberth&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.legend.Legend at 0x7f43c95945f8&gt;
+<span></span>&lt;matplotlib.legend.Legend at 0x14f982c1f4d0&gt;
 </pre></div>
 </div>
 </div>
@@ -674,21 +722,21 @@ Longitude range: 190.5 - 239.5
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_21_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_21_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_17_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_17_1.png" />
 </div>
 </div>
 <p>Now calculate the Nino 3.4 index by subtracting the monthly climatology from the original SST data and take the mean over the spatial coordinates (the monthly anomaly of SST over the Nino3.4 region).</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">index_nino34</span> <span class="o">=</span> <span class="p">(</span><span class="n">tos_nino34</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">-</span><span class="n">tos_nino34_climatology</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;j&#39;</span><span class="p">,</span><span class="s1">&#39;i&#39;</span><span class="p">])</span>
+<span></span><span class="n">index_nino34</span> <span class="o">=</span> <span class="p">(</span><span class="n">tos_nino34</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">-</span><span class="n">tos_nino34_climatology</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;lat&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -697,11 +745,11 @@ Longitude range: 190.5 - 239.5
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&lt;matplotlib.lines.Line2D at 0x7f44093706d8&gt;]
+<span></span>[&lt;matplotlib.lines.Line2D at 0x14f9825d4f10&gt;]
 </pre></div>
 </div>
 </div>
@@ -709,12 +757,12 @@ Longitude range: 190.5 - 239.5
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_24_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_24_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_20_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_20_1.png" />
 </div>
 </div>
 <p>Next step is to apply a 5-month moving average smoother. xarray has a method <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.rolling.html">rolling</a> which can be applied to the your saved variable and then directly plotted</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -723,11 +771,11 @@ Longitude range: 190.5 - 239.5
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&lt;matplotlib.lines.Line2D at 0x7f44093645c0&gt;]
+<span></span>[&lt;matplotlib.lines.Line2D at 0x14f9824d6550&gt;]
 </pre></div>
 </div>
 </div>
@@ -735,12 +783,12 @@ Longitude range: 190.5 - 239.5
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_26_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_26_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_22_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_22_1.png" />
 </div>
 </div>
 <p>Last step is to normalise by the standard deviation. Calculate the standard deviation of the SST data in the Nino 3.4 area for the climatological period. xarray provides the <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.std.html?highlight=std">std</a> operator for this purpose. Save the result in a new variable. Note that this is an average over the entire climatological period, so should be a single value</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -752,7 +800,7 @@ Longitude range: 190.5 - 239.5
 <p><code class="docutils literal notranslate"><span class="pre">(index_variable.rolling().mean()</span> <span class="pre">/</span> <span class="pre">std_dev).plot()</span></code></p>
 <p>Alternatively, you could save the normalised value into a new variable and then plot that</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -761,11 +809,11 @@ Longitude range: 190.5 - 239.5
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&lt;matplotlib.lines.Line2D at 0x7f44092b0d30&gt;]
+<span></span>[&lt;matplotlib.lines.Line2D at 0x14f9824b68d0&gt;]
 </pre></div>
 </div>
 </div>
@@ -773,12 +821,12 @@ Longitude range: 190.5 - 239.5
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_30_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_30_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_26_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_26_1.png" />
 </div>
 </div>
 <p>Add some -0.4/+0.4 lines which are the El Niño threshold</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -790,11 +838,11 @@ Longitude range: 190.5 - 239.5
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.lines.Line2D at 0x7f440923edd8&gt;
+<span></span>&lt;matplotlib.lines.Line2D at 0x14f98242cf90&gt;
 </pre></div>
 </div>
 </div>
@@ -802,14 +850,14 @@ Longitude range: 190.5 - 239.5
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_32_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_32_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_28_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_28_1.png" />
 </div>
 </div>
 <p>As an extension, we will re-create the figure from Trenberth</p>
 <p><img alt="Tripole Grid" src="_notebook/climate/Trenberth.png" /></p>
 <p>Assign the final Nino 3.4 normalised and smoothed index to a temporary variable for convenience</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -819,7 +867,7 @@ Longitude range: 190.5 - 239.5
 </div>
 <p>To recreate the Nino 3.4 plot from Trenberth requires using the matplotlib function <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.fill_between.html">fill_between</a> directly. It is called twice, once for the El Nino events, and then again for La Nina. Masking is used to select only values above, or below, a certain threshold, and the same threshold is then used as an argument to <code class="docutils literal notranslate"><span class="pre">fill_between</span></code> to set the other limit of the fill colour.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -836,11 +884,11 @@ Longitude range: 190.5 - 239.5
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Text(0.5,1,&#39;Nino 3.4 Region (Threshold = 0.4 $\\degree$C)&#39;)
+<span></span>Text(0.5, 1.0, &#39;Nino 3.4 Region (Threshold = 0.4 $\\degree$C)&#39;)
 </pre></div>
 </div>
 </div>
@@ -848,14 +896,14 @@ Longitude range: 190.5 - 239.5
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_38_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_38_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_34_1.png" src="../../_images/_notebook_climate_Xarray_calculate_Nino34_time_series_34_1.png" />
 </div>
 </div>
 <p>Also from the Trenberth paper</p>
 <blockquote>
 <div>With these quantitative assignments of events, it is readily seen that there are 177 out of 567 months (January 1950-March 1997) assigned as El Nino (31%) and 133 months assigned as La Nina months (23%).</div></blockquote>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -864,16 +912,16 @@ Longitude range: 190.5 - 239.5
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&#39;Percentage of El Nino events = 18.4%&#39;
+<span></span>&#39;Percentage of El Nino events = 35.3%&#39;
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -882,19 +930,18 @@ Longitude range: 190.5 - 239.5
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&#39;Percentage of La Nina events = 12.1%&#39;
+<span></span>&#39;Percentage of La Nina events = 25.0%&#39;
 </pre></div>
 </div>
 </div>
-</div>
-</div>
 <div class="section" id="Reference">
-<h2>Reference<a class="headerlink" href="#Reference" title="Permalink to this headline">¶</a></h2>
+<h3>Reference<a class="headerlink" href="#Reference" title="Permalink to this headline">¶</a></h3>
 <p>This example was modified from the original example developed by Dr Aidan Heerdegen from ARC COE Clex.</p>
+</div>
 </div>
 </div>
 

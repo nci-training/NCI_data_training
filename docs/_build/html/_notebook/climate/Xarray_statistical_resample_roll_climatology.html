@@ -90,8 +90,9 @@
 </ul>
 <p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
@@ -411,15 +412,6 @@ div.rendered_html tbody tr:hover {
 <li><p class="first rubric" id="plot-extras">Plot - Extras</p>
 </li>
 </ul>
-<div class="section" id="Launch-the-Jupyter-Notebook-application">
-<h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
-<p>Launch the Jupyter Notebook application:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
-</pre></div>
-</div>
-<div class="admonition note">
-NOTE: This will launch the Notebook Dashboard within a new web browser window.</div>
-</div>
 <div class="section" id="Setup-and-Load-Data">
 <h2>Setup and Load Data<a class="headerlink" href="#Setup-and-Load-Data" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="Load-the-required-modules">
@@ -439,8 +431,8 @@ NOTE: This will launch the Notebook Dashboard within a new web browser window.</
 <div class="section" id="Opening-Multiple-Files-at-Once">
 <h3>Opening Multiple Files at Once<a class="headerlink" href="#Opening-Multiple-Files-at-Once" title="Permalink to this headline">¶</a></h3>
 <p>xarray’s <code class="docutils literal notranslate"><span class="pre">open_mfdataset</span></code> allows multiple files to be opened simultaneously and concatenated as one file.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -450,15 +442,6 @@ NOTE: This will launch the Notebook Dashboard within a new web browser window.</
 <span class="n">tas</span> <span class="o">=</span> <span class="n">f_hist</span><span class="o">.</span><span class="n">tas</span> <span class="o">-</span> <span class="mf">273.15</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-tas_Amon_GFDL-CM4_historical_r1i1p1f1_gr1_185001-194912.nc
-tas_Amon_GFDL-CM4_historical_r1i1p1f1_gr1_195001-201412.nc
-</pre></div></div>
 </div>
 </div>
 </div>
@@ -473,7 +456,7 @@ tas_Amon_GFDL-CM4_historical_r1i1p1f1_gr1_195001-201412.nc
 </div>
 <p>The operations are done with numpy-like syntax that many users are familiar with: <code class="docutils literal notranslate"><span class="pre">.mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">.stddef()</span></code>, etc. For example, calculating a simple mean would be done via:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -482,16 +465,14 @@ tas_Amon_GFDL-CM4_historical_r1i1p1f1_gr1_195001-201412.nc
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.DataArray &#39;tas&#39; ()&gt;
-dask.array&lt;shape=(), dtype=float32, chunksize=()&gt;
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tas&#x27; ()&gt;
+dask.array&lt;mean_agg-aggregate, shape=(), dtype=float32, chunksize=(), chunktype=numpy.ndarray&gt;
 Coordinates:
-    height   float64 2.0
-</pre></div>
-</div>
+    height   float64 2.0</pre></div>
 </div>
 <p>The above mean( ) happened very quickly because of lazy loading, which we talked about before. The resultant array still remains an xarray DataArray.</p>
 </div>
@@ -499,7 +480,7 @@ Coordinates:
 <h2>Xarray Operations and Missing Values<a class="headerlink" href="#Xarray-Operations-and-Missing-Values" title="Permalink to this headline">¶</a></h2>
 <p>In general when using numpy, a user would need to mask out the missing or nan values of an array. As long as the nan or missing values are defined in the data array, the operations in general will be performed excluding those values.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -510,14 +491,12 @@ Coordinates:
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.DataArray ()&gt;
-array(2.)
-</pre></div>
-</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray ()&gt;
+array(2.)</pre></div>
 </div>
 </div>
 <div class="section" id="Xarray-Operations-on-Subsets">
@@ -525,7 +504,7 @@ array(2.)
 <p>As with data subsetting, one of the advantages of xarray is that it permits operations to be performed via a specified list of dimension labels.</p>
 <p>For example, to calculate the mean in time would be:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -534,23 +513,21 @@ array(2.)
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.DataArray &#39;tas&#39; (lat: 180, lon: 288)&gt;
-dask.array&lt;shape=(180, 288), dtype=float32, chunksize=(180, 288)&gt;
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tas&#x27; (lat: 180, lon: 288)&gt;
+dask.array&lt;mean_agg-aggregate, shape=(180, 288), dtype=float32, chunksize=(180, 288), chunktype=numpy.ndarray&gt;
 Coordinates:
     height   float64 2.0
-  * lat      (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 ... 86.5 87.5 88.5 89.5
   * lon      (lon) float64 0.625 1.875 3.125 4.375 ... 355.6 356.9 358.1 359.4
-</pre></div>
-</div>
+  * lat      (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 ... 86.5 87.5 88.5 89.5</pre></div>
 </div>
 <p>To calculate the mean over lat and lon you will need to take into account the size of the grid cells and weight the mean by the area of those grid cells.</p>
 <p>In CMIP6 the cell areas are included under the CMIP_table parameter ‘fx’ for atmosphere and land parameters and ‘Ofx’ for ocean. In this case we will use area of atmospheric cells areacella.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -562,11 +539,11 @@ Coordinates:
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.DataArray &#39;areacella&#39; (lat: 180, lon: 288)&gt;
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;areacella&#x27; (lat: 180, lon: 288)&gt;
 array([[1.348703e+08, 1.348703e+08, 1.348703e+08, ..., 1.348703e+08,
         1.348703e+08, 1.348703e+08],
        [4.045698e+08, 4.045698e+08, 4.045698e+08, ..., 4.045698e+08,
@@ -589,13 +566,11 @@ Attributes:
     standard_name:  cell_area
     cell_methods:   area: sum
     interp_method:  conserve_order1
-    original_name:  areacella
-</pre></div>
-</div>
+    original_name:  areacella</pre></div>
 </div>
 <p>We can now calculate the area weighted mean using the above variable and xarray operations.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -607,11 +582,11 @@ Attributes:
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&lt;matplotlib.lines.Line2D at 0x7f8fa87dd908&gt;]
+<span></span>[&lt;matplotlib.lines.Line2D at 0x14be78558310&gt;]
 </pre></div>
 </div>
 </div>
@@ -619,7 +594,7 @@ Attributes:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_17_1.png" src="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_17_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_16_1.png" src="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_16_1.png" />
 </div>
 </div>
 </div>
@@ -649,7 +624,7 @@ tas.sel(lat=slice(10,20),lon=slice(80,120)).min()
 <p>xarray very easily supports both resampling and rolling means with the <code class="docutils literal notranslate"><span class="pre">.rolling</span></code> and the <code class="docutils literal notranslate"><span class="pre">.resample</span></code> operations.</p>
 <p>Starting with a rolling mean we’ll use a 1 year window (time=12 as is monthly data).</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -660,11 +635,11 @@ tas.sel(lat=slice(10,20),lon=slice(80,120)).min()
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&lt;matplotlib.lines.Line2D at 0x7f8fa8626908&gt;]
+<span></span>[&lt;matplotlib.lines.Line2D at 0x14be19fb9a10&gt;]
 </pre></div>
 </div>
 </div>
@@ -672,13 +647,13 @@ tas.sel(lat=slice(10,20),lon=slice(80,120)).min()
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_21_1.png" src="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_21_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_20_1.png" src="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_20_1.png" />
 </div>
 </div>
 <p>Resampling can work in a similar way to the rolling mean. Resampling works with time data (with datetime64 variable in dimensions) and allows you to change the time frequency of your data. If you have a monthly dataset and you want that as a yearly dataset (or a 6hrly dataset that you want daily, etc) you can use the resample command while taking the mean over the resampling period.</p>
 <p>In the example below we have defined the new resampling period to be annual ‘A’ and have taken the mean over the monthly data in each year to produce a yearly average time series. Compare it to the rolling mean case above.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -689,11 +664,11 @@ tas.sel(lat=slice(10,20),lon=slice(80,120)).min()
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&lt;matplotlib.lines.Line2D at 0x7f8fa8520dd8&gt;]
+<span></span>[&lt;matplotlib.lines.Line2D at 0x14be19e279d0&gt;]
 </pre></div>
 </div>
 </div>
@@ -701,7 +676,7 @@ tas.sel(lat=slice(10,20),lon=slice(80,120)).min()
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_23_1.png" src="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_23_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_22_1.png" src="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_22_1.png" />
 </div>
 </div>
 </div>
@@ -723,7 +698,7 @@ tas.sel(lat=slice(10,20),lon=slice(80,120)).min()
 <p>With <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> you can easily create a climatology and calculate anomalies. In this example, working with monthly data, a new dimension will be created that is the months of the year.</p>
 <p>Let’s create a climatology from pre-1900 data:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -733,19 +708,17 @@ tas.sel(lat=slice(10,20),lon=slice(80,120)).min()
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.DataArray &#39;tas&#39; (month: 12, lat: 180, lon: 288)&gt;
-dask.array&lt;shape=(12, 180, 288), dtype=float32, chunksize=(1, 180, 288)&gt;
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tas&#x27; (month: 12, lat: 180, lon: 288)&gt;
+dask.array&lt;stack, shape=(12, 180, 288), dtype=float32, chunksize=(1, 180, 288), chunktype=numpy.ndarray&gt;
 Coordinates:
     height   float64 2.0
-  * lat      (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 ... 86.5 87.5 88.5 89.5
   * lon      (lon) float64 0.625 1.875 3.125 4.375 ... 355.6 356.9 358.1 359.4
-  * month    (month) int64 1 2 3 4 5 6 7 8 9 10 11 12
-</pre></div>
-</div>
+  * lat      (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 ... 86.5 87.5 88.5 89.5
+  * month    (month) int64 1 2 3 4 5 6 7 8 9 10 11 12</pre></div>
 </div>
 </div>
 <div class="section" id="Exercise">
@@ -755,32 +728,7 @@ Coordinates:
 <div class="collapse" id="ans2"><pre><code>
 climatology_seas = tas.sel(time=slice('1800','1900')).groupby('time.season').mean(dim='time')
 climatology_seas.sel(season='DJF').plot()
-</code></pre></div><div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f8fa8334198&gt;
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_29_1.png" src="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_29_1.png" />
-</div>
-</div>
-</div>
+</code></pre></div></div>
 <div class="section" id="Plot---Extras">
 <h2>Plot - Extras<a class="headerlink" href="#Plot---Extras" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -788,7 +736,7 @@ climatology_seas.sel(season='DJF').plot()
 <h2>Subplots<a class="headerlink" href="#Subplots" title="Permalink to this headline">¶</a></h2>
 <p>In the seasonal climatology case we have created a climatology with 4 periods in time relating to seasons. It is very simple to plot all the seasons in a single plot simply by specifying which variable defines the <code class="docutils literal notranslate"><span class="pre">row</span></code> and how many columns to produce (we have also defined the colourbar limits using <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code>):</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -797,11 +745,11 @@ climatology_seas.sel(season='DJF').plot()
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.plot.facetgrid.FacetGrid at 0x7f8fa82b0ac8&gt;
+<span></span>&lt;xarray.plot.facetgrid.FacetGrid at 0x14be72c94650&gt;
 </pre></div>
 </div>
 </div>
@@ -809,12 +757,12 @@ climatology_seas.sel(season='DJF').plot()
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_32_1.png" src="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_32_1.png" />
+<img alt="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_30_1.png" src="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_30_1.png" />
 </div>
 </div>
 <p>We can integrate projections with the xarray datasets using the cartopy command.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -828,31 +776,6 @@ climatology_seas.sel(season='DJF').plot()
 <span class="n">climatology_seas</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">season</span><span class="o">=</span><span class="s1">&#39;DJF&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
             <span class="n">cbar_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shrink&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">})</span>
 </pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f8f7bff4e10&gt;
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/g/data3/hh5/public/apps/miniconda3/envs/analysis3-19.07/lib/python3.6/site-packages/cartopy/io/__init__.py:260: DownloadWarning: Downloading: http://naciscdn.org/naturalearth/110m/physical/ne_110m_coastline.zip
-  warnings.warn(&#39;Downloading: {}&#39;.format(url), DownloadWarning)
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_34_2.png" src="../../_images/_notebook_climate_Xarray_statistical_resample_roll_climatology_34_2.png" />
 </div>
 </div>
 </div>

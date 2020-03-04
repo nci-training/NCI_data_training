@@ -90,8 +90,9 @@
 </ul>
 <p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
@@ -404,15 +405,6 @@ div.rendered_html tbody tr:hover {
 <li>File Variables and Attributes</li>
 </ul>
 <hr class="docutils" />
-<div class="section" id="Launch-the-Jupyter-Notebook-application">
-<h2>Launch the Jupyter Notebook application<a class="headerlink" href="#Launch-the-Jupyter-Notebook-application" title="Permalink to this headline">¶</a></h2>
-<p>Launch the Jupyter Notebook application:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
-</pre></div>
-</div>
-<div class="admonition note">
-NOTE: This will launch the Notebook Dashboard within a new web browser window.</div>
-</div>
 <div class="section" id="Xarray">
 <h2>Xarray<a class="headerlink" href="#Xarray" title="Permalink to this headline">¶</a></h2>
 <p>Xarray builds upon and extends the strengths of pandas and numpy. Numpy provides the structure and core for working with multi-dimensional arrays while pandas integrates its indexing and dataframe type capabilities. Xarray is actively developed by the climate science community and a useful tool for analysis. For more information on the developments being undertaken (along with other related projects) see the Pangeo community: <a class="reference external" href="https://pangeo.io/">https://pangeo.io/</a></p>
@@ -485,12 +477,12 @@ NOTE: This will launch the Notebook Dashboard within a new web browser window.</
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 765 ms, sys: 61 ms, total: 826 ms
-Wall time: 7.67 s
+CPU times: user 288 ms, sys: 44.5 ms, total: 332 ms
+Wall time: 333 ms
 </pre></div></div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -498,15 +490,6 @@ Wall time: 7.67 s
 <span class="n">f2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-CPU times: user 734 ms, sys: 17 ms, total: 751 ms
-Wall time: 7.23 s
-</pre></div></div>
 </div>
 </div>
 <div class="section" id="Not-much-different-in-times-because-of-the-lazy-loading-of-data.-But-if-force-the-data-to-load-into-memory:">
@@ -528,41 +511,101 @@ Wall time: 7.23 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.11 s, sys: 305 ms, total: 1.41 s
-Wall time: 3.15 s
+CPU times: user 630 ms, sys: 205 ms, total: 835 ms
+Wall time: 834 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.DataArray &#39;tasmax&#39; (time: 1872, lat: 145, lon: 192)&gt;
-array([[[242.22649, 242.22649, ..., 242.22028, 242.22028],
-        [243.91931, 243.87326, ..., 244.00957, 243.96425],
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tasmax&#x27; (time: 1872, lat: 145, lon: 192)&gt;
+array([[[242.22649, 242.22649, 242.22649, ..., 242.22028, 242.22028,
+         242.22028],
+        [243.91931, 243.87326, 243.82875, ..., 244.05038, 244.00957,
+         243.96425],
+        [245.13287, 245.08662, 245.0183 , ..., 245.27603, 245.23296,
+         245.18419],
         ...,
-        [241.69199, 241.74554, ..., 241.68051, 241.69809],
-        [240.87485, 240.87485, ..., 240.87485, 240.87485]],
+        [242.64438, 242.74596, 242.86943, ..., 242.36124, 242.45232,
+         242.54388],
+        [241.69199, 241.74554, 241.79771, ..., 241.67577, 241.68051,
+         241.69809],
+        [240.87485, 240.87485, 240.87485, ..., 240.87485, 240.87485,
+         240.87485]],
 
-       [[235.21791, 235.21791, ..., 235.2146 , 235.2146 ],
-        [237.052  , 237.029  , ..., 237.13855, 237.09853],
+       [[235.21791, 235.21791, 235.21791, ..., 235.2146 , 235.2146 ,
+         235.2146 ],
+        [237.052  , 237.029  , 237.00833, ..., 237.17393, 237.13855,
+         237.09853],
+        [237.41914, 237.29343, 237.1765 , ..., 237.80144, 237.6658 ,
+         237.53809],
         ...,
-        [238.93102, 238.94348, ..., 238.8793 , 238.91093],
-        [236.43845, 236.43845, ..., 236.43845, 236.43845]],
+        [240.60106, 240.53203, 240.48082, ..., 240.71024, 240.71312,
+         240.65256],
+        [238.93102, 238.94348, 238.95735, ..., 238.84721, 238.8793 ,
+         238.91093],
+        [236.43845, 236.43845, 236.43845, ..., 236.43845, 236.43845,
+         236.43845]],
+
+       [[223.82248, 223.82248, 223.82248, ..., 223.81923, 223.81923,
+         223.81923],
+        [228.1175 , 228.05615, 228.00998, ..., 228.28644, 228.22849,
+         228.17545],
+        [229.21747, 229.08847, 228.9618 , ..., 229.61053, 229.47765,
+         229.34256],
+        ...,
+        [243.81131, 243.88744, 243.97946, ..., 243.57245, 243.6507 ,
+         243.72934],
+        [243.39563, 243.40419, 243.41534, ..., 243.32387, 243.34251,
+         243.37648],
+        [242.78352, 242.78352, 242.78352, ..., 242.78352, 242.78352,
+         242.78352]],
 
        ...,
 
-       [[240.10124, 240.10124, ..., 240.09166, 240.09166],
-        [241.85622, 241.80452, ..., 241.93628, 241.88435],
+       [[222.91371, 222.91371, 222.91371, ..., 222.90314, 222.90314,
+         222.90314],
+        [227.95497, 227.90009, 227.84071, ..., 228.13326, 228.07675,
+         228.0165 ],
+        [230.00499, 229.81673, 229.62323, ..., 230.51114, 230.35124,
+         230.18073],
         ...,
-        [260.00974, 260.02213, ..., 259.99246, 260.0092 ],
-        [258.00223, 258.00223, ..., 258.00223, 258.00223]],
+        [257.4335 , 257.61444, 257.79364, ..., 256.95648, 257.11493,
+         257.26663],
+        [257.3382 , 257.4279 , 257.54178, ..., 257.04166, 257.12665,
+         257.2381 ],
+        [257.07758, 257.07758, 257.07758, ..., 257.07758, 257.07758,
+         257.07758]],
 
-       [[247.96088, 247.96088, ..., 247.93704, 247.93704],
-        [248.94565, 248.89906, ..., 249.03673, 248.98915],
+       [[240.10124, 240.10124, 240.10124, ..., 240.09166, 240.09166,
+         240.09166],
+        [241.85622, 241.80452, 241.75043, ..., 241.99152, 241.93628,
+         241.88435],
+        [242.79108, 242.68707, 242.58368, ..., 243.11673, 243.01666,
+         242.9077 ],
         ...,
-        [249.8625 , 249.90404, ..., 249.77002, 249.82123],
-        [248.79779, 248.79779, ..., 248.79779, 248.79779]]], dtype=float32)
+        [260.98044, 261.00912, 261.07172, ..., 260.78656, 260.87418,
+         260.9435 ],
+        [260.00974, 260.02213, 260.0323 , ..., 259.96994, 259.99246,
+         260.0092 ],
+        [258.00223, 258.00223, 258.00223, ..., 258.00223, 258.00223,
+         258.00223]],
+
+       [[247.96088, 247.96088, 247.96088, ..., 247.93704, 247.93704,
+         247.93704],
+        [248.94565, 248.89906, 248.85555, ..., 249.08572, 249.03673,
+         248.98915],
+        [249.93575, 249.80705, 249.679  , ..., 250.31178, 250.1902 ,
+         250.0654 ],
+        ...,
+        [251.01753, 251.10835, 251.17427, ..., 250.68848, 250.80872,
+         250.9194 ],
+        [249.8625 , 249.90404, 249.93315, ..., 249.72313, 249.77002,
+         249.82123],
+        [248.79779, 248.79779, 248.79779, ..., 248.79779, 248.79779,
+         248.79779]]], dtype=float32)
 Coordinates:
   * time     (time) datetime64[ns] 1850-01-16T12:00:00 ... 2005-12-16T12:00:00
   * lat      (lat) float64 -90.0 -88.75 -87.5 -86.25 ... 86.25 87.5 88.75 90.0
@@ -576,12 +619,10 @@ Attributes:
     cell_methods:      time: maximum within days time: mean over days
     cell_measures:     area: areacella
     history:           2013-03-25T05:03:31Z altered by CMOR: Treated scalar d...
-    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation...
-</pre></div>
+    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation...</pre></div>
 </div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -589,63 +630,6 @@ Attributes:
 <span class="n">f2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">tasmax</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">tasmax</span>
 <span class="n">tasmax</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-CPU times: user 2.23 s, sys: 621 ms, total: 2.85 s
-Wall time: 4.59 s
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.DataArray &#39;tasmax&#39; (time: 1872, lat: 145, lon: 192)&gt;
-array([[[242.22649, 242.22649, ..., 242.22028, 242.22028],
-        [243.91931, 243.87326, ..., 244.00957, 243.96425],
-        ...,
-        [241.69199, 241.74554, ..., 241.68051, 241.69809],
-        [240.87485, 240.87485, ..., 240.87485, 240.87485]],
-
-       [[235.21791, 235.21791, ..., 235.2146 , 235.2146 ],
-        [237.052  , 237.029  , ..., 237.13855, 237.09853],
-        ...,
-        [238.93102, 238.94348, ..., 238.8793 , 238.91093],
-        [236.43845, 236.43845, ..., 236.43845, 236.43845]],
-
-       ...,
-
-       [[240.10124, 240.10124, ..., 240.09166, 240.09166],
-        [241.85622, 241.80452, ..., 241.93628, 241.88435],
-        ...,
-        [260.00974, 260.02213, ..., 259.99246, 260.0092 ],
-        [258.00223, 258.00223, ..., 258.00223, 258.00223]],
-
-       [[247.96088, 247.96088, ..., 247.93704, 247.93704],
-        [248.94565, 248.89906, ..., 249.03673, 248.98915],
-        ...,
-        [249.8625 , 249.90404, ..., 249.77002, 249.82123],
-        [248.79779, 248.79779, ..., 248.79779, 248.79779]]], dtype=float32)
-Coordinates:
-  * time     (time) datetime64[ns] 1850-01-16T12:00:00 ... 2005-12-16T12:00:00
-  * lat      (lat) float64 -90.0 -88.75 -87.5 -86.25 ... 86.25 87.5 88.75 90.0
-  * lon      (lon) float64 0.0 1.875 3.75 5.625 7.5 ... 352.5 354.4 356.2 358.1
-    height   float64 1.5
-Attributes:
-    standard_name:     air_temperature
-    long_name:         Daily Maximum Near-Surface Air Temperature
-    comment:           monthly mean of the daily-maximum near-surface air tem...
-    units:             K
-    cell_methods:      time: maximum within days time: mean over days
-    cell_measures:     area: areacella
-    history:           2013-03-25T05:03:31Z altered by CMOR: Treated scalar d...
-    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation...
 </pre></div>
 </div>
 </div>

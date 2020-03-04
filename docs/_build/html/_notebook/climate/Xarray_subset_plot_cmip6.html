@@ -1,0 +1,822 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Subset and plot CMIP data using Xarray &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Subset and plot CMIP data using Xarray</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/Xarray_subset_plot_cmip6.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Subset-and-plot-CMIP-data-using-Xarray">
+<h1>Subset and plot CMIP data using Xarray<a class="headerlink" href="#Subset-and-plot-CMIP-data-using-Xarray" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook:</p>
+<ul class="simple">
+<li>Launch Jupyter Notebook</li>
+<li>Subsetting</li>
+<li>Xarray.plot( )</li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="Import-the-xarray-and-netCDF-modules">
+<h2>Import the xarray and netCDF modules<a class="headerlink" href="#Import-the-xarray-and-netCDF-modules" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">netCDF4</span> <span class="k">as</span> <span class="nn">nc</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Local-path-on-/g/data">
+<h2>Local path on /g/data<a class="headerlink" href="#Local-path-on-/g/data" title="Permalink to this headline">¶</a></h2>
+<p>See CMIP5 and CMIP6 data file examples as below. We will use CMIP6 in the following demonstration.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">path_CMIP5</span> <span class="o">=</span> <span class="s1">&#39;/g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/atmos/</span><span class="se">\</span>
+<span class="s1">Amon/r1i1p1/v20130325/tasmax/tasmax_Amon_ACCESS1-3_historical_r1i1p1_185001-200512.nc&#39;</span>
+<span class="n">path_CMIP6</span> <span class="o">=</span> <span class="s1">&#39;/g/data/oi10/replicas/CMIP6/CMIP/CSIRO/ACCESS-ESM1-5/historical/r1i1p1f1/</span><span class="se">\</span>
+<span class="s1">day/tas/gn/v20191115/tas_day_ACCESS-ESM1-5_historical_r1i1p1f1_gn_20000101-20141231.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="OPeNDAP-Data-URL">
+<h2>OPeNDAP Data URL<a class="headerlink" href="#OPeNDAP-Data-URL" title="Permalink to this headline">¶</a></h2>
+<p>For more information on where to find OPeNDAP URL’s, see: THREDDS Data Server: Data Access</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://dapds00.nci.org.au/thredds/dodsC/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/atmos/</span><span class="se">\</span>
+<span class="s1">Amon/r1i1p1/v20130325/tasmax/tasmax_Amon_ACCESS1-3_historical_r1i1p1_185001-200512.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+<p>Call a particular file by using any of the path or url point as above.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path_CMIP6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Subsettting">
+<h3>Subsettting<a class="headerlink" href="#Subsettting" title="Permalink to this headline">¶</a></h3>
+<p>There are multiple ways to select subsets of the data using xarray.</p>
+</div>
+</div>
+<div class="section" id="1.-Using-the-regular-numpy-method-of-indexing:">
+<h2>1. Using the regular numpy method of indexing:<a class="headerlink" href="#1.-Using-the-regular-numpy-method-of-indexing:" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tas</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">tas</span>
+<span class="n">tas</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">,:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[244.25504, 244.11143, 244.8654 , ..., 252.2028 , 254.80562,
+        257.209  ],
+       [244.99164, 243.70279, 245.47511, ..., 245.54207, 252.54214,
+        263.12976],
+       [245.20886, 246.62997, 248.23387, ..., 236.42502, 240.74495,
+        246.46326],
+       ...,
+       [243.7399 , 244.93011, 245.98024, ..., 247.88094, 244.78683,
+        243.57555],
+       [243.68779, 244.94746, 246.24438, ..., 246.65918, 245.2913 ,
+        243.84929],
+       [243.47762, 243.73996, 244.91243, ..., 243.9751 , 244.74416,
+        245.01816]], dtype=float32)
+</pre></div>
+</div>
+</div>
+<p>But in the above it is not as simple to know <em>where</em> the values selected have come from. xarray.sel() permits label based indexing.</p>
+</div>
+<div class="section" id="2.-Using-.sel(-)-for-label-based-indexing">
+<h2>2. Using .sel( ) for label based indexing<a class="headerlink" href="#2.-Using-.sel(-)-for-label-based-indexing" title="Permalink to this headline">¶</a></h2>
+<p>In the case below we find the values of tas at latitude of -12.46 and longitude at 130.85 degrees - approximately Darwin. This is done using the <code class="docutils literal notranslate"><span class="pre">.sel()</span></code> method which can be performed on a Dataset or DataArray. This method permits selection based on coordinates rather than indices.</p>
+<p>However, it is unlikely there is a specific lat/lon coordinate value at those exact locations. For example, look at the available values of longitude:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f1</span><span class="o">.</span><span class="n">lon</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;lon&#x27; (lon: 192)&gt;
+array([  0.   ,   1.875,   3.75 ,   5.625,   7.5  ,   9.375,  11.25 ,  13.125,
+        15.   ,  16.875,  18.75 ,  20.625,  22.5  ,  24.375,  26.25 ,  28.125,
+        30.   ,  31.875,  33.75 ,  35.625,  37.5  ,  39.375,  41.25 ,  43.125,
+        45.   ,  46.875,  48.75 ,  50.625,  52.5  ,  54.375,  56.25 ,  58.125,
+        60.   ,  61.875,  63.75 ,  65.625,  67.5  ,  69.375,  71.25 ,  73.125,
+        75.   ,  76.875,  78.75 ,  80.625,  82.5  ,  84.375,  86.25 ,  88.125,
+        90.   ,  91.875,  93.75 ,  95.625,  97.5  ,  99.375, 101.25 , 103.125,
+       105.   , 106.875, 108.75 , 110.625, 112.5  , 114.375, 116.25 , 118.125,
+       120.   , 121.875, 123.75 , 125.625, 127.5  , 129.375, 131.25 , 133.125,
+       135.   , 136.875, 138.75 , 140.625, 142.5  , 144.375, 146.25 , 148.125,
+       150.   , 151.875, 153.75 , 155.625, 157.5  , 159.375, 161.25 , 163.125,
+       165.   , 166.875, 168.75 , 170.625, 172.5  , 174.375, 176.25 , 178.125,
+       180.   , 181.875, 183.75 , 185.625, 187.5  , 189.375, 191.25 , 193.125,
+       195.   , 196.875, 198.75 , 200.625, 202.5  , 204.375, 206.25 , 208.125,
+       210.   , 211.875, 213.75 , 215.625, 217.5  , 219.375, 221.25 , 223.125,
+       225.   , 226.875, 228.75 , 230.625, 232.5  , 234.375, 236.25 , 238.125,
+       240.   , 241.875, 243.75 , 245.625, 247.5  , 249.375, 251.25 , 253.125,
+       255.   , 256.875, 258.75 , 260.625, 262.5  , 264.375, 266.25 , 268.125,
+       270.   , 271.875, 273.75 , 275.625, 277.5  , 279.375, 281.25 , 283.125,
+       285.   , 286.875, 288.75 , 290.625, 292.5  , 294.375, 296.25 , 298.125,
+       300.   , 301.875, 303.75 , 305.625, 307.5  , 309.375, 311.25 , 313.125,
+       315.   , 316.875, 318.75 , 320.625, 322.5  , 324.375, 326.25 , 328.125,
+       330.   , 331.875, 333.75 , 335.625, 337.5  , 339.375, 341.25 , 343.125,
+       345.   , 346.875, 348.75 , 350.625, 352.5  , 354.375, 356.25 , 358.125])
+Coordinates:
+  * lon      (lon) float64 0.0 1.875 3.75 5.625 7.5 ... 352.5 354.4 356.2 358.1
+    height   float64 ...
+Attributes:
+    bounds:         lon_bnds
+    units:          degrees_east
+    axis:           X
+    long_name:      Longitude
+    standard_name:  longitude</pre></div>
+</div>
+<p>There is no longitude value at 130.85 deg E, thus if we wanted to find the tas over Darwin, we need to use interpolation. This is done by adding an argument to the <code class="docutils literal notranslate"><span class="pre">.sel()</span></code> command and in this case we are going to use the nearest neighbour method.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tas</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span><span class="o">=</span><span class="mf">130.85</span><span class="p">,</span><span class="n">lat</span><span class="o">=-</span><span class="mf">12.46</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tas&#x27; (time: 5479)&gt;
+array([306.54373, 305.71402, 306.3294 , ..., 302.63876, 305.06888, 304.9428 ],
+      dtype=float32)
+Coordinates:
+  * time     (time) datetime64[ns] 2000-01-01T12:00:00 ... 2014-12-31T12:00:00
+    lat      float64 -12.5
+    lon      float64 131.2
+    height   float64 ...
+Attributes:
+    standard_name:  air_temperature
+    long_name:      Near-Surface Air Temperature
+    comment:        near-surface (usually, 2 meter) air temperature
+    units:          K
+    cell_methods:   area: time: mean
+    cell_measures:  area: areacella
+    history:        2019-11-15T17:42:13Z altered by CMOR: Treated scalar dime...</pre></div>
+</div>
+<div class="section" id="Subsetting-in-Time">
+<h3>Subsetting in Time<a class="headerlink" href="#Subsetting-in-Time" title="Permalink to this headline">¶</a></h3>
+<p>Notice that the time variable has also been automatically decoded by xarray to represent dates rather than floats</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f1</span><span class="o">.</span><span class="n">time</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;time&#x27; (time: 5479)&gt;
+array([&#x27;2000-01-01T12:00:00.000000000&#x27;, &#x27;2000-01-02T12:00:00.000000000&#x27;,
+       &#x27;2000-01-03T12:00:00.000000000&#x27;, ..., &#x27;2014-12-29T12:00:00.000000000&#x27;,
+       &#x27;2014-12-30T12:00:00.000000000&#x27;, &#x27;2014-12-31T12:00:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)
+Coordinates:
+  * time     (time) datetime64[ns] 2000-01-01T12:00:00 ... 2014-12-31T12:00:00
+    height   float64 ...
+Attributes:
+    bounds:         time_bnds
+    axis:           T
+    long_name:      time
+    standard_name:  time</pre></div>
+</div>
+<p>Compared to the original numpy data:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ft</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path_CMIP6</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ft</span><span class="o">.</span><span class="n">time</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;time&#x27; (time: 5479)&gt;
+array([54786.5, 54787.5, 54788.5, ..., 60262.5, 60263.5, 60264.5])
+Coordinates:
+  * time     (time) float64 5.479e+04 5.479e+04 ... 6.026e+04 6.026e+04
+    height   float64 ...
+Attributes:
+    bounds:         time_bnds
+    units:          days since 1850-01-01
+    calendar:       proleptic_gregorian
+    axis:           T
+    long_name:      time
+    standard_name:  time</pre></div>
+</div>
+<p>This decoding is very helpful in quickly selecting data over specific time periods.</p>
+</div>
+<div class="section" id="Exercise">
+<h3>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h3>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">.sel</span></code> method shown above. Find the tasmax values during the year 2005. What are the dimensions of tasmax in this case?</p>
+<p>Answer</p>
+<div class="collapse" id="ans1"><pre><code>
+tas.sel(time='2005')
+</code></pre></div><div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Selecting-data-within-a-range-of-values">
+<h3>Selecting data within a range of values<a class="headerlink" href="#Selecting-data-within-a-range-of-values" title="Permalink to this headline">¶</a></h3>
+<p>In the above examples we found the tasmax values at a nearest lat/lon location, and a specific time. To select data over a range of values you can use the <code class="docutils literal notranslate"><span class="pre">slice()</span></code> function under the <code class="docutils literal notranslate"><span class="pre">sel()</span></code> command.</p>
+<p>In the below case we are getting the subset of tasmax data from years 2000 to 2005 and between latitudes 20S to 20N.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">tas</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2000&#39;</span><span class="p">,</span><span class="s1">&#39;2005&#39;</span><span class="p">),</span><span class="n">lat</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">subset</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tas&#x27; (time: 2192, lat: 33, lon: 192)&gt;
+[13888512 values with dtype=float32]
+Coordinates:
+  * time     (time) datetime64[ns] 2000-01-01T12:00:00 ... 2005-12-31T12:00:00
+  * lat      (lat) float64 -20.0 -18.75 -17.5 -16.25 ... 16.25 17.5 18.75 20.0
+  * lon      (lon) float64 0.0 1.875 3.75 5.625 7.5 ... 352.5 354.4 356.2 358.1
+    height   float64 ...
+Attributes:
+    standard_name:  air_temperature
+    long_name:      Near-Surface Air Temperature
+    comment:        near-surface (usually, 2 meter) air temperature
+    units:          K
+    cell_methods:   area: time: mean
+    cell_measures:  area: areacella
+    history:        2019-11-15T17:42:13Z altered by CMOR: Treated scalar dime...</pre></div>
+</div>
+</div>
+<div class="section" id="Exercise">
+<h3>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h3>
+<p>Find the tasmax values over Australia, between latitudes -45 to -10 deg N and longitudes of 110 to 155 deg E and during the years from 1990 to 2000.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Xarray-.plot()">
+<h3>Xarray .plot()<a class="headerlink" href="#Xarray-.plot()" title="Permalink to this headline">¶</a></h3>
+<p>Plotting with xarray is very simple. Xarray plots will automatically define the axes values and labels based on the information contained within the data array.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tas</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2005-01-16&#39;</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x14c8be7c9b50&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_Xarray_subset_plot_cmip6_27_1.png" src="../../_images/_notebook_climate_Xarray_subset_plot_cmip6_27_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tas</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span><span class="o">=</span><span class="mf">130.85</span><span class="p">,</span><span class="n">lat</span><span class="o">=-</span><span class="mf">12.46</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&lt;matplotlib.lines.Line2D at 0x14c8be766750&gt;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_Xarray_subset_plot_cmip6_28_1.png" src="../../_images/_notebook_climate_Xarray_subset_plot_cmip6_28_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Exercise">
+<h3>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h3>
+<p>Try plotting the colormap of tasmax in the region over Australia. So that is between latitudes -45 to -10 deg N of and longitudes of 110 to 155 deg E. Pick the date for the year and month you were born and plot for that.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
