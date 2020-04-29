@@ -1,0 +1,1033 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Calculate Nino 3.4 Time Series using CMIP5 ACCESS-1.3 model &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate_withtable.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Calculate Nino 3.4 Time Series using CMIP5 ACCESS-1.3 model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Calculate-Nino-3.4-Time-Series-using-CMIP5-ACCESS-1.3-model">
+<h1>Calculate Nino 3.4 Time Series using CMIP5 ACCESS-1.3 model<a class="headerlink" href="#Calculate-Nino-3.4-Time-Series-using-CMIP5-ACCESS-1.3-model" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we calculate the Nino 3.4 index for the ACCESS-1.3 CMIP5 submission using the sea surface temperature from the ocean model component.</p>
+<ul class="simple">
+<li>Load data</li>
+<li>Calculate a monthly climatology of mean SST for the 1950-1979 period</li>
+<li>Compare the values of climatological mean SST with those from the classic Trenberth paper</li>
+<li>Calculate the Nino 3.4 index</li>
+<li>Moving average smoother</li>
+<li>Data normalisation</li>
+<li>A bit play with time series plotting</li>
+</ul>
+<p>This example uses Coupled Model Intercomparison Project (CMIP5) collections. For more information, please visit <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716">data catalogue</a> and <a class="reference external" href="https://cmip.llnl.gov/cmip5/terms.html">terms of use</a>.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li>Authors: NCI Virtual Research Environment Team</li>
+<li>Keywords: CMIP, xarray, ACCESS, Nino34 Index</li>
+<li>Create Date: 2019-Dec; Update Date: 2020-Apr</li>
+<li>Lineage/Reference: This example was modified from the original example developed by Dr Aidan Heerdegen from ARC COE Clex.</li>
+</ul>
+<div class="section" id="Prerequisite">
+<h2>Prerequisite<a class="headerlink" href="#Prerequisite" title="Permalink to this headline">¶</a></h2>
+<p>To run this notebook on Gadi/VDI, the following modules are needed:</p>
+<ul class="simple">
+<li>Xarray</li>
+<li>netCDF4</li>
+<li>matplotlib</li>
+</ul>
+<p>You also need to be a member of the following data project to access the data or through <a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog.html">NCI’s data service</a>: * rr3</p>
+<p>You can request to join the project through <a class="reference external" href="https://my.nci.org.au">NCI’s user account management system</a>.</p>
+<div class="section" id="Nino-3.4-index">
+<h3>Nino 3.4 index<a class="headerlink" href="#Nino-3.4-index" title="Permalink to this headline">¶</a></h3>
+<p>The definition of Nino 3.4 index can be found <a class="reference external" href="https://climatedataguide.ucar.edu/climate-data/nino-sst-indices-nino-12-3-34-4-oni-and-tni">here</a>.</p>
+<blockquote>
+<div>Niño 3.4 (5N-5S, 170W-120W): The Niño 3.4 anomalies may be thought of as representing the average equatorial SSTs across the Pacific from about the dateline to the South American coast. The Niño 3.4 index typically uses a 5-month running mean, and El Niño or La Niña events are defined when the Niño 3.4 SSTs exceed +/- 0.4C for a period of six months or more.</div></blockquote>
+<blockquote>
+<div>Nino X Index computation: (a) Compute area averaged total SST from Niño X region; (b) Compute monthly climatology (e.g., 1950-1979) for area averaged total SST from Niño X region, and subtract climatology from area averaged total SST time series to obtain anomalies; (c) Smooth the anomalies with a 5-month running mean; (d) Normalize the smoothed values by its standard deviation over the climatological period.</div></blockquote>
+<div class="section" id="Import-the-xarray-and-netCDF-modules">
+<h4>Import the xarray and netCDF modules<a class="headerlink" href="#Import-the-xarray-and-netCDF-modules" title="Permalink to this headline">¶</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">netCDF4</span> <span class="k">as</span> <span class="nn">nc</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<p>The URL for the relevant dataset is</p>
+<p><a class="reference external" href="http://dapds00.nci.org.au/thredds/dodsC/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/ocean/Omon/r1i1p1/latest/tos/tos_Omon_ACCESS1-3_historical_r1i1p1_185001-200512.nc">http://dapds00.nci.org.au/thredds/dodsC/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/ocean/Omon/r1i1p1/latest/tos/tos_Omon_ACCESS1-3_historical_r1i1p1_185001-200512.nc</a></p>
+<p>First step is to open the dataset either via URL or directly on the file system.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">CMIP5_data</span> <span class="o">=</span> <span class="s1">&#39;/g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/ocean/Omon/r1i1p1/latest/tos/tos_Omon_ACCESS1-3_historical_r1i1p1_185001-200512.nc&#39;</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">CMIP5_data</span><span class="p">)</span>
+<span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:       (bnds: 2, i: 360, j: 300, time: 1872, vertices: 4)
+Coordinates:
+  * time          (time) datetime64[ns] 1850-01-16T12:00:00 ... 2005-12-16T12:00:00
+  * j             (j) int32 0 1 2 3 4 5 6 7 ... 292 293 294 295 296 297 298 299
+  * i             (i) int32 0 1 2 3 4 5 6 7 ... 352 353 354 355 356 357 358 359
+    lat           (j, i) float32 ...
+    lon           (j, i) float32 ...
+Dimensions without coordinates: bnds, vertices
+Data variables:
+    time_bnds     (time, bnds) datetime64[ns] ...
+    lat_vertices  (j, i, vertices) float32 ...
+    lon_vertices  (j, i, vertices) float32 ...
+    tos           (time, j, i) float32 ...
+Attributes:
+    institution:            CSIRO (Commonwealth Scientific and Industrial Res...
+    institute_id:           CSIRO-BOM
+    experiment_id:          historical
+    source:                 ACCESS1-3 2011. Atmosphere: AGCM v1.0 (N96 grid-p...
+    model_id:               ACCESS1.3
+    forcing:                GHG, Oz, SA, Sl, Vl, BC, OC, (GHG = CO2, N2O, CH4...
+    parent_experiment_id:   piControl
+    parent_experiment_rip:  r1i1p1
+    branch_time:            90945.0
+    contact:                The ACCESS wiki: http://wiki.csiro.au/confluence/...
+    history:                CMIP5 compliant file produced from raw ACCESS mod...
+    references:             See http://wiki.csiro.au/confluence/display/ACCES...
+    initialization_method:  1
+    physics_version:        1
+    tracking_id:            133724da-4e35-4a17-811a-36891ab0d95d
+    version_number:         v20120413
+    product:                output
+    experiment:             historical
+    frequency:              mon
+    creation_date:          2012-02-06T01:20:17Z
+    Conventions:            CF-1.4
+    project_id:             CMIP5
+    table_id:               Table Omon (27 April 2011) 694b38a3f68f18e58ba802...
+    title:                  ACCESS1-3 model output prepared for CMIP5 historical
+    parent_experiment:      pre-industrial control
+    modeling_realm:         ocean
+    realization:            1
+    cmor_version:           2.8.0</pre></div>
+</div>
+<p>Find the sea surface temperature (SST) variable name and create a new variable which selects out all data after 1950. Probably a good idea to plot the first time slice as a reference</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tos</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">tos</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1950&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">tos</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tos&#x27; (time: 672, j: 300, i: 360)&gt;
+[72576000 values with dtype=float32]
+Coordinates:
+  * time     (time) datetime64[ns] 1950-01-16T12:00:00 ... 2005-12-16T12:00:00
+  * j        (j) int32 0 1 2 3 4 5 6 7 8 ... 291 292 293 294 295 296 297 298 299
+  * i        (i) int32 0 1 2 3 4 5 6 7 8 ... 351 352 353 354 355 356 357 358 359
+    lat      (j, i) float32 ...
+    lon      (j, i) float32 ...
+Attributes:
+    standard_name:     sea_surface_temperature
+    long_name:         Sea Surface Temperature
+    comment:           &quot;this may differ from &quot;&quot;surface temperature&quot;&quot; in regio...
+    units:             K
+    cell_methods:      time: mean
+    cell_measures:     area: areacello
+    history:           2012-02-06T01:20:16Z altered by CMOR: replaced missing...
+    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation...</pre></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tos</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x148f7eea2a10&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_11_1.png" src="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_11_1.png" />
+</div>
+</div>
+<p>MOM5 is the ocean model component of ACCESS-1.3. In this configuration the ocean has a tripolar grid. This means there are three poles, to avoid having a convergent point in the ocean. All three poles are over land points where there are no wet cells. One pole in the south over Antarctica and two in the north. What this means is that the data have coordinates <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code> and the <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code> data variables are 2D and also have coordinates <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code>. The tripolar grid only starts
+diverging from a normal grid above 60N, so does not affect the calculation of Nino 3.4, but it does make it more difficult to select out the area of interest.</p>
+<p><img alt="Tripole Grid" src="../../_images/tripole.png" /></p>
+<p>There are a few ways selecting out the region of interest (ROI).</p>
+<ol class="arabic simple">
+<li>Find the cell indices for the ROI and use <code class="docutils literal notranslate"><span class="pre">sel</span></code></li>
+<li>Chop off the tripolar part of the grid and add new 1D lat/lon coordinates to the dataset/variable</li>
+<li>Use <code class="docutils literal notranslate"><span class="pre">where</span></code> and select for all values within the bounds of interest.</li>
+</ol>
+<p>It is the last option that is easiest, for variable <code class="docutils literal notranslate"><span class="pre">var</span></code> it is formulated like so</p>
+<p><code class="docutils literal notranslate"><span class="pre">var.where((var.lat&lt;5)</span> <span class="pre">&amp;</span> <span class="pre">(var.lat&gt;-5)</span> <span class="pre">&amp;</span> <span class="pre">(var.lon&gt;190)</span> <span class="pre">&amp;</span> <span class="pre">(var.lon&lt;240),drop=True)</span></code></p>
+<p>note the <code class="docutils literal notranslate"><span class="pre">drop=True</span></code> option, which will remove all masked cells, which in this case is equivalent to a <code class="docutils literal notranslate"><span class="pre">sel</span></code> operation using <code class="docutils literal notranslate"><span class="pre">slice</span></code> on <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tos_nino34</span> <span class="o">=</span> <span class="n">tos</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">tos</span><span class="o">.</span><span class="n">lat</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tos</span><span class="o">.</span><span class="n">lat</span><span class="o">&gt;-</span><span class="mi">5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tos</span><span class="o">.</span><span class="n">lon</span><span class="o">&gt;</span><span class="mi">190</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tos</span><span class="o">.</span><span class="n">lon</span><span class="o">&lt;</span><span class="mi">240</span><span class="p">),</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tos_nino34</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tos&#x27; (time: 672, j: 30, i: 50)&gt;
+array([[[300.94846, 300.88568, 300.87427, ..., 297.64374, 297.60992,
+         297.57465],
+        [300.62796, 300.58807, 300.57635, ..., 297.52548, 297.4986 ,
+         297.47824],
+        [300.39053, 300.37262, 300.36188, ..., 297.4185 , 297.39447,
+         297.38327],
+        ...,
+        [299.3151 , 299.3223 , 299.34775, ..., 300.94946, 301.0162 ,
+         301.0617 ],
+        [299.68683, 299.54962, 299.48615, ..., 301.0525 , 301.09686,
+         301.13242],
+        [300.4037 , 300.18784, 300.00842, ..., 301.085  , 301.11496,
+         301.1423 ]],
+
+       [[300.71313, 300.59174, 300.46158, ..., 298.60413, 298.63116,
+         298.65945],
+        [300.49048, 300.41953, 300.31433, ..., 298.59286, 298.61975,
+         298.65106],
+        [300.33057, 300.25937, 300.114  , ..., 298.5928 , 298.6208 ,
+         298.6491 ],
+        ...,
+        [299.3405 , 299.39774, 299.46152, ..., 300.78915, 300.77493,
+         300.86813],
+        [299.50064, 299.48386, 299.5274 , ..., 300.91095, 300.90625,
+         300.95218],
+        [299.88474, 299.7831 , 299.7539 , ..., 300.956  , 300.94666,
+         300.9566 ]],
+
+       [[300.59818, 300.74533, 300.87302, ..., 299.9769 , 300.0454 ,
+         300.05377],
+        [300.52557, 300.63135, 300.6613 , ..., 299.84775, 299.9646 ,
+         300.02164],
+        [300.35086, 300.37476, 300.32236, ..., 299.67917, 299.82623,
+         299.92847],
+        ...,
+        [299.40738, 299.42673, 299.49036, ..., 300.00458, 299.94418,
+         299.83765],
+        [299.50467, 299.47287, 299.487  , ..., 300.19022, 300.1071 ,
+         299.9977 ],
+        [299.64572, 299.60696, 299.57907, ..., 300.35342, 300.25403,
+         300.14874]],
+
+       ...,
+
+       [[302.87076, 302.86786, 302.86578, ..., 298.48865, 298.3445 ,
+         298.21655],
+        [302.73334, 302.7322 , 302.72195, ..., 298.3724 , 298.2487 ,
+         298.12845],
+        [302.57645, 302.57187, 302.5542 , ..., 298.28757, 298.1597 ,
+         298.0417 ],
+        ...,
+        [302.3956 , 302.3782 , 302.38626, ..., 301.18906, 301.0008 ,
+         300.8294 ],
+        [302.70993, 302.66962, 302.65982, ..., 301.53125, 301.39194,
+         301.25214],
+        [303.01746, 302.9772 , 302.9532 , ..., 301.79535, 301.70728,
+         301.6072 ]],
+
+       [[302.79315, 302.81284, 302.8224 , ..., 298.6003 , 298.5471 ,
+         298.43106],
+        [302.6761 , 302.67557, 302.63126, ..., 298.40054, 298.36536,
+         298.26703],
+        [302.51248, 302.4531 , 302.3463 , ..., 298.2234 , 298.20724,
+         298.1226 ],
+        ...,
+        [302.4275 , 302.40497, 302.36984, ..., 301.34897, 301.28528,
+         301.2992 ],
+        [302.6383 , 302.61084, 302.57703, ..., 301.67218, 301.62723,
+         301.63782],
+        [302.8222 , 302.80893, 302.79022, ..., 301.89783, 301.8747 ,
+         301.88324]],
+
+       [[302.58627, 302.5506 , 302.47406, ..., 298.7326 , 298.61194,
+         298.5167 ],
+        [302.33844, 302.2614 , 302.17407, ..., 298.54724, 298.43848,
+         298.3609 ],
+        [302.06375, 301.96933, 301.87567, ..., 298.401  , 298.3131 ,
+         298.25192],
+        ...,
+        [301.78677, 301.74954, 301.69775, ..., 301.62314, 301.60974,
+         301.50467],
+        [301.98654, 301.98233, 301.97385, ..., 301.88876, 301.89926,
+         301.84207],
+        [302.10608, 302.11246, 302.12888, ..., 302.04364, 302.05737,
+         302.03275]]], dtype=float32)
+Coordinates:
+  * time     (time) datetime64[ns] 1950-01-16T12:00:00 ... 2005-12-16T12:00:00
+  * j        (j) int32 122 123 124 125 126 127 128 ... 146 147 148 149 150 151
+  * i        (i) int32 110 111 112 113 114 115 116 ... 154 155 156 157 158 159
+    lat      (j, i) float32 -4.8328757 -4.8328757 ... 4.8328757 4.8328757
+    lon      (j, i) float32 190.5 191.5 192.5 193.5 ... 236.5 237.5 238.5 239.5
+Attributes:
+    standard_name:     sea_surface_temperature
+    long_name:         Sea Surface Temperature
+    comment:           &quot;this may differ from &quot;&quot;surface temperature&quot;&quot; in regio...
+    units:             K
+    cell_methods:      time: mean
+    cell_measures:     area: areacello
+    history:           2012-02-06T01:20:16Z altered by CMOR: replaced missing...
+    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation...</pre></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Check we have the correct spatial extent&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Latitude range: </span><span class="si">{:.1f}</span><span class="s1"> - </span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tos_nino34</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">tos_nino34</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Longitude range: </span><span class="si">{:.1f}</span><span class="s1"> - </span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tos_nino34</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">tos_nino34</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Check we have the correct spatial extent
+Latitude range: -4.8 - 4.8
+Longitude range: 190.5 - 239.5
+</pre></div></div>
+</div>
+<p>Calculate a monthly climatology of mean SST for the 1950-1979 period. Note this should be a single value for each month</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tos_nino34_climatology</span> <span class="o">=</span> <span class="n">tos_nino34</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1950&#39;</span><span class="p">,</span><span class="s1">&#39;1979&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Compare the values of climatological mean SST with those from the <a class="reference external" href="https://doi.org/10.1175/1520-0477(1997)078%3C2771:TDOENO%3E2.0.CO;2">classic Trenberth paper</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">tos_nino34_climatology</span> <span class="o">-</span> <span class="mi">273</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;ACCESS-1.3&#39;</span><span class="p">)</span>
+<span class="n">mean_sst_trenberth</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">([</span><span class="mf">26.4</span><span class="p">,</span> <span class="mf">26.6</span><span class="p">,</span> <span class="mf">27.1</span><span class="p">,</span> <span class="mf">27.6</span><span class="p">,</span> <span class="mf">27.5</span><span class="p">,</span> <span class="mf">27.4</span><span class="p">,</span> <span class="mf">27.0</span><span class="p">,</span> <span class="mf">26.7</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">26.5</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">],</span> <span class="n">coords</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">mean_sst_trenberth</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Trenberth&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.legend.Legend at 0x148f7e73cc90&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_21_1.png" src="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_21_1.png" />
+</div>
+</div>
+<p>Now calculate the Nino 3.4 index by subtracting the monthly climatology from the original SST data and take the mean over the spatial coordinates (the monthly anomaly of SST over the Nino3.4 region).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">index_nino34</span> <span class="o">=</span> <span class="p">(</span><span class="n">tos_nino34</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">-</span><span class="n">tos_nino34_climatology</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;j&#39;</span><span class="p">,</span><span class="s1">&#39;i&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">index_nino34</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&lt;matplotlib.lines.Line2D at 0x148f7eb75310&gt;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_24_1.png" src="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_24_1.png" />
+</div>
+</div>
+<p>Next step is to apply a 5-month moving average smoother. xarray has a method <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.rolling.html">rolling</a> which can be applied to the your saved variable and then directly plotted</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">index_nino34</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&lt;matplotlib.lines.Line2D at 0x148f7edd50d0&gt;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_26_1.png" src="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_26_1.png" />
+</div>
+</div>
+<p>Last step is to normalise by the standard deviation. Calculate the standard deviation of the SST data in the Nino 3.4 area for the climatological period. xarray provides the <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.std.html?highlight=std">std</a> operator for this purpose. Save the result in a new variable. Note that this is an average over the entire climatological period, so should be a single value</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tas_nino34_climatology_std</span> <span class="o">=</span> <span class="n">tos_nino34</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1950-01&#39;</span><span class="p">,</span><span class="s1">&#39;1979-12&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>As the standard deviation is a single value it is sufficient to use the same formulation for your plot as above but divide by the standard deviation and then plot the result. Note that parentheses will be required around the divide operation to correctly chain the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> operator. e.g.&nbsp;something like</p>
+<p><code class="docutils literal notranslate"><span class="pre">(index_variable.rolling().mean()</span> <span class="pre">/</span> <span class="pre">std_dev).plot()</span></code></p>
+<p>Alternatively, you could save the normalised value into a new variable and then plot that</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">index_nino34</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="n">tas_nino34_climatology_std</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&lt;matplotlib.lines.Line2D at 0x148f7e5d9650&gt;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_30_1.png" src="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_30_1.png" />
+</div>
+</div>
+<p>Add some -0.4/+0.4 lines which are the El Niño threshold</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">index_nino34</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="n">tas_nino34_climatology_std</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.lines.Line2D at 0x148f7e4f8650&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_32_1.png" src="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_32_1.png" />
+</div>
+</div>
+<p>As an extension, we will re-create the figure from Trenberth</p>
+<p><img alt="Trenberth Grid" src="../../_images/Trenberth.png" /></p>
+<p>Assign the final Nino 3.4 normalised and smoothed index to a temporary variable for convenience</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tmp</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_nino34</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="n">tas_nino34_climatology_std</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>To recreate the Nino 3.4 plot from Trenberth requires using the matplotlib function <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.fill_between.html">fill_between</a> directly. It is called twice, once for the El Nino events, and then again for La Nina. Masking is used to select only values above, or below, a certain threshold, and the same threshold is then used as an argument to <code class="docutils literal notranslate"><span class="pre">fill_between</span></code> to set the other limit of the fill colour.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">tmp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tmp</span><span class="o">&gt;=</span><span class="mf">0.4</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">tmp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tmp</span><span class="o">&lt;=-</span><span class="mf">0.4</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="c1"># plt.fill_between(tmp.time.values, tmp.where(tmp&lt;0.4,0.4).where(tmp&gt;-0.4,-0.4).values, color=&#39;white&#39;)</span>
+<span class="n">tmp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Nino 3.4 Region (Threshold = 0.4 $\degree$C)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Text(0.5, 1.0, &#39;Nino 3.4 Region (Threshold = 0.4 $\\degree$C)&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_38_1.png" src="../../_images/_notebook_climate_2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5_38_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="s2">&quot;Percentage of El Nino events = </span><span class="si">{:0.1f}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tmp</span><span class="o">&gt;=</span><span class="mf">0.4</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">/</span> <span class="n">tmp</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&#39;Percentage of El Nino events = 21.1%&#39;
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="s2">&quot;Percentage of La Nina events = </span><span class="si">{:0.1f}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tmp</span><span class="o">&lt;=-</span><span class="mf">0.4</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">/</span> <span class="n">tmp</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&#39;Percentage of La Nina events = 16.3%&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<p>This example shows how to calculate Nino34 index and define ENSO events.</p>
+<div class="section" id="Reference">
+<h3>Reference<a class="headerlink" href="#Reference" title="Permalink to this headline">¶</a></h3>
+<p>For further information regarding the difination of ENSO please see:</p>
+<p>Trenberth, K.E., 1997. The definition of ENSO. Bulletin of the American Meteorological Society, 78(12): 2771-2777.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

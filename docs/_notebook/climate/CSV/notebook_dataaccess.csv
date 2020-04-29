@@ -1,0 +1,10 @@
+Description,Dataset,Modified,PC,VDI,Gadi
+`NCO basics <1_01_NCO_CMIP56.ipynb>`_,CMIP5,Apr-20,Y,Y,Y
+`HDFView <1_02_HDFView_CMIP6.ipynb>`_,CMIP6,Apr-20,Y,,
+`Xarray - open and read data <1_03_Xarray_access_CMIP5.ipynb>`_,CMIP5,Apr-20,Y,Y,Y
+`Clef - Search and Access CMIP5 data <1_04_Clef_Data_Search_Access_CMIP5.ipynb>`_,CMIP5,Apr-20,,Y,Y
+`Clef - Search and Access CMIP6 data <1_05_Clef_Data_Search_Access_CMIP6.ipynb>`_,CMIP6,Apr-20,,Y,Y
+`Data service - THREDDS - file download <../tds/tds_direct_download_cmip5.ipynb>`_,CMIP5,Aug-19,Y,Y,Y
+`Data service - THREDDS - data preview <../tds/tds_Godiva_cmip5.ipynb>`_,CMIP5,Aug-19,Y,Y,Y
+`Data service - THREDDS - OPenDAP utility <../tds/tds_OPeNDAP_cmip5.ipynb>`_,CMIP5,Aug-19,Y,Y,Y
+`Data service - THREDDS - data subset <../tds/tds_NetcdfSubset_cmip5.ipynb>`_,CMIP5,Aug-19,Y,Y,Y

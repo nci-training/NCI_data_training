@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Title of the Notebook Example &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate_withtable.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Title of the Notebook Example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/NCI_notebook_example_template.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Title-of-the-Notebook-Example">
+<h1>Title of the Notebook Example<a class="headerlink" href="#Title-of-the-Notebook-Example" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we demonstrate</p>
+<ul class="simple">
+<li>task1</li>
+<li>task2</li>
+<li>task3</li>
+</ul>
+<p>Notes: This note is optional. It can be used as NCI data collection access terms and conditions, or highlight other special requirements for the example.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li>Authors: FirstName1 LastName1, FirstName2 LastName2</li>
+<li>Keywords: Domain keywords like in peer-reviewed journals</li>
+<li>Software: tools and packages with versions used in this example</li>
+<li>Create Date: 2020-Mar-15; Release Date: 2020-Mar-30; Update Date: 2020-Apr-30</li>
+<li>Key updates: Critical changes (typo or minor changes do not need records)</li>
+<li>Lineage/Reference: optional - reference to materials that this example is based on</li>
+</ul>
+<div class="section" id="prerequisite">
+<h2>prerequisite<a class="headerlink" href="#prerequisite" title="Permalink to this headline">¶</a></h2>
+<p>To run this notebook on Gadi/VDI, or on your local computer. The following modules are needed:</p>
+<ul class="simple">
+<li>Python3</li>
+<li>Xarry</li>
+</ul>
+<p>You also need to be a member of the following data project to access the data or through <a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog.html">NCI’s data service</a> if the data is published: * oi10</p>
+<p>You can request to join the project through <a class="reference external" href="https://my.nci.org.au">NCI’s user account management system</a>.</p>
+</div>
+<div class="section" id="Optional-cell:">
+<h2>Optional cell:<a class="headerlink" href="#Optional-cell:" title="Permalink to this headline">¶</a></h2>
+<p>This section could be another introductory text to explain in more scientific and/or technical details what the example will do. It could also be used as a background blog to explain or link to techinical concepts which need to be referenced to somewhere else. For example, what are Pangeo, ESGF, MIPs.</p>
+</div>
+<div class="section" id="Step-1">
+<h2>Step 1<a class="headerlink" href="#Step-1" title="Permalink to this headline">¶</a></h2>
+<p>This first chunk of workflow in a sequencial order.</p>
+<p>It might start with some linux command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~
+$ ls -l
+</pre></div>
+</div>
+<p>The commands above generate an image which is inserted here.</p>
+<p><img alt="alt text of this image" src="_notebook/climate/images/image_name.png" /></p>
+</div>
+<div class="section" id="Step-2">
+<h2>Step 2<a class="headerlink" href="#Step-2" title="Permalink to this headline">¶</a></h2>
+<p>In each section, you can futuer divide into several sub-section using more hash tag #.</p>
+<div class="section" id="step-2.1">
+<h3>step 2.1<a class="headerlink" href="#step-2.1" title="Permalink to this headline">¶</a></h3>
+<p>Some text can be highlighted in colour, e.g., red.</p>
+</div>
+<div class="section" id="step-2.2">
+<h3>step 2.2<a class="headerlink" href="#step-2.2" title="Permalink to this headline">¶</a></h3>
+<p>Or you can make some text <strong>bold</strong>.</p>
+</div>
+</div>
+<div class="section" id="Step-3">
+<h2>Step 3<a class="headerlink" href="#Step-3" title="Permalink to this headline">¶</a></h2>
+<p>If you want to post a warning message you can do this:</p>
+<div class="admonition warning">
+NOTE: The flag ‘–user’ is required so that the package is installed locally. If not included, permission errors will be returned.</div>
+<p>If you want to emphasise something you can do this:</p>
+  <div class="alert alert-success">
+
+To test whether the install was successful, try: $ python >> import netCDF4 >> (If you get any errors, the install was unsuccessful.)</div><p>To add any tips or tricks, you can do this:</p>
+<div class="admonition note">
+Tip: Try to use more than three hash in front of session title. Otherwise, font will appear in huge size.</div>
+</div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<p>In this example, we show how to do this and that. If you are interested, please follow this link for more information.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

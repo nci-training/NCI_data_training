@@ -1,0 +1,413 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Understand the Uncertainty in CMIP6 Dataset\n",
+    "\n",
+    "In this notebook we demonstrate how to calculate model uncertainty to see the different temperature trend shown among the 6 members of the ssp126 experiment of CNRM-CM6-1 model in CMIP6 archive:\n",
+    "\n",
+    "* access data that include multiple ensemble members  \n",
+    "* make plots with multiple lines\n",
+    "\n",
+    "This example uses Coupled Model Intercomparison Project (CMIP6) collections. For more information, please visit [data catalogue]( https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563) and [terms of use]( https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html).\n",
+    "\n",
+    "---"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- Authors: NCI Virtual Research Environment Team\n",
+    "- Keywords: CMIP, xarray\n",
+    "- Create Date: 2020-Apr; Update Date: 2020-Apr"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Prerequisite\n",
+    "\n",
+    "To run this notebook on Gadi/VDI, the following modules are needed:\n",
+    "\n",
+    "* Clef\n",
+    "* Xarray\n",
+    "\n",
+    "You also need to be a member of the following project:\n",
+    "* oi10\n",
+    "* hh5\n",
+    "\n",
+    "You can request to join the project through [NCI's user account management system](https://my.nci.org.au). "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Load libraries"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import xarray as xr"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Use Clef to check data availability"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "None\n",
+      "/g/data1b/oi10/replicas/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp126/r1i1p1f2/Amon/tas/gr/v20190219/\n",
+      "/g/data1b/oi10/replicas/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp126/r2i1p1f2/Amon/tas/gr/v20190410/\n",
+      "/g/data1b/oi10/replicas/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp126/r3i1p1f2/Amon/tas/gr/v20190410/\n",
+      "/g/data1b/oi10/replicas/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp126/r4i1p1f2/Amon/tas/gr/v20190410/\n",
+      "/g/data1b/oi10/replicas/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp126/r5i1p1f2/Amon/tas/gr/v20190410/\n",
+      "/g/data1b/oi10/replicas/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp126/r6i1p1f2/Amon/tas/gr/v20190410/\n",
+      "\n",
+      "Everything available on ESGF is also available locally\n"
+     ]
+    }
+   ],
+   "source": [
+    "!module use /g/data3/hh5/public/modules\n",
+    "!module load conda/analysis3\n",
+    "!clef cmip6 --activity ScenarioMIP \\\n",
+    "           --table  Amon          \\\n",
+    "           --grid   gr            \\\n",
+    "           --variable   tas        \\\n",
+    "           --experiment  ssp126    \\\n",
+    "           --model      CNRM-CM6-1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "tas_Amon_CNRM-CM6-1_ssp126_r2i1p1f2_gr_201501-210012.nc\n"
+     ]
+    }
+   ],
+   "source": [
+    "!ls /g/data1b/oi10/replicas/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp126/r2i1p1f2/Amon/tas/gr/v20190410/"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Use xarray to open ensemble data files"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Dir='/g/data1b/oi10/replicas/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1'\n",
+    "Files=[Dir+'/ssp126/r1i1p1f2/Amon/tas/gr/v20190219/tas_Amon_CNRM-CM6-1_ssp126_r1i1p1f2_gr_201501-210012.nc',\n",
+    "      Dir+'/ssp126/r2i1p1f2/Amon/tas/gr/v20190410/tas_Amon_CNRM-CM6-1_ssp126_r2i1p1f2_gr_201501-210012.nc',\n",
+    "      Dir+'/ssp126/r3i1p1f2/Amon/tas/gr/v20190410/tas_Amon_CNRM-CM6-1_ssp126_r3i1p1f2_gr_201501-210012.nc',\n",
+    "      Dir+'/ssp126/r4i1p1f2/Amon/tas/gr/v20190410/tas_Amon_CNRM-CM6-1_ssp126_r4i1p1f2_gr_201501-210012.nc',\n",
+    "      Dir+'/ssp126/r5i1p1f2/Amon/tas/gr/v20190410/tas_Amon_CNRM-CM6-1_ssp126_r5i1p1f2_gr_201501-210012.nc',\n",
+    "      Dir+'/ssp126/r6i1p1f2/Amon/tas/gr/v20190410/tas_Amon_CNRM-CM6-1_ssp126_r6i1p1f2_gr_201501-210012.nc']\n",
+    "\n",
+    "ds1=xr.open_dataset(Files[0])\n",
+    "ds2=xr.open_dataset(Files[1])\n",
+    "ds3=xr.open_dataset(Files[2])\n",
+    "ds4=xr.open_dataset(Files[3])\n",
+    "ds5=xr.open_dataset(Files[4])\n",
+    "ds6=xr.open_dataset(Files[5])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<pre>&lt;xarray.DataArray &#x27;tas&#x27; (time: 1032, lat: 128, lon: 256)&gt;\n",
+       "[33816576 values with dtype=float32]\n",
+       "Coordinates:\n",
+       "  * lat      (lat) float64 -88.93 -87.54 -86.14 -84.74 ... 86.14 87.54 88.93\n",
+       "  * lon      (lon) float64 0.0 1.406 2.812 4.219 ... 354.4 355.8 357.2 358.6\n",
+       "    height   float64 ...\n",
+       "  * time     (time) datetime64[ns] 2015-01-16T12:00:00 ... 2100-12-16T12:00:00\n",
+       "Attributes:\n",
+       "    online_operation:    average\n",
+       "    cell_methods:        area: time: mean\n",
+       "    interval_operation:  900 s\n",
+       "    interval_write:      1 month\n",
+       "    standard_name:       air_temperature\n",
+       "    description:         Near-Surface Air Temperature\n",
+       "    long_name:           Near-Surface Air Temperature\n",
+       "    history:             none\n",
+       "    units:               K\n",
+       "    cell_measures:       area: areacella</pre>"
+      ],
+      "text/plain": [
+       "<xarray.DataArray 'tas' (time: 1032, lat: 128, lon: 256)>\n",
+       "[33816576 values with dtype=float32]\n",
+       "Coordinates:\n",
+       "  * lat      (lat) float64 -88.93 -87.54 -86.14 -84.74 ... 86.14 87.54 88.93\n",
+       "  * lon      (lon) float64 0.0 1.406 2.812 4.219 ... 354.4 355.8 357.2 358.6\n",
+       "    height   float64 ...\n",
+       "  * time     (time) datetime64[ns] 2015-01-16T12:00:00 ... 2100-12-16T12:00:00\n",
+       "Attributes:\n",
+       "    online_operation:    average\n",
+       "    cell_methods:        area: time: mean\n",
+       "    interval_operation:  900 s\n",
+       "    interval_write:      1 month\n",
+       "    standard_name:       air_temperature\n",
+       "    description:         Near-Surface Air Temperature\n",
+       "    long_name:           Near-Surface Air Temperature\n",
+       "    history:             none\n",
+       "    units:               K\n",
+       "    cell_measures:       area: areacella"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ds1.tas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Concatenate ensemble files into one dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ds_new=xr.concat([ds1.tas, ds2.tas, ds3.tas, ds4.tas, ds5.tas, ds6.tas], 'new_dim')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Instead of reading each individual file and concatenate them, you can real them all in one dataset use open multiple datasets function. The procedure above aims to demonstrate the concatenate function in Xarray."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ds_all=xr.open_mfdataset(''+Dir+'/ssp126/r*i1p1f2/Amon/tas/gr/*/tas_Amon_CNRM-CM6-1_ssp126_r*i1p1f2_gr_201501-210012.nc', concat_dim='member_id')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Data analysis and plotting\n",
+    "\n",
+    "There exists uncertainty in model simulations, which is the reason that we need multipul models and multipul ensembles."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<pre>&lt;xarray.Dataset&gt;\n",
+       "Dimensions:  (member_id: 6, time: 86)\n",
+       "Coordinates:\n",
+       "  * time     (time) datetime64[ns] 2015-12-31 2016-12-31 ... 2100-12-31\n",
+       "    height   float64 2.0\n",
+       "Dimensions without coordinates: member_id\n",
+       "Data variables:\n",
+       "    tas      (time, member_id) float32 dask.array&lt;chunksize=(1, 1), meta=np.ndarray&gt;</pre>"
+      ],
+      "text/plain": [
+       "<xarray.Dataset>\n",
+       "Dimensions:  (member_id: 6, time: 86)\n",
+       "Coordinates:\n",
+       "  * time     (time) datetime64[ns] 2015-12-31 2016-12-31 ... 2100-12-31\n",
+       "    height   float64 2.0\n",
+       "Dimensions without coordinates: member_id\n",
+       "Data variables:\n",
+       "    tas      (time, member_id) float32 dask.array<chunksize=(1, 1), meta=np.ndarray>"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ds_yr=ds_all.mean(dim=('lat','lon')).resample(time='Y').mean(dim='time') #annual average data\n",
+    "ds_yr"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Add ensemble mean to dataset as member_id: mean"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<pre>&lt;xarray.Dataset&gt;\n",
+       "Dimensions:    (member_id: 7, time: 86)\n",
+       "Coordinates:\n",
+       "    height     float64 2.0\n",
+       "  * time       (time) datetime64[ns] 2015-12-31 2016-12-31 ... 2100-12-31\n",
+       "  * member_id  (member_id) &lt;U21 &#x27;1&#x27; &#x27;2&#x27; &#x27;3&#x27; &#x27;4&#x27; &#x27;5&#x27; &#x27;6&#x27; &#x27;mean&#x27;\n",
+       "Data variables:\n",
+       "    tas        (time, member_id) float32 dask.array&lt;chunksize=(1, 1), meta=np.ndarray&gt;</pre>"
+      ],
+      "text/plain": [
+       "<xarray.Dataset>\n",
+       "Dimensions:    (member_id: 7, time: 86)\n",
+       "Coordinates:\n",
+       "    height     float64 2.0\n",
+       "  * time       (time) datetime64[ns] 2015-12-31 2016-12-31 ... 2100-12-31\n",
+       "  * member_id  (member_id) <U21 '1' '2' '3' '4' '5' '6' 'mean'\n",
+       "Data variables:\n",
+       "    tas        (time, member_id) float32 dask.array<chunksize=(1, 1), meta=np.ndarray>"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ds_yr_ens_mean=ds_yr.mean(dim='member_id')\n",
+    "ds_yr_addMean=xr.concat([ds_yr, ds_yr_ens_mean],'member_id')\n",
+    "ds_yr_addMean=ds_yr_addMean.assign_coords({\"member_id\": [1,2,3,4,5,6,'mean'] }) #change coordinates of member_id\n",
+    "ds_yr_addMean"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ds_yr_addMean=xr.Dataset.to_array(ds_yr_addMean)[0,:,:]\n",
+    "ds_yr_addMean.plot.line(x='time', hue='member_id')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Now we measure the average distance of individual ensemble members to the ensemble mean"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<bound method Mapping.values of <xarray.Dataset>\n",
+       "Dimensions:  (member_id: 6)\n",
+       "Coordinates:\n",
+       "    height   float64 2.0\n",
+       "Dimensions without coordinates: member_id\n",
+       "Data variables:\n",
+       "    tas      (member_id) float32 dask.array<chunksize=(1,), meta=np.ndarray>>"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "dis=np.sqrt((np.square(ds_yr-ds_yr.mean(dim='member_id'))).mean(dim='time'))\n",
+    "dis.values"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now we can see that the uncertainty is around 0.15 degree Celsius."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Summary\n",
+    "\n",
+    "This example shows how to concatenate multiple ensemble files and plot them all together to get the sense of model uncertainty. We can see different simulation members show different results regarding the future temperature projection under senario ssp126. "
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

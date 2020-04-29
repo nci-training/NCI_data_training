@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Customise Pangeo Environment on Gadi &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate_withtable.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Customise Pangeo Environment on Gadi</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/Customise_Pangeo_environment_Gadi.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Customise-Pangeo-Environment-on-Gadi">
+<h1>Customise Pangeo Environment on Gadi<a class="headerlink" href="#Customise-Pangeo-Environment-on-Gadi" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we demonstrate</p>
+<ul class="simple">
+<li>load additional modules</li>
+<li>install packages not available on Gadi</li>
+</ul>
+<p>The centralised Pangeo Environment on Gadi includes essential modules:</p>
+<ul class="simple">
+<li>Python 3.7</li>
+<li>xarray 0.14.1</li>
+<li>jupyterlab 1.2.4</li>
+<li>nbserverproxy 0.8.8</li>
+<li>dask 2.9.1</li>
+<li>distributed 2.9.1</li>
+<li>dask-jobqueue 0.7.0</li>
+<li>bokeh 1.4.0</li>
+<li>netcdf4-python 1.5.3</li>
+<li>h5py 2.10.0</li>
+</ul>
+<p>Users might need to load additional modules to run their own workflow. If the pacakge is not available on Gadi, users can install it under their own working directory. Please note, Pangeo environment should always be loaded before adding other modules or installing new modules.</p>
+<div class="section" id="Step-1:-Enable-Pangeo-in-your-shell-envorinment">
+<h2>Step 1: Enable Pangeo in your shell envorinment<a class="headerlink" href="#Step-1:-Enable-Pangeo-in-your-shell-envorinment" title="Permalink to this headline">¶</a></h2>
+<p>To enable the Pangeo environment, you can use the following command within jobs, or within an interactive environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load pangeo/2019.12
+        Loading requirement: intel-mkl/2019.3.199 python3/3.7.4 hdf5/1.10.5 netcdf/4.7.1
+</pre></div>
+</div>
+<p>Note that Pangeo has its own Python installation.</p>
+</div>
+<div class="section" id="Step-2:-Check-if-a-module-is-available-or-not">
+<h2>Step 2: Check if a module is available or not<a class="headerlink" href="#Step-2:-Check-if-a-module-is-available-or-not" title="Permalink to this headline">¶</a></h2>
+<p>Lets try the <strong>scipy</strong> to see if it is available on Gadi.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ module avil scipy
+</pre></div>
+</div>
+</div>
+<div class="section" id="Step-3a:-Load-modules-if-they-are-available-on-Gadi">
+<h2>Step 3a: Load modules if they are available on Gadi<a class="headerlink" href="#Step-3a:-Load-modules-if-they-are-available-on-Gadi" title="Permalink to this headline">¶</a></h2>
+<p>If the module exists, it will list all the versions. Pick the one that you would like to use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ module load scipy
+</pre></div>
+</div>
+<p>Check if the module is loaded properly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ module list
+</pre></div>
+</div>
+</div>
+<div class="section" id="Step-3b:-Install-modules-if-they-are-NOT-available-on-Gadi">
+<h2>Step 3b: Install modules if they are NOT available on Gadi<a class="headerlink" href="#Step-3b:-Install-modules-if-they-are-NOT-available-on-Gadi" title="Permalink to this headline">¶</a></h2>
+<p>Lets try the <strong>deepgraph</strong> to see if it is available on Gadi.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ python
+Python 3.7.3 | packaged by conda-forge | (default, Jul  1 2019, 21:52:21)
+[GCC 7.3.0] :: Anaconda, Inc. on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import deepgraph
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+ModuleNotFoundError: No module named &#39;deepgraph&#39;
+&gt;&gt;&gt; exit()
+</pre></div>
+</div>
+<div class="section" id="There-are-multiple-ways-to-install-packages.-For-example,-you-can-use-install-from-the-Python-Package-Index-or-build-packges-from-the-source.-See-instruction-here:-https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site-for-appropriate-option-for-your-own-perference.">
+<h3>There are multiple ways to install packages. For example, you can use install from the Python Package Index or build packges from the source. See instruction here: <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site">https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site</a> for appropriate option for your own perference.<a class="headerlink" href="#There-are-multiple-ways-to-install-packages.-For-example,-you-can-use-install-from-the-Python-Package-Index-or-build-packges-from-the-source.-See-instruction-here:-https://packaging.python.org/tutorials/installing-packages/#installing-to-the-user-site-for-appropriate-option-for-your-own-perference." title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="Please-note:-the-packages-should-be-installed-within-user’s-own-directory">
+<h3>Please note: the packages should be installed within user’s own directory<a class="headerlink" href="#Please-note:-the-packages-should-be-installed-within-user’s-own-directory" title="Permalink to this headline">¶</a></h3>
+<p>For example, you can use pip by running:</p>
+<p>$ pip install –install-option=“–prefix=YOUR_OWN_DIRECTORY”</p>
+<p>Here is an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ pip install --install-option=&quot;--prefix=YOUR_OWN_DIRECTORY&quot; deepgraph
+/apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages/pip/_internal/commands/install.py:243: UserWarning: Disabling all use of wheels due to the use of --build-options / --global-options / --install-options.
+  cmdoptions.check_install_build_global(options)
+Collecting deepgraph
+  Downloading https://files.pythonhosted.org/packages/fc/3e/4a34a5316a5f886b8d7a6787c24852d9e5a5ef00b4ec6af0736f681a3a58/DeepGraph-0.2.2.tar.gz (160kB)
+    |████████████████████████████████| 163kB 4.7MB/s
+Requirement already satisfied: numpy&gt;=1.6 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from deepgraph) (1.17.2)
+Requirement already satisfied: pandas&gt;=0.17.0 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from deepgraph) (0.25.1)
+Requirement already satisfied: python-dateutil&gt;=2.6.1 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from pandas&gt;=0.17.0-&gt;deepgraph) (2.8.0)
+Requirement already satisfied: pytz&gt;=2017.2 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from pandas&gt;=0.17.0-&gt;deepgraph) (2019.2)
+Requirement already satisfied: six&gt;=1.5 in /apps/pangeo/2019.10/envs/pangeo/lib/python3.7/site-packages (from python-dateutil&gt;=2.6.1-&gt;pandas&gt;=0.17.0-&gt;deepgraph) (1.12.0)
+Skipping bdist_wheel for deepgraph, due to binaries being disabled for it.
+Installing collected packages: deepgraph
+  Running setup.py install for deepgraph ... done
+Successfully installed deepgraph
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Step-4:-Setup-environment-of-the-new-package">
+<h2>Step 4: Setup environment of the new package<a class="headerlink" href="#Step-4:-Setup-environment-of-the-new-package" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ export PYTHONPATH=$PYTHONPATH:YOUR_OWN_DIRECTORY/lib/python3.7/site-packages
+</pre></div>
+</div>
+</div>
+<div class="section" id="Step-5:-Validate-new-Installation">
+<h2>Step 5: Validate new Installation<a class="headerlink" href="#Step-5:-Validate-new-Installation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pangeo) bash-4.1$ python
+Python 3.7.3 | packaged by conda-forge | (default, Jul  1 2019, 21:52:21)
+[GCC 7.3.0] :: Anaconda, Inc. on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import deepgraph
+&gt;&gt;&gt; exit()
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

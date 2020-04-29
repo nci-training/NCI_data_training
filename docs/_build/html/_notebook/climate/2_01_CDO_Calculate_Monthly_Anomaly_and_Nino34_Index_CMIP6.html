@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Calculate Monthly Anomaly and Nino34 Index Using CDO &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate_withtable.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Calculate Monthly Anomaly and Nino34 Index Using CDO</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/2_01_CDO_Calculate_Monthly_Anomaly_and_Nino34_Index_CMIP6.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Calculate-Monthly-Anomaly-and-Nino34-Index-Using-CDO">
+<h1>Calculate Monthly Anomaly and Nino34 Index Using CDO<a class="headerlink" href="#Calculate-Monthly-Anomaly-and-Nino34-Index-Using-CDO" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we demonstrate how to calculate monthly anomoly and Nino34 index using CDO:</p>
+<ul class="simple">
+<li>Load CDO module</li>
+<li>Look at the information of the file</li>
+<li>Visualise the data using ncview</li>
+<li>Calculate monthly anomaly</li>
+<li>Calculate Nino34 Climate Index</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li>Authors: NCI Virtual Research Environment Team</li>
+<li>Keywords: CMIP, CDO, monthly anomaly, Nino34 Index</li>
+<li>Create Date: 2019-Oct; Update Date: 2020-Apr</li>
+</ul>
+<div class="section" id="Prerequisite">
+<h2>Prerequisite<a class="headerlink" href="#Prerequisite" title="Permalink to this headline">¶</a></h2>
+<p>To run this notebook on Gadi/VDI, the following module is needed:</p>
+<ul class="simple">
+<li>CDO</li>
+</ul>
+<p>You also need to be a member of the following data project to access the data: * oi10</p>
+<p>You can request to join the project through <a class="reference external" href="https://my.nci.org.au">NCI’s user account management system</a>.</p>
+<div class="section" id="What-is-CDO?">
+<h3>What is CDO?<a class="headerlink" href="#What-is-CDO?" title="Permalink to this headline">¶</a></h3>
+<p>CDO stands for “Cliamte Data Operators”. CDO is a collection of command line Operators to manipulate and analyse Climate and NWP model Data. It support data formats: GRIB 1/2, netCDF 3/4, SERVICE, EXTRA and IEG. There are more than 600 operators available. See <a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo">CDO’s homepage</a> for more information about this library.</p>
+</div>
+</div>
+<div class="section" id="Load-CDO-module">
+<h2>Load CDO module<a class="headerlink" href="#Load-CDO-module" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load cdo
+</pre></div>
+</div>
+</div>
+<div class="section" id="List-the-path-of-the-CMIP6-data">
+<h2>List the path of the CMIP6 data<a class="headerlink" href="#List-the-path-of-the-CMIP6-data" title="Permalink to this headline">¶</a></h2>
+<p>Here we will be using CMIP6 data as an example. Let’s see if this file exists, or whether the file path is correct.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc
+</pre></div>
+</div>
+<p>This file includes the near surface temperature from the 20th century all-forcing historical simulation based on CESM2.0 model of NCAR.</p>
+</div>
+<div class="section" id="Have-a-look-at-the-data-file">
+<h2>Have a look at the data file<a class="headerlink" href="#Have-a-look-at-the-data-file" title="Permalink to this headline">¶</a></h2>
+<p><strong>CDO Basic usage: cdo info filename | less</strong></p>
+<p><strong>less</strong> display only one page at a time in the termial. You can move forwards and backwards to see more. Press <strong>q</strong> to quit the view.</p>
+<p><img alt="1" src="../../_images/cdo_anomoly_nino1.png" /></p>
+<p>Alternatively, we can use <strong>ncview</strong> to show the data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncview /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc
+</pre></div>
+</div>
+<p>The data looks like this</p>
+<p><img alt="3" src="../../_images/cdo_anomoly_nino3.png" /></p>
+</div>
+<div class="section" id="Let’s-see-which-year-this-file-includes">
+<h2>Let’s see which year this file includes<a class="headerlink" href="#Let’s-see-which-year-this-file-includes" title="Permalink to this headline">¶</a></h2>
+<p>We use function <strong>showyear</strong> to display all the years in this file</p>
+<p><strong>Basic usage: cdo showyear file</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo showyear /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc
+</pre></div>
+</div>
+<p><img alt="2" src="../../_images/cdo_anomoly_nino2.png" /></p>
+</div>
+<div class="section" id="Calculate-monthly-anomaly">
+<h2>Calculate monthly anomaly<a class="headerlink" href="#Calculate-monthly-anomaly" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise, we are going to calculate the monthly anomaly between 1971 and 2000. A few steps are in the following order:</p>
+<ol class="arabic simple">
+<li>Choose climatology years 1971-2000</li>
+<li>Calculate the monthly average during 1971-2000</li>
+<li>Subtract the monthly average from the original file to obtain the difference, i.e., anomaly.</li>
+</ol>
+<p>We need three functions to implement this procedure as below</p>
+<p><strong>cdo selyear, year-range input.nc output.nc</strong></p>
+<p>Select the years and generate a new file.</p>
+<p><strong>cdo ymonmean input.nc output.nc</strong></p>
+<p>Get the mean value of each month</p>
+<p><strong>cdo ymonsub input1.nc input2.nc output.nc</strong></p>
+<p>Get the difference between two input files and save an output file.</p>
+<p>However, if we do three steps, we will generate unnecessary intermediate files. CDO allows piping multiple commands in a row. A way to chain these commands together is as the following:</p>
+<p><strong>cdo ymonsub input.nc -ymonmean -selyear,1971/2000 input.nc output.nc</strong></p>
+<p><strong>-ymonmean -selyear,1971/2000 input.nc</strong> is treated as the monthly average file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo ymonsub /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc -ymonmean -selyear,1971/2000 /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc tas_Amon_CESM2_historical_r1i1p1f1_gn_197101-200012_anomoly.nc
+</pre></div>
+</div>
+</div>
+<div class="section" id="Let’s-have-a-look-at-the-monthly-anomaly">
+<h2>Let’s have a look at the monthly anomaly<a class="headerlink" href="#Let’s-have-a-look-at-the-monthly-anomaly" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load ncview
+$ ncview tas_Amon_CESM2_historical_r1i1p1f1_gn_197101-200012_anomaly.nc
+</pre></div>
+</div>
+<p><img alt="4" src="../../_images/cdo_anomoly_nino4.png" /></p>
+</div>
+<div class="section" id="Calculate-Nino34-Index-using-monthly-anomaly">
+<h2>Calculate Nino34 Index using monthly anomaly<a class="headerlink" href="#Calculate-Nino34-Index-using-monthly-anomaly" title="Permalink to this headline">¶</a></h2>
+<p>There are several indices used to monitor the tropical Pacific, all of which are based on SST anomalies averaged across a given region. Usually the anomalies are computed relative to a base period of 30 years. The Niño 3.4 index and the Oceanic Niño Index (ONI) are the most commonly used indices to define El Niño and La Niña events. See more about <a class="reference external" href="https://climatedataguide.ucar.edu/climate-data/nino-sst-indices-nino-12-3-34-4-oni-and-tni">sea surface tempreture indices information</a>.</p>
+<p>To calcuate Nino34 Index, we need to choose the Nino34 region with lat/lon bbox = (-170,-120,-5,5)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo sellonlatbox,-170,-120,-5,5 tas_Amon_CESM2_historical_r1i1p1f1_gn_197101-200012_anomaly.nc Nino34Region.nc
+</pre></div>
+</div>
+<p>Then use function <strong>fldavg</strong> to calculate the field average and save the result as the Nino34 index.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cdo fldavg Nino34Region.nc Nino34Idx.nc
+</pre></div>
+</div>
+</div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<p>In this example, we show how to use CDO command line operators to calculate monthly anomaly and Nino34 Climate Index.</p>
+<div class="section" id="Reference">
+<h3>Reference<a class="headerlink" href="#Reference" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo/embedded/cdo.pdf">https://code.mpimet.mpg.de/projects/cdo/embedded/cdo.pdf</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

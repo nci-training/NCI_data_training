@@ -72,6 +72,8 @@ pygments_style = 'sphinx'
 
 nbsphinx_allow_errors = True
 
+nbsphinx_timeout = -1  # Time in seconds; use -1 for no timeout
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for

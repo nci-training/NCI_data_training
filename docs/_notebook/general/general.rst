@@ -11,6 +11,11 @@ Mapping and Visulisation
 
 * `Create a basemap and add some data <create_basemap_add_data.ipynb>`_ 
 
+Combined dataset
+++++++++++++++++++
+* `OFAM and Himawari8 <Python_NetCDF_OFAM_Himawari8.ipynb>`_ 
+* `Panoply eReef and ANU water <Panoply_eReef_ANUwater.ipynb>`_ 
+
 Pangeo
 -------
 

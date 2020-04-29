@@ -1,0 +1,13 @@
+﻿Description,Dataset,Modified,PC,VDI,Gadi
+`CDO - Monthly Anomaly and Nino Index <2_01_CDO_Calculate_Monthly_Anomaly_and_Nino34_Index_CMIP6.ipynb>`_,CMIP6,Apr-20,,Y,Y
+`CDO - compare model and observational data <2_02_CDO_Compare_Model_and_Observation_CMIP6.ipynb>`_,CMIP6,Apr-20,,Y,Y
+`CDO - mask ocean or land <2_03_CDO_Ocean_Land_Mask_CMIP6.ipynb>`_,CMIP6,Apr-20,,Y,Y
+`Xarray - subset and plot data (slicing and dicing) <2_04_Xarray_subset_slicing_plot_CMIP6.ipynb>`_ ,CMIP6,Apr-20,,Y,Y
+`Xarray - temperature and percipitation <2_05_Xarray_Australian_Temperature_Precipitation_Change_CMIP6.ipynb>`_,CMIP6,Apr-20,,Y,Y
+`Xarray - surface temperature anomalies in Australian <2_06_Xarray_calculate_metrics_CMIP6.ipynb>`_ ,CMIP6,Apr-20,,Y,Y
+`Xarray - Nino 34 time series for ACCESS1.3 CMIP5 <2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5.ipynb>`_,CMIP5,Apr-20,,Y,Y
+`Xarray - Nino 34 time series for CESM2 CMIP6 <2_08_Xarray_calculate_Nino34_time_series_for_CESM2_CMIP6.ipynb>`_,CMIP6,Apr-20,,Y,Y
+"`Xarray - resampling, rolling and climatology <2_09_Xarray_statistical_resample_roll_climatology_CMIP6.ipynb>`_",CMIP6,Apr-20,,Y,Y
+`Xarray - Uncertainty of models <2_10_Xarray_uncertainty_CMIP6.ipynb>`_,CMIP6,Apr-20,,Y,Y
+`Panoply - data view and analysis <Panoply_cmip5.ipynb>`_  ,CMIP5,Aug-19,Y,Y,
+`Paraview - data view <ParaView_cmip5.ipynb>`_,CMIP5,Aug-19,Y,Y,

@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Panoply &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate_withtable.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general.html">Other examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Panoply</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/general/Panoply_eReef_ANUwater.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="../../_images/NCI_logo1.png" /></p>
+<hr class="docutils" />
+<div class="section" id="Panoply">
+<h1>Panoply<a class="headerlink" href="#Panoply" title="Permalink to this headline">¶</a></h1>
+<p><strong>Version: 4.4.3</strong></p>
+<p><strong>In this notebook:</strong></p>
+<p>How to use NASA’s data viewer <a class="reference external" href="http://www.giss.nasa.gov/tools/panoply/">Panoply</a> to view file contents and metadata information:</p>
+<ol class="arabic simple">
+<li>Launching Panoply on the VDI</li>
+<li>Working with local files</li>
+<li>Working with remote files</li>
+</ol>
+<p>The following material uses CSIRO’s eReefs and ANU Water and Landscape Data Collections, which are available under the Create Commons License 4.0. For more information on the collection and licensing, please click <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f8695_6401_6115_6704">here</a> (eReefs) or <a class="reference external" href="http://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f1104_2906_7276_3004">here</a> (ANU Water).</p>
+<div class="section" id="Launching-Panoply-on-the-VDI">
+<h2>Launching Panoply on the VDI<a class="headerlink" href="#Launching-Panoply-on-the-VDI" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to launch Panoply is from the <strong>Applications</strong> menu under the <strong>Science</strong>.</p>
+<p><img alt="image0" src="_notebook/general/./images/panoply20.png" /></p>
+<div class="admonition warning">
+NOTE: Panoply can also be launched from command line using “module load”. Make sure the ‘-multi’ option when loading the program this way.</div>
+<p>Command line usage</p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">panoply/4.6.1</span></code></div></blockquote>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">panoply.sh</span> <span class="pre">-multi</span> <span class="pre">&amp;</span></code></div></blockquote>
+</div>
+<div class="section" id="Working-with-local-files">
+<h2>Working with local files<a class="headerlink" href="#Working-with-local-files" title="Permalink to this headline">¶</a></h2>
+<p><strong>Opening a dataset</strong></p>
+<p>After launching Panoply, an <code class="docutils literal notranslate"><span class="pre">Open</span></code> window will appear. If you already know the full path of your file, you can enter it directly. In this example, we will use inspect some data from the eReefs Data Collection:</p>
+<blockquote>
+<div>/g/data/fx3/gbr4_2.0/gbr4_simple_2016-10.nc</div></blockquote>
+<p><img alt="image0" src="_notebook/general/./images/panoply20.png" /></p>
+<p><strong>Select the ``Open`` button and a list of the file contents will appear.</strong></p>
+<p>When selecting the filename from within the <code class="docutils literal notranslate"><span class="pre">Datasets</span></code> window, the full text representation of the file structure and metadata contents will be visable from the right-hand panel.</p>
+<p>This shows information about the size, number, and charateristics of both the dimensions and variables within the file. At the bottom of this list, a section called “global attributes” will also contain metadata describing any additional information about the file contents.</p>
+<p><img alt="image1" src="_notebook/general/./images/panoply21.png" /></p>
+</div>
+<div class="section" id="Plotting">
+<h2>Plotting<a class="headerlink" href="#Plotting" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">To plot data, select the variable you would like to view.</div>
+<div class="line">In this example, let’s look at the variable “temp”.</div>
+</div>
+<p>Next, click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Plot</span></code> option (near the File menu).</p>
+<p>Select <code class="docutils literal notranslate"><span class="pre">&quot;Create</span> <span class="pre">georeferenced&quot;</span></code> and then “Create”.</p>
+<p><img alt="image0" src="_notebook/general/./images/panoply20.png" /></p>
+<p>A new window will open and display the plot. Use the shortcuts below to zoom in/out of the area of interest.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Keyboard</th>
+<th class="head">Zoom Shortcut</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Mac</td>
+<td>Ctrl + Mouse Click (zoom in)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>Ctrl + Option + Mouse Click (zoom out)</td>
+</tr>
+<tr class="row-even"><td>PC</td>
+<td>Ctrl + Mouse Click (zoom in)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>Ctrl + Alt + Mouse Click (zoom out)</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="image1" src="_notebook/general/./images/panoply21.png" /></p>
+<p>Next, let’s adjust the depth-level we are viewing. Depth, as well as time, can be changed from within the <code class="docutils literal notranslate"><span class="pre">Array(s)</span></code> tab. In this case of this dataset, the index location “1” corresponds to the deepest part of the model. Adjust the value to <code class="docutils literal notranslate"><span class="pre">47</span></code> (which is data just above the ocean surface).</p>
+<p><img alt="image2" src="_notebook/general/./images/panoply22.png" /></p>
+<p><img alt="image3" src="_notebook/general/./images/panoply23.png" /></p>
+<p>To adjust the colour scale, navigate to the <code class="docutils literal notranslate"><span class="pre">Scale</span></code> tab. Enter the min/max range manually or select the <strong>Fit to Data</strong> option.</p>
+<p><img alt="image4" src="_notebook/general/./images/panoply19.png" /></p>
+<p>Panoply has many additional plotting options. Try adding some contours for example:</p>
+<p><img alt="image5" src="_notebook/general/./images/panoply8.png" /></p>
+</div>
+<div class="section" id="Adding-additional-files">
+<h2>Adding additional files<a class="headerlink" href="#Adding-additional-files" title="Permalink to this headline">¶</a></h2>
+<p>To open and view more than one file, navigate to the <code class="docutils literal notranslate"><span class="pre">File</span></code> menu and select <code class="docutils literal notranslate"><span class="pre">Open</span></code>.</p>
+<p><img alt="image0" src="_notebook/general/./images/panoply20.png" /></p>
+<p>Let’s open a similar eReefs file from a different year:</p>
+<blockquote>
+<div>/g/data/fx3/gbr4_2.0/gbr4_simple_2010-10.nc</div></blockquote>
+<p><img alt="image1" src="_notebook/general/./images/panoply21.png" /></p>
+<p>After opening, you should now see the new file appear in the <code class="docutils literal notranslate"><span class="pre">Datasets</span></code> window along with the previous file.</p>
+<p><img alt="image2" src="_notebook/general/./images/panoply22.png" /></p>
+</div>
+<div class="section" id="Plotting-combined-data">
+<h2>Plotting combined data<a class="headerlink" href="#Plotting-combined-data" title="Permalink to this headline">¶</a></h2>
+<p><strong>The ``Combine Plot`` option can be used to plot multiple variables within the same plot.</strong></p>
+<p>Begin by using the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Plot</span></code> to again plot the <code class="docutils literal notranslate"><span class="pre">temp</span></code> variable from the 2016 file (as above).</p>
+<p>Next: 1. Select the <code class="docutils literal notranslate"><span class="pre">temp</span></code> variable from the 2010 file 2. Click the <code class="docutils literal notranslate"><span class="pre">Combine</span> <span class="pre">Plot</span></code> option (up near the top menu). 3. Select the existing plot you wish to add the new variable to and click <code class="docutils literal notranslate"><span class="pre">Combine</span></code>.</p>
+<p><img alt="image0" src="_notebook/general/./images/panoply20.png" /></p>
+<p>The existing plot window should update and now display information on 2 arrays.</p>
+<p><img alt="image1" src="_notebook/general/./images/panoply21.png" /></p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">Plot</span></code> options to select how to view the combined data. E.g., plot an average, difference, sum, etc.</p>
+<p><strong>Note:</strong> Check that the depth and time slices are the same for both datasets.</p>
+<p><img alt="image2" src="_notebook/general/./images/panoply22.png" /></p>
+</div>
+<div class="section" id="Working-with-remote-data-through-NCI’s-THREDDS-Data-Server">
+<h2>Working with remote data through NCI’s THREDDS Data Server<a class="headerlink" href="#Working-with-remote-data-through-NCI’s-THREDDS-Data-Server" title="Permalink to this headline">¶</a></h2>
+<p><strong>Opening a remote dataset</strong></p>
+<p>Start by navigating to the THREDDS dataset catalogue page and selecting the <code class="docutils literal notranslate"><span class="pre">OPeNDAP</span></code> access method.**</p>
+<blockquote>
+<div><a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog/ub8/au/FractCov/BS/catalog.html?dataset=ub8-au/FractCov/BS/FractCover.V3_0_1.AnnualMeans.aust.005.BS.nc">http://dapds00.nci.org.au/thredds/catalog/ub8/au/FractCov/BS/catalog.html?dataset=ub8-au/FractCov/BS/FractCover.V3_0_1.AnnualMeans.aust.005.BS.nc</a></div></blockquote>
+<p><img alt="image0" src="_notebook/general/./images/panoply20.png" /></p>
+<p>Copy the “Data URL” from the OPeNDAP Dataset Access Form.</p>
+<p><img alt="image1" src="_notebook/general/./images/panoply21.png" /></p>
+<p>Back within Panoply, navigate to the <code class="docutils literal notranslate"><span class="pre">File</span></code> menu and select <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Remote</span> <span class="pre">Dataset</span></code>.</p>
+<p><img alt="image2" src="_notebook/general/./images/panoply22.png" /></p>
+<p>Paste the OPeNDAP Data URL into the next window that appears.</p>
+<p><img alt="image3" src="_notebook/general/./images/panoply23.png" /></p>
+<p>Then you can proceed to view the file and data contents as with local files.</p>
+<p><img alt="image4" src="_notebook/general/./images/panoply19.png" /></p>
+<p><strong>Browsing THREDDS catalogues</strong> Panoply can also be used to browse a collection of files through a THREDDS catalogue URL.</p>
+<p><strong>Begin by navigating to the NCI THREDDS catalogue page for the data collection of interest and copying the page URL. In this example, we will use data from the eReefs collection again.</strong></p>
+<p><img alt="image0" src="_notebook/general/./images/panoply20.png" /></p>
+<p>Within Panoply, navigate to the <code class="docutils literal notranslate"><span class="pre">File</span></code> menu and select <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Remote</span> <span class="pre">Catalog</span></code>.</p>
+<p><img alt="image1" src="_notebook/general/./images/panoply21.png" /></p>
+<p>Paste the THREDDS catalogue URL into the next window that appears and select <code class="docutils literal notranslate"><span class="pre">Load</span></code>.</p>
+<p><img alt="image2" src="_notebook/general/./images/panoply22.png" /></p>
+<p>Now under the <code class="docutils literal notranslate"><span class="pre">Catalogs</span></code> tab, a list of all the folders and files within this data catalogue will be listed. To view a particular file, click on the <code class="docutils literal notranslate"><span class="pre">OPeNDAP</span></code> link that is listed under the file information (right-hand panel). This will add the file to the <code class="docutils literal notranslate"><span class="pre">Datasets</span></code> list and you can proceed with viewing the data as above.</p>
+<p><img alt="image3" src="_notebook/general/./images/panoply23.png" /></p>
+<hr class="docutils" />
+<p><strong>Additional Panoply reference material:</strong></p>
+<p><a class="reference external" href="http://www.meteor.iastate.edu/classes/mt452/EdGCM/Documentation/EdGCM_Panoply.pdf">http://www.meteor.iastate.edu/classes/mt452/EdGCM/Documentation/EdGCM_Panoply.pdf</a></p>
+<p><a class="reference external" href="http://www.geo.uni-bremen.de/Interdynamik/images/stories/pdf/visualizing_netcdf_panoply.pdf">http://www.geo.uni-bremen.de/Interdynamik/images/stories/pdf/visualizing_netcdf_panoply.pdf</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

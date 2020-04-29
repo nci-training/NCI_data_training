@@ -1,0 +1,157 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Title of the Notebook Example\n",
+    "\n",
+    "\n",
+    "In this notebook we demonstrate\n",
+    "\n",
+    "* task1 \n",
+    "* task2\n",
+    "* task3\n",
+    "\n",
+    "Notes: This note is optional. It can be used as NCI data collection access terms and conditions, or highlight other special requirements for the example. \n",
+    "\n",
+    "---\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- Authors: FirstName1 LastName1, FirstName2 LastName2\n",
+    "- Keywords: Domain keywords like in peer-reviewed journals\n",
+    "- Software: tools and packages with versions used in this example\n",
+    "- Create Date: 2020-Mar-15; Release Date: 2020-Mar-30; Update Date: 2020-Apr-30\n",
+    "- Key updates: Critical changes (typo or minor changes do not need records)\n",
+    "- Lineage/Reference: optional - reference to materials that this example is based on"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### prerequisite\n",
+    "\n",
+    "To run this notebook on Gadi/VDI, or on your local computer. The following modules are needed:\n",
+    "\n",
+    "* Python3\n",
+    "* Xarry\n",
+    "\n",
+    "You also need to be a member of the following data project to access the data or through [NCI's data service](http://dapds00.nci.org.au/thredds/catalog.html) if the data is published:\n",
+    "* oi10\n",
+    "\n",
+    "You can request to join the project through [NCI's user account management system](https://my.nci.org.au). "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Optional cell:\n",
+    "\n",
+    "This section could be another introductory text to explain in more scientific and/or technical details what the example will do. \n",
+    "It could also be used as a background blog to explain or link to techinical concepts which need to be referenced to somewhere else. For example, what are Pangeo, ESGF, MIPs.  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Step 1\n",
+    "\n",
+    "This first chunk of workflow in a sequencial order.\n",
+    "\n",
+    "It might start with some linux command:\n",
+    "\n",
+    "```\n",
+    "$ cd ~\n",
+    "$ ls -l\n",
+    "\n",
+    "```\n",
+    "\n",
+    "The commands above generate an image which is inserted here.\n",
+    "\n",
+    "![alt text of this image](images/image_name.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Step 2\n",
+    "\n",
+    "In each section, you can futuer divide into several sub-section using more hash tag #.\n",
+    "\n",
+    "#### step 2.1\n",
+    "\n",
+    "Some text can be highlighted in colour, e.g., <span style=\"color:red\">red</span>. \n",
+    "\n",
+    "#### step 2.2\n",
+    "\n",
+    "Or you can make some text **bold**."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Step 3\n",
+    "\n",
+    "If you want to post a warning message you can do this:\n",
+    "\n",
+    "<div class=\"alert alert-warning\">\n",
+    "<b>NOTE:</b> The flag '--user' is required so that the package is installed locally. If not included, permission errors will be returned.  \n",
+    "</div>\n",
+    "\n",
+    "If you want to emphasise something you can do this:\n",
+    "<div class=\"alert alert-success\">\n",
+    "<b> To test whether the install was successful, try: </b> <br>\n",
+    "<br>\n",
+    "$ python <br>\n",
+    ">> import netCDF4 <br>\n",
+    ">> <br> <br>\n",
+    "(If you get any errors, the install was unsuccessful.)\n",
+    "</div>\n",
+    "\n",
+    "To add any tips or tricks, you can do this:\n",
+    "<div class=\"alert alert-info\">\n",
+    "<b>Tip: </b> Try to use more than three hash in front of session title. Otherwise, font will appear in huge size.\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Summary\n",
+    "\n",
+    "In this example, we show how to do this and that. If you are interested, please follow this link for more information. "
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

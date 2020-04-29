@@ -90,12 +90,13 @@
 </ul>
 <p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">Install Jupyter and Python on your local machine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">Setup Python environment on the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate_withtable.html">Climate and Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eo.html">Earth Observation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
@@ -394,7 +395,7 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<p><img alt="logo" src="../../_images/NCI_logo1.png" /></p>
+<p><img alt="logo" src="../../_images/NCI_logo.png" /></p>
 <hr class="docutils" />
 <div class="section" id="Netcdf-Subset-Service-(NCSS)-with-Python">
 <h1>Netcdf Subset Service (NCSS) with Python<a class="headerlink" href="#Netcdf-Subset-Service-(NCSS)-with-Python" title="Permalink to this headline">¶</a></h1>
@@ -418,7 +419,7 @@ div.rendered_html tbody tr:hover {
 NOTE: Part I is a review of how to use the Netcdf Subset Service (NCSS) interactively through THREDDS (included for reference). You might want to skip ahead to Part II on how to make similar requests using Python.</div>
 <p><strong>1. Using Netcdf Subset interactively through THREDDS</strong></p>
 <p>Begin by navigating to the THREDDS catalog page for the selected data file:</p>
-<p><img alt="image0" src="../../_images/thredds141.png" /></p>
+<p><img alt="image0" src="../../_images/thredds14.png" /></p>
 <p>Next, decide whether you want to extract a spatial subset (left/pink arrow), defined by a bounding box, or a single point in space (right/green arrow), defined by a single latitude and longitude:</p>
 <p><img alt="image1" src="../../_images/ncss2.png" /></p>
 <p>Then proceed by selecting the desired variables, spatial (or lat/lon point) and temporal extents. As selections are made, the NCSS Request URL (near bottom of the page) will update with these parameters.</p>
@@ -467,7 +468,7 @@ NOTE: Part I is a review of how to use the Netcdf Subset Service (NCSS) interact
 <p><strong>Extracting spatial subset for single point in time</strong></p>
 <p>Start by copying/pasting the THREDDS catalog URL for the data file. In this example we are using the catalog page for the data file but Siphon can also be used with the higher-levels (dataset and collection) as well.</p>
 <p>For example: The catalog page for the data file should look similar to this page. Copy/paste this URL in the next step below.</p>
-<p><img alt="image0" src="../../_images/thredds141.png" /></p>
+<p><img alt="image0" src="../../_images/thredds14.png" /></p>
 <p>Define the URL and use Siphon to list the available service end points Note: if you change the <code class="docutils literal notranslate"><span class="pre">.html</span></code> to <code class="docutils literal notranslate"><span class="pre">.xml</span></code> you will avoid a UserWarning in the following steps.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:

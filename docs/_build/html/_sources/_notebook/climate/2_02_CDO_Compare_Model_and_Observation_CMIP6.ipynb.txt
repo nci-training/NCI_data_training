@@ -1,0 +1,276 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Use CDO to Compare Model and Observation Data\n",
+    "\n",
+    "\n",
+    "In this notebook we demostrate how to compare model and observation data:\n",
+    "\n",
+    "- Load CDO module\n",
+    "- Look at the data information\n",
+    "- Concatenate multiple files\n",
+    "- Data remapping\n",
+    "- Compare between model and obs data \n",
+    "\n",
+    "This example uses Coupled Model Intercomparison Project (CMIP6) collections. For more information, please visit [data catalogue]( https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563) and [terms of use]( https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html).\n",
+    "\n",
+    "---"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- Authors: NCI Virtual Research Environment Team\n",
+    "- Keywords: CMIP, CDO, concatenate data, data remapping\n",
+    "- Create Date: 2019-Oct; Update Date: 2020-Apr"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### prerequisite\n",
+    "\n",
+    "To run this notebook on Gadi/VDI, the following module is needed:\n",
+    "\n",
+    "* CDO\n",
+    "\n",
+    "You also need to be a member of the following data project to access the data:\n",
+    "* oi10\n",
+    "\n",
+    "You can request to join the project through [NCI's user account management system](https://my.nci.org.au). "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## What is CDO?\n",
+    "\n",
+    "CDO stands for \"Climate Data Operators\". CDO is a collection of command line Operators to manipulate and analyse Climate and NWP model Data. It support data formats: GRIB 1/2, netCDF 3/4, SERVICE, EXTRA and IEG. There are more than 600 operators available. See [CDO's homepage](https://code.mpimet.mpg.de/projects/cdo) for more information about this library."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Load CDO module\n",
+    "\n",
+    "```\n",
+    "$ module load cdo\n",
+    "```\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### check data\n",
+    "\n",
+    "Let's look at the near surface temperature from the 20th century all-forcing historical simulation based on CESM2.0 model of NCAR\n",
+    "```\n",
+    "$ ls /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Have a look at the data file using cdo info\n",
+    "\n",
+    "**Basic usage:**  \n",
+    "cdo info <filename> | less\n",
+    "\n",
+    "**less** display only one page at a time in the termial. You can move forwards and backwards to see more. Press **q** to quit the view."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Use **ncview** to show the data\n",
+    "\n",
+    "```\n",
+    "$ ncview /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![1](images/cdo_anomoly_nino3.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Let's see which year this file includes\n",
+    "\n",
+    "We use function **showyear** to display all the years in this file\n",
+    "\n",
+    "**Basic usage:**  \n",
+    "cdo showyear <file.nc>\n",
+    "```\n",
+    "$ cdo showyear /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![2](images/cdo_anomoly_nino2.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Select only 10 year data from the original model file\n",
+    "\n",
+    "**basic usage**:  \n",
+    "cdo selyear, stratyear/endyear <input.nc> <output.nc>\n",
+    "\n",
+    "```\n",
+    "$ cdo selyear,1991/2000 /g/data/oi10/replicas/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Amon/tas/gn/v20190308/tas_Amon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc  tas_Amon_CESM2_historical_r1i1p1f1_gn_199101-200012.nc \n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### show the attributes of the data\n",
+    "\n",
+    "```\n",
+    "$ cdo showatts tas_Amon_CESM2_historical_r1i1p1f1_gn_199101-200012.nc \n",
+    "\n",
+    "```\n",
+    "![](images/cdo_comp1.png)\n",
+    "\n",
+    "The unit of temperature is 'K'--Kelvin. We can convert the unit to Celsius in order to be consistent with observation data. First, substract 273.15 from data value, Second, change attribution units.\n",
+    "\n",
+    "```\n",
+    "$ cdo setattribute,tas@units=degC -subc,273.15 tas_Amon_CESM2_historical_r1i1p1f1_gn_199101-200012.nc tas_Amon_CESM2_historical_r1i1p1f1_gn_199101-200012_unitC.nc \n",
+    "\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Find observational temperature data and select year 1991-2000\n",
+    "\n",
+    "Delaware data :https://climatedataguide.ucar.edu/climate-data/global-land-precipitation-and-temperature-willmott-matsuura-university-delaware\n",
+    "\n",
+    "```\n",
+    "$ ls /scratch/public/nci-data-training/air.mon.mean.v501.nc\n",
+    "$ cdo selyear,1991/2000 /scratch/public/nci-data-training/air.mon.mean.v501.nc   air.mon.mean.v501.199101-200012.nc\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Now we want to see the difference between the model data and observation data"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Basic usage:**  \n",
+    "cdo sub <input1.nc>  <input2.nc> <output.nc> ---substract input2.nc from input1.nc with the results being output.nc\n",
+    "\n",
+    "```\n",
+    "$ cdo sub tas_Amon_CESM2_historical_r1i1p1f1_gn_199101-200012.nc HADCRU_tas_1991_2000.nc CESM2_HADCRU_dif.nc\n",
+    "```\n",
+    "\n",
+    "But got error info as below:\n",
+    "\n",
+    "cdo sub(Abort): Grid size of the input parameter tas do not match!"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This is because the resolution of the model data is different from that of the observation data. CDO provides several ways of data interpolation, one of which being 'cdo remapcon'.\n",
+    "\n",
+    "**basic usage:**\n",
+    "```\n",
+    "cdo remapcon, <input1.nc> <input2.nc> <output.nc>\n",
+    "```\n",
+    "Here input1.nc is the file that we want the resolution to be consistent with.\n",
+    "So, let's do remapping first and then subtraction.\n",
+    "\n",
+    "```\n",
+    "$ cdo sub -remapcon,air.mon.mean.v501.199101-200012.nc tas_Amon_CESM2_historical_r1i1p1f1_gn_199101-200012_unitC.nc air.mon.mean.v501.199101-200012.nc CESM2_DelawareT_dif.nc\n",
+    "```\n",
+    "![ ](images/cdo_comp2.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Calculate average difference and show it in ncview\n",
+    "\n",
+    "```\n",
+    "$ cdo timavg CESM2_DelawareT_dif.nc CESM2_DelawareT_dif_avg.nc\n",
+    "$ ncview CESM2_DelawareT_dif_avg.nc\n",
+    "```\n",
+    "<div class=\"alert alert-info\">\n",
+    "<b>Tip: </b> In CDO, an artificial distinction is made between the notions mean (e.g.timmean) and average (e.g. timavg). The mean is regarded as a statistical function, whereas the average is found simply by adding the sample members and dividing the result by the sample size. For example, the mean of 1, 2, miss and 3 is (1 + 2 + 3)/3 = 2, whereas the average is (1 + 2 + miss + 3)/4 = miss/4 = miss. If there are no missing values in the sample, the average and mean are identical.\n",
+    "</div>\n",
+    "\n",
+    "![ ](images/cdo_comp3.png)\n",
+    "\n",
+    "We can see that in some areas the model simulated temperature is higher than the observation data, whereas other areas lower than the observation, and the difference seems to be higher in the high latitude areas."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Summary\n",
+    "\n",
+    "In this example, we show how to use cdo to concatenate data files and remap data in order to change its resolution.\n",
+    "\n",
+    "## Reference\n",
+    "\n",
+    "https://code.mpimet.mpg.de/projects/cdo/embedded/cdo.pdf\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
