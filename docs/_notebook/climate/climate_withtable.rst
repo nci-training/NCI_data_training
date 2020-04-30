@@ -39,9 +39,9 @@ Miniconda or Anaconda is highly recommended to be installed in order to run jupy
 
 Option 2: VDI
 
-It is highly recommended to use the CLEX conda environment in hh5. To use hh5 conda environment, you need to join hh5 through `NCI's identifity management system`_.
+It is highly recommended to use the CLEX conda environment in hh5. To use hh5 conda environment, you need to join hh5 through `NCI's identity management system`_.
 
-.. _NCI's identifity management system: https://my.nci.org.au/mancini/project/hh5/join
+.. _NCI's identity management system: https://my.nci.org.au/mancini/project/hh5/join
 
 Alternatively, you can create your own environment on the VDI based on personal needs. Please refer to instructions on `how to set up your conda environment on VDI <../prep/python_on_vdi.rst>`_. 
 

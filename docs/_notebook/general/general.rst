@@ -16,11 +16,6 @@ Combined dataset
 * `OFAM and Himawari8 <Python_NetCDF_OFAM_Himawari8.ipynb>`_ 
 * `Panoply eReef and ANU water <Panoply_eReef_ANUwater.ipynb>`_ 
 
-Pangeo
--------
-
-* `How to setup Pangeo environment on Gadi <Setup_Pangeo_environment_Gadi.ipynb>`_ 
-* `How to customise Pangeo environment on Gadi <Customise_Pangeo_environment_Gadi.ipynb>`_ 
 
 Astronomy 
 --------------------------------------------

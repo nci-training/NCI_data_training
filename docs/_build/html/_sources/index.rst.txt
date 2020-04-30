@@ -38,7 +38,6 @@ for your interests.
    Climate and Environment <_notebook/climate/climate_withtable>
    Earth Observation  <_notebook/eo/eo>
    Geophysics <_notebook/geophysics/geophysics> 
-   Other examples <_notebook/general/general>
    
 .. toctree::
    :caption: Notebook examples grouped by service type 

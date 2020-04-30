@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>THREDDS Data Server: Godiva ncWMS Viewer &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate_withtable.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>THREDDS Data Server: Godiva ncWMS Viewer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/tds_Godiva_cmip5.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><img alt="logo" src="../../_images/NCI_logo7.png" /></p>
+<hr class="docutils" />
+<div class="section" id="THREDDS-Data-Server:-Godiva-ncWMS-Viewer">
+<h1>THREDDS Data Server: Godiva ncWMS Viewer<a class="headerlink" href="#THREDDS-Data-Server:-Godiva-ncWMS-Viewer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="In-this-notebook:">
+<h2>In this notebook:<a class="headerlink" href="#In-this-notebook:" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>How to use the Godiva ncWMS viewer on NCI’s THREDDS data server</li>
+<li>How to make animation using Godiva</li>
+</ul>
+<p>The following material uses Coupled Model Intercomparison Project (CMIP5) collections. The CMIP5 terms of use are found <a class="reference external" href="https://cmip.llnl.gov/cmip5/terms.html">here</a>. For more information on the collection, please <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716">click here</a>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="Browse-for-data">
+<h2>Browse for data<a class="headerlink" href="#Browse-for-data" title="Permalink to this headline">¶</a></h2>
+<p>Begin by going to NCI’s Geonetwork page: <a class="reference external" href="https://geonetwork.nci.org.au/">https://geonetwork.nci.org.au/</a></p>
+<p>This page contains the metadata records for NCI Data Collections as well as information on where to find the data.</p>
+<p><img alt="1" src="../../_images/gn1_cmip51.png" /></p>
+<p>In this example, we will search for CMIP data, the records whose title includes CMIP will pop up immediately:</p>
+<p><img alt="2" src="../../_images/gn2_cmip51.png" /></p>
+<p>If we click on one of the CMIP dataset, we see a brief overview of the metadata record. <strong>Note:</strong> For the full record, navigate to the upper-right corner of your browser to change to the “Full view” (eyeball icon).</p>
+<p>Now lets click on the NCI THREDDS data server link under <strong>Download and links</strong>:</p>
+<p><img alt="3" src="../../_images/gn3_cmip51.png" /></p>
+<p>By navigating to this link, the available (public) data subcollections and datasets will be visible:</p>
+<p><img alt="dd1" src="../../_images/tds_dd1_cmip51.png" /></p>
+<p>In this example, let’s navigate to the ** Monthly sea_surface_temperature in 1pctCO2 ** dataset and click on the file:</p>
+<p><img alt="dd2" src="../../_images/tds_dd2_cmip51.png" /></p>
+</div>
+<div class="section" id="Using-Godiva">
+<h2>Using Godiva<a class="headerlink" href="#Using-Godiva" title="Permalink to this headline">¶</a></h2>
+<p>Under <code class="docutils literal notranslate"><span class="pre">Viewers</span></code>, click on the <code class="docutils literal notranslate"><span class="pre">Godiva2</span></code> link</p>
+<p><img alt="g1" src="../../_images/godiva1_cmip51.png" /></p>
+<p>This will direct to the Godiva viewer</p>
+<p><img alt="g2" src="../../_images/godiva2_cmip51.png" /></p>
+<p>Expand the dataset</p>
+<p><img alt="g3" src="../../_images/godiva3_cmip51.png" /></p>
+<p>Select a variable (or subdataset)</p>
+<p><img alt="g4" src="../../_images/godiva4_cmip51.png" /></p>
+<p><strong>If time is a dimensions, a time step can be selected.</strong> <strong>Note:</strong> The default colorscale may not be appropriate for the dataset. These can be modified to the right of the viewer, or choose <strong>auto lock</strong> option to automatically scale the colour.</p>
+<p><img alt="g5" src="../../_images/godiva5_cmip51.png" /></p>
+<p><strong>To change the default colormap, left-click on the colorbar</strong></p>
+<p><img alt="g6" src="../../_images/godiva6_cmip51.png" /></p>
+<div class="section" id="Making-animations">
+<h3>Making animations<a class="headerlink" href="#Making-animations" title="Permalink to this headline">¶</a></h3>
+<p>Try using Godiva to view and make an animation with another dataset (example below).</p>
+<p><a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog/fx3/gbr4_v2/catalog.html?dataset=fx3-gbr4_v2/gbr4_simple_2016-10.nc">http://dapds00.nci.org.au/thredds/catalog/fx3/gbr4_v2/catalog.html?dataset=fx3-gbr4_v2/gbr4_simple_2016-10.nc</a></p>
+<p><img alt="g7" src="../../_images/godiva7_cmip51.png" /></p>
+<p>Hint: To make an animation, navigate to the point in time you would like the animation to start and select “first frame”. Do the same for the point in time you would like to be the “last frame”. Then select “Create Animation”. BUT be careful not to create an animation with too many time steps. Keep it less than 100 frames to start with.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
