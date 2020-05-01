@@ -35,21 +35,21 @@ As noted in the tables above, the notebooks are designed to run on specific plat
 
 Option 1: Local computer
 
-Miniconda or Anaconda is highly recommended to be installed in order to run jupyter notebooks. Please refer to instructions on how to do this at `NCI’s data training site <../prep/install_jupyter.rst>`_.
+Miniconda or Anaconda is highly recommended to be installed in order to run Jupyter notebooks. Please refer to instructions on how to do this at `NCI’s data training site <../prep/install_jupyter.rst>`_.
 
 Option 2: VDI
 
-It is highly recommended to use the CLEX conda environment in hh5. To use hh5 conda environment, you need to join hh5 through `NCI's identity management system`_.
+It is highly recommended to use the CLEX conda environment in hh5. To use hh5 conda environment, you need to join hh5 through `NCI's Mancini system`_.
 
-.. _NCI's identity management system: https://my.nci.org.au/mancini/project/hh5/join
+.. _NCI's Mancini system: https://my.nci.org.au/mancini/project/hh5/join
 
 Alternatively, you can create your own environment on the VDI based on personal needs. Please refer to instructions on `how to set up your conda environment on VDI <../prep/python_on_vdi.rst>`_. 
 
 Option 3: Gadi
 
-A Pangeo environment is configured on Gadi to accelerate optimal performance. Please refer to instructions on `how to run jupyter notebooks on Gadi <../prep/pangeo.rst>`_. 
+A Pangeo environment is configured on Gadi to accelerate optimal performance. Please refer to instructions on `how to run Jupyter notebooks on Gadi <../prep/pangeo.rst>`_. 
 
-Notes: Pangeo only provide essential packages, such as Xarray, Dask. It is sufficient to run most of the current climate examples. Other domain specific packages would need to be loaded (if it is available on Gadi) or installed on your personal project space. 
+Notes: Pangeo only provides essential packages, such as Xarray, Dask. It is sufficient to run most of the current climate examples. Other domain specific packages would need to be loaded (if it is available on Gadi) or installed in your personal project space. 
 
         
 CMIP community wiki
@@ -66,7 +66,7 @@ COSIMA (Consortium for Ocean-Sea Ice Modelling in Australia) developed a framewo
 
 .. _github: https://github.com/COSIMA/cosima-cookbook
 
-`Francois Delage’s project at NCI's Gitlab`_ contains a number of Jupyter notebooks. His examples include scripts on regriding CMIP5 and CMIP6 data, how to retrive data from zarr and reading data from intake catalogue, and so on. He also has another `git page on Github`_ to demonstrate working under Pangeo environment using a binder.
+`Francois Delage’s project at NCI's Gitlab`_ contains a number of Jupyter notebooks. His examples include selecting data from a DRS directory structure, regridding CMIP5 and CMIP6 data, and how to read the zarr data format. He also has another `git page on Github`_ to demonstrate working under Pangeo environment using a binder.
 
 .. _Francois Delage’s project at NCI's Gitlab: https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox
 
