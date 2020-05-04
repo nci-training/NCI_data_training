@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick view and manipulations on data using NetCDF Operators &mdash; NCI data training  documentation</title>
+  <title>Quick view and manipulations on data using NetCDF Operators (NCO) &mdash; NCI data training  documentation</title>
   
 
   
@@ -99,7 +99,6 @@
 <li class="toctree-l1"><a class="reference internal" href="climate_withtable.html">Climate and Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
 <ul>
@@ -154,7 +153,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Quick view and manipulations on data using NetCDF Operators</li>
+      <li>Quick view and manipulations on data using NetCDF Operators (NCO)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -395,15 +394,15 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Quick-view-and-manipulations-on-data-using-NetCDF-Operators">
-<h1>Quick view and manipulations on data using NetCDF Operators<a class="headerlink" href="#Quick-view-and-manipulations-on-data-using-NetCDF-Operators" title="Permalink to this headline">¶</a></h1>
-<p>In this notebook we demonstrate how to look at the metadata and content of the CMIP5/6 using NetCDF operators.</p>
+<div class="section" id="Quick-view-and-manipulations-on-data-using-NetCDF-Operators-(NCO)">
+<h1>Quick view and manipulations on data using NetCDF Operators (NCO)<a class="headerlink" href="#Quick-view-and-manipulations-on-data-using-NetCDF-Operators-(NCO)" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we demonstrate how to look at the metadata and content of the files in the CMIP5 datasets using NetCDF operators (NCO).</p>
 <ul class="simple">
 <li>ncdump</li>
 <li>ncks</li>
 <li>ncview</li>
 </ul>
-<p>This example uses Coupled Model Intercomparison Project (CMIP5) collections. For more information, please visit <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716">data catalogue</a> and <a class="reference external" href="https://cmip.llnl.gov/cmip5/terms.html">terms of use</a>.</p>
+<p>This example uses Coupled Model Intercomparison Project (CMIP5) collections. For more information, please visit <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716">data catalogue</a> and note the terms of use.</p>
 <hr class="docutils" />
 <ul class="simple">
 <li>Authors: NCI Virtual Research Environment Team</li>
@@ -412,17 +411,28 @@ div.rendered_html tbody tr:hover {
 </ul>
 <div class="section" id="Prerequisite">
 <h2>Prerequisite<a class="headerlink" href="#Prerequisite" title="Permalink to this headline">¶</a></h2>
-<p>To run this notebook on Gadi/VDI, or on your local computer, make sure the following software is installed: * netcdf * NCO</p>
-<p>You also need to be a member of the following data project to access the data or through <a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog.html">NCI’s data service</a>: * rr3</p>
-<p>You can request to join the project through <a class="reference external" href="https://my.nci.org.au">NCI’s user account management system</a>.</p>
+<div class="section" id="software">
+<h3>software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
+<p>To run this notebook you will need the following software in your path:</p>
+<ul class="simple">
+<li>netcdf</li>
+<li>NCO</li>
+</ul>
+<p>There are instructions below on doing this from the standard command line. If you are using Jupyter notebooks then please refer to the <a class="reference external" href="https://nci-data-training.readthedocs.io/en/latest/_notebook/prep/install_jupyter.html">Jupyter environment set-up pages</a></p>
+</div>
+<div class="section" id="Data-Access">
+<h3>Data Access<a class="headerlink" href="#Data-Access" title="Permalink to this headline">¶</a></h3>
+<p>If you are using Gadi/VDI to directly access the filesystem then you must be a member of the <a class="reference external" href="https://my.nci.org.au/mancini/project/rr3/join">rr3 data collection</a>.</p>
+<p>If you are using the data service (e.g., remotely from your desktop) then you will be using the publicly accessible <a class="reference external" href="https://dapds00.nci.org.au/thredds/catalog/rr3/catalog.html">NCI’s THREDDS data service</a>.</p>
+</div>
 </div>
 <div class="section" id="What-is-NCO?">
 <h2>What is NCO?<a class="headerlink" href="#What-is-NCO?" title="Permalink to this headline">¶</a></h2>
-<p>The netCDF Operators (NCO) comprise about a dozen standalone, command-line programs that take netCDF, HDF, and/or DAP files as input, then operate (e.g., derive new fields, compute statistics, print, hyperslab, manipulate metadata, regrid) and output the results to screen or files in text, binary, or netCDF formats. NCO aids analysis of gridded and unstructured scientific data. The shell-command style of NCO allows users to manipulate and analyze files interactively, or with expressive scripts
-that avoid some overhead of higher-level programming environments.</p>
+<p>The netCDF Operators (NCO) comprise about a dozen standalone, command line programs that take netCDF, HDF files, or DAP services as input, then operate (e.g., derive new fields, compute statistics, print, hyperslab, manipulate metadata, regrid) and output the results to screen or files in text, binary, or netCDF formats. NCO aids analysis of gridded and unstructured scientific data. The Unix shell commands of NCO allows users to manipulate and analyze files interactively, or with expressive
+scripts that avoid some overhead of higher-level programming environments.</p>
 <div class="section" id="Load-netCDF-module">
 <h3>Load netCDF module<a class="headerlink" href="#Load-netCDF-module" title="Permalink to this headline">¶</a></h3>
-<p>Notes: no need to load netCDF module if running this example on Gadi within Pangeo environment.</p>
+<p>If you are using Gadi/VDI natively then ensure you have loaded the following modules. If you are using Jupyter notebooks then these should already be loaded in your environment e.g., the Pangeo environment.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -437,12 +447,12 @@ that avoid some overhead of higher-level programming environments.</p>
 </div>
 <div class="section" id="ncdump">
 <h2>ncdump<a class="headerlink" href="#ncdump" title="Permalink to this headline">¶</a></h2>
-<p>The NetCDF library <code class="docutils literal notranslate"><span class="pre">ncdump</span></code> is command line tool used to view a text representation of a NetCDF file’s contents. More detailed information can be found from <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf/netcdf-4/newdocs/ncdump-man-1.html">Unidata website</a>.</p>
-<p>To being with, enter <code class="docutils literal notranslate"><span class="pre">ncdump</span></code> from the command line:</p>
+<p>The NetCDF command <code class="docutils literal notranslate"><span class="pre">ncdump</span></code> is used to output a text representation of a NetCDF file’s contents. More detailed information can be found from <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf/netcdf-4/newdocs/ncdump-man-1.html">Unidata website</a>.</p>
+<p>First, test that <code class="docutils literal notranslate"><span class="pre">ncdump</span></code> can be run from the command line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump
 </pre></div>
 </div>
-<p>This will display a list of all the different information and output types <code class="docutils literal notranslate"><span class="pre">ncdump</span></code> can return:</p>
+<p>This will display a standard help list of its options:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ncdump</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="o">|-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span> <span class="o">...</span><span class="p">]</span> <span class="p">[[</span><span class="o">-</span><span class="n">b</span><span class="o">|-</span><span class="n">f</span><span class="p">]</span> <span class="p">[</span><span class="n">c</span><span class="o">|</span><span class="n">f</span><span class="p">]]</span> <span class="p">[</span><span class="o">-</span><span class="n">l</span> <span class="nb">len</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">name</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">n</span><span class="p">[,</span><span class="n">n</span><span class="p">]]</span> <span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">x</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span><span class="o">|-</span><span class="n">i</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">g</span> <span class="o">...</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="p">]</span> <span class="n">file</span>
   <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span>             <span class="n">Coordinate</span> <span class="n">variable</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">header</span> <span class="n">information</span>
   <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>             <span class="n">Header</span> <span class="n">information</span> <span class="n">only</span><span class="p">,</span> <span class="n">no</span> <span class="n">data</span>
@@ -466,6 +476,10 @@ that avoid some overhead of higher-level programming environments.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ncdump</span> <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">file_path</span><span class="o">&gt;/&lt;</span><span class="n">url</span><span class="o">&gt;</span>
 </pre></div>
 </div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ncdump</span> <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 <p><strong>View basic file header (or metadata) information</strong> The <code class="docutils literal notranslate"><span class="pre">-h</span></code> option (for ‘header’)</p>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">-h</span></code> option to view the netcdf file header information.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump -h /g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc
@@ -477,7 +491,7 @@ that avoid some overhead of higher-level programming environments.</p>
 Amon/r1i1p1/v20130325/tasmax/tasmax_Amon_ACCESS1-3_historical_r1i1p1_185001-200512.nc
 </pre></div>
 </div>
-<p>You can further display variables using <code class="docutils literal notranslate"><span class="pre">-v</span></code>:</p>
+<p>You can show variables using the <code class="docutils literal notranslate"><span class="pre">-v</span></code> option. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump -v time /g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc
 </pre></div>
 </div>
