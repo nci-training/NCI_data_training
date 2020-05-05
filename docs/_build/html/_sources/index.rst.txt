@@ -35,7 +35,7 @@ for your interests.
    :caption: Notebook examples grouped by theme 
    :maxdepth: 2
 
-   Climate and Environment <_notebook/climate/climate_withtable>
+   Climate and Environment <_notebook/climate/climate>
    Earth Observation  <_notebook/eo/eo>
    Geophysics <_notebook/geophysics/geophysics> 
    

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Climate and Environment Science &mdash; NCI data training  documentation</title>
+  <title>Climate and Weather Science &mdash; NCI data training  documentation</title>
   
 
   
@@ -35,7 +35,9 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Earth Observation" href="../eo/eo.html" />
+    <link rel="prev" title="How to run notebooks on Gadi" href="../prep/pangeo.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,11 +97,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="climate_withtable.html">Climate and Environment</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Climate and Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#datasets">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notebook-examples">Notebook examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-download-and-run-notebooks">How to download and run notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cmip-community-wiki">CMIP community wiki</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-community-developed-examples">Other community developed examples</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
 <ul>
@@ -154,7 +162,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Climate and Environment Science</li>
+      <li>Climate and Weather Science</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -197,101 +205,230 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="climate-and-environment-science">
-<h1>Climate and Environment Science<a class="headerlink" href="#climate-and-environment-science" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="climate-and-weather-science">
+<h1>Climate and Weather Science<a class="headerlink" href="#climate-and-weather-science" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="datasets">
 <h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
 <p>Please see a full list of climate, weather and enviornment datasets with project code <a class="reference internal" href="climate_datasets.html"><span class="doc">here</span></a>.</p>
 </div>
 <div class="section" id="notebook-examples">
 <h2>Notebook examples<a class="headerlink" href="#notebook-examples" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="data-access-and-quick-preview">
-<h3>Data Access and Quick Preview<a class="headerlink" href="#data-access-and-quick-preview" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><a class="reference external" href="ncdump_cmip5.ipynb">ncdump</a></li>
-<li><a class="reference external" href="ncview_cmip5.ipynb">ncview</a></li>
-<li><a class="reference external" href="gdalbasics_cmip5.ipynb">GDALinfo</a></li>
-<li><a class="reference external" href="python_GDAL_netcdf_cmip5.ipynb">Python_GDAL_netCDF</a></li>
-<li><a class="reference external" href="CMIP5_Data_Search_Access.ipynb">Search and Access CMIP5 data using Clef and Xarray</a></li>
-<li><a class="reference external" href="CMIP6_Data_Search_Access.ipynb">Search and Access CMIP6 data using Clef and Xarray</a></li>
-</ul>
+<table border="1" class="colwidths-given docutils" id="id1">
+<caption><span class="caption-text">Data Access and Quick Preview</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="44%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Description</th>
+<th class="head">Dataset</th>
+<th class="head">Modified</th>
+<th class="head">PC</th>
+<th class="head">VDI</th>
+<th class="head">Gadi</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="1_01_NCO_CMIP5.html"><span class="doc">NCO basics</span></a></td>
+<td>CMIP5</td>
+<td>Apr-20</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="1_02_HDFView_CMIP6.html"><span class="doc">HDFView</span></a></td>
+<td>CMIP6</td>
+<td>Apr-20</td>
+<td>Y</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="1_03_Xarray_access_CMIP5.html"><span class="doc">Xarray - open and read data</span></a></td>
+<td>CMIP5</td>
+<td>Apr-20</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="1_04_Clef_Data_Search_Access_CMIP5.html"><span class="doc">Clef - Search and Access CMIP5 data</span></a></td>
+<td>CMIP5</td>
+<td>Apr-20</td>
+<td>&#160;</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="1_05_Clef_Data_Search_Access_CMIP6.html"><span class="doc">Clef - Search and Access CMIP6 data</span></a></td>
+<td>CMIP6</td>
+<td>Apr-20</td>
+<td>&#160;</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../tds/tds_direct_download_cmip5.html"><span class="doc">Data service - THREDDS - file download</span></a></td>
+<td>CMIP5</td>
+<td>Aug-19</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../tds/tds_Godiva_cmip5.html"><span class="doc">Data service - THREDDS - data preview</span></a></td>
+<td>CMIP5</td>
+<td>Aug-19</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../tds/tds_OPeNDAP_cmip5.html"><span class="doc">Data service - THREDDS - OPenDAP utility</span></a></td>
+<td>CMIP5</td>
+<td>Aug-19</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../tds/tds_NetcdfSubset_cmip5.html"><span class="doc">Data service - THREDDS - data subset</span></a></td>
+<td>CMIP5</td>
+<td>Aug-19</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given docutils" id="id2">
+<caption><span class="caption-text">Climate Data Analysis Toolbox</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="44%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Description</th>
+<th class="head">Dataset</th>
+<th class="head">Modified</th>
+<th class="head">PC</th>
+<th class="head">VDI</th>
+<th class="head">Gadi</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="2_01_CDO_Calculate_Monthly_Anomaly_and_Nino34_Index_CMIP6.html"><span class="doc">CDO - Monthly Anomaly and Nino Index</span></a></td>
+<td>CMIP6</td>
+<td>Apr-20</td>
+<td>&#160;</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="2_02_CDO_Compare_Model_and_Observation_CMIP6.html"><span class="doc">CDO - compare model and observational data</span></a></td>
+<td>CMIP6</td>
+<td>Apr-20</td>
+<td>&#160;</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="2_03_CDO_Ocean_Land_Mask_CMIP6.html"><span class="doc">CDO - mask ocean or land</span></a></td>
+<td>CMIP6</td>
+<td>Apr-20</td>
+<td>&#160;</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="2_04_Xarray_subset_slicing_plot_CMIP6.html"><span class="doc">Xarray - subset and plot data (slicing and dicing)</span></a></td>
+<td>CMIP6</td>
+<td>Apr-20</td>
+<td>&#160;</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="2_05_Xarray_Australian_Temperature_Precipitation_Change_CMIP6.html"><span class="doc">Xarray - temperature and percipitation</span></a></td>
+<td>CMIP6</td>
+<td>Apr-20</td>
+<td>&#160;</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="2_06_Xarray_calculate_metrics_CMIP6.html"><span class="doc">Xarray - surface temperature anomalies in Australian</span></a></td>
+<td>CMIP6</td>
+<td>Apr-20</td>
+<td>&#160;</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="2_07_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5.html"><span class="doc">Xarray - Nino 34 time series for ACCESS1.3 CMIP5</span></a></td>
+<td>CMIP5</td>
+<td>Apr-20</td>
+<td>&#160;</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="2_08_Xarray_calculate_Nino34_time_series_for_CESM2_CMIP6.html"><span class="doc">Xarray - Nino 34 time series for CESM2 CMIP6</span></a></td>
+<td>CMIP6</td>
+<td>Apr-20</td>
+<td>&#160;</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="2_09_Xarray_statistical_resample_roll_climatology_CMIP6.html"><span class="doc">Xarray - resampling, rolling and climatology</span></a></td>
+<td>CMIP6</td>
+<td>Apr-20</td>
+<td>&#160;</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="2_10_Xarray_uncertainty_CMIP6.html"><span class="doc">Xarray - Uncertainty of models</span></a></td>
+<td>CMIP6</td>
+<td>Apr-20</td>
+<td>&#160;</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="Panoply_cmip5.html"><span class="doc">Panoply - data view and analysis</span></a></td>
+<td>CMIP5</td>
+<td>Aug-19</td>
+<td>Y</td>
+<td>Y</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="ParaView_cmip5.html"><span class="doc">Paraview - data view</span></a></td>
+<td>CMIP5</td>
+<td>Aug-19</td>
+<td>Y</td>
+<td>Y</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="data-manipulation">
-<h3>Data Manipulation<a class="headerlink" href="#data-manipulation" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><a class="reference external" href="CDO_monthly_anomaly_and_NinoIndex_CMIP6.ipynb">CDO - calculate monthly anomaly and Nino Index using CMIP6 data</a></li>
-<li><a class="reference external" href="CDO_model_obs_compare.ipynb">CDO - compare model and observational data</a></li>
-<li><a class="reference external" href="CDO_ocean_land_mask.ipynb">CDO - mask ocean or land</a></li>
-<li><a class="reference external" href="https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/CMIP5_regrid-lp01.ipynb">CDO - Regrid CMIP5 modules into 1.5 degree grid by Francois Delage</a></li>
-<li><a class="reference external" href="https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/CMIP6_regrid-lp01.ipynb">CDO - Regrid CMIP6 modules into 1.5 degree grid by Francois Delage</a></li>
-<li><a class="reference external" href="Xarray_access_cmip5.ipynb">Xarray - open and read data</a></li>
-<li><a class="reference external" href="Xarray_subset_plot_cmip6.ipynb">Xarray - subset and plot data (slicing and dicing)</a></li>
-<li><a class="reference external" href="Xarray_calculate_metrics.ipynb">Xarray - calculate surface temperature anomalies in Australian</a></li>
-<li><a class="reference external" href="Xarray_calculate_Nino34_time_series_for_ARCCSS1-3.ipynb">Xarray - calculate Nino 34 time series for ACCESS1.3 CMIP5</a></li>
-<li><a class="reference external" href="Xarray_calculate_Nino34_time_series_for_CESM2.ipynb">Xarray - calculate Nino 34 time series for CESM2 CMIP6</a></li>
-<li><a class="reference external" href="Xarray_statistical_resample_roll_climatology.ipynb">Xarray - common operations, resampling, rolling and climatology on CMIP6 data</a></li>
-<li><a class="reference external" href="https://github.com/fanchic/pangeo/blob/master/xarray%20climate%20toolbox.ipynb">Xarray - climate toolbox by Francois Delage</a></li>
-<li><a class="reference external" href="ncss_python_siphon_cmip5.ipynb">Netcdf Subset Service (NCSS) with Python and Siphon</a></li>
-<li><a class="reference external" href="Panoply_cmip5.ipynb">Panoply CMIP5</a></li>
-<li><a class="reference external" href="Panoply_eReef_ANUwater.ipynb">Panoply eReef and ANU water</a></li>
-<li><a class="reference external" href="ParaView_cmip5.ipynb">Paraview</a></li>
-</ul>
-</div>
-<div class="section" id="data-plotting">
-<h3>Data Plotting<a class="headerlink" href="#data-plotting" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><a class="reference external" href="https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/common_plots.py">Plot seasonality hovmoller by Sugata Narsey</a></li>
-</ul>
-</div>
-<div class="section" id="high-performance-data-and-analysis">
-<h3>High Performance Data and Analysis<a class="headerlink" href="#high-performance-data-and-analysis" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><a class="reference external" href="Python_DataChunks_cmip6.ipynb">Data chunking using Dask</a></li>
-<li><a class="reference external" href="https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox/blob/master/read_to_zarr-lp01.ipynb">Build a common model as a zarr database for analysis</a></li>
-</ul>
-</div>
-<div class="section" id="data-services">
-<h3>Data Services<a class="headerlink" href="#data-services" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><a class="reference internal" href="../tds/tds_NetcdfSubset_cmip5.html"><span class="doc">THREDDS dataset subsetting</span></a></li>
-<li><a class="reference internal" href="../tds/tds_direct_download_cmip5.html"><span class="doc">THREDDS file download</span></a></li>
-<li><a class="reference internal" href="../tds/tds_Godiva_cmip5.html"><span class="doc">THREDDS data reviewing tool</span></a></li>
-<li><a class="reference internal" href="../tds/tds_OPeNDAP_cmip5.html"><span class="doc">THREDDS OPeNDAP utility</span></a></li>
-</ul>
-</div>
-<div class="section" id="combined-dataset">
-<h3>Combined dataset<a class="headerlink" href="#combined-dataset" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><a class="reference external" href="Python_NetCDF_OFAM_Himawari8.ipynb">OFAM and Himawari8</a></li>
-<li><a class="reference internal" href="../eo/Satellite_Imaging.html"><span class="doc">Digital Elevation Model (DEM) and Himawari8</span></a></li>
-</ul>
-</div>
-<div class="section" id="community-developed-packages">
-<h3>Community developed packages<a class="headerlink" href="#community-developed-packages" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><a class="reference external" href="https://github.com/xgcm">xgcm - xarray-based tools for general circulation model analysis</a></li>
-<li><a class="reference external" href="https://github.com/NCAR/ldcpy">ldcpy - tools for analyzing and applying lossy data compression to geoscience data</a></li>
-<li><a class="reference external" href="https://github.com/raphaeldussin/easy_coloc">easy_coloc - project ocean model gridded fields onto observation space</a></li>
-<li><a class="reference external" href="https://github.com/raphaeldussin/easy_coloc">pangeo-pyinterp - python library for optimized geo-referenced interpolation</a></li>
-<li><a class="reference external" href="https://github.com/jhamman/scikit-downscale">xsd - statistical downscaling and postprocessing models for climate and weather model simulations</a></li>
-<li><a class="reference external" href="https://github.com/TEOS-10/GSW-Python">Gsw Python package</a></li>
-<li><a class="reference external" href="https://github.com/raybellwaves/xskillscore">xskillscore - provides verification metrics of deterministic forecasts with xarray</a></li>
-<li><a class="reference external" href="https://xrviz.readthedocs.io/en/latest/">Xrviz - an interactive visualisation interface for Xarrays</a></li>
-<li><a class="reference external" href="https://github.com/rflamary/POT">POT - Python Optimal Transport</a></li>
-<li><a class="reference external" href="https://github.com/jbusecke/mom_xtools">mom_xtools - collection of xarray based analysis tools for MOM ocean model output</a></li>
-</ul>
-</div>
+<div class="section" id="how-to-download-and-run-notebooks">
+<h2>How to download and run notebooks<a class="headerlink" href="#how-to-download-and-run-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>This instruction assumes that you are familar with Git. You can find instructions on <a class="reference internal" href="../prep/install_jupyter.html"><span class="doc">how to download and run notebooks here</span></a>.</p>
+<p>Step 1: download examples from Git:</p>
+<p>&gt; git clone <a class="reference external" href="https://github.com/nci-training/notebooks-climate.git">https://github.com/nci-training/notebooks-climate.git</a></p>
+<p>Step 2: choose your platform:</p>
+<p>As noted in the tables above, the notebooks are designed to run on specific platforms.</p>
+<p>Option 1: Local computer</p>
+<p>Miniconda or Anaconda is highly recommended to be installed in order to run Jupyter notebooks. Please refer to instructions on how to do this at <a class="reference internal" href="../prep/install_jupyter.html"><span class="doc">NCI’s data training site</span></a>.</p>
+<p>Option 2: VDI</p>
+<p>It is highly recommended to use the CLEX conda environment in hh5. To use hh5 conda environment, you need to join hh5 through <a class="reference external" href="https://my.nci.org.au/mancini/project/hh5/join">NCI’s Mancini system</a>.</p>
+<p>Alternatively, you can create your own environment on the VDI based on personal needs. Please refer to instructions on <a class="reference internal" href="../prep/python_on_vdi.html"><span class="doc">how to set up your conda environment on VDI</span></a>.</p>
+<p>Option 3: Gadi</p>
+<p>A Pangeo environment is configured on Gadi to accelerate optimal performance. Please refer to instructions on <a class="reference internal" href="../prep/pangeo.html"><span class="doc">how to run Jupyter notebooks on Gadi</span></a>.</p>
+<p>Notes: Pangeo only provides essential packages, such as Xarray, Dask. It is sufficient to run most of the current climate examples. Other domain specific packages would need to be loaded (if it is available on Gadi) or installed in your personal project space.</p>
 </div>
 <div class="section" id="cmip-community-wiki">
 <h2>CMIP community wiki<a class="headerlink" href="#cmip-community-wiki" title="Permalink to this headline">¶</a></h2>
 <p>NCI hosts a <a class="reference external" href="https://opus.nci.org.au/display/CMIP/CMIP+Community+Home/">CMIP community wiki page</a> for more information. This is the homepage for information and updates relating to the Coupled Model Intercomparison Project (CMIP) data and activities at NCI for use by the Australian climate science community.</p>
 </div>
-<div class="section" id="other-associated-training-resources">
-<h2>Other associated training resources<a class="headerlink" href="#other-associated-training-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="other-community-developed-examples">
+<h2>Other community developed examples<a class="headerlink" href="#other-community-developed-examples" title="Permalink to this headline">¶</a></h2>
 <p>COSIMA (Consortium for Ocean-Sea Ice Modelling in Australia) developed a framework for analysing output from ocean-sea ice models. There are example notebooks in <a class="reference external" href="https://github.com/COSIMA/cosima-cookbook">github</a>.</p>
-<p>Francois Delage’s <a class="reference external" href="https://github.com/fanchic/pangeo">git page</a> stores his Jupyter notebooks. If you press the launch binder icon, it will take you to a <a class="reference external" href="https://binder.pangeo.io/">pangeo binder</a> where you can run his jupyter notebook interactively. His example concatinates MIROC6 files downloaded from opendap, plot the data with xarray, subset data using slice and geolocation boundery, obtain NINO3.4 index and resample/detrend/filter the data, design ENSO &amp; IPO empirical orthogonal functions.</p>
-<p>The ARC Centre of Excellence for Climate Extremes runs weekly training sessions presenting computational
-and data related topics. You can find more information on their <a class="reference external" href="http://climate-cms.wikis.unsw.edu.au/Training/">wiki page</a>.</p>
+<p><a class="reference external" href="https://git.nci.org.au/pfd548/bom-climate-change-variability-and-extreme-toolbox">Francois Delage’s project at NCI’s Gitlab</a> contains a number of Jupyter notebooks. His examples include selecting data from a DRS directory structure, regridding CMIP5 and CMIP6 data, and how to read the zarr data format. He also has another <a class="reference external" href="https://github.com/fanchic/pangeo">git page on Github</a> to demonstrate working under Pangeo environment using a binder.</p>
 </div>
 </div>
 
@@ -300,6 +437,15 @@ and data related topics. You can find more information on their <a class="refere
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../eo/eo.html" class="btn btn-neutral float-right" title="Earth Observation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../prep/pangeo.html" class="btn btn-neutral float-left" title="How to run notebooks on Gadi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
