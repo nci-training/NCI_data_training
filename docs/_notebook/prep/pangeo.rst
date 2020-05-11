@@ -8,13 +8,13 @@ Running jobs on Gadi is mostly done using the command line. However, NCI also pr
 The centralised Pangeo Environment on Gadi includes the following modules:
 
 * Python 3.7
-* xarray 0.14.1
-* jupyterlab 1.2.4
+* xarray 0.15.1
+* jupyterlab 2.1.2
 * nbserverproxy 0.8.8
-* dask 2.9.1
+* dask 2.15.1
 * distributed 2.9.1
 * dask-jobqueue 0.7.0
-* bokeh 1.4.0
+* bokeh 2.0.2
 * netcdf4-python 1.5.3
 * h5py 2.10.0
 
