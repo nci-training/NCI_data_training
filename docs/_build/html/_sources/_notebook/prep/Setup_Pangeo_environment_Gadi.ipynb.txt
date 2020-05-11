@@ -45,9 +45,9 @@
     "To enable the Pangeo environment, you can use the following command within jobs, or within an interactive environment:\n",
     "\n",
     "```\n",
-    "$ module load pangeo/2019.12\n",
-    "        Loading requirement: intel-mkl/2019.3.199 python3/3.7.4 hdf5/1.10.5 netcdf/4.7.1\n",
-    "\n",
+    "$ module load pangeo\n",
+    "       Loading pangeo/2020.05\n",
+    "         Loading requirement: intel-mkl/2019.3.199 python3/3.7.4 hdf5/1.10.5 netcdf/4.7.3\n",
     "```\n",
     "Note that Pangeo has its own Python installation.\n"
    ]
@@ -119,7 +119,7 @@
     "#PBS -l mem=384GB\n",
     "#PBS -l jobfs=100GB\n",
     "#PBS -l storage=scratch/z00+scratch/c25+gdata/c25\n",
-    "module load pangeo/2019.12\n",
+    "module load pangeo\n",
     "pangeo.ini.all.sh\n",
     "sleep infinity\n",
     "```\n",
@@ -149,11 +149,7 @@
     "```\n",
     "$ qstat <job_id>\n",
     "\n",
-    "```\n",
-    "\n",
-    "\n",
-    "![3](images/pangeo_setup3_gadi.png)\n",
-    "\n"
+    "```"
    ]
   },
   {
@@ -404,7 +400,7 @@
     "#PBS -l jobfs=100GB \n",
     "#PBS -l storage=scratch/c25+gdata/c25\n",
     " \n",
-    "module load pangeo/2019.10 \n",
+    "module load pangeo \n",
     "pangeo.ini.all.sh \n",
     " \n",
     "cd $PBS_O_WORKDIR \n",

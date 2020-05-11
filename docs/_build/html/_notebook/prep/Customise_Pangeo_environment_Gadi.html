@@ -96,10 +96,9 @@
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../climate/climate_withtable.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
 <ul>
@@ -208,8 +207,10 @@
 <div class="section" id="Step-1:-Enable-Pangeo-in-your-shell-envorinment">
 <h2>Step 1: Enable Pangeo in your shell envorinment<a class="headerlink" href="#Step-1:-Enable-Pangeo-in-your-shell-envorinment" title="Permalink to this headline">¶</a></h2>
 <p>To enable the Pangeo environment, you can use the following command within jobs, or within an interactive environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load pangeo/2019.12
-        Loading requirement: intel-mkl/2019.3.199 python3/3.7.4 hdf5/1.10.5 netcdf/4.7.1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load pangeo
+Loading pangeo/2020.05
+  Loading requirement: intel-mkl/2019.3.199 python3/3.7.4 hdf5/1.10.5
+    netcdf/4.7.3
 </pre></div>
 </div>
 <p>Note that Pangeo has its own Python installation.</p>
@@ -234,9 +235,10 @@ tensorflow/2.0.0
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[abc123@gadi-login-01 ~]$ module list
 
 Currently loaded Module files:
-1) pbs                   3) python3/3.7.4  5)netcdf/4.7.1    7) cuda/10.1              9) ncll/2.5.6-1+cuda10.1
-2) intel-mkl/2019.3.199  4) hdf5/1.10.5    6)pangeo/2019.12  8) cudnn/7.6.5-cuda10.1  10) openmpi/4.0.1
-11)tensorflow/2.0.0
+ 1) pbs                    5) netcdf/4.7.3           9) nccl/2.5.6-1+cuda10.1
+ 2) intel-mkl/2019.3.199   6) pangeo/2020.05        10) openmpi/4.0.1
+ 3) python3/3.7.4          7) cuda/10.1             11) tensorflow/2.0.0
+ 4) hdf5/1.10.5            8) cudnn/7.6.5-cuda10.1
 </pre></div>
 </div>
 </div>
@@ -287,6 +289,27 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 
 &gt;&gt;&gt; import deepgraph
 &gt;&gt;&gt; exit()
+</pre></div>
+</div>
+</div>
+<div class="section" id="Step-5:-Add-path-into-your-job-script">
+<h2>Step 5: Add path into your job script<a class="headerlink" href="#Step-5:-Add-path-into-your-job-script" title="Permalink to this headline">¶</a></h2>
+<p>If you want to use the program installed in your own space, you can add <code class="docutils literal notranslate"><span class="pre">export</span></code> into your login bash file:</p>
+<p>export PYTHONPATH=&lt;<code class="docutils literal notranslate"><span class="pre">path</span> <span class="pre">to</span> <span class="pre">where</span> <span class="pre">you</span> <span class="pre">installed</span> <span class="pre">your</span> <span class="pre">own</span> <span class="pre">software</span></code>&gt;:$PYTHONPATH</p>
+<p>You can also add into your job script run_ipynb_job.sh as below. Please replace the path to your own working space where you insalled the software.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#PBS -N pangeo_test
+#PBS -P c25
+#PBS -q normal
+#PBS -l walltime=5:00:00
+#PBS -l ncpus=96
+#PBS -l mem=384GB
+#PBS -l jobfs=100GB
+#PBS -l storage=scratch/z00+scratch/c25+gdata/c25
+module load pangeo
+export PYTHONPATH=/g/data/c25/apps:$PYTHONPATH
+pangeo.ini.all.sh
+sleep infinity
 </pre></div>
 </div>
 </div>

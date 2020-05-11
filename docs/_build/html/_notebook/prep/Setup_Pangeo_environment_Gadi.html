@@ -96,10 +96,9 @@
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../climate/climate_withtable.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../climate/climate.html">Climate and Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/general.html">Other examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
 <ul>
@@ -212,8 +211,9 @@
 <div class="section" id="Step-1:-Enabling-Pangeo-in-your-shell-envorinment">
 <h3>Step 1: Enabling Pangeo in your shell envorinment<a class="headerlink" href="#Step-1:-Enabling-Pangeo-in-your-shell-envorinment" title="Permalink to this headline">¶</a></h3>
 <p>To enable the Pangeo environment, you can use the following command within jobs, or within an interactive environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load pangeo/2019.12
-        Loading requirement: intel-mkl/2019.3.199 python3/3.7.4 hdf5/1.10.5 netcdf/4.7.1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load pangeo
+       Loading pangeo/2020.05
+         Loading requirement: intel-mkl/2019.3.199 python3/3.7.4 hdf5/1.10.5 netcdf/4.7.3
 </pre></div>
 </div>
 <p>Note that Pangeo has its own Python installation.</p>
@@ -250,7 +250,7 @@ $ jupyter notebook password
 <span class="c1">#PBS -l mem=384GB</span>
 <span class="c1">#PBS -l jobfs=100GB</span>
 <span class="c1">#PBS -l storage=scratch/z00+scratch/c25+gdata/c25</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">pangeo</span><span class="o">/</span><span class="mf">2019.12</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">pangeo</span>
 <span class="n">pangeo</span><span class="o">.</span><span class="n">ini</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">sh</span>
 <span class="n">sleep</span> <span class="n">infinity</span>
 </pre></div>
@@ -267,7 +267,6 @@ $ jupyter notebook password
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qstat &lt;job_id&gt;
 </pre></div>
 </div>
-<p><img alt="3" src="../../_images/pangeo_setup3_gadi1.png" /></p>
 </div>
 <div class="section" id="Set-up-port-forwarding-to-access-from-your-desktop-machine">
 <h3>Set up port forwarding to access from your desktop machine<a class="headerlink" href="#Set-up-port-forwarding-to-access-from-your-desktop-machine" title="Permalink to this headline">¶</a></h3>
@@ -382,7 +381,7 @@ $ jupyter nbconvert --to script [YOUR_NOTEBOOK}.ipynb
 #PBS -l jobfs=100GB
 #PBS -l storage=scratch/c25+gdata/c25
 
-module load pangeo/2019.10
+module load pangeo
 pangeo.ini.all.sh
 
 cd $PBS_O_WORKDIR

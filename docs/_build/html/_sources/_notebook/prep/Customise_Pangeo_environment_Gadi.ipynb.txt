@@ -36,8 +36,10 @@
     "To enable the Pangeo environment, you can use the following command within jobs, or within an interactive environment:\n",
     "\n",
     "```\n",
-    "$ module load pangeo/2019.12\n",
-    "        Loading requirement: intel-mkl/2019.3.199 python3/3.7.4 hdf5/1.10.5 netcdf/4.7.1\n",
+    "$ module load pangeo\n",
+    "Loading pangeo/2020.05\n",
+    "  Loading requirement: intel-mkl/2019.3.199 python3/3.7.4 hdf5/1.10.5\n",
+    "    netcdf/4.7.3\n",
     "\n",
     "```\n",
     "Note that Pangeo has its own Python installation.\n"
@@ -88,9 +90,10 @@
     "[abc123@gadi-login-01 ~]$ module list\n",
     "\n",
     "Currently loaded Module files:\n",
-    "1) pbs                   3) python3/3.7.4  5)netcdf/4.7.1    7) cuda/10.1              9) ncll/2.5.6-1+cuda10.1\n",
-    "2) intel-mkl/2019.3.199  4) hdf5/1.10.5    6)pangeo/2019.12  8) cudnn/7.6.5-cuda10.1  10) openmpi/4.0.1\n",
-    "11)tensorflow/2.0.0\n",
+    " 1) pbs                    5) netcdf/4.7.3           9) nccl/2.5.6-1+cuda10.1  \n",
+    " 2) intel-mkl/2019.3.199   6) pangeo/2020.05        10) openmpi/4.0.1          \n",
+    " 3) python3/3.7.4          7) cuda/10.1             11) tensorflow/2.0.0       \n",
+    " 4) hdf5/1.10.5            8) cudnn/7.6.5-cuda10.1  \n",
     "```"
    ]
   },
@@ -183,6 +186,40 @@
     "\n",
     ">>> import deepgraph\n",
     ">>> exit()\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Step 5: Add path into your job script"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If you want to use the program installed in your own space, you can add `export` into your login bash file:\n",
+    "\n",
+    "export PYTHONPATH=<`path to where you installed your own software`>:$PYTHONPATH\n",
+    "\n",
+    "You can also add into your job script run_ipynb_job.sh as below. Please replace the path to your own working space where you insalled the software.\n",
+    "\n",
+    "```\n",
+    "#!/bin/bash\n",
+    "#PBS -N pangeo_test\n",
+    "#PBS -P c25\n",
+    "#PBS -q normal\n",
+    "#PBS -l walltime=5:00:00\n",
+    "#PBS -l ncpus=96\n",
+    "#PBS -l mem=384GB\n",
+    "#PBS -l jobfs=100GB\n",
+    "#PBS -l storage=scratch/z00+scratch/c25+gdata/c25\n",
+    "module load pangeo\n",
+    "export PYTHONPATH=/g/data/c25/apps:$PYTHONPATH\n",
+    "pangeo.ini.all.sh\n",
+    "sleep infinity\n",
     "```"
    ]
   }
