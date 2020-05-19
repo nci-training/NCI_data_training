@@ -1,0 +1,881 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Statistical Operations, Resampling and Climatologies Using Xarray &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Statistical Operations, Resampling and Climatologies Using Xarray</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/1_07_Xarray_statistical_resample_roll_climatology_CMIP6.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Statistical-Operations,-Resampling-and-Climatologies-Using-Xarray">
+<h1>Statistical Operations, Resampling and Climatologies Using Xarray<a class="headerlink" href="#Statistical-Operations,-Resampling-and-Climatologies-Using-Xarray" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook:</p>
+<ul class="simple">
+<li>Setup and Load Data</li>
+<li>Common Operations</li>
+<li>Resampling and Rolling Mean</li>
+<li>Groupby and Climatology</li>
+<li>Plot - Extras</li>
+</ul>
+<p>This example uses Coupled Model Intercomparison Project (CMIP6) collections. For more information, please visit <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563">data catalogue</a> and <a class="reference external" href="https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html">terms of use</a>.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li>Authors: NCI Virtual Research Environment Team</li>
+<li>Keywords: CMIP6, xarray, resample, rolling mean, groupby, climatology, cartopy</li>
+<li>Create Date: 2019-Dec; Update Date: 2020-Apr</li>
+<li>Lineage/Reference: This example was modified from the original example developed by Dr Aidan Heerdegen from ARC COE Clex.</li>
+</ul>
+<div class="section" id="Prerequisite">
+<h2>Prerequisite<a class="headerlink" href="#Prerequisite" title="Permalink to this headline">¶</a></h2>
+<p>To run this notebook on Gadi/VDI, or on your local computer. The following modules are needed:</p>
+<ul class="simple">
+<li>Xarray</li>
+<li>netCDF4</li>
+<li>matplotlib</li>
+<li>Cartopy</li>
+</ul>
+<p>You also need to be a member of the following data project to access the data or through <a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog.html">NCI’s data service</a> if the data is published: * oi10</p>
+<p>You can request to join the project through <a class="reference external" href="https://my.nci.org.au">NCI’s user account management system</a>.</p>
+</div>
+<div class="section" id="Setup-and-Load-Data">
+<h2>Setup and Load Data<a class="headerlink" href="#Setup-and-Load-Data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Load-the-required-modules">
+<h3>Load the required modules<a class="headerlink" href="#Load-the-required-modules" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">netCDF4</span> <span class="k">as</span> <span class="nn">nc</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Opening-Multiple-Files-at-Once">
+<h3>Opening Multiple Files at Once<a class="headerlink" href="#Opening-Multiple-Files-at-Once" title="Permalink to this headline">¶</a></h3>
+<p>xarray’s <code class="docutils literal notranslate"><span class="pre">open_mfdataset</span></code> allows multiple files to be opened simultaneously and concatenated as one file.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>ls /g/data/oi10/replicas/CMIP6/CMIP/NOAA-GFDL/GFDL-CM4/historical/r1i1p1f1/Amon/tas/gr1/v20180701
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/g/data/oi10/replicas/CMIP6/CMIP/NOAA-GFDL/GFDL-CM4/historical/r1i1p1f1/Amon/tas/gr1/v20180701/*&#39;</span>
+<span class="n">f_hist</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;by_coords&#39;</span><span class="p">)</span>
+<span class="n">tas</span> <span class="o">=</span> <span class="n">f_hist</span><span class="o">.</span><span class="n">tas</span> <span class="o">-</span> <span class="mf">273.15</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Common-Operations">
+<h2>Common Operations<a class="headerlink" href="#Common-Operations" title="Permalink to this headline">¶</a></h2>
+<p>Xarray supports many of the statistical operations commonly performed on climate data arrays. Examples include:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Mean</span>
+<span class="n">Standard</span> <span class="n">Deviation</span>
+<span class="n">Minimum</span>
+<span class="n">Maximum</span>
+</pre></div>
+</div>
+<p>The operations are done with numpy-like syntax that many users are familiar with: <code class="docutils literal notranslate"><span class="pre">.mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">.stddef()</span></code>, etc. For example, calculating a simple mean would be done via:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tas</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tas&#x27; ()&gt;
+dask.array&lt;mean_agg-aggregate, shape=(), dtype=float32, chunksize=(), chunktype=numpy.ndarray&gt;
+Coordinates:
+    height   float64 2.0</pre></div>
+</div>
+<p>The above mean( ) happened very quickly because of lazy loading, which we talked about before. The resultant array still remains an xarray DataArray.</p>
+</div>
+<div class="section" id="Xarray-Operations-and-Missing-Values">
+<h2>Xarray Operations and Missing Values<a class="headerlink" href="#Xarray-Operations-and-Missing-Values" title="Permalink to this headline">¶</a></h2>
+<p>In general when using numpy, a user would need to mask out the missing or nan values of an array. As long as the nan or missing values are defined in the data array, the operations in general will be performed excluding those values.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">nan_test</span><span class="o">=</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+<span class="n">nan_test</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray ()&gt;
+array(2.)</pre></div>
+</div>
+</div>
+<div class="section" id="Xarray-Operations-on-Subsets">
+<h2>Xarray Operations on Subsets<a class="headerlink" href="#Xarray-Operations-on-Subsets" title="Permalink to this headline">¶</a></h2>
+<p>As with data subsetting, one of the advantages of xarray is that it permits operations to be performed via a specified list of dimension labels.</p>
+<p>For example, to calculate the mean in time would be:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tas</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tas&#x27; (lat: 180, lon: 288)&gt;
+dask.array&lt;mean_agg-aggregate, shape=(180, 288), dtype=float32, chunksize=(180, 288), chunktype=numpy.ndarray&gt;
+Coordinates:
+    height   float64 2.0
+  * lat      (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 ... 86.5 87.5 88.5 89.5
+  * lon      (lon) float64 0.625 1.875 3.125 4.375 ... 355.6 356.9 358.1 359.4</pre></div>
+</div>
+<p>To calculate the mean over lat and lon you will need to take into account the size of the grid cells and weight the mean by the area of those grid cells.</p>
+<p>In CMIP6 the cell areas are included under the CMIP_table parameter ‘fx’ for atmosphere and land parameters and ‘Ofx’ for ocean. In this case we will use area of atmospheric cells areacella.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">file_area</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;/g/data/oi10/replicas/CMIP6/CMIP/NOAA-GFDL/GFDL-CM4/historical/</span><span class="se">\</span>
+<span class="s1">r1i1p1f1/fx/areacella/gr1/v20180701/areacella_fx_GFDL-CM4_historical_r1i1p1f1_gr1.nc&#39;</span><span class="p">)</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">file_area</span><span class="o">.</span><span class="n">areacella</span>
+<span class="n">area</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;areacella&#x27; (lat: 180, lon: 288)&gt;
+array([[1.348703e+08, 1.348703e+08, 1.348703e+08, ..., 1.348703e+08,
+        1.348703e+08, 1.348703e+08],
+       [4.045698e+08, 4.045698e+08, 4.045698e+08, ..., 4.045698e+08,
+        4.045698e+08, 4.045698e+08],
+       [6.741460e+08, 6.741460e+08, 6.741460e+08, ..., 6.741460e+08,
+        6.741460e+08, 6.741460e+08],
+       ...,
+       [6.741460e+08, 6.741460e+08, 6.741460e+08, ..., 6.741460e+08,
+        6.741460e+08, 6.741460e+08],
+       [4.045698e+08, 4.045698e+08, 4.045698e+08, ..., 4.045698e+08,
+        4.045698e+08, 4.045698e+08],
+       [1.348703e+08, 1.348703e+08, 1.348703e+08, ..., 1.348703e+08,
+        1.348703e+08, 1.348703e+08]], dtype=float32)
+Coordinates:
+  * lat      (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 ... 86.5 87.5 88.5 89.5
+  * lon      (lon) float64 0.625 1.875 3.125 4.375 ... 355.6 356.9 358.1 359.4
+Attributes:
+    long_name:      Grid-Cell Area for Atmospheric Variables
+    units:          m2
+    standard_name:  cell_area
+    cell_methods:   area: sum
+    interp_method:  conserve_order1
+    original_name:  areacella</pre></div>
+</div>
+<p>We can now calculate the area weighted mean using the above variable and xarray operations.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tas_area</span> <span class="o">=</span> <span class="n">tas</span><span class="o">*</span><span class="n">area</span>
+<span class="n">tas_wmean</span> <span class="o">=</span> <span class="n">tas_area</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">tas_anom</span> <span class="o">=</span> <span class="n">tas_wmean</span> <span class="o">-</span> <span class="n">tas_wmean</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">tas_anom</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&lt;matplotlib.lines.Line2D at 0x14b6a4148650&gt;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_1_07_Xarray_statistical_resample_roll_climatology_CMIP6_18_1.png" src="../../_images/_notebook_climate_1_07_Xarray_statistical_resample_roll_climatology_CMIP6_18_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Exercise">
+<h2>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h2>
+<p>Find the minimum temperature in a box spanning the coordinates</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lon</span><span class="p">:</span> <span class="mi">80</span> <span class="o">-</span> <span class="mi">120</span>
+<span class="n">lat</span><span class="p">:</span> <span class="mi">10</span><span class="n">N</span> <span class="o">-</span> <span class="mi">20</span><span class="n">N</span>
+</pre></div>
+</div>
+<p>Answer</p>
+<div class="collapse" id="ans1"><pre><code>
+tas.sel(lat=slice(10,20),lon=slice(80,120)).min()
+</code></pre></div><div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Resampling-and-Rolling-Mean">
+<h2>Resampling and Rolling Mean<a class="headerlink" href="#Resampling-and-Rolling-Mean" title="Permalink to this headline">¶</a></h2>
+<p>The previous time-series plot was a bit hectic. We probably want to resample in time or take a rolling mean to remove the smaller scales of the data and see the longer term trend.</p>
+<p>xarray very easily supports both resampling and rolling means with the <code class="docutils literal notranslate"><span class="pre">.rolling</span></code> and the <code class="docutils literal notranslate"><span class="pre">.resample</span></code> operations.</p>
+<p>Starting with a rolling mean we’ll use a 1 year window (time=12 as is monthly data).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tas_roll</span> <span class="o">=</span> <span class="n">tas_anom</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">tas_anom</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">tas_roll</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&lt;matplotlib.lines.Line2D at 0x14b6a408ded0&gt;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_1_07_Xarray_statistical_resample_roll_climatology_CMIP6_22_1.png" src="../../_images/_notebook_climate_1_07_Xarray_statistical_resample_roll_climatology_CMIP6_22_1.png" />
+</div>
+</div>
+<p>Resampling can work in a similar way to the rolling mean. Resampling works with time data (with datetime64 variable in dimensions) and allows you to change the time frequency of your data. If you have a monthly dataset and you want that as a yearly dataset (or a 6hrly dataset that you want daily, etc) you can use the resample command while taking the mean over the resampling period.</p>
+<p>In the example below we have defined the new resampling period to be annual ‘A’ and have taken the mean over the monthly data in each year to produce a yearly average time series. Compare it to the rolling mean case above.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tas_res</span><span class="o">=</span><span class="n">tas_anom</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">tas_roll</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">tas_res</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&lt;matplotlib.lines.Line2D at 0x14b684495fd0&gt;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_1_07_Xarray_statistical_resample_roll_climatology_CMIP6_24_1.png" src="../../_images/_notebook_climate_1_07_Xarray_statistical_resample_roll_climatology_CMIP6_24_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Exercise">
+<h2>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h2>
+<p>Try rolling or resampling at other frequencies. Look at smaller subsets to see the difference.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Climatology">
+<h2>Climatology<a class="headerlink" href="#Climatology" title="Permalink to this headline">¶</a></h2>
+<p>With <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> you can easily create a climatology and calculate anomalies. In this example, working with monthly data, a new dimension will be created that is the months of the year.</p>
+<p>Let’s create a climatology from pre-1900 data:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">climatology</span> <span class="o">=</span> <span class="n">tas</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1800&#39;</span><span class="p">,</span><span class="s1">&#39;1900&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">climatology</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tas&#x27; (month: 12, lat: 180, lon: 288)&gt;
+dask.array&lt;stack, shape=(12, 180, 288), dtype=float32, chunksize=(1, 180, 288), chunktype=numpy.ndarray&gt;
+Coordinates:
+    height   float64 2.0
+  * lat      (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 ... 86.5 87.5 88.5 89.5
+  * lon      (lon) float64 0.625 1.875 3.125 4.375 ... 355.6 356.9 358.1 359.4
+  * month    (month) int64 1 2 3 4 5 6 7 8 9 10 11 12</pre></div>
+</div>
+<p>Instead of grouping by month, group by ‘season’. Plot one of the seasons.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">climatology_seas</span> <span class="o">=</span> <span class="n">tas</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1800&#39;</span><span class="p">,</span><span class="s1">&#39;1900&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">climatology_seas</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">season</span><span class="o">=</span><span class="s1">&#39;DJF&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x14b6843e4110&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_1_07_Xarray_statistical_resample_roll_climatology_CMIP6_30_1.png" src="../../_images/_notebook_climate_1_07_Xarray_statistical_resample_roll_climatology_CMIP6_30_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Plot---Extras">
+<h2>Plot - Extras<a class="headerlink" href="#Plot---Extras" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="Subplots">
+<h2>Subplots<a class="headerlink" href="#Subplots" title="Permalink to this headline">¶</a></h2>
+<p>In the seasonal climatology case we have created a climatology with 4 periods in time relating to seasons. It is very simple to plot all the seasons in a single plot simply by specifying which variable defines the <code class="docutils literal notranslate"><span class="pre">row</span></code> and how many columns to produce (we have also defined the colourbar limits using <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code>):</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">climatology_seas</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="s1">&#39;season&#39;</span><span class="p">,</span><span class="n">col_wrap</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;xarray.plot.facetgrid.FacetGrid at 0x14b684353d90&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_1_07_Xarray_statistical_resample_roll_climatology_CMIP6_33_1.png" src="../../_images/_notebook_climate_1_07_Xarray_statistical_resample_roll_climatology_CMIP6_33_1.png" />
+</div>
+</div>
+<p>We can integrate projections with the xarray datasets using the cartopy command.</p>
+<p>Notes: you need to install or load Cartopy to be able to run this part of the exercise.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Orthographic</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mi">140</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+
+<span class="n">climatology_seas</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">season</span><span class="o">=</span><span class="s1">&#39;DJF&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+            <span class="n">cbar_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shrink&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7ff645b7ac50&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/_notebook_climate_1_07_Xarray_statistical_resample_roll_climatology_CMIP6_35_1.png" src="../../_images/_notebook_climate_1_07_Xarray_statistical_resample_roll_climatology_CMIP6_35_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Exercise">
+<h2>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h2>
+<p>Make your own plot using your favorite projection: <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/crs/projections.html">https://scitools.org.uk/cartopy/docs/latest/crs/projections.html</a></p>
+</div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<p>This example shows some common operations in xarray.</p>
+<p><a class="reference external" href="http://xarray.pydata.org/en/stable/">http://xarray.pydata.org/en/stable/</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

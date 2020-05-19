@@ -1,55 +1,90 @@
 Climate and Weather Science
 ================================
 
-Datasets
--------------
+We list a number of examples that use NCI's data collection and services here. They are grouped into four categories:
 
-Please see a full list of climate, weather and enviornment datasets with project code `here <climate_datasets.rst>`_.
+* Python libraries notebook examples
+* Remote access via NCI's data services 
+* Command line tools examples
+* GUI tools
 
-Notebook examples
-----------------------
+1. Python libraries notebook examples
+---------------------------------------
 
-.. csv-table:: Data Access and Quick Preview
-   :file: CSV/notebook_dataaccess.csv
-   :widths: 40, 10, 10, 10, 10, 10
+To obtain a copy of those examples, please clone from this git repo: 
+
+https://github.com/nci-training/notebooks-python.git
+
+To run those notebooks on VDI or Gadi, you can follow instructions respectively:
+
+Option 1: VDI
+++++++++++++++++
+
+It is highly recommended to use the CLEX conda environment in project hh5. To use the hh5 conda environment, you need to join hh5 through NCI’s Mancini system.
+Alternatively, you can create your own environment on the VDI based on personal needs. Please refer to instructions on how to set up your conda environment on VDI.
+To run those notebooks, you need to load those packages into your environment:
+
+   	$ module use /g/data/hh5/public/modules
+    
+    $ module load conda/analysis3-20.04
+ 
+Option 2: Gadi
+++++++++++++++++++
+
+A Pangeo environment is configured on Gadi to accelerate optimal performance. Please refer to instructions on how to run Jupyter notebooks on Gadi.
+Notes: Pangeo only provides essential packages, such as Xarray and Dask. It is sufficient to run most of the current climate examples. Other domain specific packages would need to be loaded (if it is available on Gadi) or installed in your personal project space. Instructions on how to run notebook with Pangeo environment is available here.
+To run those notebooks, you need to load those packages into your gadi environment:
+   	
+    $ module load pangeo
+
+You might need to load other modules, such as holoviews, datashader etc when necessary. 
+
+.. csv-table:: Table 1: Python libraries
+   :file: CSV/notebook_python.csv
+   :widths: 80, 10, 10
    :header-rows: 1
    
-.. csv-table:: Climate Data Analysis Toolbox
-   :file: CSV/notebook_climatetoolbox.csv
-   :widths: 40, 10, 10, 10, 10, 10
-   :header-rows: 1
-
         
-How to download and run notebooks
+2. Remote access data via NCI's data services (cloud computing)
 -----------------------------------------------
 
-This instruction assumes that you are familar with Git. You can find instructions on `how to download and run notebooks here <../prep/install_jupyter.rst>`_.
+You can extract data variables through NCI’s various data services, such as THREDDS and GSKY. Programmatic data access examples can be downloaded from this git repo:
 
-Step 1: download examples from Git:
+https://github.com/nci-training/notebooks-dataservice.git
 
-> git clone https://github.com/nci-training/notebooks-climate.git
+.. csv-table:: Table 2: Data services Tools
+   :file: CSV/notebook_dataservice.csv
+   :widths: 80, 10, 10
+   :header-rows: 1
 
-Step 2: choose your platform:
 
-As noted in the tables above, the notebooks are designed to run on specific platforms. 
+3. Command line tools examples
+-----------------------------------------------
 
-Option 1: Local computer
+We demonstrated how to use NetCDF Operator (NCO) and Climate Data Operator (CDO) to work with our climate data.
+We also show how to use Clef to search data through our climate data collection database. More information about Clef can be found `readthedoc page`_. 
+You can follow instructions in each example to run those commands from your terminal on either VDI or Gadi. Prerequisites on software and data projects are specified in each example.
+To run those command, you need to load those packages into your NCI environment:
+   	$ module load netcdf/4.7.1 nco cdo
 
-Miniconda or Anaconda is highly recommended to be installed in order to run Jupyter notebooks. Please refer to instructions on how to do this at `NCI’s data training site <../prep/install_jupyter.rst>`_.
+.. _readthedoc page: https://clef.readthedocs.io
 
-Option 2: VDI
+.. csv-table:: Table 3: Command Line Tools
+   :file: CSV/notebook_commandline.csv
+   :widths: 80, 10, 10
+   :header-rows: 1
 
-It is highly recommended to use the CLEX conda environment in hh5. To use hh5 conda environment, you need to join hh5 through `NCI's Mancini system`_.
 
-.. _NCI's Mancini system: https://my.nci.org.au/mancini/project/hh5/join
+4. GUI tools
+-----------------------------------------------
 
-Alternatively, you can create your own environment on the VDI based on personal needs. Please refer to instructions on `how to set up your conda environment on VDI <../prep/python_on_vdi.rst>`_. 
+You can install the following open source software on your local computer: HDFView, Panoply and Paraview. They are also available on VDI which makes it easier to access NCI’s data collection through the filesystem.
 
-Option 3: Gadi
 
-A Pangeo environment is configured on Gadi to accelerate optimal performance. Please refer to instructions on `how to run Jupyter notebooks on Gadi <../prep/pangeo.rst>`_. 
-
-Notes: Pangeo only provides essential packages, such as Xarray, Dask. It is sufficient to run most of the current climate examples. Other domain specific packages would need to be loaded (if it is available on Gadi) or installed in your personal project space. 
+.. csv-table:: Table 4: Graph User Interface Tools
+   :file: CSV/notebook_gui.csv
+   :widths: 80, 10, 10
+   :header-rows: 1
 
         
 CMIP community wiki

@@ -1,0 +1,9 @@
+﻿Software/Scientific Topic,Dataset,Latest
+`Xarray - open and read data <1_01_Xarray_access_CMIP5.ipynb>`_,CMIP5,Apr-20
+`Xarray - subset and plot data (slicing and dicing) <1_02_Xarray_subset_slicing_plot_CMIP6.ipynb>`_ ,CMIP6,Apr-20
+`Xarray - temperature and percipitation <1_03_Xarray_Australian_Temperature_Precipitation_Change_CMIP6.ipynb>`_,CMIP6,Apr-20
+`Xarray - surface temperature anomalies in Australian <1_04_Xarray_calculate_metrics_CMIP6.ipynb>`_ ,CMIP6,Apr-20
+`Xarray - Nino 34 time series for ACCESS1.3 CMIP5 <1_05_Xarray_calculate_Nino34_time_series_for_ARCCSS1-3_CMIP5.ipynb>`_,CMIP5,Apr-20
+`Xarray - Nino 34 time series for CESM2 CMIP6 <1_06_Xarray_calculate_Nino34_time_series_for_CESM2_CMIP6.ipynb>`_,CMIP6,Apr-20
+"`Xarray - resampling, rolling and climatology <1_07_Xarray_statistical_resample_roll_climatology_CMIP6.ipynb>`_",CMIP6,Apr-20
+`Xarray - Uncertainty of models <1_08_Xarray_uncertainty_CMIP6.ipynb>`_,CMIP6,Apr-20

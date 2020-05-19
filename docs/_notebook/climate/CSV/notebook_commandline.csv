@@ -1,0 +1,7 @@
+Software/Scientific Topic,Dataset,Latest
+`NCO basics <3_01_NCO_CMIP5.ipynb>`_,CMIP5,Apr-20
+`CDO - Monthly Anomaly and Nino Index <3_02_CDO_Calculate_Monthly_Anomaly_and_Nino34_Index_CMIP6.ipynb>`_,CMIP6,Apr-20
+`CDO - compare model and observational data <3_03_CDO_Compare_Model_and_Observation_CMIP6.ipynb>`_,CMIP6,Apr-20
+`CDO - mask ocean or land <3_04_CDO_Ocean_Land_Mask_CMIP6.ipynb>`_,CMIP6,Apr-20
+`Clef - Search and Access CMIP5 data <3_05_Clef_Data_Search_Access_CMIP5.ipynb>`_,CMIP5,Apr-20
+`Clef - Search and Access CMIP6 data <3_06_Clef_Data_Search_Access_CMIP6.ipynb>`_,CMIP6,Apr-20

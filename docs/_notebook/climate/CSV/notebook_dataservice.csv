@@ -1,0 +1,5 @@
+Software/Scientific Topic,Dataset,Latest
+`Data service - THREDDS - file download <../tds/tds_direct_download_cmip5.ipynb>`_,CMIP5,Aug-19
+`Data service - THREDDS - data preview <../tds/tds_Godiva_cmip5.ipynb>`_,CMIP5,Aug-19
+`Data service - THREDDS - OPenDAP utility <../tds/tds_OPeNDAP_cmip5.ipynb>`_,CMIP5,Aug-19
+`Data service - THREDDS - data subset <../tds/tds_NetcdfSubset_cmip5.ipynb>`_,CMIP5,Aug-19

@@ -1,0 +1,661 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quick view and manipulations on data using NetCDF Operators (NCO) &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Quick view and manipulations on data using NetCDF Operators (NCO)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/3_01_NCO_CMIP5.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Quick-view-and-manipulations-on-data-using-NetCDF-Operators-(NCO)">
+<h1>Quick view and manipulations on data using NetCDF Operators (NCO)<a class="headerlink" href="#Quick-view-and-manipulations-on-data-using-NetCDF-Operators-(NCO)" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we demonstrate how to look at the metadata and content of the files in the CMIP5 datasets using NetCDF operators (NCO).</p>
+<ul class="simple">
+<li>ncdump</li>
+<li>ncks</li>
+<li>ncview</li>
+</ul>
+<p>This example uses Coupled Model Intercomparison Project (CMIP5) collections. For more information, please visit <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716">data catalogue</a> and note the terms of use.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li>Authors: NCI Virtual Research Environment Team</li>
+<li>Keywords: NCO, CMIP, NetCDF</li>
+<li>Create Date: 2020-Apr; Update Date: 2020-Apr</li>
+</ul>
+<div class="section" id="Prerequisite">
+<h2>Prerequisite<a class="headerlink" href="#Prerequisite" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="software">
+<h3>software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
+<p>To run this notebook you will need the following software in your path:</p>
+<ul class="simple">
+<li>netcdf</li>
+<li>NCO</li>
+</ul>
+<p>There are instructions below on doing this from the standard command line. If you are using Jupyter notebooks then please refer to the <a class="reference external" href="https://nci-data-training.readthedocs.io/en/latest/_notebook/prep/install_jupyter.html">Jupyter environment set-up pages</a></p>
+</div>
+<div class="section" id="Data-Access">
+<h3>Data Access<a class="headerlink" href="#Data-Access" title="Permalink to this headline">¶</a></h3>
+<p>If you are using Gadi/VDI to directly access the filesystem then you must be a member of the <a class="reference external" href="https://my.nci.org.au/mancini/project/rr3/join">rr3 data collection</a>.</p>
+<p>If you are using the data service (e.g., remotely from your desktop) then you will be using the publicly accessible <a class="reference external" href="https://dapds00.nci.org.au/thredds/catalog/rr3/catalog.html">NCI’s THREDDS data service</a>.</p>
+</div>
+</div>
+<div class="section" id="What-is-NCO?">
+<h2>What is NCO?<a class="headerlink" href="#What-is-NCO?" title="Permalink to this headline">¶</a></h2>
+<p>The netCDF Operators (NCO) comprise about a dozen standalone, command line programs that take netCDF, HDF files, or DAP services as input, then operate (e.g., derive new fields, compute statistics, print, hyperslab, manipulate metadata, regrid) and output the results to screen or files in text, binary, or netCDF formats. NCO aids analysis of gridded and unstructured scientific data. The Unix shell commands of NCO allows users to manipulate and analyze files interactively, or with expressive
+scripts that avoid some overhead of higher-level programming environments.</p>
+<div class="section" id="Load-netCDF-module">
+<h3>Load netCDF module<a class="headerlink" href="#Load-netCDF-module" title="Permalink to this headline">¶</a></h3>
+<p>If you are using Gadi/VDI natively then ensure you have loaded the following modules. If you are using Jupyter notebooks then these should already be loaded in your environment e.g., the Pangeo environment.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>module load netcdf/4.7.1
+<span class="o">!</span>module load nco
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ncdump">
+<h2>ncdump<a class="headerlink" href="#ncdump" title="Permalink to this headline">¶</a></h2>
+<p>The NetCDF command <code class="docutils literal notranslate"><span class="pre">ncdump</span></code> is used to output a text representation of a NetCDF file’s contents. More detailed information can be found from <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf/netcdf-4/newdocs/ncdump-man-1.html">Unidata website</a>.</p>
+<p>First, test that <code class="docutils literal notranslate"><span class="pre">ncdump</span></code> can be run from the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump
+</pre></div>
+</div>
+<p>This will display a standard help list of its options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ncdump</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="o">|-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span> <span class="o">...</span><span class="p">]</span> <span class="p">[[</span><span class="o">-</span><span class="n">b</span><span class="o">|-</span><span class="n">f</span><span class="p">]</span> <span class="p">[</span><span class="n">c</span><span class="o">|</span><span class="n">f</span><span class="p">]]</span> <span class="p">[</span><span class="o">-</span><span class="n">l</span> <span class="nb">len</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">name</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">n</span><span class="p">[,</span><span class="n">n</span><span class="p">]]</span> <span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">x</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span><span class="o">|-</span><span class="n">i</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">g</span> <span class="o">...</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="p">]</span> <span class="n">file</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span>             <span class="n">Coordinate</span> <span class="n">variable</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">header</span> <span class="n">information</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>             <span class="n">Header</span> <span class="n">information</span> <span class="n">only</span><span class="p">,</span> <span class="n">no</span> <span class="n">data</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">v</span> <span class="n">var1</span><span class="p">[,</span><span class="o">...</span><span class="p">]]</span>  <span class="n">Data</span> <span class="k">for</span> <span class="n">variable</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">var1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">...</span> <span class="n">only</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="p">[</span><span class="n">c</span><span class="o">|</span><span class="n">f</span><span class="p">]]</span>       <span class="n">Brief</span> <span class="n">annotations</span> <span class="k">for</span> <span class="n">C</span> <span class="ow">or</span> <span class="n">Fortran</span> <span class="n">indices</span> <span class="ow">in</span> <span class="n">data</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="p">[</span><span class="n">c</span><span class="o">|</span><span class="n">f</span><span class="p">]]</span>       <span class="n">Full</span> <span class="n">annotations</span> <span class="k">for</span> <span class="n">C</span> <span class="ow">or</span> <span class="n">Fortran</span> <span class="n">indices</span> <span class="ow">in</span> <span class="n">data</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">l</span> <span class="nb">len</span><span class="p">]</span>         <span class="n">Line</span> <span class="n">length</span> <span class="n">maximum</span> <span class="ow">in</span> <span class="n">data</span> <span class="n">section</span> <span class="p">(</span><span class="n">default</span> <span class="mi">80</span><span class="p">)</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">name</span><span class="p">]</span>        <span class="n">Name</span> <span class="k">for</span> <span class="n">netCDF</span> <span class="p">(</span><span class="n">default</span> <span class="n">derived</span> <span class="kn">from</span> <span class="nn">file</span> <span class="n">name</span><span class="p">)</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">n</span><span class="p">[,</span><span class="n">n</span><span class="p">]]</span>       <span class="n">Display</span> <span class="n">floating</span><span class="o">-</span><span class="n">point</span> <span class="n">values</span> <span class="k">with</span> <span class="n">less</span> <span class="n">precision</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">]</span>             <span class="n">Output</span> <span class="n">kind</span> <span class="n">of</span> <span class="n">netCDF</span> <span class="n">file</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">s</span><span class="p">]</span>             <span class="n">Output</span> <span class="n">special</span> <span class="p">(</span><span class="n">virtual</span><span class="p">)</span> <span class="n">attributes</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">t</span><span class="p">]</span>             <span class="n">Output</span> <span class="n">time</span> <span class="n">data</span> <span class="k">as</span> <span class="n">date</span><span class="o">-</span><span class="n">time</span> <span class="n">strings</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="p">]</span>             <span class="n">Output</span> <span class="n">time</span> <span class="n">data</span> <span class="k">as</span> <span class="n">date</span><span class="o">-</span><span class="n">time</span> <span class="n">strings</span> <span class="k">with</span> <span class="n">ISO</span><span class="o">-</span><span class="mi">8601</span> <span class="s1">&#39;T&#39;</span> <span class="n">separator</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">g</span> <span class="n">grp1</span><span class="p">[,</span><span class="o">...</span><span class="p">]]</span>  <span class="n">Data</span> <span class="ow">and</span> <span class="n">metadata</span> <span class="k">for</span> <span class="n">group</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">grp1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">...</span> <span class="n">only</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="p">]</span>             <span class="n">With</span> <span class="n">client</span><span class="o">-</span><span class="n">side</span> <span class="n">caching</span> <span class="n">of</span> <span class="n">variables</span> <span class="k">for</span> <span class="n">DAP</span> <span class="n">URLs</span>
+  <span class="p">[</span><span class="o">-</span><span class="n">x</span><span class="p">]</span>             <span class="n">Output</span> <span class="n">XML</span> <span class="p">(</span><span class="n">NcML</span><span class="p">)</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">CDL</span>
+  <span class="n">file</span>             <span class="n">Name</span> <span class="n">of</span> <span class="n">netCDF</span> <span class="n">file</span> <span class="p">(</span><span class="ow">or</span> <span class="n">URL</span> <span class="k">if</span> <span class="n">DAP</span> <span class="n">access</span> <span class="n">enabled</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Basic Usage:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ncdump</span> <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">file_path</span><span class="o">&gt;/&lt;</span><span class="n">url</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ncdump</span> <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><strong>View basic file header (or metadata) information</strong> The <code class="docutils literal notranslate"><span class="pre">-h</span></code> option (for ‘header’)</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">-h</span></code> option to view the netcdf file header information.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump -h /g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc
+</pre></div>
+</div>
+<p>This will display 1. file dimensions 2. variables and variable metadata 3. global metadata.</p>
+<p>Or Use remote OPeNDAP URL to look at file header:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump -h http://dapds00.nci.org.au/thredds/dodsC/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/atmos/\
+Amon/r1i1p1/v20130325/tasmax/tasmax_Amon_ACCESS1-3_historical_r1i1p1_185001-200512.nc
+</pre></div>
+</div>
+<p>You can show variables using the <code class="docutils literal notranslate"><span class="pre">-v</span></code> option. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump -v time /g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc
+</pre></div>
+</div>
+<p>View special attributes such as chunking and compression information Use the combination -hs</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump -hs &lt;file&gt;
+
+$ ncdump -hs /g/data/oi10/replicas/CMIP6/CMIP/CNRM-CERFACS/CNRM-CM6-1/historical/r1i1p1f2/day/pr/gr/v20180917/pr_day_CNRM-CM6-1_historical_r1i1p1f2_gr_18500101-19491231.nc
+</pre></div>
+</div>
+<p><strong>ncks</strong> is netCDF kitchen sink operator. Similar to ncdump, this command can give an overview of a netCDF file, extract certain variables, extract certain dimensions and manipulate record dimensions.</p>
+<p>You can view the contents of a netCDF file from either a local file or a remote data service link.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncks &lt;file&gt; | more
+$ ncks &lt;url&gt; | more
+
+$ ncks /g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc | more
+
+$ ncks http://dapds00.nci.org.au/thredds/dodsC/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/atmos/\
+Amon/r1i1p1/v20130325/tasmax/tasmax_Amon_ACCESS1-3_historical_r1i1p1_185001-200512.nc | more
+</pre></div>
+</div>
+<p>You can view a variable using -v</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncks -v time /g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc | more
+</pre></div>
+</div>
+<p>See more <a class="reference external" href="http://nco.sourceforge.net/nco.html#xmp_ncks">ncks examples</a> here.</p>
+<p><strong>Basic Usage:</strong></p>
+<p>From the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncview &lt;file_path&gt;
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncview /g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-0/rcp85/mon/ocean/Omon/r1i1p1/latest/pr/pr_Omon_ACCESS1-0_rcp85_r1i1p1_200601-210012.nc`
+</pre></div>
+</div>
+<p><img alt="image0" src="../../_images/ncview2_cmip5.png" /></p>
+<p>This will display the main <code class="docutils literal notranslate"><span class="pre">ncview</span></code> window with all the available viewing options.</p>
+<p>Select a variable from the <code class="docutils literal notranslate"><span class="pre">pr</span></code> box.</p>
+<p>A new window will display a plot of the selected variable.</p>
+<p>If the data includes a <code class="docutils literal notranslate"><span class="pre">time</span></code> dimension, use the single forward/backward arrows from the animation panel to step through time. (The double arrows will produce an animation and the ‘delay’ option can be used to slow down the speed at which it cycles through time).</p>
+<p><img alt="image0" src="../../_images/ncview2_cmip5.png" /></p>
+<p>A second panel can be used to modify a range of plot settings.</p>
+<p>For example, you can also make the image bigger by selecting <code class="docutils literal notranslate"><span class="pre">MX1/2/3</span></code> option. See the yellow arrow in the screenshot below.</p>
+<p><img alt="image1" src="../../_images/ncview3_cmip5.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">3gauss</span></code> option can be selected to change the colour map:</p>
+<p><img alt="image2" src="../../_images/ncview4_cmip5.png" /></p>
+<hr class="docutils" />
+<p>The table below provides a quick overview of some of the useful viewing options available:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Usage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>3gauss</td>
+<td>Cycle through colour maps</td>
+</tr>
+<tr class="row-odd"><td>Inv P</td>
+<td>Invert the plot</td>
+</tr>
+<tr class="row-even"><td>Inv C</td>
+<td>Invert the colour scale</td>
+</tr>
+<tr class="row-odd"><td>Mag X1</td>
+<td>Zoom in/out (right/left click)</td>
+</tr>
+<tr class="row-even"><td>Axes</td>
+<td>Modify axes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Additional command line options:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>useage:
+ncview [options] datafiles
+
+Options
+    -minmax: selects how rapidly minimum and maximum
+        values in the data files will be determined;
+        by scanning every third time entry (&quot;-minmax fast&quot;),
+        every fifth time entry (&quot;-minmax med&quot;), every tenth
+        (&quot;-minmax slow&quot;), or all entries (&quot;-minmax all&quot;).
+    -frames: Dump out PNG images (to make a movie, for instance)
+    -nc:    Specify number of colors to use.
+    -no1d:  Do NOT allow 1-D variables to be displayed.
+    -repl:  Set default blowup type to replicate rathern than bilinear.
+    -calendar: Specify time calendar to use, overriding value in file. Known: noleap standard gregorian 365_day 360_day.
+    -private: Use a private colormap.
+    -debug: Print lots of debugging info.
+    -beep:  Ring the bell when the movie restarts at frame zero.
+    -extra: Put some extra information on the display window.
+    -mtitle: My title to use on the display window.
+    -noautoflip: Do not automatically flip image, even
+        if dimensions indicate that it would make sense.
+    -w:     print the lack-of-warranty blurb.
+    -small: Keep popup window as small as possible by default.
+    -shrink_mode: Shrink image assuming integer classes, so most common
+        value in sub-block returned instead of arithmetic mean.
+    -listsel_max NN: max number of vars allowed before switching to menu selection
+    -no_color_ndims: do NOT color the var selection buttons by their dimensionality
+    -no_auto_overlay: do NOT automatically put on continental overlays
+    -autoscale: scale color map of EACH frame to range of that frame. Note: MUCH SLOWER!
+    -missvalrgb RRR GGG BBB: specifies 3 integers (range: 0 to 255) to use for missing value color
+    -maxsize: specifies max size of window before scrollbars are added. Either a single
+              integer between 30 and 100 giving percentage, or two integers separated by a
+              comma giving width and height. Ex: -maxsize 75  or -maxsize 800,600
+    -c:     print the copying policy.
+datafiles:
+    You can have up to 32 of these.  They must all be in
+    the same general format, or have different variables in
+    them.  Ncview tries its best under such circumstances.
+</pre></div>
+</div>
+<p>Other operators include: - <strong>ncap2</strong>: netCDF Arithmetic Processor - <strong>ncatted</strong>: netCDF Attribute Editor - <strong>ncbo</strong>: netCDF Binary Operator - <strong>nces</strong>: netCDF Ensemble Statistics - <strong>ncflint</strong>: netCDF File Interpolator - <strong>ncra</strong>: netCDF Record Averager - <strong>ncwaa</strong>: netCDF Weighted Averager</p>
+<p>Try these operators out on your netCDF files! For help on a particular operator, type man operator (e.g.&nbsp;man ncbo)</p>
+</div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<p>In this example, we show some basic NCO commands for data access and manipulation on CMIP data.</p>
+<p><a class="reference external" href="http://nco.sourceforge.net/">http://nco.sourceforge.net/</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,907 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Xarray Access CMIP5 Data &mdash; NCI data training  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> NCI data training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_overview/overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_find_data.html">Where to Find Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/where_to_get_data.html">Where to Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_data/how_to_use_data.html">How to Use Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How to run Jupyter notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prep/install_jupyter.html">On your local machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/python_on_vdi.html">On the VDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/pangeo.html">On Gadi</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by theme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">Climate and Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eo/eo.html">Earth Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geophysics/geophysics.html">Geophysics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook examples grouped by service type</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tds/tds.html">THREDDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsky/gsky.html">GSKY</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_help/help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NCI data training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Xarray Access CMIP5 Data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_notebook/climate/1_01_Xarray_access_CMIP5.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Xarray-Access-CMIP5-Data">
+<h1>Xarray Access CMIP5 Data<a class="headerlink" href="#Xarray-Access-CMIP5-Data" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we demonstrate how to access CMIP5 data locally and remotely using Xarray.</p>
+<ul class="simple">
+<li>What is Xarray</li>
+<li>Remote vs.&nbsp;direct filesystem access</li>
+<li>Build a multi-file dataset from an OpenDAP server</li>
+<li>File Variables and Attributes</li>
+</ul>
+<p>This example uses Coupled Model Intercomparison Project (CMIP5) collections. For more information, please visit <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716">data catalogue</a> and <a class="reference external" href="https://cmip.llnl.gov/cmip5/terms.html">terms of use</a>.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li>Authors: NCI Virtual Research Environment Team</li>
+<li>Keywords: CMIP, Xarray, NetCDF</li>
+<li>Create Date: 2019-Jun; Update Date: 2020-Apr</li>
+</ul>
+<div class="section" id="Prerequisite">
+<h2>Prerequisite<a class="headerlink" href="#Prerequisite" title="Permalink to this headline">¶</a></h2>
+<p>To run this notebook on Gadi/VDI, or on your local computer. The following modules are needed:</p>
+<ul class="simple">
+<li>Xarray</li>
+<li>netcdf-python</li>
+</ul>
+<p>You also need to be a member of the following data project to access the data or through <a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog.html">NCI’s data service</a>: * rr3</p>
+<p>You can request to join the project through <a class="reference external" href="https://my.nci.org.au">NCI’s user account management system</a>.</p>
+</div>
+<div class="section" id="Xarray">
+<h2>Xarray<a class="headerlink" href="#Xarray" title="Permalink to this headline">¶</a></h2>
+<p>Xarray builds upon and extends the strengths of pandas and numpy. Numpy provides the structure and core for working with multi-dimensional arrays while pandas integrates its indexing and dataframe type capabilities. Xarray is actively developed by the climate science community and a useful tool for analysis. For more information on the developments being undertaken (along with other related projects) see the Pangeo community: <a class="reference external" href="https://pangeo.io/">https://pangeo.io/</a></p>
+<p>We will use xarray to open the CMIP5 file defined below. Opening a file with xarray creates an xarray.Dataset. A ‘Dataset’ is a collection of multiple variables. A DataArray on the other hand is a single multi-dimensional variable and the coordinates.</p>
+<p>xarray always loads netCDF data ‘lazily’, this means that data can be manipulated, sliced and subset without loading array values into memory. Data is loaded into memory when the load( ) command is applied or when a computaiton is performed on the data.</p>
+<p>xarray is designed for use with multidimensional datasets and is particularly useful for climate data on multidimensional grids with dimensions such as lat, lon, depth and time</p>
+<div class="section" id="Import-the-xarray-and-netCDF-modules">
+<h3>Import the xarray and netCDF modules<a class="headerlink" href="#Import-the-xarray-and-netCDF-modules" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">netCDF4</span> <span class="k">as</span> <span class="nn">nc</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Remote-vs.&nbsp;direct-filesystem-access">
+<h2>Remote vs.&nbsp;direct filesystem access<a class="headerlink" href="#Remote-vs. direct-filesystem-access" title="Permalink to this headline">¶</a></h2>
+<p>In this example, we will use a file from the CMIP5 Australian Published data collection, specifically the monthly historical tasmax data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">g</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">rr3</span><span class="o">/</span><span class="n">publications</span><span class="o">/</span><span class="n">CMIP5</span><span class="o">/</span><span class="n">output1</span><span class="o">/</span><span class="n">CSIRO</span><span class="o">-</span><span class="n">BOM</span><span class="o">/</span><span class="n">ACCESS1</span><span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="n">historical</span><span class="o">/</span><span class="n">mon</span><span class="o">/</span><span class="n">atmos</span><span class="o">/</span><span class="n">Amon</span><span class="o">/</span><span class="n">r1i1p1</span><span class="o">/</span><span class="n">v20120727</span><span class="o">/</span><span class="n">tasmax</span><span class="o">/</span><span class="n">tasmax_Amon_ACCESS1</span><span class="o">-</span><span class="mi">0</span><span class="n">_historical_r1i1p1_185001</span><span class="o">-</span><span class="mf">200512.</span><span class="n">nc</span>
+</pre></div>
+</div>
+<p>and we are going to compare direct vs.&nbsp;remote access. Timings (using the <code class="docutils literal notranslate"><span class="pre">%%time</span></code> magic function) will also be shown to help illustrate when it can be useful to conduct analysis on the filesystem.</p>
+<div class="section" id="Local-path-on-/g/data">
+<h3>Local path on /g/data<a class="headerlink" href="#Local-path-on-/g/data" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/g/data/rr3/publications/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/atmos/</span><span class="se">\</span>
+<span class="s1">Amon/r1i1p1/v20130325/tasmax/tasmax_Amon_ACCESS1-3_historical_r1i1p1_185001-200512.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="OPeNDAP-Data-URL">
+<h3>OPeNDAP Data URL<a class="headerlink" href="#OPeNDAP-Data-URL" title="Permalink to this headline">¶</a></h3>
+<p>For more information on where to find OPeNDAP URL’s, see: THREDDS Data Server: Data Access</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://dapds00.nci.org.au/thredds/dodsC/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/mon/atmos/</span><span class="se">\</span>
+<span class="s1">Amon/r1i1p1/v20130325/tasmax/tasmax_Amon_ACCESS1-3_historical_r1i1p1_185001-200512.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Open-the-file,-comparing-the-time-on-the-local-filesystem-and-remote-url">
+<h3>Open the file, comparing the time on the local filesystem and remote url<a class="headerlink" href="#Open-the-file,-comparing-the-time-on-the-local-filesystem-and-remote-url" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 240 µs, sys: 162 ms, total: 162 ms
+Wall time: 1.25 s
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The difference in times is due to the remote URL access. Data access response time is quick using Xarray’s <code class="docutils literal notranslate"><span class="pre">open_dataset()</span></code> function because of the lazy loading of data. But if force the data to load into memory:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">tasmax</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">tasmax</span>
+<span class="n">tasmax</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 358 ms, sys: 155 ms, total: 513 ms
+Wall time: 511 ms
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;tasmax&#x27; (time: 1872, lat: 145, lon: 192)&gt;
+array([[[242.22649, 242.22649, 242.22649, ..., 242.22028, 242.22028,
+         242.22028],
+        [243.91931, 243.87326, 243.82875, ..., 244.05038, 244.00957,
+         243.96425],
+        [245.13287, 245.08662, 245.0183 , ..., 245.27603, 245.23296,
+         245.18419],
+        ...,
+        [242.64438, 242.74596, 242.86943, ..., 242.36124, 242.45232,
+         242.54388],
+        [241.69199, 241.74554, 241.79771, ..., 241.67577, 241.68051,
+         241.69809],
+        [240.87485, 240.87485, 240.87485, ..., 240.87485, 240.87485,
+         240.87485]],
+
+       [[235.21791, 235.21791, 235.21791, ..., 235.2146 , 235.2146 ,
+         235.2146 ],
+        [237.052  , 237.029  , 237.00833, ..., 237.17393, 237.13855,
+         237.09853],
+        [237.41914, 237.29343, 237.1765 , ..., 237.80144, 237.6658 ,
+         237.53809],
+        ...,
+        [240.60106, 240.53203, 240.48082, ..., 240.71024, 240.71312,
+         240.65256],
+        [238.93102, 238.94348, 238.95735, ..., 238.84721, 238.8793 ,
+         238.91093],
+        [236.43845, 236.43845, 236.43845, ..., 236.43845, 236.43845,
+         236.43845]],
+
+       [[223.82248, 223.82248, 223.82248, ..., 223.81923, 223.81923,
+         223.81923],
+        [228.1175 , 228.05615, 228.00998, ..., 228.28644, 228.22849,
+         228.17545],
+        [229.21747, 229.08847, 228.9618 , ..., 229.61053, 229.47765,
+         229.34256],
+        ...,
+        [243.81131, 243.88744, 243.97946, ..., 243.57245, 243.6507 ,
+         243.72934],
+        [243.39563, 243.40419, 243.41534, ..., 243.32387, 243.34251,
+         243.37648],
+        [242.78352, 242.78352, 242.78352, ..., 242.78352, 242.78352,
+         242.78352]],
+
+       ...,
+
+       [[222.91371, 222.91371, 222.91371, ..., 222.90314, 222.90314,
+         222.90314],
+        [227.95497, 227.90009, 227.84071, ..., 228.13326, 228.07675,
+         228.0165 ],
+        [230.00499, 229.81673, 229.62323, ..., 230.51114, 230.35124,
+         230.18073],
+        ...,
+        [257.4335 , 257.61444, 257.79364, ..., 256.95648, 257.11493,
+         257.26663],
+        [257.3382 , 257.4279 , 257.54178, ..., 257.04166, 257.12665,
+         257.2381 ],
+        [257.07758, 257.07758, 257.07758, ..., 257.07758, 257.07758,
+         257.07758]],
+
+       [[240.10124, 240.10124, 240.10124, ..., 240.09166, 240.09166,
+         240.09166],
+        [241.85622, 241.80452, 241.75043, ..., 241.99152, 241.93628,
+         241.88435],
+        [242.79108, 242.68707, 242.58368, ..., 243.11673, 243.01666,
+         242.9077 ],
+        ...,
+        [260.98044, 261.00912, 261.07172, ..., 260.78656, 260.87418,
+         260.9435 ],
+        [260.00974, 260.02213, 260.0323 , ..., 259.96994, 259.99246,
+         260.0092 ],
+        [258.00223, 258.00223, 258.00223, ..., 258.00223, 258.00223,
+         258.00223]],
+
+       [[247.96088, 247.96088, 247.96088, ..., 247.93704, 247.93704,
+         247.93704],
+        [248.94565, 248.89906, 248.85555, ..., 249.08572, 249.03673,
+         248.98915],
+        [249.93575, 249.80705, 249.679  , ..., 250.31178, 250.1902 ,
+         250.0654 ],
+        ...,
+        [251.01753, 251.10835, 251.17427, ..., 250.68848, 250.80872,
+         250.9194 ],
+        [249.8625 , 249.90404, 249.93315, ..., 249.72313, 249.77002,
+         249.82123],
+        [248.79779, 248.79779, 248.79779, ..., 248.79779, 248.79779,
+         248.79779]]], dtype=float32)
+Coordinates:
+  * time     (time) float64 6.753e+05 6.754e+05 ... 7.323e+05 7.323e+05
+  * lat      (lat) float64 -90.0 -88.75 -87.5 -86.25 ... 86.25 87.5 88.75 90.0
+  * lon      (lon) float64 0.0 1.875 3.75 5.625 7.5 ... 352.5 354.4 356.2 358.1
+    height   float64 1.5
+Attributes:
+    standard_name:     air_temperature
+    long_name:         Daily Maximum Near-Surface Air Temperature
+    comment:           monthly mean of the daily-maximum near-surface air tem...
+    units:             K
+    cell_methods:      time: maximum within days time: mean over days
+    cell_measures:     area: areacella
+    history:           2013-03-25T05:03:31Z altered by CMOR: Treated scalar d...
+    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation...</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">tasmax</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">tasmax</span>
+<span class="n">tasmax</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+One big advantage of working directly on the filesystem is that data access is much faster. For modest subsets, the difference is quite small but as you work with larger data, remote access can become much slower or even exceed NCI’s THREDDS Data Server memory limits.</div>
+</div>
+</div>
+<div class="section" id="Build-a-multi-file-dataset-from-an-OpenDAP-server">
+<h2>Build a multi-file dataset from an OpenDAP server<a class="headerlink" href="#Build-a-multi-file-dataset-from-an-OpenDAP-server" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s1">&#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/</span><span class="se">\</span>
+<span class="s1">historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_&#39;</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="s1">&#39;</span><span class="si">{base_url}{year}</span><span class="s1">0101_{year+9}1231.nc&#39;</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1850</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+<span class="n">files</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_18500101_18591231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_18600101_18691231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_18700101_18791231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_18800101_18891231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_18900101_18991231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_19000101_19091231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_19100101_19191231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_19200101_19291231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_19300101_19391231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_19400101_19491231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_19500101_19591231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_19600101_19691231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_19700101_19791231.nc&#39;,
+ &#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_19800101_19891231.nc&#39;]
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+Notes: Formatter string literals is used in constructing multiple files above. This uitlity is only available in python 3.6 and above. If you run this example using current VDI setting, this won’t work. Please replace the above code using traditional string formatting method, something like this would work:</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s1">&#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/</span><span class="se">\</span>
+<span class="s1">historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_&#39;</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1850</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">0101_</span><span class="si">{2}</span><span class="s1">1231.nc&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">year</span><span class="o">+</span><span class="mi">9</span><span class="p">))</span>
+    <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can now the entire ensemble of files on the remote server as a single xarray Dataset using <code class="docutils literal notranslate"><span class="pre">Xarray.mfdataset(</span> <span class="pre">)</span></code>!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f3</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">files</span><span class="p">,</span><span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">f3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">_acquire_with_cache_info</span><span class="ansi-blue-fg">(self, needs_lock)</span>
+<span class="ansi-green-intense-fg ansi-bold">    197</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 198</span><span class="ansi-red-fg">                 </span>file <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">[</span>self<span class="ansi-blue-fg">.</span>_key<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    199</span>             <span class="ansi-green-fg">except</span> KeyError<span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/lru_cache.py</span> in <span class="ansi-cyan-fg">__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-intense-fg ansi-bold">     52</span>         <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>_lock<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 53</span><span class="ansi-red-fg">             </span>value <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">[</span>key<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">     54</span>             self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">.</span>move_to_end<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_18500101_18591231.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False))]
+
+During handling of the above exception, another exception occurred:
+
+<span class="ansi-red-fg">OSError</span>                                   Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-12-04c2c34dac11&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>f3 <span class="ansi-blue-fg">=</span> xr<span class="ansi-blue-fg">.</span>open_mfdataset<span class="ansi-blue-fg">(</span>files<span class="ansi-blue-fg">,</span>decode_times<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">False</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> f3
+
+<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/api.py</span> in <span class="ansi-cyan-fg">open_mfdataset</span><span class="ansi-blue-fg">(paths, chunks, concat_dim, compat, preprocess, engine, lock, data_vars, coords, combine, autoclose, parallel, join, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    898</span>         getattr_ <span class="ansi-blue-fg">=</span> getattr
+<span class="ansi-green-intense-fg ansi-bold">    899</span>
+<span class="ansi-green-fg">--&gt; 900</span><span class="ansi-red-fg">     </span>datasets <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>open_<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>open_kwargs<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> p <span class="ansi-green-fg">in</span> paths<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    901</span>     file_objs <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>getattr_<span class="ansi-blue-fg">(</span>ds<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;_file_obj&#34;</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> ds <span class="ansi-green-fg">in</span> datasets<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    902</span>     <span class="ansi-green-fg">if</span> preprocess <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/api.py</span> in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
+<span class="ansi-green-intense-fg ansi-bold">    898</span>         getattr_ <span class="ansi-blue-fg">=</span> getattr
+<span class="ansi-green-intense-fg ansi-bold">    899</span>
+<span class="ansi-green-fg">--&gt; 900</span><span class="ansi-red-fg">     </span>datasets <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>open_<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>open_kwargs<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> p <span class="ansi-green-fg">in</span> paths<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    901</span>     file_objs <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>getattr_<span class="ansi-blue-fg">(</span>ds<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;_file_obj&#34;</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> ds <span class="ansi-green-fg">in</span> datasets<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    902</span>     <span class="ansi-green-fg">if</span> preprocess <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/api.py</span> in <span class="ansi-cyan-fg">open_dataset</span><span class="ansi-blue-fg">(filename_or_obj, group, decode_cf, mask_and_scale, decode_times, autoclose, concat_characters, decode_coords, engine, chunks, lock, cache, drop_variables, backend_kwargs, use_cftime)</span>
+<span class="ansi-green-intense-fg ansi-bold">    497</span>         <span class="ansi-green-fg">if</span> engine <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;netcdf4&#34;</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    498</span>             store = backends.NetCDF4DataStore.open(
+<span class="ansi-green-fg">--&gt; 499</span><span class="ansi-red-fg">                 </span>filename_or_obj<span class="ansi-blue-fg">,</span> group<span class="ansi-blue-fg">=</span>group<span class="ansi-blue-fg">,</span> lock<span class="ansi-blue-fg">=</span>lock<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>backend_kwargs
+<span class="ansi-green-intense-fg ansi-bold">    500</span>             )
+<span class="ansi-green-intense-fg ansi-bold">    501</span>         <span class="ansi-green-fg">elif</span> engine <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;scipy&#34;</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">open</span><span class="ansi-blue-fg">(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)</span>
+<span class="ansi-green-intense-fg ansi-bold">    355</span>             netCDF4<span class="ansi-blue-fg">.</span>Dataset<span class="ansi-blue-fg">,</span> filename<span class="ansi-blue-fg">,</span> mode<span class="ansi-blue-fg">=</span>mode<span class="ansi-blue-fg">,</span> kwargs<span class="ansi-blue-fg">=</span>kwargs
+<span class="ansi-green-intense-fg ansi-bold">    356</span>         )
+<span class="ansi-green-fg">--&gt; 357</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> cls<span class="ansi-blue-fg">(</span>manager<span class="ansi-blue-fg">,</span> group<span class="ansi-blue-fg">=</span>group<span class="ansi-blue-fg">,</span> mode<span class="ansi-blue-fg">=</span>mode<span class="ansi-blue-fg">,</span> lock<span class="ansi-blue-fg">=</span>lock<span class="ansi-blue-fg">,</span> autoclose<span class="ansi-blue-fg">=</span>autoclose<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    358</span>
+<span class="ansi-green-intense-fg ansi-bold">    359</span>     <span class="ansi-green-fg">def</span> _acquire<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, manager, group, mode, lock, autoclose)</span>
+<span class="ansi-green-intense-fg ansi-bold">    311</span>         self<span class="ansi-blue-fg">.</span>_group <span class="ansi-blue-fg">=</span> group
+<span class="ansi-green-intense-fg ansi-bold">    312</span>         self<span class="ansi-blue-fg">.</span>_mode <span class="ansi-blue-fg">=</span> mode
+<span class="ansi-green-fg">--&gt; 313</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>format <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>ds<span class="ansi-blue-fg">.</span>data_model
+<span class="ansi-green-intense-fg ansi-bold">    314</span>         self<span class="ansi-blue-fg">.</span>_filename <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>ds<span class="ansi-blue-fg">.</span>filepath<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    315</span>         self<span class="ansi-blue-fg">.</span>is_remote <span class="ansi-blue-fg">=</span> is_remote_uri<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_filename<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">ds</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-intense-fg ansi-bold">    364</span>     <span class="ansi-blue-fg">@</span>property
+<span class="ansi-green-intense-fg ansi-bold">    365</span>     <span class="ansi-green-fg">def</span> ds<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 366</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_acquire<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    367</span>
+<span class="ansi-green-intense-fg ansi-bold">    368</span>     <span class="ansi-green-fg">def</span> open_store_variable<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> var<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">_acquire</span><span class="ansi-blue-fg">(self, needs_lock)</span>
+<span class="ansi-green-intense-fg ansi-bold">    358</span>
+<span class="ansi-green-intense-fg ansi-bold">    359</span>     <span class="ansi-green-fg">def</span> _acquire<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 360</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>_manager<span class="ansi-blue-fg">.</span>acquire_context<span class="ansi-blue-fg">(</span>needs_lock<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> root<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    361</span>             ds <span class="ansi-blue-fg">=</span> _nc4_require_group<span class="ansi-blue-fg">(</span>root<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_group<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_mode<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    362</span>         <span class="ansi-green-fg">return</span> ds
+
+<span class="ansi-green-fg">/apps/python3/3.7.4/lib/python3.7/contextlib.py</span> in <span class="ansi-cyan-fg">__enter__</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-intense-fg ansi-bold">    110</span>         <span class="ansi-green-fg">del</span> self<span class="ansi-blue-fg">.</span>args<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>kwds<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>func
+<span class="ansi-green-intense-fg ansi-bold">    111</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 112</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> next<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>gen<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    113</span>         <span class="ansi-green-fg">except</span> StopIteration<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    114</span>             <span class="ansi-green-fg">raise</span> RuntimeError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;generator didn&#39;t yield&#34;</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">from</span> <span class="ansi-green-fg">None</span>
+
+<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">acquire_context</span><span class="ansi-blue-fg">(self, needs_lock)</span>
+<span class="ansi-green-intense-fg ansi-bold">    184</span>     <span class="ansi-green-fg">def</span> acquire_context<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    185</span>         <span class="ansi-blue-fg">&#34;&#34;&#34;Context manager for acquiring a file.&#34;&#34;&#34;</span>
+<span class="ansi-green-fg">--&gt; 186</span><span class="ansi-red-fg">         </span>file<span class="ansi-blue-fg">,</span> cached <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_acquire_with_cache_info<span class="ansi-blue-fg">(</span>needs_lock<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    187</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    188</span>             <span class="ansi-green-fg">yield</span> file
+
+<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">_acquire_with_cache_info</span><span class="ansi-blue-fg">(self, needs_lock)</span>
+<span class="ansi-green-intense-fg ansi-bold">    202</span>                     kwargs <span class="ansi-blue-fg">=</span> kwargs<span class="ansi-blue-fg">.</span>copy<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    203</span>                     kwargs<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#34;mode&#34;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_mode
+<span class="ansi-green-fg">--&gt; 204</span><span class="ansi-red-fg">                 </span>file <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_opener<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>self<span class="ansi-blue-fg">.</span>_args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    205</span>                 <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_mode <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;w&#34;</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    206</span>                     <span class="ansi-red-fg"># ensure file doesn&#39;t get overriden when opened again</span>
+
+<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4.Dataset.__init__</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4._ensure_nc_success</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-red-fg">OSError</span>: [Errno -68] NetCDF: I/O failure: b&#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_18500101_18591231.nc&#39;
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="File-variables-and-attributes">
+<h2>File variables and attributes<a class="headerlink" href="#File-variables-and-attributes" title="Permalink to this headline">¶</a></h2>
+<p>With xarray, you can easily view the dataset variables and attributes contained in the file by printing the loaded metadata</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Dataset-and-DataArray">
+<h2>Dataset and DataArray<a class="headerlink" href="#Dataset-and-DataArray" title="Permalink to this headline">¶</a></h2>
+<p>In the above we have loaded the Dataset and you can see the multiple variables included in the file. If we look at a specific variable, like tasmax, we will get an xarray.DataArray with its coordinates.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f1</span><span class="o">.</span><span class="n">tasmax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Print-an-attribute">
+<h3>Print an attribute<a class="headerlink" href="#Print-an-attribute" title="Permalink to this headline">¶</a></h3>
+<p>The attributes of a variable can be easily accessed using the <code class="docutils literal notranslate"><span class="pre">.&lt;attribute&gt;</span></code> command. So if we want to print the units of tasmax we could go:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f1</span><span class="o">.</span><span class="n">tasmax</span><span class="o">.</span><span class="n">units</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<p>In this example, we show how to do access CMIP5 datasets on Gadi and through URL. The same approach applies to other data collections. Please visit <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a> for more information.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, NCI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
