@@ -40,8 +40,6 @@
     "* netcdf\n",
     "* NCO\n",
     "\n",
-    "There are instructions below on doing this from the standard command line. If you are using Jupyter notebooks then please refer to the [Jupyter environment set-up pages](https://nci-data-training.readthedocs.io/en/latest/_notebook/prep/install_jupyter.html)\n",
-    "\n",
     "#### Data Access\n",
     "\n",
     "If you are using Gadi/VDI to directly access the filesystem then you must be a member of the [rr3 data collection](https://my.nci.org.au/mancini/project/rr3/join).\n",

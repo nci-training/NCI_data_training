@@ -1,3 +1,4 @@
 ﻿Software/Scientific Topic,Dataset,Latest
 `Panoply - data view and analysis <4_01_Panoply_cmip5.ipynb>`_  ,CMIP5,Aug-19
 `Paraview - data view <4_02_ParaView_cmip5.ipynb>`_,CMIP5,Aug-19
+`HDFView <4_03_HDFView_CMIP6.ipynb>`_,CMIP6,Apr-20

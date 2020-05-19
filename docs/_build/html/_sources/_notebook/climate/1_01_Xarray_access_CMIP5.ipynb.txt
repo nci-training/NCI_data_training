@@ -14,7 +14,7 @@
     "* Build a multi-file dataset from an OpenDAP server\n",
     "* File Variables and Attributes\n",
     "\n",
-    "This example uses Coupled Model Intercomparison Project (CMIP5) collections. For more information, please visit [data catalogue](https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716) and [terms of use](https://cmip.llnl.gov/cmip5/terms.html).\n",
+    "This example uses Coupled Model Intercomparison Project (CMIP5) collections. For more information, please visit [data catalogue](https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716) and note the terms of use.\n",
     "   \n",
     "---------"
    ]
@@ -25,7 +25,7 @@
    "source": [
     "- Authors: NCI Virtual Research Environment Team\n",
     "- Keywords: CMIP, Xarray, NetCDF\n",
-    "- Create Date: 2019-Jun; Update Date: 2020-Apr"
+    "- Create Date: 2019-Jun; Update Date: 2020-May"
    ]
   },
   {
@@ -42,7 +42,7 @@
     "You also need to be a member of the following data project to access the data or through [NCI's data service](http://dapds00.nci.org.au/thredds/catalog.html):\n",
     "* rr3\n",
     "\n",
-    "You can request to join the project through [NCI's user account management system](https://my.nci.org.au). "
+    "You can request to join the project through [NCI's user account management system](https://my.nci.org.au/mancini/project/rr3/join). "
    ]
   },
   {
@@ -617,7 +617,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.4"
+   "version": "3.7.3"
   }
  },
  "nbformat": 4,

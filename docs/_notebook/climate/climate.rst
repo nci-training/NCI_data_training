@@ -78,7 +78,7 @@ To run those command, you need to load those packages into your NCI environment:
 4. GUI tools
 -----------------------------------------------
 
-You can install the following open source software on your local computer: HDFView, Panoply and Paraview. They are also available on VDI which makes it easier to access NCI’s data collection through the filesystem.
+You can install the following open source software on your local computer. Panoply and Paraview are also available on VDI which makes it easier to access NCI’s data collection through the filesystem.
 
 
 .. csv-table:: Table 4: Graph User Interface Tools
