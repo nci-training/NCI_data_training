@@ -405,8 +405,8 @@ div.rendered_html tbody tr:hover {
 <hr class="docutils" />
 <ul class="simple">
 <li>Authors: NCI Virtual Research Environment Team</li>
-<li>Keywords: CMIP, xarray</li>
-<li>Create Date: 2020-Apr; Update Date: 2020-Apr</li>
+<li>Keywords: CMIP, xarray, uncertainty</li>
+<li>Create Date: 2020-Apr</li>
 </ul>
 <div class="section" id="Prerequisite">
 <h2>Prerequisite<a class="headerlink" href="#Prerequisite" title="Permalink to this headline">¶</a></h2>
@@ -415,7 +415,11 @@ div.rendered_html tbody tr:hover {
 <li>Clef</li>
 <li>Xarray</li>
 </ul>
-<p>You also need to be a member of the following project: * oi10 * hh5</p>
+<p>You also need to be a member of the following project:</p>
+<ul class="simple">
+<li>oi10</li>
+<li>hh5</li>
+</ul>
 <p>You can request to join the project through <a class="reference external" href="https://my.nci.org.au">NCI’s user account management system</a>.</p>
 </div>
 <div class="section" id="Load-libraries">
@@ -551,7 +555,7 @@ Attributes:
 </pre></div>
 </div>
 </div>
-<p>Instead of reading each individual file and concatenate them, you can real them all in one dataset use open multiple datasets function. The procedure above aims to demonstrate the concatenate function in Xarray.</p>
+<p>Instead of reading each individual file and concatenating them, you can real them all in one dataset using an open multiple datasets function. The procedure above aims to demonstrate the concatenate function in Xarray.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -564,7 +568,7 @@ Attributes:
 </div>
 <div class="section" id="Data-analysis-and-plotting">
 <h2>Data analysis and plotting<a class="headerlink" href="#Data-analysis-and-plotting" title="Permalink to this headline">¶</a></h2>
-<p>There exists uncertainty in model simulations, which is the reason that we need multipul models and multipul ensembles.</p>
+<p>There exists uncertainty in model simulations, which is the reason that we need multiple models and multiple ensembles.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
@@ -661,7 +665,7 @@ Data variables:
 </div>
 <div class="section" id="Summary">
 <h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
-<p>This example shows how to concatenate multiple ensemble files and plot them all together to get the sense of model uncertainty. We can see different simulation members show different results regarding the future temperature projection under senario ssp126.</p>
+<p>This example shows how to concatenate multiple ensemble files and plot them all together to get the sense of model uncertainty. We can see different simulation members show different results regarding the future temperature projection under scenario ssp126.</p>
 </div>
 </div>
 

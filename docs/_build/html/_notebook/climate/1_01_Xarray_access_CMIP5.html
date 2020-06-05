@@ -403,12 +403,12 @@ div.rendered_html tbody tr:hover {
 <li>Build a multi-file dataset from an OpenDAP server</li>
 <li>File Variables and Attributes</li>
 </ul>
-<p>This example uses Coupled Model Intercomparison Project (CMIP5) collections. For more information, please visit <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716">data catalogue</a> and note the terms of use.</p>
+<p>This example uses Coupled Model Intercomparison Project (CMIP5) collections. For more information, please visit the <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f3525_9322_8600_7716">data catalogue</a> and note the terms of use.</p>
 <hr class="docutils" />
 <ul class="simple">
 <li>Authors: NCI Virtual Research Environment Team</li>
 <li>Keywords: CMIP, Xarray, NetCDF</li>
-<li>Create Date: 2019-Jun; Update Date: 2020-May</li>
+<li>Create Date: 2020-Apr</li>
 </ul>
 <div class="section" id="Prerequisite">
 <h2>Prerequisite<a class="headerlink" href="#Prerequisite" title="Permalink to this headline">¶</a></h2>
@@ -417,15 +417,18 @@ div.rendered_html tbody tr:hover {
 <li>Xarray</li>
 <li>netcdf-python</li>
 </ul>
-<p>You also need to be a member of the following data project to access the data or through <a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog.html">NCI’s data service</a>: * rr3</p>
+<p>You also need to be a member of the following data project to access the data or through <a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog.html">NCI’s data service</a>:</p>
+<ul class="simple">
+<li>rr3</li>
+</ul>
 <p>You can request to join the project through <a class="reference external" href="https://my.nci.org.au/mancini/project/rr3/join">NCI’s user account management system</a>.</p>
 </div>
 <div class="section" id="Xarray">
 <h2>Xarray<a class="headerlink" href="#Xarray" title="Permalink to this headline">¶</a></h2>
 <p>Xarray builds upon and extends the strengths of pandas and numpy. Numpy provides the structure and core for working with multi-dimensional arrays while pandas integrates its indexing and dataframe type capabilities. Xarray is actively developed by the climate science community and a useful tool for analysis. For more information on the developments being undertaken (along with other related projects) see the Pangeo community: <a class="reference external" href="https://pangeo.io/">https://pangeo.io/</a></p>
 <p>We will use xarray to open the CMIP5 file defined below. Opening a file with xarray creates an xarray.Dataset. A ‘Dataset’ is a collection of multiple variables. A DataArray on the other hand is a single multi-dimensional variable and the coordinates.</p>
-<p>xarray always loads netCDF data ‘lazily’, this means that data can be manipulated, sliced and subset without loading array values into memory. Data is loaded into memory when the load( ) command is applied or when a computaiton is performed on the data.</p>
-<p>xarray is designed for use with multidimensional datasets and is particularly useful for climate data on multidimensional grids with dimensions such as lat, lon, depth and time</p>
+<p>xarray always loads netCDF data ‘lazily’, this means that data can be manipulated, sliced and subset without loading array values into memory. Data is loaded into memory when the load( ) command is applied or when a computation is performed on the data.</p>
+<p>xarray is designed for use with multidimensional datasets and is particularly useful for climate data on multidimensional grids with dimensions such as lat, lon, depth and time.</p>
 <div class="section" id="Import-the-xarray-and-netCDF-modules">
 <h3>Import the xarray and netCDF modules<a class="headerlink" href="#Import-the-xarray-and-netCDF-modules" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
@@ -687,7 +690,7 @@ One big advantage of working directly on the filesystem is that data access is m
 </div>
 </div>
 <div class="admonition warning">
-Notes: Formatter string literals is used in constructing multiple files above. This uitlity is only available in python 3.6 and above. If you run this example using current VDI setting, this won’t work. Please replace the above code using traditional string formatting method, something like this would work:</div>
+Notes: Formatter string literals is used in constructing multiple files above. This utility is only available in python 3.6 and above. If you run this example using the current VDI setting, this won’t work. Please replace the above code using traditional string formatting method, something like this would work:</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -703,8 +706,8 @@ Notes: Formatter string literals is used in constructing multiple files above. T
 </div>
 </div>
 <p>We can now the entire ensemble of files on the remote server as a single xarray Dataset using <code class="docutils literal notranslate"><span class="pre">Xarray.mfdataset(</span> <span class="pre">)</span></code>!</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -712,109 +715,6 @@ Notes: Formatter string literals is used in constructing multiple files above. T
 <span class="n">f3</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">_acquire_with_cache_info</span><span class="ansi-blue-fg">(self, needs_lock)</span>
-<span class="ansi-green-intense-fg ansi-bold">    197</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 198</span><span class="ansi-red-fg">                 </span>file <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">[</span>self<span class="ansi-blue-fg">.</span>_key<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    199</span>             <span class="ansi-green-fg">except</span> KeyError<span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/lru_cache.py</span> in <span class="ansi-cyan-fg">__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-intense-fg ansi-bold">     52</span>         <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>_lock<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">---&gt; 53</span><span class="ansi-red-fg">             </span>value <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">[</span>key<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">     54</span>             self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">.</span>move_to_end<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_18500101_18591231.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False))]
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-fg">OSError</span>                                   Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-12-04c2c34dac11&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>f3 <span class="ansi-blue-fg">=</span> xr<span class="ansi-blue-fg">.</span>open_mfdataset<span class="ansi-blue-fg">(</span>files<span class="ansi-blue-fg">,</span>decode_times<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">False</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> f3
-
-<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/api.py</span> in <span class="ansi-cyan-fg">open_mfdataset</span><span class="ansi-blue-fg">(paths, chunks, concat_dim, compat, preprocess, engine, lock, data_vars, coords, combine, autoclose, parallel, join, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    898</span>         getattr_ <span class="ansi-blue-fg">=</span> getattr
-<span class="ansi-green-intense-fg ansi-bold">    899</span>
-<span class="ansi-green-fg">--&gt; 900</span><span class="ansi-red-fg">     </span>datasets <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>open_<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>open_kwargs<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> p <span class="ansi-green-fg">in</span> paths<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    901</span>     file_objs <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>getattr_<span class="ansi-blue-fg">(</span>ds<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;_file_obj&#34;</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> ds <span class="ansi-green-fg">in</span> datasets<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    902</span>     <span class="ansi-green-fg">if</span> preprocess <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/api.py</span> in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
-<span class="ansi-green-intense-fg ansi-bold">    898</span>         getattr_ <span class="ansi-blue-fg">=</span> getattr
-<span class="ansi-green-intense-fg ansi-bold">    899</span>
-<span class="ansi-green-fg">--&gt; 900</span><span class="ansi-red-fg">     </span>datasets <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>open_<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>open_kwargs<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> p <span class="ansi-green-fg">in</span> paths<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    901</span>     file_objs <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>getattr_<span class="ansi-blue-fg">(</span>ds<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;_file_obj&#34;</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> ds <span class="ansi-green-fg">in</span> datasets<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    902</span>     <span class="ansi-green-fg">if</span> preprocess <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/api.py</span> in <span class="ansi-cyan-fg">open_dataset</span><span class="ansi-blue-fg">(filename_or_obj, group, decode_cf, mask_and_scale, decode_times, autoclose, concat_characters, decode_coords, engine, chunks, lock, cache, drop_variables, backend_kwargs, use_cftime)</span>
-<span class="ansi-green-intense-fg ansi-bold">    497</span>         <span class="ansi-green-fg">if</span> engine <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;netcdf4&#34;</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    498</span>             store = backends.NetCDF4DataStore.open(
-<span class="ansi-green-fg">--&gt; 499</span><span class="ansi-red-fg">                 </span>filename_or_obj<span class="ansi-blue-fg">,</span> group<span class="ansi-blue-fg">=</span>group<span class="ansi-blue-fg">,</span> lock<span class="ansi-blue-fg">=</span>lock<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>backend_kwargs
-<span class="ansi-green-intense-fg ansi-bold">    500</span>             )
-<span class="ansi-green-intense-fg ansi-bold">    501</span>         <span class="ansi-green-fg">elif</span> engine <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;scipy&#34;</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">open</span><span class="ansi-blue-fg">(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)</span>
-<span class="ansi-green-intense-fg ansi-bold">    355</span>             netCDF4<span class="ansi-blue-fg">.</span>Dataset<span class="ansi-blue-fg">,</span> filename<span class="ansi-blue-fg">,</span> mode<span class="ansi-blue-fg">=</span>mode<span class="ansi-blue-fg">,</span> kwargs<span class="ansi-blue-fg">=</span>kwargs
-<span class="ansi-green-intense-fg ansi-bold">    356</span>         )
-<span class="ansi-green-fg">--&gt; 357</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> cls<span class="ansi-blue-fg">(</span>manager<span class="ansi-blue-fg">,</span> group<span class="ansi-blue-fg">=</span>group<span class="ansi-blue-fg">,</span> mode<span class="ansi-blue-fg">=</span>mode<span class="ansi-blue-fg">,</span> lock<span class="ansi-blue-fg">=</span>lock<span class="ansi-blue-fg">,</span> autoclose<span class="ansi-blue-fg">=</span>autoclose<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    358</span>
-<span class="ansi-green-intense-fg ansi-bold">    359</span>     <span class="ansi-green-fg">def</span> _acquire<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, manager, group, mode, lock, autoclose)</span>
-<span class="ansi-green-intense-fg ansi-bold">    311</span>         self<span class="ansi-blue-fg">.</span>_group <span class="ansi-blue-fg">=</span> group
-<span class="ansi-green-intense-fg ansi-bold">    312</span>         self<span class="ansi-blue-fg">.</span>_mode <span class="ansi-blue-fg">=</span> mode
-<span class="ansi-green-fg">--&gt; 313</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>format <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>ds<span class="ansi-blue-fg">.</span>data_model
-<span class="ansi-green-intense-fg ansi-bold">    314</span>         self<span class="ansi-blue-fg">.</span>_filename <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>ds<span class="ansi-blue-fg">.</span>filepath<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    315</span>         self<span class="ansi-blue-fg">.</span>is_remote <span class="ansi-blue-fg">=</span> is_remote_uri<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_filename<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">ds</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-intense-fg ansi-bold">    364</span>     <span class="ansi-blue-fg">@</span>property
-<span class="ansi-green-intense-fg ansi-bold">    365</span>     <span class="ansi-green-fg">def</span> ds<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 366</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_acquire<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    367</span>
-<span class="ansi-green-intense-fg ansi-bold">    368</span>     <span class="ansi-green-fg">def</span> open_store_variable<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> var<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">_acquire</span><span class="ansi-blue-fg">(self, needs_lock)</span>
-<span class="ansi-green-intense-fg ansi-bold">    358</span>
-<span class="ansi-green-intense-fg ansi-bold">    359</span>     <span class="ansi-green-fg">def</span> _acquire<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 360</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>_manager<span class="ansi-blue-fg">.</span>acquire_context<span class="ansi-blue-fg">(</span>needs_lock<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> root<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    361</span>             ds <span class="ansi-blue-fg">=</span> _nc4_require_group<span class="ansi-blue-fg">(</span>root<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_group<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_mode<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    362</span>         <span class="ansi-green-fg">return</span> ds
-
-<span class="ansi-green-fg">/apps/python3/3.7.4/lib/python3.7/contextlib.py</span> in <span class="ansi-cyan-fg">__enter__</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-intense-fg ansi-bold">    110</span>         <span class="ansi-green-fg">del</span> self<span class="ansi-blue-fg">.</span>args<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>kwds<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>func
-<span class="ansi-green-intense-fg ansi-bold">    111</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 112</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> next<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>gen<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    113</span>         <span class="ansi-green-fg">except</span> StopIteration<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    114</span>             <span class="ansi-green-fg">raise</span> RuntimeError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;generator didn&#39;t yield&#34;</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">from</span> <span class="ansi-green-fg">None</span>
-
-<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">acquire_context</span><span class="ansi-blue-fg">(self, needs_lock)</span>
-<span class="ansi-green-intense-fg ansi-bold">    184</span>     <span class="ansi-green-fg">def</span> acquire_context<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    185</span>         <span class="ansi-blue-fg">&#34;&#34;&#34;Context manager for acquiring a file.&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">--&gt; 186</span><span class="ansi-red-fg">         </span>file<span class="ansi-blue-fg">,</span> cached <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_acquire_with_cache_info<span class="ansi-blue-fg">(</span>needs_lock<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    187</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    188</span>             <span class="ansi-green-fg">yield</span> file
-
-<span class="ansi-green-fg">/apps/pangeo/2019.12/lib/python3.7/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">_acquire_with_cache_info</span><span class="ansi-blue-fg">(self, needs_lock)</span>
-<span class="ansi-green-intense-fg ansi-bold">    202</span>                     kwargs <span class="ansi-blue-fg">=</span> kwargs<span class="ansi-blue-fg">.</span>copy<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    203</span>                     kwargs<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#34;mode&#34;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_mode
-<span class="ansi-green-fg">--&gt; 204</span><span class="ansi-red-fg">                 </span>file <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_opener<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>self<span class="ansi-blue-fg">.</span>_args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    205</span>                 <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_mode <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;w&#34;</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    206</span>                     <span class="ansi-red-fg"># ensure file doesn&#39;t get overriden when opened again</span>
-
-<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4.Dataset.__init__</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4._ensure_nc_success</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-red-fg">OSError</span>: [Errno -68] NetCDF: I/O failure: b&#39;http://dapds00.nci.org.au/thredds/catalog/rr3/CMIP5/output1/CSIRO-BOM/ACCESS1-3/historical/day/ocean/day/r1i1p1/latest/tos/tos_day_ACCESS1-3_historical_r1i1p1_18500101_18591231.nc&#39;
-</pre></div></div>
 </div>
 </div>
 <div class="section" id="File-variables-and-attributes">
@@ -860,7 +760,7 @@ During handling of the above exception, another exception occurred:
 </div>
 <div class="section" id="Summary">
 <h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
-<p>In this example, we show how to do access CMIP5 datasets on Gadi and through URL. The same approach applies to other data collections. Please visit <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a> for more information.</p>
+<p>In this example, we show how to access CMIP5 datasets on Gadi and through URL. The same approach applies to other data collections. Please visit <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a> for more information.</p>
 </div>
 </div>
 

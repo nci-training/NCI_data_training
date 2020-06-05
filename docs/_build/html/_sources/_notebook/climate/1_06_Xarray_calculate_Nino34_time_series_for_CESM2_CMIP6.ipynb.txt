@@ -27,7 +27,7 @@
    "source": [
     "- Authors: NCI Virtual Research Environment Team\n",
     "- Keywords: CMIP, xarray, CESM, Nino34 Index\n",
-    "- Create Date: 2020-Apr; Update Date: 2020-Apr"
+    "- Create Date: 2020-Apr"
    ]
   },
   {
@@ -42,7 +42,8 @@
     "* netCDF4\n",
     "* matplotlib\n",
     "\n",
-    "You also need to be a member of the following data project to access the data or through [NCI's data service](http://dapds00.nci.org.au/thredds/catalog.html) if the data is published:\n",
+    "You also need to be a member of the following data project:\n",
+    "\n",
     "* oi10\n",
     "\n",
     "You can request to join the project through [NCI's user account management system](https://my.nci.org.au). "
@@ -884,11 +885,11 @@
    "source": [
     "### Summary\n",
     "\n",
-    "This example shows how to calculate Nino34 index and define ENSO events. \n",
+    "This example shows how to calculate the Nino34 index and define ENSO events. \n",
     "\n",
     "## Reference\n",
     "\n",
-    "For further information regarding the difination of ENSO please see:\n",
+    "For further information regarding the definition of ENSO please see:\n",
     "\n",
     "Trenberth, K.E., 1997. The definition of ENSO. Bulletin of the American Meteorological Society, 78(12): 2771-2777."
    ]
@@ -910,7 +911,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.4"
+   "version": "3.7.3"
   }
  },
  "nbformat": 4,

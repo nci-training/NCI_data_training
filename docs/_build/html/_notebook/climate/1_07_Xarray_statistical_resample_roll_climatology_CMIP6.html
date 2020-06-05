@@ -409,7 +409,7 @@ div.rendered_html tbody tr:hover {
 <ul class="simple">
 <li>Authors: NCI Virtual Research Environment Team</li>
 <li>Keywords: CMIP6, xarray, resample, rolling mean, groupby, climatology, cartopy</li>
-<li>Create Date: 2019-Dec; Update Date: 2020-Apr</li>
+<li>Create Date: 2020-Apr</li>
 <li>Lineage/Reference: This example was modified from the original example developed by Dr Aidan Heerdegen from ARC COE Clex.</li>
 </ul>
 <div class="section" id="Prerequisite">
@@ -421,7 +421,10 @@ div.rendered_html tbody tr:hover {
 <li>matplotlib</li>
 <li>Cartopy</li>
 </ul>
-<p>You also need to be a member of the following data project to access the data or through <a class="reference external" href="http://dapds00.nci.org.au/thredds/catalog.html">NCI’s data service</a> if the data is published: * oi10</p>
+<p>You also need to be a member of the following data project:</p>
+<ul class="simple">
+<li>oi10</li>
+</ul>
 <p>You can request to join the project through <a class="reference external" href="https://my.nci.org.au">NCI’s user account management system</a>.</p>
 </div>
 <div class="section" id="Setup-and-Load-Data">
@@ -537,7 +540,7 @@ Coordinates:
   * lon      (lon) float64 0.625 1.875 3.125 4.375 ... 355.6 356.9 358.1 359.4</pre></div>
 </div>
 <p>To calculate the mean over lat and lon you will need to take into account the size of the grid cells and weight the mean by the area of those grid cells.</p>
-<p>In CMIP6 the cell areas are included under the CMIP_table parameter ‘fx’ for atmosphere and land parameters and ‘Ofx’ for ocean. In this case we will use area of atmospheric cells areacella.</p>
+<p>In CMIP6 the cell areas are included under the CMIP_table parameter ‘fx’ for atmosphere and land parameters and ‘Ofx’ for ocean. In this case we will use the area of atmospheric cells areacella.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>

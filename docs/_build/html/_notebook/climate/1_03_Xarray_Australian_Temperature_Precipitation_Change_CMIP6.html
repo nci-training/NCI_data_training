@@ -396,20 +396,20 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Australian-Temperature-and-Precipitation-Change-in-CMIP6-SenarioMIP">
 <h1>Australian Temperature and Precipitation Change in CMIP6 SenarioMIP<a class="headerlink" href="#Australian-Temperature-and-Precipitation-Change-in-CMIP6-SenarioMIP" title="Permalink to this headline">¶</a></h1>
-<p>In this notebook we demonstrate how to calculate the temperature and precipitation change in Australia using CMIP6 SenarioMIP prediction under two emission senarios:</p>
+<p>In this notebook we demonstrate how to calculate the temperature and precipitation change in Australia using CMIP6 SenarioMIP prediction under two emission scenarios:</p>
 <ul class="simple">
 <li>Use xarray to open CMIP6 data</li>
 <li>Extract useful variables</li>
 <li>Calculate yearly average data</li>
-<li>Plot the temperature and precipitation change in Australia under two different future senarios</li>
-<li>Compare the temperature and precipitation difference between the two senarios</li>
+<li>Plot the temperature and precipitation change in Australia under two different future scenarios</li>
+<li>Compare the temperature and precipitation difference between the two scenarios</li>
 </ul>
 <p>This example uses Coupled Model Intercomparison Project (CMIP6) collections. For more information, please visit <a class="reference external" href="https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563">data catalogue</a> and <a class="reference external" href="https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html">terms of use</a>.</p>
 <hr class="docutils" />
 <ul class="simple">
 <li>Authors: NCI Virtual Research Environment Team</li>
-<li>Keywords: CMIP, Xarray, Temperature, precipitation</li>
-<li>Create Date: 2019-Dec; Update Date: 2020-Apr</li>
+<li>Keywords: CMIP, Xarray, temperature, precipitation</li>
+<li>Create Date: 2020-Apr</li>
 </ul>
 <div class="section" id="Prerequisite">
 <h2>Prerequisite<a class="headerlink" href="#Prerequisite" title="Permalink to this headline">¶</a></h2>
@@ -418,7 +418,10 @@ div.rendered_html tbody tr:hover {
 <li>Xarray</li>
 <li>netcdf-python</li>
 </ul>
-<p>You also need to be a member of the following data project to access the data: * oi10</p>
+<p>You also need to be a member of the following data project to access the data:</p>
+<ul class="simple">
+<li>oi10</li>
+</ul>
 <p>You can request to join the project through <a class="reference external" href="https://my.nci.org.au">NCI’s user account management system</a>.</p>
 </div>
 <div class="section" id="Load-Library">
@@ -433,7 +436,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>We use the above command in order to show plots inside python jupyer notebook.</p>
+<p>We use the above command in order to show plots inside a python jupyter notebook.</p>
 </div>
 <div class="section" id="CMIP6-attributes">
 <h2>CMIP6 attributes<a class="headerlink" href="#CMIP6-attributes" title="Permalink to this headline">¶</a></h2>
@@ -448,8 +451,8 @@ div.rendered_html tbody tr:hover {
 <p>For detailed information about using ‘clef’, check out this webpage: <a class="reference external" href="https://clef.readthedocs.io/en/latest/gettingstarted.html">https://clef.readthedocs.io/en/latest/gettingstarted.html</a></p>
 <p>We can then set up values for CMIP6 attributions according to the CleF search results.</p>
 <p>CMIP6 data are organised according to its global attributes. We can access different data by changing these attributes: Activity, Institute, Source, Experiment, Member, Table, Variable, Grid, Version.</p>
-<p>There are four future senarios in SenarioMIP: ssp126, ssp245, ssp370 and ssp585. For information about SenarioMIP senarios, see here <a class="reference external" href="https://www.geosci-model-dev.net/9/3461/2016/">https://www.geosci-model-dev.net/9/3461/2016/</a></p>
-<p>Below, we have set up these attributes in oreder to get the future projection data under the ssp126 and ssp585 senarios using member ‘r1i1p1f2’ of CNRM_CM6-1 model simulations as an example.</p>
+<p>There are four future scenarios in ScenarioMIP: ssp126, ssp245, ssp370 and ssp585. For information about ScenarioMIP scenarios, see here <a class="reference external" href="https://www.geosci-model-dev.net/9/3461/2016/">https://www.geosci-model-dev.net/9/3461/2016/</a></p>
+<p>Below, we have set up these attributes in order to get the future projection data under the ssp126 and ssp585 scenarios using member ‘r1i1p1f2’ of CNRM_CM6-1 model simulations as an example.</p>
 </div>
 <div class="section" id="Define-CMIP-data-searching-criterion">
 <h2>Define CMIP data searching criterion<a class="headerlink" href="#Define-CMIP-data-searching-criterion" title="Permalink to this headline">¶</a></h2>
@@ -473,9 +476,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Australian-temperature-change-under-the-lowest-emission-senarios">
-<h2>Australian temperature change under the lowest emission senarios<a class="headerlink" href="#Australian-temperature-change-under-the-lowest-emission-senarios" title="Permalink to this headline">¶</a></h2>
-<p>Use xarray to open the temeprature data (tas) of the lowest emission senario (ssp126)</p>
+<div class="section" id="Australian-temperature-change-under-the-lowest-emission-scenarios">
+<h2>Australian temperature change under the lowest emission scenarios<a class="headerlink" href="#Australian-temperature-change-under-the-lowest-emission-scenarios" title="Permalink to this headline">¶</a></h2>
+<p>Use xarray to open the temperature data (tas) of the lowest emission scenario (ssp126)</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
@@ -497,7 +500,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>Calculate reginal mean of Australia (lon: 115E-155E, lat: 45S-15S), and then calculate the yearly average of the monthly data.</p>
+<p>Calculate regional mean of Australia (lon: 115E-155E, lat: 45S-15S), and then calculate the yearly average of the monthly data.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
@@ -534,9 +537,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Australian-temperature-change-under-the-highest-emisiion-senario">
-<h2>Australian temperature change under the highest emisiion senario<a class="headerlink" href="#Australian-temperature-change-under-the-highest-emisiion-senario" title="Permalink to this headline">¶</a></h2>
-<p>Similarly as above, the yearly temperature change under the higheset emission senario (ssp585) during the time period 2019-2060 is below:</p>
+<div class="section" id="Australian-temperature-change-under-the-highest-emission-scenario">
+<h2>Australian temperature change under the highest emission scenario<a class="headerlink" href="#Australian-temperature-change-under-the-highest-emission-scenario" title="Permalink to this headline">¶</a></h2>
+<p>Similarly as above, the yearly temperature change under the highest emission scenario (ssp585) during the time period 2019-2060 is below:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
@@ -567,9 +570,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="The-difference-of-temperature-change-between-the-two-emission-senarios">
-<h2>The difference of temperature change between the two emission senarios<a class="headerlink" href="#The-difference-of-temperature-change-between-the-two-emission-senarios" title="Permalink to this headline">¶</a></h2>
-<p>The average temperature change differnce between the lowest and highest emission senario from 2019 to 2060:</p>
+<div class="section" id="The-difference-of-temperature-change-between-the-two-emission-scenarios">
+<h2>The difference of temperature change between the two emission scenarios<a class="headerlink" href="#The-difference-of-temperature-change-between-the-two-emission-scenarios" title="Permalink to this headline">¶</a></h2>
+<p>The average temperature change difference between the lowest and highest emission scenario from 2019 to 2060:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
@@ -591,10 +594,10 @@ Coordinates:
     height   float64 2.0
 </pre></div></div>
 </div>
-<p>The above result shows that Australian temperature would have an additional 1.41 Celsius average warming in our lifetime span (2019-2060) under the highest emission senario compared with the lowest emission senario!</p>
+<p>The above result shows that Australian temperature would have an additional 1.41 Celsius average warming in our lifetime span (2019-2060) under the highest emission scenario compared with the lowest emission scenario!</p>
 </div>
-<div class="section" id="How-about-the-precipitation-change-under-the-lowest-emission-senario?">
-<h2>How about the precipitation change under the lowest emission senario?<a class="headerlink" href="#How-about-the-precipitation-change-under-the-lowest-emission-senario?" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="How-about-the-precipitation-change-under-the-lowest-emission-scenario?">
+<h2>How about the precipitation change under the lowest emission scenario?<a class="headerlink" href="#How-about-the-precipitation-change-under-the-lowest-emission-scenario?" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
@@ -626,8 +629,8 @@ Coordinates:
 </div>
 </div>
 </div>
-<div class="section" id="Australian-precipitation-change-under-the-highest-emission-senario">
-<h2>Australian precipitation change under the highest emission senario<a class="headerlink" href="#Australian-precipitation-change-under-the-highest-emission-senario" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Australian-precipitation-change-under-the-highest-emission-scenario">
+<h2>Australian precipitation change under the highest emission scenario<a class="headerlink" href="#Australian-precipitation-change-under-the-highest-emission-scenario" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
@@ -659,8 +662,8 @@ Coordinates:
 </div>
 </div>
 </div>
-<div class="section" id="The-difference-of-precipitation-change-between-the-two-emission-senarios">
-<h2>The difference of precipitation change between the two emission senarios<a class="headerlink" href="#The-difference-of-precipitation-change-between-the-two-emission-senarios" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="The-difference-of-precipitation-change-between-the-two-emission-scenarios">
+<h2>The difference of precipitation change between the two emission scenarios<a class="headerlink" href="#The-difference-of-precipitation-change-between-the-two-emission-scenarios" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
@@ -680,7 +683,7 @@ Coordinates:
 array(-0.02813326, dtype=float32)
 </pre></div></div>
 </div>
-<p>This shows that on average Australia is becoming drier under a higher emission senario.</p>
+<p>This shows that on average Australia is becoming drier under a higher emission scenario.</p>
 </div>
 <div class="section" id="Summary">
 <h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>

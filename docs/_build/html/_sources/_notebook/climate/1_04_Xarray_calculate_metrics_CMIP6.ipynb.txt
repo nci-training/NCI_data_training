@@ -25,7 +25,7 @@
    "source": [
     "- Authors: NCI Virtual Research Environment Team\n",
     "- Keywords: CMIP6, xarray, subsetting, groupby, monthly climatology, monthly anomaly\n",
-    "- Create Date: 2019-Dec; Update Date: 2020-Apr\n",
+    "- Create Date: 2020-Apr\n",
     "- Lineage/Reference: This example was modified from the original example developed by Dr Aidan Heerdegen from ARC COE Clex"
    ]
   },
@@ -41,6 +41,7 @@
     "* netcdf-python\n",
     "\n",
     "You also need to be a member of the following data project to access the data:\n",
+    "\n",
     "* oi10\n",
     "\n",
     "You can request to join the project through [NCI's user account management system](https://my.nci.org.au). "
@@ -551,7 +552,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.4"
+   "version": "3.7.3"
   }
  },
  "nbformat": 4,

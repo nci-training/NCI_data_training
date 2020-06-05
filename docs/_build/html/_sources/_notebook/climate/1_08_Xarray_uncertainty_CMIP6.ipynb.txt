@@ -21,8 +21,8 @@
    "metadata": {},
    "source": [
     "- Authors: NCI Virtual Research Environment Team\n",
-    "- Keywords: CMIP, xarray\n",
-    "- Create Date: 2020-Apr; Update Date: 2020-Apr"
+    "- Keywords: CMIP, xarray, uncertainty\n",
+    "- Create Date: 2020-Apr"
    ]
   },
   {
@@ -37,6 +37,7 @@
     "* Xarray\n",
     "\n",
     "You also need to be a member of the following project:\n",
+    "\n",
     "* oi10\n",
     "* hh5\n",
     "\n",
@@ -221,7 +222,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Instead of reading each individual file and concatenate them, you can real them all in one dataset use open multiple datasets function. The procedure above aims to demonstrate the concatenate function in Xarray."
+    "Instead of reading each individual file and concatenating them, you can real them all in one dataset using an open multiple datasets function. The procedure above aims to demonstrate the concatenate function in Xarray."
    ]
   },
   {
@@ -239,7 +240,7 @@
    "source": [
     "### Data analysis and plotting\n",
     "\n",
-    "There exists uncertainty in model simulations, which is the reason that we need multipul models and multipul ensembles."
+    "There exists uncertainty in model simulations, which is the reason that we need multiple models and multiple ensembles."
    ]
   },
   {
@@ -385,7 +386,7 @@
    "source": [
     "### Summary\n",
     "\n",
-    "This example shows how to concatenate multiple ensemble files and plot them all together to get the sense of model uncertainty. We can see different simulation members show different results regarding the future temperature projection under senario ssp126. "
+    "This example shows how to concatenate multiple ensemble files and plot them all together to get the sense of model uncertainty. We can see different simulation members show different results regarding the future temperature projection under scenario ssp126. "
    ]
   }
  ],
@@ -405,7 +406,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.4"
+   "version": "3.7.3"
   }
  },
  "nbformat": 4,

@@ -11,13 +11,13 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "In this notebook we demonstrate how to calculate the temperature and precipitation change in Australia using CMIP6 SenarioMIP prediction under two emission senarios:\n",
+    "In this notebook we demonstrate how to calculate the temperature and precipitation change in Australia using CMIP6 SenarioMIP prediction under two emission scenarios:\n",
     "\n",
     "* Use xarray to open CMIP6 data\n",
     "* Extract useful variables\n",
     "* Calculate yearly average data\n",
-    "* Plot the temperature and precipitation change in Australia under two different future senarios\n",
-    "* Compare the temperature and precipitation difference between the two senarios\n",
+    "* Plot the temperature and precipitation change in Australia under two different future scenarios\n",
+    "* Compare the temperature and precipitation difference between the two scenarios\n",
     "\n",
     "This example uses Coupled Model Intercomparison Project (CMIP6) collections. For more information, please visit [data catalogue]( https://geonetwork.nci.org.au/geonetwork/srv/eng/catalog.search#/metadata/f6600_2266_8675_3563) and [terms of use]( https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html).\n",
     "\n",
@@ -29,8 +29,8 @@
    "metadata": {},
    "source": [
     "- Authors: NCI Virtual Research Environment Team\n",
-    "- Keywords: CMIP, Xarray, Temperature, precipitation\n",
-    "- Create Date: 2019-Dec; Update Date: 2020-Apr"
+    "- Keywords: CMIP, Xarray, temperature, precipitation\n",
+    "- Create Date: 2020-Apr"
    ]
   },
   {
@@ -45,6 +45,7 @@
     "* netcdf-python\n",
     "\n",
     "You also need to be a member of the following data project to access the data:\n",
+    "\n",
     "* oi10\n",
     "\n",
     "You can request to join the project through [NCI's user account management system](https://my.nci.org.au). "
@@ -71,7 +72,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "We use the above command in order to show plots inside python jupyer notebook."
+    "We use the above command in order to show plots inside a python jupyter notebook."
    ]
   },
   {
@@ -108,10 +109,9 @@
     "CMIP6 data are organised according to its global attributes. We can access different data by changing these attributes:\n",
     "Activity, Institute, Source, Experiment, Member, Table, Variable, Grid, Version.\n",
     "\n",
-    "There are four future senarios in SenarioMIP: ssp126, ssp245, ssp370 and ssp585. \n",
-    "For information about SenarioMIP senarios, see here https://www.geosci-model-dev.net/9/3461/2016/ \n",
+    "There are four future scenarios in ScenarioMIP: ssp126, ssp245, ssp370 and ssp585. For information about ScenarioMIP scenarios, see here https://www.geosci-model-dev.net/9/3461/2016/ \n",
     "\n",
-    "Below, we have set up these attributes in oreder to get the future projection data under the ssp126 and ssp585 senarios using member 'r1i1p1f2' of CNRM_CM6-1 model simulations as an example. "
+    "Below, we have set up these attributes in order to get the future projection data under the ssp126 and ssp585 scenarios using member 'r1i1p1f2' of CNRM_CM6-1 model simulations as an example. "
    ]
   },
   {
@@ -144,14 +144,14 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Australian temperature change under the lowest emission senarios"
+    "### Australian temperature change under the lowest emission scenarios"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Use xarray to open the temeprature data (tas) of the lowest emission senario (ssp126)"
+    "Use xarray to open the temperature data (tas) of the lowest emission scenario (ssp126)"
    ]
   },
   {
@@ -185,7 +185,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Calculate reginal mean of Australia (lon: 115E-155E, lat: 45S-15S), and then calculate the yearly average of the monthly data."
+    "Calculate regional mean of Australia (lon: 115E-155E, lat: 45S-15S), and then calculate the yearly average of the monthly data."
    ]
   },
   {
@@ -240,14 +240,14 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Australian temperature change under the highest emisiion senario"
+    "### Australian temperature change under the highest emission scenario"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Similarly as above, the yearly temperature change under the higheset emission senario (ssp585) during the time period 2019-2060 is below:"
+    "Similarly as above, the yearly temperature change under the highest emission scenario (ssp585) during the time period 2019-2060 is below:"
    ]
   },
   {
@@ -290,14 +290,14 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### The difference of temperature change between the two emission senarios"
+    "### The difference of temperature change between the two emission scenarios"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "The average temperature change differnce between the lowest and highest emission senario from 2019 to 2060:"
+    "The average temperature change difference between the lowest and highest emission scenario from 2019 to 2060:"
    ]
   },
   {
@@ -325,14 +325,14 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "The above result shows that Australian temperature would have an additional 1.41 Celsius average warming in our lifetime span (2019-2060) under the highest emission senario compared with the lowest emission senario!"
+    "The above result shows that Australian temperature would have an additional 1.41 Celsius average warming in our lifetime span (2019-2060) under the highest emission scenario compared with the lowest emission scenario!"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### How about the precipitation change under the lowest emission senario?"
+    "### How about the precipitation change under the lowest emission scenario?"
    ]
   },
   {
@@ -376,7 +376,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Australian precipitation change under the highest emission senario"
+    "### Australian precipitation change under the highest emission scenario"
    ]
   },
   {
@@ -420,7 +420,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### The difference of precipitation change between the two emission senarios"
+    "### The difference of precipitation change between the two emission scenarios"
    ]
   },
   {
@@ -446,7 +446,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "This shows that on average Australia is becoming drier under a higher emission senario."
+    "This shows that on average Australia is becoming drier under a higher emission scenario."
    ]
   },
   {
@@ -479,7 +479,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.4"
+   "version": "3.7.3"
   }
  },
  "nbformat": 4,

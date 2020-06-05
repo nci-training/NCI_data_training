@@ -25,7 +25,7 @@
    "source": [
     "- Authors: NCI Virtual Research Environment Team\n",
     "- Keywords: CMIP6, xarray, resample, rolling mean, groupby, climatology, cartopy\n",
-    "- Create Date: 2019-Dec; Update Date: 2020-Apr\n",
+    "- Create Date: 2020-Apr\n",
     "- Lineage/Reference: This example was modified from the original example developed by Dr Aidan Heerdegen from ARC COE Clex."
    ]
   },
@@ -42,7 +42,8 @@
     "* matplotlib\n",
     "* Cartopy\n",
     "\n",
-    "You also need to be a member of the following data project to access the data or through [NCI's data service](http://dapds00.nci.org.au/thredds/catalog.html) if the data is published:\n",
+    "You also need to be a member of the following data project:\n",
+    "\n",
     "* oi10\n",
     "\n",
     "You can request to join the project through [NCI's user account management system](https://my.nci.org.au). "
@@ -232,7 +233,7 @@
    "source": [
     "To calculate the mean over lat and lon you will need to take into account the size of the grid cells and weight the mean by the area of those grid cells.\n",
     "\n",
-    "In CMIP6 the cell areas are included under the CMIP_table parameter 'fx' for atmosphere and land parameters and 'Ofx' for ocean. In this case we will use area of atmospheric cells areacella."
+    "In CMIP6 the cell areas are included under the CMIP_table parameter 'fx' for atmosphere and land parameters and 'Ofx' for ocean. In this case we will use the area of atmospheric cells areacella."
    ]
   },
   {
@@ -709,7 +710,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.4"
+   "version": "3.7.3"
   }
  },
  "nbformat": 4,
