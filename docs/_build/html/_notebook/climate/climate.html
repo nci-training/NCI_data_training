@@ -229,19 +229,19 @@
 <p>It is highly recommended to use the CLEX conda environment in project hh5. To use the hh5 conda environment, you need to join hh5 through NCI’s Mancini system.
 Alternatively, you can create your own environment on the VDI based on personal needs. Please refer to instructions on how to set up your conda environment on VDI.
 To run those notebooks, you need to load those packages into your environment:</p>
-<blockquote>
-<div><blockquote>
-<div>$ module use /g/data/hh5/public/modules</div></blockquote>
-<p>$ module load conda/analysis3-20.04</p>
-</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ module use /g/data/hh5/public/modules
+$ module load conda/analysis3-20.04
+</pre></div>
+</div>
 </div>
 <div class="section" id="option-2-gadi">
 <h3>Option 2: Gadi<a class="headerlink" href="#option-2-gadi" title="Permalink to this headline">¶</a></h3>
 <p>A Pangeo environment is configured on Gadi to accelerate optimal performance. Please refer to instructions on how to run Jupyter notebooks on Gadi.
 Notes: Pangeo only provides essential packages, such as Xarray and Dask. It is sufficient to run most of the current climate examples. Other domain specific packages would need to be loaded (if it is available on Gadi) or installed in your personal project space. Instructions on how to run notebook with Pangeo environment is available here.
 To run those notebooks, you need to load those packages into your gadi environment:</p>
-<blockquote>
-<div>$ module load pangeo</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ module load pangeo
+</pre></div>
+</div>
 <p>You might need to load other modules, such as holoviews, datashader etc when necessary.</p>
 <table border="1" class="colwidths-given docutils" id="id1">
 <caption><span class="caption-text">Table 1: Python libraries</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
@@ -336,8 +336,9 @@ To run those notebooks, you need to load those packages into your gadi environme
 We also show how to use Clef to search data through our climate data collection database. More information about Clef can be found <a class="reference external" href="https://clef.readthedocs.io">readthedoc page</a>.
 You can follow instructions in each example to run those commands from your terminal on either VDI or Gadi. Prerequisites on software and data projects are specified in each example.
 To run those command, you need to load those packages into your NCI environment:</p>
-<blockquote>
-<div>$ module load netcdf/4.7.1 nco cdo</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ module load netcdf/4.7.1 nco cdo
+</pre></div>
+</div>
 <table border="1" class="colwidths-given docutils" id="id3">
 <caption><span class="caption-text">Table 3: Command Line Tools</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>

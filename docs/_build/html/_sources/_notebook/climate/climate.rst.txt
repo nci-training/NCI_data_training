@@ -24,16 +24,19 @@ It is highly recommended to use the CLEX conda environment in project hh5. To us
 Alternatively, you can create your own environment on the VDI based on personal needs. Please refer to instructions on how to set up your conda environment on VDI.
 To run those notebooks, you need to load those packages into your environment:
 
+.. code-block:: python
+
    	$ module use /g/data/hh5/public/modules
-    
-    $ module load conda/analysis3-20.04
- 
+        $ module load conda/analysis3-20.04
+
 Option 2: Gadi
 ++++++++++++++++++
 
 A Pangeo environment is configured on Gadi to accelerate optimal performance. Please refer to instructions on how to run Jupyter notebooks on Gadi.
 Notes: Pangeo only provides essential packages, such as Xarray and Dask. It is sufficient to run most of the current climate examples. Other domain specific packages would need to be loaded (if it is available on Gadi) or installed in your personal project space. Instructions on how to run notebook with Pangeo environment is available here.
 To run those notebooks, you need to load those packages into your gadi environment:
+
+.. code-block:: python
    	
     $ module load pangeo
 
@@ -65,7 +68,10 @@ We demonstrated how to use NetCDF Operator (NCO) and Climate Data Operator (CDO)
 We also show how to use Clef to search data through our climate data collection database. More information about Clef can be found `readthedoc page`_. 
 You can follow instructions in each example to run those commands from your terminal on either VDI or Gadi. Prerequisites on software and data projects are specified in each example.
 To run those command, you need to load those packages into your NCI environment:
-   	$ module load netcdf/4.7.1 nco cdo
+
+.. code-block:: python
+
+    $ module load netcdf/4.7.1 nco cdo
 
 .. _readthedoc page: https://clef.readthedocs.io
 
